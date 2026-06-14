@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE, u } from '../data/site';
+const title = 'Pagina nu a fost găsită • Reparatii Tv Bucuresti';
+---
+<Base title={title} description="Pagina căutată nu există.">
+  <section class="hero-img"><div class="wrap">
+    <span class="badge">Eroare 404</span>
+    <h1>Pagina nu a fost găsită</h1>
+    <p class="lead">Ne pare rău, pagina căutată nu există. Reveniți la pagina principală sau sunați-ne.</p>
+    <a class="btn btn-white" href={u('')}>Acasă</a>
+    <a class="btn btn-wa" href={SITE.telefonHref}>📞 {SITE.telefon}</a>
+  </div></section>
+  <section class="sec"><div class="wrap">
+    <ul class="checks">
+      <li><a href={u('preturi-reparatii-tv/')}>Prețuri reparații TV</a></li>
+      <li><a href={u('reparatii-televizoare-samsung/')}>Reparații TV Samsung</a></li>
+      <li><a href={u('reparatii-televizoare-lg/')}>Reparații TV LG</a></li>
+      <li><a href={u('cum-decurge-procesul-de-reparatie/')}>Cum decurge procesul</a></li>
+    </ul>
+  </div></section>
+</Base>
