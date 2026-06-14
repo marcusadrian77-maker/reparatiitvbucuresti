@@ -2,19 +2,40 @@
 import Base from '../layouts/Base.astro';
 import Cta from '../components/Cta.astro';
 import { u } from '../data/site';
+import { LOCATII } from '../data/locatii';
 const title = 'Reparatii televizoare sector 6 | Reparatii TV LED, QLED, OLED Bucuresti';
-const description = 'Reparatii televizoare sector 6 cu deplasare la domiciliu. Reparăm TV-ul la fața locului sau îl preluăm în service. Diagnosticare gratuită, garanție.';
-const sectoare = ['Sector 1','Sector 2','Sector 3','Sector 4','Sector 5','Sector 6'];
+const description = 'Reparatii televizoare sector 6 cu deplasare la domiciliu. Reparăm TV-ul la fața locului sau îl preluăm în service. Diagnosticare gratuită, garanție 6–12 luni.';
+const strazi = LOCATII.filter(([sl, nm]) => /(sector\D{0,3}6\b)|(\(s6\))/i.test(nm))
+  .map(([sl, nm]) => ({ sl, nm: nm.replace(/^Reparații TV (pe )?/, '').replace(/^Reparatii TV (pe )?/, '').replace(/\s*[–-]\s*Sector.*$/, '') }))
+  .sort((a, b) => a.nm.localeCompare(b.nm, 'ro'));
 ---
 <Base title={title} description={description}>
-  <section class="hero-img"><div class="wrap"><span class="badge">Sector 6 · La domiciliu</span><h1>Reparații Televizoare Sector 6 București</h1><p class="lead">Ne deplasăm la domiciliul dumneavoastră în Sector 6 și reparăm televizorul la fața locului sau îl preluăm în service. Diagnosticare gratuită.</p></div></section>
+  <section class="hero-img"><div class="wrap">
+    <span class="badge">Sector 6 · La domiciliu</span>
+    <h1>Reparații Televizoare Sector 6 București</h1>
+    <p class="lead">Ne deplasăm gratuit în Sector 6 și reparăm televizorul la fața locului sau îl preluăm în service. Diagnosticare gratuită, garanție 6–12 luni.</p>
+  </div></section>
   <section class="sec"><div class="wrap">
+    <img src="https://www.reparatiielectronice.ro/img/tv.jpg" alt="Reparatii TV Sector 6" style="width:100%;max-height:300px;object-fit:cover;border-radius:14px;margin:0 0 18px;box-shadow:0 2px 14px rgba(20,54,93,.12)" loading="lazy" />
     <p>Acoperim întreg Sectorul 6 — Militari, Drumul Taberei, Crângași, Giulești și zonele învecinate — cu deplasare gratuită. Reparăm televizoare LED, OLED și QLED de orice marcă, cu garanție 6–12 luni.</p>
-    <h2>Reparăm în toate sectoarele</h2>
-    <div class="grid g3">{sectoare.map(s => <div class="card-soft"><strong>{s}</strong><span>Reparații TV la domiciliu cu deplasare gratuită.</span></div>)}</div>
-    <h2>Servicii în Sector 6</h2>
-    <ul class="checks"><li>TV nu pornește — sursă, placă principală, rescriere eMMC</li><li>Backlight LED și panou LED/OLED/QLED</li><li>Probleme de sunet și software Smart TV</li><li>Curățare internă și înlocuire condensatori devalorizați</li></ul>
-    <p>Vedeți și <a href={u('preturi-reparatii-tv/')}>prețurile orientative</a> sau aflați <a href={u('cum-decurge-procesul-de-reparatie/')}>cum decurge procesul</a>.</p>
+    <h2>Ce reparăm</h2>
+    <ul class="checks">
+      <li>TV nu pornește — sursă, placă principală, rescriere eMMC cu programator special</li>
+      <li>Backlight LED și panou LED / OLED / QLED</li>
+      <li>Linii sau pete pe ecran — placă T-CON</li>
+      <li>Probleme de sunet și software Smart TV</li>
+      <li>Curățare internă și înlocuire condensatori devalorizați</li>
+    </ul>
+    {strazi.length > 0 && (
+      <div>
+        <h2>Străzi deservite în Sector 6</h2>
+        <p>Ne deplasăm gratuit pe toate străzile din Sector 6. Alegeți strada dumneavoastră:</p>
+        <div class="grid g3" style="gap:4px 18px">
+          {strazi.map(s => <a href={u(s.sl + '/')} style="font-size:14px;padding:3px 0;display:block">{s.nm}</a>)}
+        </div>
+      </div>
+    )}
+    <p style="margin-top:18px">Vedeți <a href={u('preturi-reparatii-tv/')}>prețurile orientative</a> sau aflați <a href={u('cum-decurge-procesul-de-reparatie/')}>cum decurge procesul</a>.</p>
     <Cta titlu="Reparăm TV-ul în Sector 6 azi!" />
   </div></section>
 </Base>
