@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+import Cta from '../components/Cta.astro';
+import { u } from '../data/site';
+import { LOCATII } from '../data/locatii';
+export function getStaticPaths() {
+  return LOCATII.map(([slug, nume]) => ({ params: { slug }, props: { nume } }));
+}
+const { nume } = Astro.props;
+const title = nume + ' | Reparatii TV Bucuresti – Service la domiciliu';
+const description = 'Service televizoare la domiciliu — ' + nume + '. Diagnosticare și deplasare gratuită, reparații LED, OLED, QLED, garanție 6–12 luni.';
+const servicii = [
+  'TV nu pornește — sursă, placă principală, rescriere eMMC cu programator special',
+  'Backlight LED și panou LED / OLED / QLED',
+  'Linii sau pete pe ecran — placă T-CON',
+  'Probleme de sunet și software Smart TV',
+  'Curățare internă și înlocuire condensatori devalorizați',
+];
+---
+<Base title={title} description={description}>
+  <section class="hero-img"><div class="wrap">
+    <span class="badge">La domiciliu · Garanție 6–12 luni</span>
+    <h1>{nume}</h1>
+    <p class="lead">Ne deplasăm gratuit și reparăm televizorul la fața locului sau îl preluăm în service. Diagnosticare gratuită, piese de calitate, garanție 6–12 luni.</p>
+  </div></section>
+  <section class="sec"><div class="wrap">
+    <p>Oferim service profesional de televizoare în zona <strong>{nume.replace(/^Reparații TV (pe )?/,'').replace(/^Reparatii TV (pe )?/,'')}</strong>, cu deplasare gratuită în București și Ilfov. Reparăm orice marcă — Samsung, LG, Sony, Philips, Panasonic — televizoare LED, OLED și QLED. Plătiți doar dacă televizorul funcționează.</p>
+    <h2>Ce reparăm</h2>
+    <ul class="checks">{servicii.map(s => <li>{s}</li>)}</ul>
+    <p>Vedeți <a href={u('preturi-reparatii-tv/')}>prețurile orientative</a> sau aflați <a href={u('cum-decurge-procesul-de-reparatie/')}>cum decurge procesul</a>.</p>
+    <Cta titlu="Aveți un TV defect? Sunați-ne acum!" />
+  </div></section>
+</Base>
