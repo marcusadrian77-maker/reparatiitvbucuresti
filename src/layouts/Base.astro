@@ -57,7 +57,7 @@ const canonical = new URL(Astro.url.pathname, SITE.domeniu).href;
         <li><a href={u('preturi-reparatii-tv/')}>Prețuri</a></li>
         <li><a href={u('cum-decurge-procesul-de-reparatie/')}>Cum decurge</a></li>
         <li class="has-sub desk-only">
-          <a href={u('reparatii-televizoare-sector-6/')}>Sectoare</a>
+          <a href={u('sectoare/')}>Sectoare</a>
           <div class="sub">
             {NAV_SECTOARE.map(s => <a href={s.href}>Reparații TV {s.label}</a>)}
           </div>
@@ -65,6 +65,7 @@ const canonical = new URL(Astro.url.pathname, SITE.domeniu).href;
         <li class="mob-only">
           <details class="m-sub">
             <summary>Sectoare</summary>
+            <a href={u('sectoare/')}>Toate sectoarele</a>
             {NAV_SECTOARE.map(s => <a href={s.href}>Reparații TV {s.label}</a>)}
           </details>
         </li>
@@ -99,7 +100,7 @@ const canonical = new URL(Astro.url.pathname, SITE.domeniu).href;
           <li><a href={u('reparatii-televizoare-samsung/')}>Reparații TV Samsung</a></li>
           <li><a href={u('reparatii-televizoare-lg/')}>Reparații TV LG</a></li>
           <li><a href={u('preturi-reparatii-tv/')}>Prețuri reparații TV</a></li>
-          <li><a href={u('reparatii-televizoare-sector-6/')}>Reparații TV Sector 6</a></li>
+          <li><a href={u('sectoare/')}>Reparații TV pe sectoare</a></li>
         </ul>
       </div>
       <div>
