@@ -1,13 +1,17 @@
 ---
 import Base from '../layouts/Base.astro';
 import Cta from '../components/Cta.astro';
-import { u } from '../data/site';
+import { u, STRAZI_PRINCIPALE } from '../data/site';
 import { LOCATII } from '../data/locatii';
 const title = 'Reparatii televizoare sector 6 | Reparatii TV LED, QLED, OLED Bucuresti';
 const description = 'Reparatii televizoare sector 6 cu deplasare la domiciliu. Reparăm TV-ul la fața locului sau îl preluăm în service. Diagnosticare gratuită, garanție 6–12 luni.';
-const strazi = LOCATII.filter(([sl, nm]) => /(sector\D{0,3}6\b)|(\(s6\))/i.test(nm))
-  .map(([sl, nm]) => ({ sl, nm: nm.replace(/^Reparații TV (pe )?/, '').replace(/^Reparatii TV (pe )?/, '').replace(/\s*[–-]\s*Sector.*$/, '') }))
-  .sort((a, b) => a.nm.localeCompare(b.nm, 'ro'));
+const norm = (x) => x.toLowerCase().replace(/[ăâ]/g,'a').replace(/î/g,'i').replace(/[șş]/g,'s').replace(/[țţ]/g,'t').replace(/[^a-z0-9]+/g,' ').trim();
+const cleanNm = (nm) => nm.replace(/^Reparații TV (pe )?/, '').replace(/^Reparatii TV (pe )?/, '').replace(/\s*[–-]\s*Sector.*$/, '').replace(/\s*\(S\d\)\s*$/i, '').trim();
+const fromLoc = LOCATII.filter(([sl, nm]) => /(sector\D{0,3}6\b)|(\(s6\))/i.test(nm)).map(([sl, nm]) => ({ sl, nm: cleanNm(nm) }));
+const curated = (STRAZI_PRINCIPALE['6'] || []).map(name => { const k = norm(name); const hit = LOCATII.find(([sl, nm]) => { const kk = norm(cleanNm(nm)); return kk === k || kk.includes(k) || k.includes(kk); }); return { sl: hit ? hit[0] : null, nm: name }; });
+let strazi = []; const seen = new Set();
+[...curated, ...fromLoc].forEach(x => { const k = norm(x.nm); if (k && !seen.has(k)) { seen.add(k); strazi.push(x); } });
+strazi.sort((a, b) => a.nm.localeCompare(b.nm, 'ro'));
 ---
 <Base title={title} description={description}>
   <section class="hero-img"><div class="wrap">
@@ -28,10 +32,12 @@ const strazi = LOCATII.filter(([sl, nm]) => /(sector\D{0,3}6\b)|(\(s6\))/i.test(
     </ul>
     {strazi.length > 0 && (
       <div>
-        <h2>Străzi deservite în Sector 6</h2>
-        <p>Ne deplasăm gratuit pe toate străzile din Sector 6. Alegeți strada dumneavoastră:</p>
+        <h2>Bulevarde și străzi principale în Sector 6</h2>
+        <p>Ne deplasăm gratuit pe toate străzile din Sector 6, inclusiv:</p>
         <div class="grid g3" style="gap:4px 18px">
-          {strazi.map(s => <a href={u(s.sl + '/')} style="font-size:14px;padding:3px 0;display:block">{s.nm}</a>)}
+          {strazi.map(s => s.sl
+            ? <a href={u(s.sl + '/')} style="font-size:14px;padding:3px 0;display:block">{s.nm}</a>
+            : <span style="font-size:14px;padding:3px 0;display:block;color:var(--ink)">{s.nm}</span>)}
         </div>
       </div>
     )}
