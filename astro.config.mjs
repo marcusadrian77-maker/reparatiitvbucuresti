@@ -1,8 +1,7 @@
 import { defineConfig } from 'astro/config';
-// PREVIEW pe GitHub Pages (project page). La go-live: base:'/', site:'https://www.reparatiitvbucuresti.ro'
+// GO-LIVE pe domeniul oficial
 export default defineConfig({
-  site: 'https://marcusadrian77-maker.github.io',
-  base: '/reparatiitvbucuresti/',
+  site: 'https://www.reparatiitvbucuresti.ro',
   trailingSlash: 'always',
   build: { format: 'directory' },
 });
