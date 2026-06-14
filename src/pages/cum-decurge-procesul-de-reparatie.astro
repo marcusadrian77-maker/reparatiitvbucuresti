@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import Cta from '../components/Cta.astro';
+const title = 'Cum decurge procesul de reparație • Reparatii Tv Bucuresti';
+const description = 'Cum decurge reparația televizorului: programare, deplasare gratuită, diagnosticare gratuită, deviz, reparație și garanție. Simplu și transparent.';
+const pasi = [
+  ['Ne sunați sau scrieți pe WhatsApp', 'Ne spuneți marca, modelul și ce problemă are televizorul.'],
+  ['Programare și deplasare gratuită', 'Stabilim ziua și ora; ne deplasăm gratuit în București și Ilfov.'],
+  ['Diagnosticare gratuită', 'Identificăm exact defecțiunea, fără niciun cost.'],
+  ['Deviz clar', 'Vă comunicăm prețul final înainte de a începe reparația.'],
+  ['Reparația', 'Reparăm la domiciliu sau preluăm aparatul în service dacă e nevoie.'],
+  ['Garanție', 'Primiți garanție 6–12 luni la piese și manoperă. Plătiți doar dacă funcționează.'],
+];
+---
+<Base title={title} description={description}>
+  <section class="hero-img"><div class="wrap"><span class="badge">Simplu și transparent</span><h1>Cum decurge procesul de reparație</h1><p class="lead">De la primul telefon până la televizorul reparat, în pași clari și fără surprize.</p></div></section>
+  <section class="sec"><div class="wrap">
+    <div class="steps">
+      {pasi.map((p, idx) => <div class="step"><div class="n">{idx + 1}</div><div><strong>{p[0]}</strong><div class="tx">{p[1]}</div></div></div>)}
+    </div>
+    <Cta />
+  </div></section>
+</Base>
