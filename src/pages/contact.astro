@@ -1,0 +1,30 @@
+---
+import Base from '../layouts/Base.astro';
+import Cta from '../components/Cta.astro';
+import { SITE } from '../data/site';
+const title = 'Contact • Reparatii Tv Bucuresti';
+const description = 'Contact Reparatii TV București — telefon, WhatsApp, email. Service televizoare la domiciliu, diagnosticare și deplasare gratuită în București și Ilfov.';
+---
+<Base title={title} description={description}>
+  <section class="hero-img"><div class="wrap">
+    <span class="badge">Contact</span>
+    <h1>Contactați-ne</h1>
+    <p class="lead">Service televizoare la domiciliu în București și Ilfov. Diagnosticare și deplasare gratuită, garanție 6–12 luni.</p>
+    <a class="btn btn-white" href={SITE.telefonHref}>📞 {SITE.telefon}</a>
+    <a class="btn btn-wa" href={SITE.whatsapp} rel="noopener">💬 WhatsApp</a>
+  </div></section>
+  <section class="sec"><div class="wrap">
+    <div class="grid g2">
+      <div class="card"><h3>Date de contact</h3>
+        <p>📞 Telefon / WhatsApp: <a href={SITE.telefonHref}>{SITE.telefon}</a><br/>
+        ✉️ Email: <a href={'mailto:'+SITE.email}>{SITE.email}</a><br/>
+        🕐 Program: {SITE.program}<br/>
+        📍 Zonă: {SITE.zonaDomiciliu}</p>
+      </div>
+      <div class="card"><h3>Cum lucrăm</h3>
+        <p>Ne sunați sau scrieți pe WhatsApp cu marca și defecțiunea televizorului. Ne deplasăm gratuit, diagnosticăm gratuit și vă dăm un deviz clar înainte de orice intervenție. Plătiți doar dacă televizorul funcționează.</p>
+      </div>
+    </div>
+    <Cta />
+  </div></section>
+</Base>
