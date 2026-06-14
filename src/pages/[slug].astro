@@ -29,7 +29,7 @@ const servicii = [
 const m = slug.match(/sector-?(\d)/);
 const sectorNr = m ? m[1] : null;
 const strazi = sectorNr
-  ? LOCATII.filter(([sl, nm]) => new RegExp('Sector\\s*' + sectorNr + '(\\b|$)').test(nm) && sl !== slug)
+  ? LOCATII.filter(([sl, nm]) => new RegExp('(sector\\D{0,3}' + sectorNr + '\\b)|(\\(s' + sectorNr + '\\))', 'i').test(nm) && sl !== slug)
            .map(([sl, nm]) => ({ sl, nm: nm.replace(/^Reparații TV (pe )?/, '').replace(/^Reparatii TV (pe )?/, '').replace(/\s*[–-]\s*Sector.*$/, '') }))
            .sort((a, b) => a.nm.localeCompare(b.nm, 'ro'))
   : [];
