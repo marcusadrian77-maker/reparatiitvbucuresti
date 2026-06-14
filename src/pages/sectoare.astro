@@ -1,0 +1,34 @@
+---
+import Base from '../layouts/Base.astro';
+import Cta from '../components/Cta.astro';
+import { NAV_SECTOARE } from '../data/site';
+const title = 'Reparatii Televizoare pe Sectoare București | Reparatii TV Bucuresti';
+const description = 'Service televizoare la domiciliu în toate sectoarele Bucureștiului. Alegeți sectorul dumneavoastră — deplasare gratuită, diagnosticare gratuită, garanție 6–12 luni.';
+const desc = {
+  'Sector 1': 'Băneasa, Aviației, Dorobanți, Floreasca, Pipera, Băneasa.',
+  'Sector 2': 'Colentina, Pantelimon, Iancului, Tei, Obor.',
+  'Sector 3': 'Vitan, Dristor, Titan, Centrul Vechi, Dudești.',
+  'Sector 4': 'Berceni, Tineretului, Văcărești, Olteniței.',
+  'Sector 5': 'Rahova, Ferentari, Cotroceni, 13 Septembrie.',
+  'Sector 6': 'Militari, Drumul Taberei, Crângași, Giulești.',
+};
+---
+<Base title={title} description={description}>
+  <section class="hero-img"><div class="wrap">
+    <span class="badge">Toate sectoarele · La domiciliu</span>
+    <h1>Reparații Televizoare pe Sectoare</h1>
+    <p class="lead">Ne deplasăm gratuit în tot Bucureștiul. Alegeți sectorul dumneavoastră pentru detalii și străzile deservite.</p>
+  </div></section>
+  <section class="sec"><div class="wrap">
+    <div class="grid g3">
+      {NAV_SECTOARE.map(s => (
+        <a href={s.href} class="card" style="text-decoration:none;color:inherit;display:block">
+          <h3>Reparații TV {s.label}</h3>
+          <p>{desc[s.label]}</p>
+          <span class="btn btn-blue" style="margin:8px 0 0">Vezi {s.label} →</span>
+        </a>
+      ))}
+    </div>
+    <Cta />
+  </div></section>
+</Base>
