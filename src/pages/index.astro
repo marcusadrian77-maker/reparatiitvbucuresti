@@ -1,0 +1,71 @@
+---
+import Base from '../layouts/Base.astro';
+import Cta from '../components/Cta.astro';
+import { SITE, u } from '../data/site';
+const title = 'Reparatii TV Bucuresti – Service Televizoare Profesional | Garantie 6-12 luni';
+const description = 'Reparatii TV Bucuresti cu garantie 6-12 luni. Tehnicieni certificati, piese originale, deplasare gratuita in toate sectoarele. Reparatii LED, OLED, QLED.';
+const servicii = [
+  { i: '⚡', t: 'TV nu pornește', d: 'Reparăm sursa de alimentare, placa principală și rescriem memoria eMMC cu programator special.' },
+  { i: '💡', t: 'Backlight / ecran întunecat', d: 'Înlocuim baretele LED, driverele și invertoarele pentru imagine clară.' },
+  { i: '🖼️', t: 'Linii sau pete pe ecran', d: 'Diagnoză și reparație placă T-CON sau panou LED/OLED/QLED.' },
+  { i: '🔊', t: 'Probleme de sunet', d: 'Reparăm circuitul audio, amplificatorul și difuzoarele.' },
+  { i: '📡', t: 'Smart TV & software', d: 'Update firmware, resetare, conectare Wi-Fi și aplicații.' },
+  { i: '🔧', t: 'Curățare & mentenanță', d: 'Schimb pastă termică, curățare internă, înlocuire condensatori devalorizați.' },
+];
+const dece = [
+  'Diagnosticare gratuită la domiciliu',
+  'Deplasare gratuită în București și Ilfov',
+  'Plătiți doar dacă televizorul funcționează',
+  'Piese originale sau compatibile de calitate',
+  'Garanție 6–12 luni la intervenție',
+  'Peste 10 ani experiență, tehnicieni certificați',
+];
+---
+<Base title={title} description={description}>
+  <section class="hero-img">
+    <div class="wrap">
+      <span class="badge">Service TV profesional · Garanție 6–12 luni</span>
+      <h1>Reparatii TV București — Service Televizoare la Domiciliu</h1>
+      <p class="lead">Reparăm televizoare LED, OLED, QLED și Smart TV, orice marcă. Diagnosticare și deplasare gratuită în toate sectoarele. Intervenție rapidă, de regulă în aceeași zi.</p>
+      <div class="pills">
+        <span>LED · OLED · QLED</span><span>Samsung · LG · Sony · Philips</span><span>La domiciliu</span>
+      </div>
+      <a class="btn btn-white" href={SITE.telefonHref}>📞 {SITE.telefon}</a>
+      <a class="btn btn-wa" href={SITE.whatsapp} rel="noopener">💬 WhatsApp</a>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <h2>Ce defecțiuni reparăm</h2>
+      <div class="grid g3">
+        {servicii.map(s => (
+          <div class="card"><div class="ico">{s.i}</div><h3>{s.t}</h3><p>{s.d}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <h2>De ce să ne alegeți</h2>
+      <ul class="checks">{dece.map(x => <li>{x}</li>)}</ul>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <h2>Mărci pe care le reparăm</h2>
+      <div class="grid g2">
+        <div class="card"><h3>Reparații TV Samsung</h3><p>Service QLED și Smart TV Samsung la domiciliu, cu garanție 12 luni.</p><a class="btn btn-blue" href={u('reparatii-televizoare-samsung/')}>Detalii Samsung</a></div>
+        <div class="card"><h3>Reparații TV LG</h3><p>Reparații televizoare LG OLED și LED la domiciliul clientului.</p><a class="btn btn-blue" href={u('reparatii-televizoare-lg/')}>Detalii LG</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <Cta />
+    </div>
+  </section>
+</Base>
