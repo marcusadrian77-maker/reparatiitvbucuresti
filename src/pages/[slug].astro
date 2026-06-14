@@ -15,6 +15,7 @@ export function getStaticPaths() {
   return [...loc, ...art];
 }
 const { nume, html, desc } = Astro.props;
+const slug = Astro.params.slug;
 const zona = nume.replace(/^Reparații TV (pe )?/, '').replace(/^Reparatii TV (pe )?/, '');
 const title = nume + ' | Reparatii TV Bucuresti';
 const description = desc && desc.length > 10 ? desc : ('Service televizoare la domiciliu — ' + nume + '. Diagnosticare și deplasare gratuită, garanție 6–12 luni.');
@@ -25,6 +26,13 @@ const servicii = [
   'Probleme de sunet și software Smart TV',
   'Curățare internă și înlocuire condensatori devalorizați',
 ];
+const m = slug.match(/sector-?(\d)/);
+const sectorNr = m ? m[1] : null;
+const strazi = sectorNr
+  ? LOCATII.filter(([sl, nm]) => new RegExp('Sector\\s*' + sectorNr + '(\\b|$)').test(nm) && sl !== slug)
+           .map(([sl, nm]) => ({ sl, nm: nm.replace(/^Reparații TV (pe )?/, '').replace(/^Reparatii TV (pe )?/, '').replace(/\s*[–-]\s*Sector.*$/, '') }))
+           .sort((a, b) => a.nm.localeCompare(b.nm, 'ro'))
+  : [];
 ---
 <Base title={title} description={description}>
   <section class="hero-img"><div class="wrap">
@@ -39,10 +47,20 @@ const servicii = [
     </div></section>
   ) : (
     <section class="sec"><div class="wrap">
+      <img src="https://www.reparatiielectronice.ro/img/tv.jpg" alt={'Reparatii TV ' + zona} style="width:100%;max-height:300px;object-fit:cover;border-radius:14px;margin:0 0 18px;box-shadow:0 2px 14px rgba(20,54,93,.12)" loading="lazy" />
       <p>Oferim service profesional de televizoare în zona <strong>{zona}</strong>, cu deplasare gratuită în București și Ilfov. Reparăm orice marcă — Samsung, LG, Sony, Philips, Panasonic — televizoare LED, OLED și QLED. Plătiți doar dacă televizorul funcționează.</p>
       <h2>Ce reparăm</h2>
       <ul class="checks">{servicii.map(s => <li>{s}</li>)}</ul>
-      <p>Vedeți <a href={u('preturi-reparatii-tv/')}>prețurile orientative</a> sau aflați <a href={u('cum-decurge-procesul-de-reparatie/')}>cum decurge procesul</a>.</p>
+      {sectorNr && strazi.length > 0 && (
+        <div>
+          <h2>Străzi deservite în Sector {sectorNr}</h2>
+          <p>Ne deplasăm gratuit pe toate străzile din Sector {sectorNr}. Alegeți strada dumneavoastră:</p>
+          <div class="grid g3" style="gap:4px 18px">
+            {strazi.map(s => <a href={u(s.sl + '/')} style="font-size:14px;padding:3px 0;display:block">{s.nm}</a>)}
+          </div>
+        </div>
+      )}
+      <p style="margin-top:18px">Vedeți <a href={u('preturi-reparatii-tv/')}>prețurile orientative</a> sau aflați <a href={u('cum-decurge-procesul-de-reparatie/')}>cum decurge procesul</a>.</p>
       <Cta titlu="Aveți un TV defect? Sunați-ne acum!" />
     </div></section>
   )}
