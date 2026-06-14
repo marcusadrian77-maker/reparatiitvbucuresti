@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { SITE, NAV_BRANDURI, SCHEMA_LOCALBUSINESS, u } from '../data/site';
+import { SITE, NAV_BRANDURI, NAV_SECTOARE, SCHEMA_LOCALBUSINESS, u } from '../data/site';
 export interface Props { title: string; description: string; schemaExtra?: object | null; }
 const { title, description, schemaExtra = null } = Astro.props;
 const canonical = new URL(Astro.url.pathname, SITE.domeniu).href;
@@ -56,7 +56,18 @@ const canonical = new URL(Astro.url.pathname, SITE.domeniu).href;
         </li>
         <li><a href={u('preturi-reparatii-tv/')}>Prețuri</a></li>
         <li><a href={u('cum-decurge-procesul-de-reparatie/')}>Cum decurge</a></li>
-        <li><a href={u('reparatii-televizoare-sector-6/')}>Sectoare</a></li>
+        <li class="has-sub desk-only">
+          <a href={u('reparatii-televizoare-sector-6/')}>Sectoare</a>
+          <div class="sub">
+            {NAV_SECTOARE.map(s => <a href={s.href}>Reparații TV {s.label}</a>)}
+          </div>
+        </li>
+        <li class="mob-only">
+          <details class="m-sub">
+            <summary>Sectoare</summary>
+            {NAV_SECTOARE.map(s => <a href={s.href}>Reparații TV {s.label}</a>)}
+          </details>
+        </li>
         <li><a class="tel" href={SITE.telefonHref}>📞 {SITE.telefon}</a></li>
       </ul>
     </nav>
