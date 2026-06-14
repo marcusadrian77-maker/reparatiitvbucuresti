@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+import Cta from '../components/Cta.astro';
+const title = 'Reparatii Televizoare LG | Reparatii TV Bucuresti LG';
+const description = 'Reparatii televizoare LG la domiciliul clientului. Echipă de profesioniști cu experiență ce se deplasează la dumneavoastră acasă. Garanție și piese de calitate.';
+const probleme = [
+  ['TV LG nu pornește', 'Reparăm sursa de alimentare și placa principală; rescriere eMMC cu programator special.'],
+  ['Panou OLED / imagine', 'Diagnoză panou OLED, placă T-CON și drivere.'],
+  ['Backlight LED', 'Înlocuim baretele LED și invertoarele.'],
+  ['webOS / software', 'Update firmware, resetare și reconectare Wi-Fi.'],
+];
+---
+<Base title={title} description={description}>
+  <section class="hero-img"><div class="wrap"><span class="badge">Service LG · La domiciliu</span><h1>Reparații Televizoare LG București</h1><p class="lead">Reparăm la domiciliu televizoare LG OLED și LED. Diagnosticare și deplasare gratuită în București și Ilfov, garanție 6–12 luni.</p></div></section>
+  <section class="sec"><div class="wrap">
+    <h2>Defecțiuni LG frecvente</h2>
+    <div class="grid g2">{probleme.map(p => <div class="card"><h3>{p[0]}</h3><p>{p[1]}</p></div>)}</div>
+    <h2>De ce noi pentru LG</h2>
+    <ul class="checks"><li>Experiență pe panouri OLED LG</li><li>Piese originale sau compatibile de calitate</li><li>Garanție 6–12 luni la intervenție</li><li>Plătiți doar dacă televizorul funcționează</li></ul>
+    <Cta titlu="TV LG defect? Sunați-ne!" />
+  </div></section>
+</Base>
