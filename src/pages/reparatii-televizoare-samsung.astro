@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+import Cta from '../components/Cta.astro';
+const title = 'Reparatii TV Samsung Bucuresti - Service QLED SmartTV Garantie';
+const description = 'Service TV Samsung la domiciliu București. Deplasare GRATUITĂ, diagnosticare gratuită, garanție 12 luni. Reparații QLED, Smart TV Samsung. Sună!';
+const probleme = [
+  ['TV Samsung nu pornește', 'Reparăm sursa de alimentare, placa principală și rescriem memoria eMMC cu programator special.'],
+  ['Ecran negru / backlight', 'Înlocuim baretele LED și driverele pentru imagine clară.'],
+  ['Linii pe ecran QLED', 'Diagnoză și reparație placă T-CON sau panou.'],
+  ['Smart Hub / software', 'Update firmware, resetare, reconectare Wi-Fi și aplicații.'],
+];
+---
+<Base title={title} description={description}>
+  <section class="hero-img"><div class="wrap"><span class="badge">Service autorizat tip · Garanție 12 luni</span><h1>Reparații Televizoare Samsung București</h1><p class="lead">Reparăm la domiciliu televizoare Samsung QLED, LED și Smart TV. Diagnosticare și deplasare gratuită în București și Ilfov.</p></div></section>
+  <section class="sec"><div class="wrap">
+    <h2>Defecțiuni Samsung frecvente</h2>
+    <div class="grid g2">{probleme.map(p => <div class="card"><h3>{p[0]}</h3><p>{p[1]}</p></div>)}</div>
+    <h2>De ce noi pentru Samsung</h2>
+    <ul class="checks"><li>Experiență pe panouri QLED și Smart TV Samsung</li><li>Piese originale sau compatibile de calitate</li><li>Garanție 12 luni la intervenție</li><li>Plătiți doar dacă televizorul funcționează</li></ul>
+    <Cta titlu="TV Samsung defect? Sunați-ne!" />
+  </div></section>
+</Base>
