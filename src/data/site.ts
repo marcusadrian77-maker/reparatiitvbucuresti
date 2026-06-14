@@ -17,7 +17,11 @@ export const SITE = {
 export const NAV_BRANDURI = [
   { href: u('reparatii-televizoare-samsung/'), label: 'Samsung' },
   { href: u('reparatii-televizoare-lg/'), label: 'LG' },
-];
+  { href: u('reparatii-televizoare-sony/'), label: 'Sony' },
+  { href: u('reparatii-televizoare-philips/'), label: 'Philips' },
+  { href: u('reparatii-tv-panasonic/'), label: 'Panasonic' },
+  { href: u('reparatii-televizoare-horizon/'), label: 'Horizon' },
+]
 
 export const SCHEMA_LOCALBUSINESS = {
   '@context': 'https://schema.org',
