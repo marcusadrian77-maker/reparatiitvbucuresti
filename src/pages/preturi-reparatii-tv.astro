@@ -1,0 +1,65 @@
+---
+import Base from '../layouts/Base.astro';
+import Cta from '../components/Cta.astro';
+import { u } from '../data/site';
+const title = 'Prețuri Reparații TV & Console • Reparatii Tv Bucuresti';
+const description = 'Prețuri orientative reparații televizoare și console gaming în București. Diagnosticare gratuită, deviz gratuit, plătiți doar dacă funcționează.';
+const tv = [
+  ['Diagnosticare la domiciliu', 'GRATUIT', '—', 'Identificăm defecțiunea fără costuri'],
+  ['Înlocuire sursă alimentare', '150 – 350', '12 luni', 'Sursă originală sau compatibilă de calitate'],
+  ['Înlocuire placă principală (main board)', '200 – 500', '12 luni', 'Diagnoze complete + programare'],
+  ['Reparare/înlocuire backlight LED', '100 – 280', '6 luni', 'Benzi LED, invertoare, drivere'],
+  ['Înlocuire panou LCD/OLED', '500 – 1500', '12 luni', 'Depinde de diagonală și model'],
+  ['Reparare placă T-CON', '120 – 300', '6 luni', 'Linii pe ecran, imagine parțială'],
+  ['Reparare circuit audio / boxe', '80 – 200', '6 luni', 'Amplificator, difuzoare, cablu flex'],
+  ['Service software / Smart TV', '50 – 150', '3 luni', 'Resetare, update firmware, Wi-Fi'],
+  ['Curățare internă + service general', '60 – 120', '3 luni', 'Condensatori, pastă termică, curățare'],
+];
+const console = [
+  ['PlayStation 5 – Overheating / ventilator', '150 – 250', '6 luni', 'Curățare, pastă termică, înlocuire ventilator'],
+  ['PlayStation 4 / 4 Pro – BLOD / placă', '180 – 400', '6 luni', 'Reballing APU, reparare sursă'],
+  ['Xbox Series X/S – Nu pornește', '120 – 300', '6 luni', 'Sursă alimentare, chip HDMI'],
+  ['Xbox One / One S / One X', '100 – 250', '6 luni', 'RROD, overheating, sursă'],
+  ['Nintendo Switch – Ecran / joystick', '80 – 200', '6 luni', 'Ecran tactil, Joy-Con drift, mufă încărcare'],
+  ['Curățare & mentenanță orice consolă', '60 – 120', '3 luni', 'Pastă termică, curățare ventilator'],
+];
+---
+<Base title={title} description={description}>
+  <section class="hero-img">
+    <div class="wrap">
+      <span class="badge">💰 Tarife transparente</span>
+      <h1>Prețuri Reparații TV & Console</h1>
+      <p class="lead">Tarife corecte, fără surprize. Deviz gratuit înainte de orice intervenție. Plătiți doar dacă sunteți mulțumit.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="note-warn"><strong>Prețurile sunt orientative.</strong> Costul final al reparației depinde de modelul televizorului, disponibilitatea piesei și complexitatea intervenției. Oferim întotdeauna un deviz exact după diagnosticarea gratuită la domiciliu.</div>
+
+      <h2>📺 Reparații Televizoare</h2>
+      <div class="tbl-wrap">
+        <table class="tb">
+          <thead><tr><th>Tip intervenție</th><th>Preț de la (RON)</th><th>Garanție</th><th>Detalii</th></tr></thead>
+          <tbody>{tv.map(r => <tr><td>{r[0]}</td><td>{r[1]}</td><td>{r[2]}</td><td>{r[3]}</td></tr>)}</tbody>
+        </table>
+      </div>
+
+      <h2>🎮 Reparații Console Gaming</h2>
+      <div class="tbl-wrap">
+        <table class="tb">
+          <thead><tr><th>Consolă / Tip intervenție</th><th>Preț de la (RON)</th><th>Garanție</th><th>Detalii</th></tr></thead>
+          <tbody>{console.map(r => <tr><td>{r[0]}</td><td>{r[1]}</td><td>{r[2]}</td><td>{r[3]}</td></tr>)}</tbody>
+        </table>
+      </div>
+
+      <div class="grid g3" style="margin-top:18px">
+        <div class="card-soft"><strong>Deviz gratuit</strong><span>Aflați costul exact înainte de orice intervenție.</span></div>
+        <div class="card-soft"><strong>Deplasare gratuită (TV)</strong><span>Ne deplasăm gratuit în București și Ilfov.</span></div>
+        <div class="card-soft"><strong>Plătiți doar dacă funcționează</strong><span>Nu plătiți nimic dacă nu reparăm televizorul.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec"><div class="wrap"><Cta titlu="Cereți un deviz gratuit acum!" /></div></section>
+</Base>
