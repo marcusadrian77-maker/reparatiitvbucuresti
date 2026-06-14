@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Cta from '../components/Cta.astro';
-import { u } from '../data/site';
+import { u, STRAZI_PRINCIPALE } from '../data/site';
 import { LOCATII } from '../data/locatii';
 import { ARTICOLE_1 } from '../data/articole-1';
 import { ARTICOLE_2 } from '../data/articole-2';
@@ -26,13 +26,23 @@ const servicii = [
   'Probleme de sunet și software Smart TV',
   'Curățare internă și înlocuire condensatori devalorizați',
 ];
+const norm = (x) => x.toLowerCase().replace(/[ăâ]/g,'a').replace(/î/g,'i').replace(/[șş]/g,'s').replace(/[țţ]/g,'t').replace(/[^a-z0-9]+/g,' ').trim();
+const cleanNm = (nm) => nm.replace(/^Reparații TV (pe )?/, '').replace(/^Reparatii TV (pe )?/, '').replace(/\s*[–-]\s*Sector.*$/, '').replace(/\s*\(S\d\)\s*$/i, '').trim();
 const m = slug.match(/sector-?(\d)/);
 const sectorNr = m ? m[1] : null;
-const strazi = sectorNr
-  ? LOCATII.filter(([sl, nm]) => new RegExp('(sector\\D{0,3}' + sectorNr + '\\b)|(\\(s' + sectorNr + '\\))', 'i').test(nm) && sl !== slug)
-           .map(([sl, nm]) => ({ sl, nm: nm.replace(/^Reparații TV (pe )?/, '').replace(/^Reparatii TV (pe )?/, '').replace(/\s*[–-]\s*Sector.*$/, '') }))
-           .sort((a, b) => a.nm.localeCompare(b.nm, 'ro'))
-  : [];
+let strazi = [];
+if (sectorNr) {
+  const fromLoc = LOCATII.filter(([sl, nm]) => (new RegExp('(sector\\D{0,3}' + sectorNr + '\\b)|(\\(s' + sectorNr + '\\))', 'i').test(nm)) && sl !== slug)
+    .map(([sl, nm]) => ({ sl, nm: cleanNm(nm) }));
+  const curated = (STRAZI_PRINCIPALE[sectorNr] || []).map(name => {
+    const k = norm(name);
+    const hit = LOCATII.find(([sl, nm]) => { const kk = norm(cleanNm(nm)); return kk === k || kk.includes(k) || k.includes(kk); });
+    return { sl: hit ? hit[0] : null, nm: name };
+  });
+  const seen = new Set();
+  [...curated, ...fromLoc].forEach(x => { const k = norm(x.nm); if (k && !seen.has(k)) { seen.add(k); strazi.push(x); } });
+  strazi.sort((a, b) => a.nm.localeCompare(b.nm, 'ro'));
+}
 ---
 <Base title={title} description={description}>
   <section class="hero-img"><div class="wrap">
@@ -53,10 +63,12 @@ const strazi = sectorNr
       <ul class="checks">{servicii.map(s => <li>{s}</li>)}</ul>
       {sectorNr && strazi.length > 0 && (
         <div>
-          <h2>Străzi deservite în Sector {sectorNr}</h2>
-          <p>Ne deplasăm gratuit pe toate străzile din Sector {sectorNr}. Alegeți strada dumneavoastră:</p>
+          <h2>Bulevarde și străzi principale în Sector {sectorNr}</h2>
+          <p>Ne deplasăm gratuit pe toate străzile din Sector {sectorNr}, inclusiv:</p>
           <div class="grid g3" style="gap:4px 18px">
-            {strazi.map(s => <a href={u(s.sl + '/')} style="font-size:14px;padding:3px 0;display:block">{s.nm}</a>)}
+            {strazi.map(s => s.sl
+              ? <a href={u(s.sl + '/')} style="font-size:14px;padding:3px 0;display:block">{s.nm}</a>
+              : <span style="font-size:14px;padding:3px 0;display:block;color:var(--ink)">{s.nm}</span>)}
           </div>
         </div>
       )}
