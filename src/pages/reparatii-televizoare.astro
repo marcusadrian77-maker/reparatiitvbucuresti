@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+import Cta from '../components/Cta.astro';
+import { u } from '../data/site';
+const title = 'Reparatii Televizoare București – Service la domiciliu | Reparatii TV Bucuresti';
+const description = 'Reparatii televizoare la domiciliu în București și Ilfov. Diagnosticare și deplasare gratuită, reparații LED, OLED, QLED, garanție 6–12 luni.';
+---
+<Base title={title} description={description}>
+  <section class="hero-img"><div class="wrap">
+    <span class="badge">Service TV · La domiciliu</span>
+    <h1>Reparatii Televizoare București</h1>
+    <p class="lead">Reparăm televizoare LED, OLED, QLED și Smart TV, orice marcă. Diagnosticare și deplasare gratuită în toate sectoarele.</p>
+  </div></section>
+  <section class="sec"><div class="wrap">
+    <h2>Servicii principale</h2>
+    <ul class="checks">
+      <li><a href={u('reparatii-televizoare-samsung/')}>Reparații TV Samsung</a></li>
+      <li><a href={u('reparatii-televizoare-lg/')}>Reparații TV LG</a></li>
+      <li><a href={u('preturi-reparatii-tv/')}>Prețuri orientative</a></li>
+      <li><a href={u('cum-decurge-procesul-de-reparatie/')}>Cum decurge procesul</a></li>
+    </ul>
+    <Cta />
+  </div></section>
+</Base>
