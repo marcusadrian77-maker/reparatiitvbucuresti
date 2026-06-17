@@ -930,7 +930,6 @@ export const LOCATII: [string, string][] = [
   ["baneasa-2","Baneasa"],
   ["anghel-gheorgheserg","Anghel Gheorghe serg"],
   ["alion","Alion"],
-  ["termeni","Termeni"],
   ["vitan","Vitan"],
   ["victoriei","Victoriei"],
   ["vacaresti","Vacaresti"],
@@ -978,8 +977,5 @@ export const LOCATII: [string, string][] = [
   ["aviatiei","Aviației"],
   ["aviatorilor","Aviatorilor"],
   ["13-septembrie","13 Septembrie"],
-  ["ilfov","Ilfov"],
-  ["cartier","Cartier"],
-  ["sector","Sector"],
-  ["domiciliul","Domiciliul"]
+  ["ilfov","Ilfov"]
 ];
