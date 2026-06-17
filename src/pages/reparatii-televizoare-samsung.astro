@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Cta from '../components/Cta.astro';
+import { SITE } from '../data/site';
 const title = 'Reparatii TV Samsung Bucuresti - Service QLED SmartTV Garantie';
 const description = 'Service TV Samsung la domiciliu București. Deplasare GRATUITĂ, diagnosticare gratuită, garanție 12 luni. Reparații QLED, Smart TV Samsung. Sună!';
 const probleme = [
@@ -9,8 +10,16 @@ const probleme = [
   ['Linii pe ecran QLED', 'Diagnoză și reparație placă T-CON sau panou.'],
   ['Smart Hub / software', 'Update firmware, resetare, reconectare Wi-Fi și aplicații.'],
 ];
+const canonical = new URL(Astro.url.pathname, SITE.domeniu).href;
+const schemaExtra = { '@context': 'https://schema.org', '@graph': [
+  { '@type': 'Service', serviceType: 'Reparații televizoare Samsung', name: 'Reparații Televizoare Samsung București', url: canonical, description, areaServed: [{ '@type': 'City', name: 'București' }, { '@type': 'AdministrativeArea', name: 'Județul Ilfov' }], provider: { '@id': 'https://www.reparatiitvbucuresti.ro/#business' }, offers: { '@type': 'Offer', priceCurrency: 'RON', url: SITE.domeniu + '/preturi-reparatii-tv/' } },
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Acasă', item: SITE.domeniu + '/' },
+    { '@type': 'ListItem', position: 2, name: 'Reparații TV Samsung', item: canonical },
+  ] },
+] };
 ---
-<Base title={title} description={description}>
+<Base title={title} description={description} schemaExtra={schemaExtra}>
   <section class="hero-img"><div class="wrap"><span class="badge">Service autorizat tip · Garanție 12 luni</span><h1>Reparații Televizoare Samsung București</h1><p class="lead">Reparăm la domiciliu televizoare Samsung QLED, LED și Smart TV. Diagnosticare și deplasare gratuită în București și Ilfov.</p></div></section>
   <section class="sec"><div class="wrap">
     <h2>Defecțiuni Samsung frecvente</h2>

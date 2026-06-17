@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Cta from '../components/Cta.astro';
-import { u, STRAZI_PRINCIPALE } from '../data/site';
+import { u, STRAZI_PRINCIPALE, SITE } from '../data/site';
 import { LOCATII } from '../data/locatii';
 import { ARTICOLE_1 } from '../data/articole-1';
 import { ARTICOLE_2 } from '../data/articole-2';
@@ -43,8 +43,34 @@ if (sectorNr) {
   [...curated, ...fromLoc].forEach(x => { const k = norm(x.nm); if (k && !seen.has(k)) { seen.add(k); strazi.push(x); } });
   strazi.sort((a, b) => a.nm.localeCompare(b.nm, 'ro'));
 }
+const canonical = new URL(Astro.url.pathname, SITE.domeniu).href;
+const BRAND_SLUGS = new Set(['reparatii-televizoare-sony','reparatii-televizoare-philips','reparatii-tv-panasonic','reparatii-televizoare-horizon']);
+const isBrand = BRAND_SLUGS.has(slug);
+const isLocatie = html === null;
+const crumbs = [{ name: 'Acasă', item: SITE.domeniu + '/' }];
+if (sectorNr) crumbs.push({ name: 'Sectoare', item: SITE.domeniu + '/sectoare/' });
+crumbs.push({ name: zona, item: canonical });
+const graph = [{
+  '@type': 'BreadcrumbList',
+  itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: c.item })),
+}];
+if (isLocatie || isBrand) {
+  graph.unshift({
+    '@type': 'Service',
+    serviceType: 'Reparații televizoare la domiciliu',
+    name: nume,
+    url: canonical,
+    description,
+    areaServed: isBrand
+      ? [{ '@type': 'City', name: 'București' }, { '@type': 'AdministrativeArea', name: 'Județul Ilfov' }]
+      : { '@type': sectorNr ? 'AdministrativeArea' : 'Place', name: zona },
+    provider: { '@id': 'https://www.reparatiitvbucuresti.ro/#business' },
+    offers: { '@type': 'Offer', priceCurrency: 'RON', url: SITE.domeniu + '/preturi-reparatii-tv/' },
+  });
+}
+const schemaExtra = { '@context': 'https://schema.org', '@graph': graph };
 ---
-<Base title={title} description={description}>
+<Base title={title} description={description} schemaExtra={schemaExtra}>
   <section class="hero-img"><div class="wrap">
     <span class="badge">La domiciliu · Garanție 6–12 luni</span>
     <h1>{nume}</h1>

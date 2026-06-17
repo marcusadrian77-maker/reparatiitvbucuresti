@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Cta from '../components/Cta.astro';
+import { SITE } from '../data/site';
 const title = 'Reparatii Televizoare LG | Reparatii TV Bucuresti LG';
 const description = 'Reparatii televizoare LG la domiciliul clientului. Echipă de profesioniști cu experiență ce se deplasează la dumneavoastră acasă. Garanție și piese de calitate.';
 const probleme = [
@@ -9,8 +10,16 @@ const probleme = [
   ['Backlight LED', 'Înlocuim baretele LED și invertoarele.'],
   ['webOS / software', 'Update firmware, resetare și reconectare Wi-Fi.'],
 ];
+const canonical = new URL(Astro.url.pathname, SITE.domeniu).href;
+const schemaExtra = { '@context': 'https://schema.org', '@graph': [
+  { '@type': 'Service', serviceType: 'Reparații televizoare LG', name: 'Reparații Televizoare LG București', url: canonical, description, areaServed: [{ '@type': 'City', name: 'București' }, { '@type': 'AdministrativeArea', name: 'Județul Ilfov' }], provider: { '@id': 'https://www.reparatiitvbucuresti.ro/#business' }, offers: { '@type': 'Offer', priceCurrency: 'RON', url: SITE.domeniu + '/preturi-reparatii-tv/' } },
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Acasă', item: SITE.domeniu + '/' },
+    { '@type': 'ListItem', position: 2, name: 'Reparații TV LG', item: canonical },
+  ] },
+] };
 ---
-<Base title={title} description={description}>
+<Base title={title} description={description} schemaExtra={schemaExtra}>
   <section class="hero-img"><div class="wrap"><span class="badge">Service LG · La domiciliu</span><h1>Reparații Televizoare LG București</h1><p class="lead">Reparăm la domiciliu televizoare LG OLED și LED. Diagnosticare și deplasare gratuită în București și Ilfov, garanție 6–12 luni.</p></div></section>
   <section class="sec"><div class="wrap">
     <h2>Defecțiuni LG frecvente</h2>
