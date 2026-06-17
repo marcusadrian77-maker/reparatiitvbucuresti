@@ -22,5 +22,12 @@ export default defineConfig({
     '/best-buget-tv/': '/',
     '/cel-mai-bun-raport-calitate-pret-la-un-tv-high-end/': '/',
     '/regele-imaginii/': '/',
+    // Sector duplicat: structura veche -> structura noua (curata)
+    '/reparatii-tv-sector-1/': '/reparatii-televizoare-sector-1/',
+    '/reparatii-tv-sector-2/': '/reparatii-televizoare-sector-2/',
+    '/reparatii-tv-sector-3/': '/reparatii-televizoare-sector-3/',
+    '/reparatii-tv-sector-4/': '/reparatii-televizoare-sector-4/',
+    '/reparatii-tv-sector-5/': '/reparatii-televizoare-sector-5/',
+    '/reparatii-tv-sector-6/': '/reparatii-televizoare-sector-6/',
   },
 });
