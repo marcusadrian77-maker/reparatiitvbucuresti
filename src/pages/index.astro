@@ -20,8 +20,21 @@ const dece = [
   'Garanție 6–12 luni la intervenție',
   'Peste 10 ani experiență, tehnicieni certificați',
 ];
+const faq = [
+  { q: 'Cât costă diagnosticarea unui televizor?', a: 'Diagnosticarea și deplasarea sunt gratuite în București și Ilfov. Plătiți doar dacă televizorul funcționează după reparație.' },
+  { q: 'În cât timp ajungeți la domiciliu?', a: 'De regulă intervenim în aceeași zi în București și împrejurimi, în funcție de programul disponibil. Sunați la 0720.667.800 pentru o programare rapidă.' },
+  { q: 'Ce mărci de televizoare reparați?', a: 'Reparăm orice marcă: Samsung, LG, Sony, Philips, Panasonic, Horizon și altele, televizoare LED, OLED, QLED și Smart TV.' },
+  { q: 'Ce garanție oferiți la reparație?', a: 'Oferim garanție de 6–12 luni la intervenție, în funcție de tipul reparației și de piesele folosite.' },
+  { q: 'În ce zone vă deplasați?', a: 'Ne deplasăm gratuit în toate cele 6 sectoare ale Bucureștiului și în localitățile din Ilfov: Voluntari, Popești-Leordeni, Otopeni, Pantelimon, Bragadiru, Chiajna, Buftea, Măgurele și altele.' },
+  { q: 'Televizorul nu pornește deloc. Se poate repara?', a: 'Da. În cele mai multe cazuri reparăm sursa de alimentare, placa principală sau rescriem memoria eMMC cu programator special. Diagnosticul gratuit stabilește exact cauza.' },
+];
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
 ---
-<Base title={title} description={description}>
+<Base title={title} description={description} schemaExtra={faqSchema}>
   <section class="hero-img">
     <div class="wrap">
       <span class="badge">Service TV profesional · Garanție 6–12 luni</span>
@@ -65,7 +78,28 @@ const dece = [
 
   <section class="sec">
     <div class="wrap">
+      <h2>Întrebări frecvente</h2>
+      {faq.map(f => (
+        <details class="faq-item">
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
       <Cta />
     </div>
   </section>
 </Base>
+
+<style>
+  .faq-item{border:1px solid #e3e8f0;border-radius:10px;margin:0 0 10px;padding:0 16px;background:#fff}
+  .faq-item summary{cursor:pointer;font-weight:600;color:#14365d;padding:14px 0;list-style:none}
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary::after{content:'+';float:right;color:#0a6ebd;font-weight:700}
+  .faq-item[open] summary::after{content:'–'}
+  .faq-item p{margin:0 0 14px;color:#444;line-height:1.6}
+</style>
