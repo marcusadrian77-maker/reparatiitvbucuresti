@@ -89,11 +89,11 @@ export const LOCATII: [string, string][] = [
   ["reparatii-tv-dimitrie-pompeiu","Reparatii TV Dimitrie Pompeiu"],
   ["bulevardul-ferdinand-i","Reparatii TV Bulevardul Ferdinand I"],
   ["bulevardul-basarabia","Reparatii TV Bulevardul Basarabia"],
-  ["reparatii-televizoare-sector-4","Sector 4"],
-  ["reparatii-televizoare-sector-5","Sector 5"],
-  ["reparatii-televizoare-sector-3","Sector 3"],
-  ["reparatii-televizoare-sector-2","Reparatii Televizoare Sector 2 la domiciliu"],
-  ["reparatii-televizoare-sector-1","Sector 1"],
+  
+  
+  
+  
+  
   ["zosima-dumitru-ing","Zosima Dumitru ing"],
   ["zorileanu-mircea-av","Zorileanu Mircea av"],
   ["zola-emile-scriitor","Zola Emile scriitor"],
