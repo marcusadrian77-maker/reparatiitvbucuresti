@@ -208,3 +208,44 @@ export const SECTOR: Record<string, number> = {
 };
 
 export const CARTIERE_SECTOR: Record<number, string[]> = {
+  1: ['Aviației', 'Băneasa', 'Dorobanți', 'Floreasca', 'Primăverii', 'Pipera', 'Domenii', 'Bucureștii Noi', 'Dămăroaia', 'Grivița', 'Aviatorilor'],
+  2: ['Colentina', 'Tei', 'Pantelimon', 'Iancului', 'Obor', 'Vatra Luminoasă', 'Fundeni', 'Baicului', 'Ștefan cel Mare', 'Doamna Ghica'],
+  3: ['Titan', 'Dristor', 'Vitan', 'Centrul Vechi', 'Dudești', 'Balta Albă', 'Trapezului', 'Nicolae Grigorescu', 'Unirii', 'Theodor Pallady'],
+  4: ['Berceni', 'Tineretului', 'Văcărești', 'Olteniței', 'Giurgiului', 'Timpuri Noi', 'Apărătorii Patriei', 'Brâncoveanu', 'Metalurgiei'],
+  5: ['Rahova', 'Ferentari', 'Cotroceni', '13 Septembrie', 'Panduri', 'Sebastian', 'Giurgiului', 'Dealul Spirii', 'Antiaeriană'],
+  6: ['Militari', 'Drumul Taberei', 'Crângași', 'Giulești', 'Ghencea', 'Grozăvești', 'Regie', 'Politehnica', 'Lujerului', 'Plaza'],
+};
+
+/** Hash stabil pe slug — folosit pentru a varia deterministic conținutul între pagini. */
+export function h(slug: string, sare = 0): number {
+  let n = 2166136261 ^ (sare * 2654435761);
+  for (let i = 0; i < slug.length; i++) { n ^= slug.charCodeAt(i); n = Math.imul(n, 16777619); }
+  return (n >>> 0);
+}
+
+/** Amestecă deterministic un pool și returnează primele `cate` elemente. */
+export function alege<T>(pool: T[], cate: number, slug: string, sare = 0): T[] {
+  const a = pool.slice();
+  let seed = h(slug, sare) || 1;
+  const rnd = () => { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed / 4294967296; };
+  for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+  return a.slice(0, Math.min(cate, a.length));
+}
+
+export function unul<T>(pool: T[], slug: string, sare = 0): T {
+  return pool[h(slug, sare) % pool.length];
+}
+
+/** Pagini duplicate (aceeași arteră, două slug-uri). Cheia primește canonical către valoare. */
+export const CANONIC: Record<string, string> = {
+  'bd-aviatorilor': 'reparatii-tv-bulevardul-aviatorilor',
+  'bd-iancu-de-hunedoara': 'reparatii-tv-bulevardul-iancu-de-hunedoara',
+  'bd-mihalache-ion': 'reparatii-tv-bulevardul-ion-mihalache',
+  'cal-floreasca': 'reparatii-tv-calea-floreasca',
+  'cal-plevnei': 'reparatii-tv-calea-plevnei',
+  'cal-victoriei': 'reparatii-tv-calea-victoriei',
+  'sos-nordului': 'reparatii-tv-soseaua-nordului',
+  'drum-brote-eugen-2': 'drum-brote-eugen',
+  'lipscani-2': 'lipscani',
+  'semicercului-2': 'semicercului',
+};
