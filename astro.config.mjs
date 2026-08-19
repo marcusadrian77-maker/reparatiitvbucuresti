@@ -22,6 +22,10 @@ export default defineConfig({
     '/best-buget-tv/': '/',
     '/cel-mai-bun-raport-calitate-pret-la-un-tv-high-end/': '/',
     '/regele-imaginii/': '/',
+    // Pagina-tampon fara continut propriu
+    '/acasa/': '/',
+    // Pagina duplicata: /reparatii-tv/ era identica cu /reparatii-televizoare/
+    '/reparatii-tv/': '/reparatii-televizoare/',
     // Sector duplicat: structura veche -> structura noua (curata)
     '/reparatii-tv-sector-1/': '/reparatii-televizoare-sector-1/',
     '/reparatii-tv-sector-2/': '/reparatii-televizoare-sector-2/',
