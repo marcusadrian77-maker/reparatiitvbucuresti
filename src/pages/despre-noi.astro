@@ -1,22 +1,65 @@
 ---
 import Base from '../layouts/Base.astro';
 import Cta from '../components/Cta.astro';
-const title = 'Reparatii TV Despre noi Bucuresti - Service la domiciliu';
-const description = 'Despre echipa Reparatii TV Bucuresti: deplasare gratuită la domiciliu, reparăm orice marcă TV — Samsung, LG, Sony, Philips. Prețuri fixe, garanție.';
+import { SITE, u } from '../data/site';
+import { LISTA_BRANDURI } from '../data/branduri';
+import { SECTOARE } from '../data/sectoare';
+
+const title = 'Despre noi – Service Televizoare București la Domiciliu';
+const description = 'Cine suntem: echipă cu peste 10 ani în reparații televizoare la domiciliu în București și Ilfov. Diagnostic gratuit, preț comunicat înainte, garanție 6–12 luni.';
+const canonical = new URL(Astro.url.pathname, SITE.domeniu).href;
+
+const schemaExtra = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'AboutPage', url: canonical, name: title, description },
+    { '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Acasă', item: SITE.domeniu + '/' },
+      { '@type': 'ListItem', position: 2, name: 'Despre noi', item: canonical },
+    ] },
+  ],
+};
 ---
-<Base title={title} description={description}>
-  <section class="hero-img"><div class="wrap"><span class="badge">Despre noi</span><h1>Despre Reparatii TV București</h1><p class="lead">Echipă cu peste 10 ani experiență în service televizoare, cu deplasare la domiciliul clientului în București și Ilfov.</p></div></section>
+<Base title={title} description={description} schemaExtra={schemaExtra}>
+  <section class="hero-img"><div class="wrap">
+    <span class="badge">Despre noi · Peste 10 ani de service TV</span>
+    <h1>Despre Reparații TV București</h1>
+    <p class="lead">Reparăm televizoare la domiciliu, în București și Ilfov, de peste zece ani. Diagnostic gratuit, preț comunicat înainte de intervenție, garanție scrisă.</p>
+  </div></section>
+
   <section class="sec"><div class="wrap">
-    <p>Suntem o echipă de tehnicieni certificați specializați în reparații televizoare de toate tipurile — LED, OLED, QLED și Smart TV. Ne deplasăm gratuit la domiciliul dumneavoastră, diagnosticăm gratuit defecțiunea și vă oferim un deviz clar înainte de orice intervenție.</p>
-    <p>Reparăm orice marcă: Samsung, LG, Sony, Philips, Panasonic, Horizon și altele. Folosim piese originale sau compatibile de calitate și oferim garanție de 6–12 luni la fiecare intervenție.</p>
-    <h2>Ce ne recomandă</h2>
+    <p>Suntem un service de televizoare care lucrează aproape exclusiv la domiciliul clientului. Am ales modelul acesta pentru că majoritatea defecțiunilor pe care le întâlnim — surse de alimentare, barete LED de iluminare, plăci T-CON, probleme de software — se rezolvă la fața locului, în una-două ore, cu echipamentul potrivit. Cărăm televizorul într-un atelier doar când defecțiunea chiar o cere, iar în acel caz vă spunem clar de ce.</p>
+
+    <h2>Cu ce venim la dumneavoastră acasă</h2>
+    <p>Trusa noastră obișnuită include stație de lipit cu aer cald, osciloscop, sursă de laborator pentru testarea baretelor LED, programator de memorie eMMC și un stoc de piese uzuale: condensatori, siguranțe, tranzistoare de comutație, barete LED pentru diagonalele frecvente și mufe HDMI. Din acest motiv reușim, în cele mai multe cazuri, să terminăm reparația la prima vizită.</p>
+
+    <h2>Cum stabilim prețul</h2>
+    <p>Diagnosticarea și deplasarea sunt gratuite, indiferent de rezultat. După ce identificăm defecțiunea, vă comunicăm prețul final — nu o estimare care crește pe parcurs — și dumneavoastră decideți dacă mergem mai departe. Dacă refuzați, nu plătiți nimic. Dacă acceptați, plătiți doar după ce televizorul funcționează și l-ați văzut mergând.</p>
+
+    <h2>Ce nu facem</h2>
     <ul class="checks">
-      <li>Diagnosticare și deplasare gratuită în București și Ilfov</li>
-      <li>Plătiți doar dacă televizorul funcționează</li>
-      <li>Intervenție rapidă, de regulă în aceeași zi</li>
-      <li>Tehnicieni certificați, peste 10 ani experiență</li>
-      <li>Garanție 6–12 luni la piese și manoperă</li>
+      <li>Nu insistăm pentru o reparație care nu merită economic. Dacă piesa costă cât un televizor nou, vă spunem asta.</li>
+      <li>Nu montăm piese recuperate din alte aparate fără să vă anunțăm.</li>
+      <li>Nu intervenim pe televizoare aflate încă în garanția producătorului fără să vă avertizăm că garanția s-ar anula.</li>
+      <li>Nu percepem taxă de urgență, taxă de weekend sau taxă de deplasare.</li>
     </ul>
-    <Cta />
+
+    <h2>Garanția</h2>
+    <p>Oferim între 6 și 12 luni de garanție, în funcție de tipul intervenției și de piesele montate. Garanția este scrisă, acoperă atât piesa cât și manopera, iar dacă aceeași defecțiune reapare în perioada acoperită, revenim fără costuri. Emitem document fiscal pentru fiecare intervenție și acceptăm plata în numerar sau cu cardul.</p>
+
+    <h2>Ce reparăm</h2>
+    <p>Televizoare LED, OLED, QLED, Mini-LED și Smart TV, de la 24 până la 85 de inch, precum și plasme mai vechi acolo unde piesele încă se găsesc. Lucrăm pe toate mărcile importante:</p>
+    <div class="grid g3" style="gap:4px 18px">
+      {LISTA_BRANDURI.map(b => <a href={u(b.slug + '/')} style="font-size:14.5px;padding:3px 0;display:block">Reparații TV {b.nume}</a>)}
+    </div>
+    <p>Și, în plus, TCL, Hisense, Sharp, Toshiba, Vestel, Grundig, Allview, Star-Light și restul mărcilor de pe piața românească.</p>
+
+    <h2>Unde lucrăm</h2>
+    <div class="grid g3" style="gap:4px 18px">
+      {[1, 2, 3, 4, 5, 6].map(n => <a href={u(SECTOARE[n].slug + '/')} style="font-size:14.5px;padding:3px 0;display:block">Reparații TV Sector {n}</a>)}
+    </div>
+    <p style="margin-top:10px">Plus localitățile din Ilfov din jurul Capitalei. Lista completă a zonelor se află pe pagina de <a href={u('zone-deservite-strazi-bucuresti/')}>zone deservite</a>, iar pașii concreți ai unei intervenții sunt descriși pe pagina <a href={u('cum-decurge-procesul-de-reparatie/')}>cum decurge procesul de reparație</a>.</p>
+
+    <Cta titlu="Aveți un televizor defect? Sunați-ne!" />
   </div></section>
 </Base>
