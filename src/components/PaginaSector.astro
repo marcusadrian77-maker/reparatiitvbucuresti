@@ -1,0 +1,120 @@
+---
+import Base from '../layouts/Base.astro';
+import Cta from '../components/Cta.astro';
+import { u, SITE } from '../data/site';
+import { LOCATII } from '../data/locatii';
+import { numeLoc, SECTOR } from '../data/strazi';
+import { SECTOARE } from '../data/sectoare';
+import { PROBLEME, PRETURI, PASI, MARCI } from '../data/continut-loc';
+
+const { nr } = Astro.props;
+const S = SECTOARE[nr];
+const canonical = new URL(Astro.url.pathname, SITE.domeniu).href;
+
+// Străzile din sector care au pagină proprie pe site
+const strazi = LOCATII
+  .filter(([sl]) => SECTOR[sl] === nr)
+  .map(([sl, nm]) => ({ sl, et: numeLoc(sl, nm).full }))
+  .sort((a, b) => a.et.localeCompare(b.et, 'ro'));
+const cuPagina = new Set(strazi.map(x => x.et.toLowerCase()));
+const artereFaraPagina = S.artere.filter(a => !cuPagina.has(a.toLowerCase()));
+
+const probleme = PROBLEME.slice((nr - 1) * 2, (nr - 1) * 2 + 6);
+const preturi = PRETURI;
+const altele = [1, 2, 3, 4, 5, 6].filter(x => x !== nr);
+
+const schemaExtra = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      serviceType: 'Reparații televizoare la domiciliu',
+      name: `Reparații TV Sector ${nr} București`,
+      url: canonical,
+      description: S.descriere,
+      areaServed: { '@type': 'AdministrativeArea', name: `Sector ${nr}, București`, containedInPlace: { '@type': 'City', name: 'București' } },
+      provider: { '@id': 'https://www.reparatiitvbucuresti.ro/#business' },
+      offers: { '@type': 'Offer', priceCurrency: 'RON', url: SITE.domeniu + '/preturi-reparatii-tv/' },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Acasă', item: SITE.domeniu + '/' },
+        { '@type': 'ListItem', position: 2, name: 'Sectoare', item: SITE.domeniu + '/sectoare/' },
+        { '@type': 'ListItem', position: 3, name: `Sector ${nr}`, item: canonical },
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: S.faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+    },
+  ],
+};
+---
+<Base title={S.titlu} description={S.descriere} schemaExtra={schemaExtra}>
+  <section class="hero-img"><div class="wrap">
+    <span class="badge">Sector {nr} · La domiciliu · Garanție 6–12 luni</span>
+    <h1>Reparații TV Sector {nr} București</h1>
+    <p class="lead">Service televizoare la domiciliu în tot Sectorul {nr}. Diagnosticare și deplasare gratuite, reparație pe loc, plătiți doar dacă televizorul funcționează.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <img src="https://www.reparatiielectronice.ro/img/tv.jpg" alt={`Reparații televizoare Sector ${nr} București`} style="width:100%;max-height:300px;object-fit:cover;border-radius:14px;margin:0 0 18px;box-shadow:0 2px 14px rgba(20,54,93,.12)" loading="lazy" />
+
+    <p>{S.intro}</p>
+    <p>{S.context}</p>
+
+    <h2>Cartiere din Sectorul {nr} pe care le deservim</h2>
+    <p>{S.cartiere.join(' · ')}</p>
+
+    <h2>Ce reparăm cel mai des în Sectorul {nr}</h2>
+    <p>{S.specific}</p>
+    <div class="grid g2">{S.interventii.map(i => <div class="card"><h3>{i[0]}</h3><p>{i[1]}</p></div>)}</div>
+
+    <h2>Defecțiuni frecvente și cum le rezolvăm</h2>
+    <div class="grid g2">{probleme.map(p => <div class="card"><h3>{p[0]}</h3><p>{p[1]}</p></div>)}</div>
+
+    <h2>Cum decurge intervenția</h2>
+    <ol>{PASI.map(p => <li><strong>{p[0]}.</strong> {p[1]}</li>)}</ol>
+
+    <h2>Prețuri orientative în Sectorul {nr}</h2>
+    <table style="width:100%;border-collapse:collapse;margin:12px 0">
+      <tbody>
+        {preturi.map(p => (
+          <tr style="border-bottom:1px solid #e6ecf4">
+            <td style="padding:9px 6px">{p[0]}</td>
+            <td style="padding:9px 6px;text-align:right;white-space:nowrap"><strong>{p[1]}</strong></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+    <p style="font-size:14px;color:#5a6b80;margin-top:-4px">Prețurile includ manopera și sunt aceleași în tot Bucureștiul. Valoarea exactă o aflați după diagnosticare, care este gratuită. Vedeți <a href={u('preturi-reparatii-tv/')}>lista completă de prețuri</a>.</p>
+
+    <h2>Artere principale din Sectorul {nr}</h2>
+    <p>Ne deplasăm gratuit pe toate străzile din sector, inclusiv:</p>
+    <div class="grid g3" style="gap:4px 18px">
+      {strazi.map(s => <a href={u(s.sl + '/')} style="font-size:14px;padding:3px 0;display:block">{s.et}</a>)}
+      {artereFaraPagina.map(a => <span style="font-size:14px;padding:3px 0;display:block;color:var(--ink)">{a}</span>)}
+    </div>
+
+    <h2>Mărci reparate</h2>
+    <div class="grid g3" style="gap:4px 18px">
+      {MARCI.map(([m, href]) => <a href={u(href)} style="font-size:14.5px;padding:3px 0;display:block">Reparații TV {m}</a>)}
+    </div>
+
+    <h2>Întrebări frecvente – Sector {nr}</h2>
+    {S.faq.map(([q, a]) => (
+      <div style="margin:0 0 14px">
+        <h3 style="margin:0 0 4px;font-size:17px">{q}</h3>
+        <p style="margin:0">{a}</p>
+      </div>
+    ))}
+
+    <h2>Celelalte sectoare</h2>
+    <div class="grid g3" style="gap:4px 18px">
+      {altele.map(x => <a href={u('reparatii-televizoare-sector-' + x + '/')} style="font-size:14.5px;padding:3px 0;display:block">Reparații TV Sector {x}</a>)}
+    </div>
+
+    <Cta titlu={`Televizor defect în Sectorul ${nr}? Sunați-ne acum!`} />
+  </div></section>
+</Base>
