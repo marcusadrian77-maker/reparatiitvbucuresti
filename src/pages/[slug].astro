@@ -1,56 +1,102 @@
 ---
 import Base from '../layouts/Base.astro';
 import Cta from '../components/Cta.astro';
-import { u, STRAZI_PRINCIPALE, SITE } from '../data/site';
+import { u, SITE } from '../data/site';
 import { LOCATII } from '../data/locatii';
 import { ARTICOLE_1 } from '../data/articole-1';
 import { ARTICOLE_2 } from '../data/articole-2';
 import { ARTICOLE_3 } from '../data/articole-3';
+import { numeLoc, SECTOR, CARTIERE_SECTOR, CANONIC, alege, unul } from '../data/strazi';
+import { INTRO, DETALII, PROBLEME, PRETURI, PASI, FAQ, MARCI } from '../data/continut-loc';
+import { PAGINI_PROPRII, BRANDURI } from '../data/branduri';
+import { curataHtml, infoArticol } from '../data/articole-util';
+
 export function getStaticPaths() {
   const ARTICOLE = [...ARTICOLE_1, ...ARTICOLE_2, ...ARTICOLE_3];
-  const seen = new Set();
-  const loc = LOCATII.map(([slug, nume]) => ({ params: { slug }, props: { nume, html: null, desc: '' } }));
+  const seen = new Set(PAGINI_PROPRII);
+  const loc = LOCATII.filter(([slug]) => !PAGINI_PROPRII.has(slug)).map(([slug, nume]) => ({ params: { slug }, props: { nume, html: null, desc: '' } }));
   loc.forEach(x => seen.add(x.params.slug));
   const art = ARTICOLE.filter(a => !seen.has(a.s)).map(a => ({ params: { slug: a.s }, props: { nume: a.t, html: a.h, desc: a.d } }));
   return [...loc, ...art];
 }
+
 const { nume, html, desc } = Astro.props;
 const slug = Astro.params.slug;
-const zona = nume.replace(/^Reparații TV (pe )?/, '').replace(/^Reparatii TV (pe )?/, '');
-const title = nume + ' | Reparatii TV Bucuresti';
-const description = desc && desc.length > 10 ? desc : ('Service televizoare la domiciliu — ' + nume + '. Diagnosticare și deplasare gratuită, garanție 6–12 luni.');
-const servicii = [
-  'TV nu pornește — sursă, placă principală, rescriere eMMC cu programator special',
-  'Backlight LED și panou LED / OLED / QLED',
-  'Linii sau pete pe ecran — placă T-CON',
-  'Probleme de sunet și software Smart TV',
-  'Curățare internă și înlocuire condensatori devalorizați',
-];
-const norm = (x) => x.toLowerCase().replace(/[ăâ]/g,'a').replace(/î/g,'i').replace(/[șş]/g,'s').replace(/[țţ]/g,'t').replace(/[^a-z0-9]+/g,' ').trim();
-const cleanNm = (nm) => nm.replace(/^Reparații TV (pe )?/, '').replace(/^Reparatii TV (pe )?/, '').replace(/\s*[–-]\s*Sector.*$/, '').replace(/\s*\(S\d\)\s*$/i, '').trim();
-const m = slug.match(/sector-?(\d)/);
-const sectorNr = m ? m[1] : null;
-let strazi = [];
-if (sectorNr) {
-  const fromLoc = LOCATII.filter(([sl, nm]) => (new RegExp('(sector\\D{0,3}' + sectorNr + '\\b)|(\\(s' + sectorNr + '\\))', 'i').test(nm)) && sl !== slug)
-    .map(([sl, nm]) => ({ sl, nm: cleanNm(nm) }));
-  const curated = (STRAZI_PRINCIPALE[sectorNr] || []).map(name => {
-    const k = norm(name);
-    const hit = LOCATII.find(([sl, nm]) => { const kk = norm(cleanNm(nm)); return kk === k || kk.includes(k) || k.includes(kk); });
-    return { sl: hit ? hit[0] : null, nm: name };
-  });
-  const seen = new Set();
-  [...curated, ...fromLoc].forEach(x => { const k = norm(x.nm); if (k && !seen.has(k)) { seen.add(k); strazi.push(x); } });
-  strazi.sort((a, b) => a.nm.localeCompare(b.nm, 'ro'));
-}
-const canonical = new URL(Astro.url.pathname, SITE.domeniu).href;
-const BRAND_SLUGS = new Set(['reparatii-televizoare-sony','reparatii-televizoare-philips','reparatii-tv-panasonic','reparatii-televizoare-horizon']);
-const isBrand = BRAND_SLUGS.has(slug);
 const isLocatie = html === null;
-const crumbs = [{ name: 'Acasă', item: SITE.domeniu + '/' }];
-if (sectorNr) crumbs.push({ name: 'Sectoare', item: SITE.domeniu + '/sectoare/' });
-crumbs.push({ name: zona, item: canonical });
-const graph = [{
+
+// ——— Pagini migrate din vechiul WordPress ———
+const art = isLocatie ? null : infoArticol(slug, nume, desc);
+const htmlCurat = isLocatie ? null : curataHtml(html);
+const brandArt = art && art.slugMarca ? Object.values(BRANDURI).find(b => b.slug === art.slugMarca) : null;
+const modeleInrudite = (!isLocatie && art && art.eModel)
+  ? [...ARTICOLE_1, ...ARTICOLE_2, ...ARTICOLE_3]
+      .filter(a => a.s !== slug && art.marca && new RegExp(art.marca, 'i').test(a.t) && /reparatii-televizor/i.test(a.s))
+      .slice(0, 12)
+      .map(a => ({ s: a.s, t: a.t.replace(/^Reparatii\s+Televizor\s+/i, '').replace(/^Reparatii\s+/i, '') }))
+  : [];
+
+// ——— Numele normalizat și contextul geografic ———
+const info = numeLoc(slug, nume);
+const eticheta = info.full;                       // ex. „Bulevardul Iuliu Maniu"
+const sect = SECTOR[slug] ?? null;
+const inIlfov = info.kind === 'ilfov';
+const locDesc = inIlfov ? `${eticheta}, județul Ilfov` : sect ? `${eticheta}, Sector ${sect}` : eticheta;
+
+// ——— Titlu și meta ———
+const bazaTitlu = inIlfov ? `Reparații TV ${eticheta} Ilfov` : `Reparații TV ${eticheta}`;
+let titluLoc = sect ? `${bazaTitlu}, Sector ${sect} – Service la domiciliu` : `${bazaTitlu} – Service TV la domiciliu`;
+if (titluLoc.length > 68) titluLoc = sect ? `${bazaTitlu}, Sector ${sect}` : `${bazaTitlu} București`;
+
+const introTxt = isLocatie ? unul(INTRO, slug)(eticheta, info.tip || 'zona') : '';
+const detaliuTxt = isLocatie ? unul(DETALII, slug, 5)(eticheta) : '';
+const cozi = [
+  `Diagnosticare și deplasare gratuită, reparație pe loc, garanție 6–12 luni.`,
+  `Venim în aceeași zi, diagnosticăm gratuit și reparăm pe loc. Garanție 6–12 luni.`,
+  `Reparăm LED, OLED și QLED, orice marcă. Deplasare gratuită, garanție 6–12 luni.`,
+  `Plătiți doar dacă televizorul funcționează. Deplasare și diagnostic gratuite.`,
+  `Sursă, backlight, T-CON, placă principală. Diagnostic gratuit, garanție 6–12 luni.`,
+];
+let descLoc = `Service televizoare la domiciliu pe ${locDesc}. ${unul(cozi, slug, 9)} Sunați la ${SITE.telefon}.`;
+if (descLoc.length > 158) descLoc = `Service TV la domiciliu pe ${locDesc}. ${unul(cozi, slug, 9)}`;
+if (descLoc.length > 158) descLoc = descLoc.slice(0, 155).replace(/\s+\S*$/, '') + '.';
+
+const title = isLocatie ? titluLoc : art!.titlu;
+const description = isLocatie ? descLoc : art!.descriere;
+
+// ——— Blocuri de conținut, variate deterministic pe slug ———
+const probleme = alege(PROBLEME, 6, slug, 1);
+const preturi = [PRETURI[0], PRETURI[1], ...alege(PRETURI.slice(2), 5, slug, 2)];
+const pasi = alege(PASI, 4, slug, 3);
+const intrebari = alege(FAQ, 4, slug, 4);
+
+// ——— Străzi din apropiere (linkuri interne reale) ———
+const toate = LOCATII.map(([sl, nm]) => ({ sl, et: numeLoc(sl, nm).full, sec: SECTOR[sl] ?? null }))
+  .sort((a, b) => a.et.localeCompare(b.et, 'ro'));
+const idx = toate.findIndex(x => x.sl === slug);
+let vecine: { sl: string; et: string }[] = [];
+if (isLocatie && idx >= 0) {
+  const acelasiSector = sect ? toate.filter(x => x.sec === sect && x.sl !== slug).slice(0, 4) : [];
+  const alfabetic: typeof toate = [];
+  for (let d = 1; alfabetic.length < 8 && d < 60; d++) {
+    if (toate[idx - d]) alfabetic.push(toate[idx - d]);
+    if (toate[idx + d]) alfabetic.push(toate[idx + d]);
+  }
+  const vazut = new Set([slug]);
+  vecine = [...acelasiSector, ...alfabetic].filter(x => !vazut.has(x.sl) && vazut.add(x.sl)).slice(0, 8);
+}
+
+const cartiere = sect ? CARTIERE_SECTOR[sect] : null;
+const canonical = CANONIC[slug] ? `${SITE.domeniu}/${CANONIC[slug]}/` : new URL(Astro.url.pathname, SITE.domeniu).href;
+
+// ——— Date structurate ———
+const isBrand = false;
+const crumbs: { name: string; item: string }[] = [{ name: 'Acasă', item: SITE.domeniu + '/' }];
+if (isLocatie) crumbs.push({ name: 'Zone deservite', item: SITE.domeniu + '/zone-deservite-strazi-bucuresti/' });
+if (!isLocatie && art && art.slugMarca) crumbs.push({ name: `Reparații TV ${art.marca}`, item: SITE.domeniu + '/' + art.slugMarca + '/' });
+if (sect) crumbs.push({ name: 'Sector ' + sect, item: SITE.domeniu + '/reparatii-televizoare-sector-' + sect + '/' });
+crumbs.push({ name: isLocatie ? eticheta : (art!.eModel ? `${art!.marca} ${art!.model}` : nume), item: canonical });
+
+const graph: any[] = [{
   '@type': 'BreadcrumbList',
   itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: c.item })),
 }];
@@ -58,48 +104,152 @@ if (isLocatie || isBrand) {
   graph.unshift({
     '@type': 'Service',
     serviceType: 'Reparații televizoare la domiciliu',
-    name: nume,
+    name: bazaTitlu,
     url: canonical,
     description,
     areaServed: isBrand
       ? [{ '@type': 'City', name: 'București' }, { '@type': 'AdministrativeArea', name: 'Județul Ilfov' }]
-      : { '@type': sectorNr ? 'AdministrativeArea' : 'Place', name: zona },
+      : inIlfov
+        ? { '@type': 'City', name: eticheta, containedInPlace: { '@type': 'AdministrativeArea', name: 'Județul Ilfov' } }
+        : { '@type': 'Place', name: locDesc, address: { '@type': 'PostalAddress', streetAddress: eticheta, addressLocality: 'București', addressRegion: sect ? 'Sector ' + sect : 'București', addressCountry: 'RO' } },
     provider: { '@id': 'https://www.reparatiitvbucuresti.ro/#business' },
     offers: { '@type': 'Offer', priceCurrency: 'RON', url: SITE.domeniu + '/preturi-reparatii-tv/' },
   });
 }
+if (!isLocatie && art && art.eModel) {
+  graph.unshift({
+    '@type': 'Service',
+    serviceType: `Reparații televizoare ${art.marca}`,
+    name: `Reparații TV ${art.marca} ${art.model}`,
+    url: canonical,
+    description,
+    brand: { '@type': 'Brand', name: art.marca },
+    areaServed: [{ '@type': 'City', name: 'București' }, { '@type': 'AdministrativeArea', name: 'Județul Ilfov' }],
+    provider: { '@id': 'https://www.reparatiitvbucuresti.ro/#business' },
+    offers: { '@type': 'Offer', priceCurrency: 'RON', url: SITE.domeniu + '/preturi-reparatii-tv/' },
+  });
+}
+if (isLocatie) {
+  graph.push({
+    '@type': 'FAQPage',
+    mainEntity: intrebari.map(([q, a]) => ({
+      '@type': 'Question', name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a(eticheta) },
+    })),
+  });
+}
 const schemaExtra = { '@context': 'https://schema.org', '@graph': graph };
 ---
-<Base title={title} description={description} schemaExtra={schemaExtra}>
+<Base title={title} description={description} schemaExtra={schemaExtra} canonicalOverride={CANONIC[slug] ? canonical : null}>
   <section class="hero-img"><div class="wrap">
     <span class="badge">La domiciliu · Garanție 6–12 luni</span>
-    <h1>{nume}</h1>
-    <p class="lead">Service televizoare profesional în București și Ilfov. Diagnosticare și deplasare gratuită, garanție 6–12 luni.</p>
+    <h1>{isLocatie ? bazaTitlu : (art!.eModel ? `Reparații TV ${art!.marca} ${art!.model}` : nume)}</h1>
+    <p class="lead">{isLocatie
+      ? `Service televizoare pe ${locDesc}. Diagnosticare și deplasare gratuită, reparație pe loc, garanție 6–12 luni.`
+      : 'Service televizoare profesional în București și Ilfov. Diagnosticare și deplasare gratuită, garanție 6–12 luni.'}</p>
   </div></section>
+
   {html ? (
     <section class="sec"><div class="wrap">
-      <div class="entry" set:html={html} />
+      <div class="entry" set:html={htmlCurat} />
+
+      {art && art.eModel && (
+        <div>
+          <h2>Ce reparăm la un televizor {art.marca} {art.model}</h2>
+          <div class="grid g2">{PROBLEME.slice(0, 4).map(p => <div class="card"><h3>{p[0]}</h3><p>{p[1]}</p></div>)}</div>
+
+          <h2>Prețuri orientative</h2>
+          <table style="width:100%;border-collapse:collapse;margin:12px 0">
+            <tbody>
+              {PRETURI.map(p => (
+                <tr style="border-bottom:1px solid #e6ecf4">
+                  <td style="padding:9px 6px">{p[0]}</td>
+                  <td style="padding:9px 6px;text-align:right;white-space:nowrap"><strong>{p[1]}</strong></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <p style="font-size:14px;color:#5a6b80;margin-top:-4px">Prețul exact îl aflați după diagnosticare, care este gratuită. Vedeți <a href={u('preturi-reparatii-tv/')}>lista completă de prețuri</a>.</p>
+        </div>
+      )}
+
+      {brandArt && (
+        <p>Mai multe despre defecțiunile tipice acestei mărci și seriile pe care intervenim găsiți pe pagina <a href={u(brandArt.slug + '/')}>Reparații TV {brandArt.nume}</a>.</p>
+      )}
+
+      {modeleInrudite.length > 0 && (
+        <div>
+          <h2>Alte modele {art!.marca} pe care le reparăm</h2>
+          <div class="grid g3" style="gap:4px 18px">
+            {modeleInrudite.map(m => <a href={u(m.s + '/')} style="font-size:14px;padding:3px 0;display:block">{m.t}</a>)}
+          </div>
+        </div>
+      )}
+
+      {art && !art.eLegal && (
+        <p style="margin-top:18px">Ne deplasăm gratuit în toate sectoarele Bucureștiului și în Ilfov. Vedeți <a href={u('zone-deservite-strazi-bucuresti/')}>zonele deservite</a> sau <a href={u('cum-decurge-procesul-de-reparatie/')}>cum decurge procesul de reparație</a>.</p>
+      )}
+
       <Cta titlu="Aveți nevoie de service TV? Sunați-ne!" />
     </div></section>
   ) : (
     <section class="sec"><div class="wrap">
-      <img src="https://www.reparatiielectronice.ro/img/tv.jpg" alt={'Reparatii TV ' + zona} style="width:100%;max-height:300px;object-fit:cover;border-radius:14px;margin:0 0 18px;box-shadow:0 2px 14px rgba(20,54,93,.12)" loading="lazy" />
-      <p>Oferim service profesional de televizoare în zona <strong>{zona}</strong>, cu deplasare gratuită în București și Ilfov. Reparăm orice marcă — Samsung, LG, Sony, Philips, Panasonic — televizoare LED, OLED și QLED. Plătiți doar dacă televizorul funcționează.</p>
-      <h2>Ce reparăm</h2>
-      <ul class="checks">{servicii.map(s => <li>{s}</li>)}</ul>
-      {sectorNr && strazi.length > 0 && (
+      <img src="https://www.reparatiielectronice.ro/img/tv.jpg" alt={'Reparații TV ' + eticheta} style="width:100%;max-height:300px;object-fit:cover;border-radius:14px;margin:0 0 18px;box-shadow:0 2px 14px rgba(20,54,93,.12)" loading="lazy" />
+
+      <p>{introTxt}</p>
+      <p>{detaliuTxt}</p>
+      {cartiere && (
+        <p>{eticheta} se află în <a href={u('reparatii-televizoare-sector-' + sect + '/')}>Sectorul {sect}</a>, zonă pe care o acoperim integral — inclusiv {cartiere.slice(0, 5).join(', ')} și împrejurimile.</p>
+      )}
+      {inIlfov && (
+        <p>{eticheta} este una dintre localitățile din județul Ilfov unde ne deplasăm fără cost suplimentar. Distanța față de București nu schimbă prețul intervenției.</p>
+      )}
+
+      <h2>Defecțiuni pe care le rezolvăm pe {eticheta}</h2>
+      <div class="grid g2">{probleme.map(p => <div class="card"><h3>{p[0]}</h3><p>{p[1]}</p></div>)}</div>
+
+      <h2>Cum decurge intervenția</h2>
+      <ol>{pasi.map(p => <li><strong>{p[0]}.</strong> {p[1]}</li>)}</ol>
+
+      <h2>Prețuri orientative pentru {eticheta}</h2>
+      <table style="width:100%;border-collapse:collapse;margin:12px 0">
+        <tbody>
+          {preturi.map(p => (
+            <tr style="border-bottom:1px solid #e6ecf4">
+              <td style="padding:9px 6px">{p[0]}</td>
+              <td style="padding:9px 6px;text-align:right;white-space:nowrap"><strong>{p[1]}</strong></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p style="font-size:14px;color:#5a6b80;margin-top:-4px">Prețurile includ manopera. Valoarea exactă o aflați după diagnosticare, care este gratuită. Lista completă se află pe pagina de <a href={u('preturi-reparatii-tv/')}>prețuri reparații TV</a>.</p>
+
+      <h2>Mărci reparate pe {eticheta}</h2>
+      <p>Intervenim pe televizoare de la toți producătorii importanți. Pentru cele mai frecvente mărci avem pagini dedicate, cu defecțiunile tipice fiecăreia:</p>
+      <div class="grid g3" style="gap:4px 18px">
+        {MARCI.map(([m, href]) => <a href={u(href)} style="font-size:14.5px;padding:3px 0;display:block">Reparații TV {m}</a>)}
+      </div>
+
+      {vecine.length > 0 && (
         <div>
-          <h2>Bulevarde și străzi principale în Sector {sectorNr}</h2>
-          <p>Ne deplasăm gratuit pe toate străzile din Sector {sectorNr}, inclusiv:</p>
+          <h2>Zone învecinate pe care le deservim</h2>
           <div class="grid g3" style="gap:4px 18px">
-            {strazi.map(s => s.sl
-              ? <a href={u(s.sl + '/')} style="font-size:14px;padding:3px 0;display:block">{s.nm}</a>
-              : <span style="font-size:14px;padding:3px 0;display:block;color:var(--ink)">{s.nm}</span>)}
+            {vecine.map(v => <a href={u(v.sl + '/')} style="font-size:14px;padding:3px 0;display:block">{v.et}</a>)}
           </div>
         </div>
       )}
-      <p style="margin-top:18px">Vedeți <a href={u('preturi-reparatii-tv/')}>prețurile orientative</a> sau aflați <a href={u('cum-decurge-procesul-de-reparatie/')}>cum decurge procesul</a>.</p>
-      <Cta titlu="Aveți un TV defect? Sunați-ne acum!" />
+
+      <h2>Întrebări frecvente</h2>
+      {intrebari.map(([q, a]) => (
+        <div style="margin:0 0 14px">
+          <h3 style="margin:0 0 4px;font-size:17px">{q}</h3>
+          <p style="margin:0">{a(eticheta)}</p>
+        </div>
+      ))}
+
+      <p style="margin-top:18px">Vedeți și <a href={u('cum-decurge-procesul-de-reparatie/')}>cum decurge procesul de reparație</a>, <a href={u('despre-noi/')}>cine suntem</a> sau lista completă de <a href={u('zone-deservite-strazi-bucuresti/')}>zone deservite</a>.</p>
+
+      <Cta titlu={'Televizor defect pe ' + eticheta + '? Sunați-ne acum!'} />
     </div></section>
   )}
 </Base>
