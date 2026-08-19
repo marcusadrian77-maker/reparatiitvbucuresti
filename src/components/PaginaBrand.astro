@@ -1,0 +1,98 @@
+---
+import Base from '../layouts/Base.astro';
+import Cta from '../components/Cta.astro';
+import { u, SITE } from '../data/site';
+import { BRANDURI, LISTA_BRANDURI } from '../data/branduri';
+import { PRETURI, PASI } from '../data/continut-loc';
+import { SECTOARE } from '../data/sectoare';
+
+const { cheie } = Astro.props;
+const B = BRANDURI[cheie];
+const canonical = new URL(Astro.url.pathname, SITE.domeniu).href;
+const altele = LISTA_BRANDURI.filter(x => x.slug !== B.slug);
+
+const schemaExtra = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      serviceType: `Reparații televizoare ${B.nume}`,
+      name: `Reparații TV ${B.nume} București`,
+      url: canonical,
+      description: B.descriere,
+      brand: { '@type': 'Brand', name: B.nume },
+      areaServed: [{ '@type': 'City', name: 'București' }, { '@type': 'AdministrativeArea', name: 'Județul Ilfov' }],
+      provider: { '@id': 'https://www.reparatiitvbucuresti.ro/#business' },
+      offers: { '@type': 'Offer', priceCurrency: 'RON', url: SITE.domeniu + '/preturi-reparatii-tv/' },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Acasă', item: SITE.domeniu + '/' },
+        { '@type': 'ListItem', position: 2, name: `Reparații TV ${B.nume}`, item: canonical },
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: B.faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+    },
+  ],
+};
+---
+<Base title={B.titlu} description={B.descriere} schemaExtra={schemaExtra}>
+  <section class="hero-img"><div class="wrap">
+    <span class="badge">{B.nume} · La domiciliu · Garanție 6–12 luni</span>
+    <h1>Reparații Televizoare {B.nume} București</h1>
+    <p class="lead">Service TV {B.nume} la domiciliu în București și Ilfov. Diagnosticare și deplasare gratuite, reparație pe loc, plătiți doar dacă televizorul funcționează.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <img src="https://www.reparatiielectronice.ro/img/tv.jpg" alt={`Reparații televizoare ${B.nume} București`} style="width:100%;max-height:300px;object-fit:cover;border-radius:14px;margin:0 0 18px;box-shadow:0 2px 14px rgba(20,54,93,.12)" loading="lazy" />
+
+    <p>{B.intro}</p>
+    <p>{B.context}</p>
+
+    <h2>Defecțiuni {B.nume} frecvente și cum le rezolvăm</h2>
+    <div class="grid g2">{B.defecte.map(d => <div class="card"><h3>{d[0]}</h3><p>{d[1]}</p></div>)}</div>
+
+    <h2>{B.serii}</h2>
+    <ul class="checks">{B.serii_lista.map(s => <li>{s}</li>)}</ul>
+
+    <h2>Cum decurge intervenția</h2>
+    <ol>{PASI.map(p => <li><strong>{p[0]}.</strong> {p[1]}</li>)}</ol>
+
+    <h2>Prețuri orientative pentru televizoare {B.nume}</h2>
+    <table style="width:100%;border-collapse:collapse;margin:12px 0">
+      <tbody>
+        {PRETURI.map(p => (
+          <tr style="border-bottom:1px solid #e6ecf4">
+            <td style="padding:9px 6px">{p[0]}</td>
+            <td style="padding:9px 6px;text-align:right;white-space:nowrap"><strong>{p[1]}</strong></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+    <p style="font-size:14px;color:#5a6b80;margin-top:-4px">Prețurile includ manopera și sunt aceleași pentru toate mărcile. Valoarea exactă o aflați după diagnosticarea gratuită. Vedeți <a href={u('preturi-reparatii-tv/')}>lista completă de prețuri</a>.</p>
+
+    <h2>Unde ne deplasăm</h2>
+    <p>Reparăm televizoare {B.nume} la domiciliu în toate sectoarele Bucureștiului și în localitățile din Ilfov, fără taxă de deplasare:</p>
+    <div class="grid g3" style="gap:4px 18px">
+      {[1, 2, 3, 4, 5, 6].map(n => <a href={u(SECTOARE[n].slug + '/')} style="font-size:14.5px;padding:3px 0;display:block">Reparații TV Sector {n}</a>)}
+    </div>
+
+    <h2>Întrebări frecvente – televizoare {B.nume}</h2>
+    {B.faq.map(([q, a]) => (
+      <div style="margin:0 0 14px">
+        <h3 style="margin:0 0 4px;font-size:17px">{q}</h3>
+        <p style="margin:0">{a}</p>
+      </div>
+    ))}
+
+    <h2>Alte mărci pe care le reparăm</h2>
+    <div class="grid g3" style="gap:4px 18px">
+      {altele.map(x => <a href={u(x.slug + '/')} style="font-size:14.5px;padding:3px 0;display:block">Reparații TV {x.nume}</a>)}
+    </div>
+
+    <Cta titlu={`Televizor ${B.nume} defect? Sunați-ne acum!`} />
+  </div></section>
+</Base>
