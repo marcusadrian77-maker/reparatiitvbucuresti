@@ -3,9 +3,10 @@ import Base from '../layouts/Base.astro';
 import Cta from '../components/Cta.astro';
 import { u } from '../data/site';
 import { LOCATII } from '../data/locatii';
+import { numeLoc, SECTOR } from '../data/strazi';
 const title = 'Zone Deservite – Străzi București • Reparatii Tv Bucuresti';
 const description = 'Zonele și străzile din București și Ilfov unde oferim service TV la domiciliu. Deplasare gratuită, diagnosticare gratuită, garanție 6–12 luni.';
-const items = LOCATII.map(([slug, nume]) => ({ slug, nume })).sort((a,b)=>a.nume.localeCompare(b.nume,'ro'));
+const items = LOCATII.map(([slug, nume]) => ({ slug, nume: numeLoc(slug, nume).full, sec: SECTOR[slug] ?? null })).sort((a,b)=>a.nume.localeCompare(b.nume,'ro'));
 ---
 <Base title={title} description={description}>
   <section class="hero-img"><div class="wrap">
@@ -16,7 +17,7 @@ const items = LOCATII.map(([slug, nume]) => ({ slug, nume })).sort((a,b)=>a.nume
   <section class="sec"><div class="wrap">
     <p>Oferim service televizoare la domiciliu în toate sectoarele Bucureștiului și în localitățile din Ilfov. Mai jos găsiți zonele și străzile acoperite:</p>
     <div class="grid g3" style="gap:6px 18px">
-      {items.map(x => <a href={u(x.slug + '/')} style="font-size:14.5px;padding:4px 0;display:block">{x.nume}</a>)}
+      {items.map(x => <a href={u(x.slug + '/')} style="font-size:14.5px;padding:4px 0;display:block">{x.nume}{x.sec ? ' (S' + x.sec + ')' : ''}</a>)}
     </div>
     <Cta />
   </div></section>

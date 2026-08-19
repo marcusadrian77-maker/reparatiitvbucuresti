@@ -1,30 +1,78 @@
 ---
 import Base from '../layouts/Base.astro';
 import Cta from '../components/Cta.astro';
-import { SITE } from '../data/site';
-const title = 'Contact • Reparatii Tv Bucuresti';
-const description = 'Contact Reparatii TV București — telefon, WhatsApp, email. Service televizoare la domiciliu, diagnosticare și deplasare gratuită în București și Ilfov.';
+import { SITE, u } from '../data/site';
+import { SECTOARE } from '../data/sectoare';
+import { LOCATII } from '../data/locatii';
+import { numeLoc } from '../data/strazi';
+
+const title = 'Contact – Reparații TV București | Service Televizoare';
+const description = 'Contact service televizoare București și Ilfov: telefon 0720.667.800, WhatsApp, email. Deplasare și diagnosticare gratuite, program luni–vineri 10:00–19:00.';
+const canonical = new URL(Astro.url.pathname, SITE.domeniu).href;
+
+const ilfov = LOCATII.map(([sl, nm]) => ({ sl, ...numeLoc(sl, nm) }))
+  .filter(x => x.kind === 'ilfov' && x.sl !== 'ilfov')
+  .sort((a, b) => a.full.localeCompare(b.full, 'ro'));
+
+const schemaExtra = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'ContactPage', url: canonical, name: title, description },
+    { '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Acasă', item: SITE.domeniu + '/' },
+      { '@type': 'ListItem', position: 2, name: 'Contact', item: canonical },
+    ] },
+  ],
+};
 ---
-<Base title={title} description={description}>
+<Base title={title} description={description} schemaExtra={schemaExtra}>
   <section class="hero-img"><div class="wrap">
-    <span class="badge">Contact</span>
-    <h1>Contactați-ne</h1>
-    <p class="lead">Service televizoare la domiciliu în București și Ilfov. Diagnosticare și deplasare gratuită, garanție 6–12 luni.</p>
+    <span class="badge">Contact · Răspundem imediat</span>
+    <h1>Contact – Service Televizoare București</h1>
+    <p class="lead">Sunați sau scrieți pe WhatsApp. Deplasarea și diagnosticarea sunt gratuite în București și Ilfov, iar intervenția se face de regulă în aceeași zi.</p>
     <a class="btn btn-white" href={SITE.telefonHref}>📞 {SITE.telefon}</a>
     <a class="btn btn-wa" href={SITE.whatsapp} rel="noopener">💬 WhatsApp</a>
   </div></section>
+
   <section class="sec"><div class="wrap">
     <div class="grid g2">
       <div class="card"><h3>Date de contact</h3>
-        <p>📞 Telefon / WhatsApp: <a href={SITE.telefonHref}>{SITE.telefon}</a><br/>
-        ✉️ Email: <a href={'mailto:'+SITE.email}>{SITE.email}</a><br/>
+        <p>📞 Telefon și WhatsApp: <a href={SITE.telefonHref}>{SITE.telefon}</a><br/>
+        ✉️ Email: <a href={'mailto:' + SITE.email}>{SITE.email}</a><br/>
         🕐 Program: {SITE.program}<br/>
-        📍 Zonă: {SITE.zonaDomiciliu}</p>
+        📍 Zonă deservită: {SITE.zonaDomiciliu}</p>
+        <p style="font-size:14px;color:#5a6b80;margin:0">Pentru urgențe ne putem organiza și în afara programului obișnuit, dacă ne anunțați din timp.</p>
       </div>
-      <div class="card"><h3>Cum lucrăm</h3>
-        <p>Ne sunați sau scrieți pe WhatsApp cu marca și defecțiunea televizorului. Ne deplasăm gratuit, diagnosticăm gratuit și vă dăm un deviz clar înainte de orice intervenție. Plătiți doar dacă televizorul funcționează.</p>
+      <div class="card"><h3>Ce e util să ne spuneți la telefon</h3>
+        <ul class="checks" style="margin:0">
+          <li>Marca și, dacă o știți, diagonala televizorului</li>
+          <li>Modelul exact — îl găsiți pe eticheta din spatele aparatului</li>
+          <li>Ce face televizorul: nu pornește, ecran negru, linii, fără sunet</li>
+          <li>De când a apărut problema și dacă a fost precedată de o pană de curent</li>
+          <li>Adresa și un interval orar în care vă convine să venim</li>
+        </ul>
       </div>
     </div>
-    <Cta />
+
+    <h2>De ce contează modelul exact</h2>
+    <p>Eticheta din spatele televizorului conține codul complet al modelului — de exemplu <em>UE55AU7172UXXH</em> sau <em>OLED55C24LA</em>. Din acest cod aflăm ce sursă, ce barete LED și ce placă principală are aparatul, așa că putem veni direct cu piesa potrivită. O poză cu eticheta, trimisă pe WhatsApp, ne scutește pe amândoi de o a doua deplasare.</p>
+
+    <h2>Cât costă un apel</h2>
+    <p>Nimic în plus față de tariful obișnuit al operatorului dumneavoastră. Nu avem numere cu suprataxă, nu percepem taxă de deplasare și nu cerem avans. Diagnosticarea se face gratuit, la fața locului, iar prețul reparației îl aflați înainte să începem — dacă nu vă convine, nu plătiți nimic.</p>
+
+    <h2>Unde ne deplasăm</h2>
+    <p>În toate cele șase sectoare ale Bucureștiului:</p>
+    <div class="grid g3" style="gap:4px 18px">
+      {[1, 2, 3, 4, 5, 6].map(n => <a href={u(SECTOARE[n].slug + '/')} style="font-size:14.5px;padding:3px 0;display:block">Reparații TV Sector {n}</a>)}
+    </div>
+    <p style="margin-top:14px">Și în localitățile din Ilfov din jurul Capitalei:</p>
+    <div class="grid g3" style="gap:4px 18px">
+      {ilfov.map(x => <a href={u(x.sl + '/')} style="font-size:14px;padding:3px 0;display:block">Reparații TV {x.full}</a>)}
+    </div>
+
+    <h2>Înainte să ne sunați, verificați două lucruri</h2>
+    <p>Sunt două teste simple care ne ajută pe amândoi. Primul: dacă televizorul nu pornește deloc, încercați altă priză și verificați dacă LED-ul de stare se aprinde sau clipește — numărul de clipiri este un cod de eroare. Al doilea: dacă ecranul e negru dar se aude sunetul, stingeți lumina și luminați ecranul de aproape cu lanterna telefonului. Dacă se vede imaginea în umbră, problema este iluminarea de fundal, iar reparația este una accesibilă.</p>
+
+    <Cta titlu="Televizor defect? Sunați-ne acum!" />
   </div></section>
 </Base>

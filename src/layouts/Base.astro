@@ -1,9 +1,9 @@
 ---
 import '../styles/global.css';
 import { SITE, NAV_BRANDURI, NAV_SECTOARE, SCHEMA_LOCALBUSINESS, u } from '../data/site';
-export interface Props { title: string; description: string; schemaExtra?: object | null; }
-const { title, description, schemaExtra = null } = Astro.props;
-const canonical = new URL(Astro.url.pathname, SITE.domeniu).href;
+export interface Props { title: string; description: string; schemaExtra?: object | null; canonicalOverride?: string | null; }
+const { title, description, schemaExtra = null, canonicalOverride = null } = Astro.props;
+const canonical = canonicalOverride || new URL(Astro.url.pathname, SITE.domeniu).href;
 ---
 <!doctype html>
 <html lang="ro">

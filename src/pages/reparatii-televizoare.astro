@@ -1,24 +1,127 @@
 ---
 import Base from '../layouts/Base.astro';
 import Cta from '../components/Cta.astro';
-import { u } from '../data/site';
-const title = 'Reparatii Televizoare București – Service la domiciliu | Reparatii TV Bucuresti';
-const description = 'Reparatii televizoare la domiciliu în București și Ilfov. Diagnosticare și deplasare gratuită, reparații LED, OLED, QLED, garanție 6–12 luni.';
+import { u, SITE } from '../data/site';
+import { LISTA_BRANDURI } from '../data/branduri';
+import { SECTOARE } from '../data/sectoare';
+import { PROBLEME, PRETURI, PASI } from '../data/continut-loc';
+import { LOCATII } from '../data/locatii';
+import { numeLoc, SECTOR } from '../data/strazi';
+
+const title = 'Reparații Televizoare București – Service TV la Domiciliu';
+const description = 'Reparăm televizoare la domiciliu în București și Ilfov: LED, OLED, QLED, Smart TV, orice marcă. Diagnosticare și deplasare gratuite, garanție 6–12 luni.';
+const canonical = new URL(Astro.url.pathname, SITE.domeniu).href;
+
+const ilfov = LOCATII
+  .map(([sl, nm]) => ({ sl, ...numeLoc(sl, nm) }))
+  .filter(x => x.kind === 'ilfov' && x.sl !== 'ilfov')
+  .sort((a, b) => a.full.localeCompare(b.full, 'ro'));
+
+const artere = LOCATII.filter(([sl]) => SECTOR[sl])
+  .map(([sl, nm]) => ({ sl, et: numeLoc(sl, nm).full }))
+  .filter(x => /^(Bulevardul|Calea|Șoseaua|Piața)/.test(x.et))
+  .sort((a, b) => a.et.localeCompare(b.et, 'ro'))
+  .slice(0, 30);
+
+const faq: [string, string][] = [
+  ['Cât costă o reparație de televizor?', 'Depinde de piesa înlocuită. O reparație de sursă costă între 150 și 350 de lei, o înlocuire de barete LED între 100 și 280 de lei, iar un service software între 50 și 150 de lei. Diagnosticarea, prin care aflați prețul exact, este gratuită.'],
+  ['Reparați acasă sau luați televizorul?', 'În peste 90% din cazuri reparăm la domiciliu, în fața dumneavoastră. Doar lucrările care cer echipament de atelier necesită transportul aparatului, iar în acel caz vă spunem înainte.'],
+  ['Cât costă deplasarea?', 'Nimic, în tot Bucureștiul și în județul Ilfov. Nu percepem taxă de urgență și nu avem tarif diferit în weekend.'],
+  ['Ce garanție oferiți?', 'Între 6 și 12 luni, în funcție de intervenție și de piesele montate. Garanția este scrisă și acoperă atât piesa, cât și manopera.'],
+  ['Merită reparat un televizor vechi?', 'Dacă defectul este pe sursă, pe backlight sau pe placa principală, aproape întotdeauna da. Dacă panoul este afectat, de obicei nu — și vă spunem asta direct, fără să insistăm.'],
+  ['Ce se întâmplă dacă televizorul nu poate fi reparat?', 'Nu plătiți nimic. Diagnosticarea rămâne gratuită indiferent de rezultat.'],
+];
+
+const schemaExtra = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      serviceType: 'Reparații televizoare la domiciliu',
+      name: 'Reparații Televizoare București',
+      url: canonical,
+      description,
+      areaServed: [{ '@type': 'City', name: 'București' }, { '@type': 'AdministrativeArea', name: 'Județul Ilfov' }],
+      provider: { '@id': 'https://www.reparatiitvbucuresti.ro/#business' },
+      offers: { '@type': 'Offer', priceCurrency: 'RON', url: SITE.domeniu + '/preturi-reparatii-tv/' },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Acasă', item: SITE.domeniu + '/' },
+        { '@type': 'ListItem', position: 2, name: 'Reparații televizoare', item: canonical },
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+    },
+  ],
+};
 ---
-<Base title={title} description={description}>
+<Base title={title} description={description} schemaExtra={schemaExtra}>
   <section class="hero-img"><div class="wrap">
-    <span class="badge">Service TV · La domiciliu</span>
-    <h1>Reparatii Televizoare București</h1>
-    <p class="lead">Reparăm televizoare LED, OLED, QLED și Smart TV, orice marcă. Diagnosticare și deplasare gratuită în toate sectoarele.</p>
+    <span class="badge">La domiciliu · Garanție 6–12 luni</span>
+    <h1>Reparații Televizoare București</h1>
+    <p class="lead">Service TV la domiciliu în București și Ilfov. Diagnosticare și deplasare gratuite, reparație pe loc, plătiți doar dacă televizorul funcționează.</p>
   </div></section>
+
   <section class="sec"><div class="wrap">
-    <h2>Servicii principale</h2>
-    <ul class="checks">
-      <li><a href={u('reparatii-televizoare-samsung/')}>Reparații TV Samsung</a></li>
-      <li><a href={u('reparatii-televizoare-lg/')}>Reparații TV LG</a></li>
-      <li><a href={u('preturi-reparatii-tv/')}>Prețuri orientative</a></li>
-      <li><a href={u('cum-decurge-procesul-de-reparatie/')}>Cum decurge procesul</a></li>
-    </ul>
-    <Cta />
+    <img src="https://www.reparatiielectronice.ro/img/tv.jpg" alt="Reparații televizoare la domiciliu în București" style="width:100%;max-height:300px;object-fit:cover;border-radius:14px;margin:0 0 18px;box-shadow:0 2px 14px rgba(20,54,93,.12)" loading="lazy" />
+
+    <p>Reparăm televizoare la domiciliu în București și în județul Ilfov de peste zece ani. Venim cu trusa completă, cu piesele de schimb uzuale și cu aparatura de măsură necesară — stație de lipit, osciloscop, programator de memorie — astfel încât, în cele mai multe cazuri, televizorul să fie reparat la prima vizită, fără să părăsească locuința.</p>
+    <p>Lucrăm pe toate tehnologiile aflate azi în case: LED, OLED, QLED, Mini-LED și plasme mai vechi, de la 24 până la 85 de inch. Diagnosticarea și deplasarea sunt gratuite, prețul se comunică înainte de reparație și nu se modifică pe parcurs, iar plata se face doar după ce aparatul funcționează.</p>
+
+    <h2>Defecțiunile pe care le întâlnim cel mai des</h2>
+    <div class="grid g2">{PROBLEME.slice(0, 8).map(p => <div class="card"><h3>{p[0]}</h3><p>{p[1]}</p></div>)}</div>
+
+    <h2>Cum decurge o intervenție</h2>
+    <ol>{PASI.map(p => <li><strong>{p[0]}.</strong> {p[1]}</li>)}</ol>
+
+    <h2>Prețuri orientative</h2>
+    <table style="width:100%;border-collapse:collapse;margin:12px 0">
+      <tbody>
+        {PRETURI.map(p => (
+          <tr style="border-bottom:1px solid #e6ecf4">
+            <td style="padding:9px 6px">{p[0]}</td>
+            <td style="padding:9px 6px;text-align:right;white-space:nowrap"><strong>{p[1]}</strong></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+    <p style="font-size:14px;color:#5a6b80;margin-top:-4px">Prețurile includ manopera. Valoarea exactă se stabilește după diagnosticare, care este gratuită. Vedeți <a href={u('preturi-reparatii-tv/')}>lista completă de prețuri</a>.</p>
+
+    <h2>Mărcile pe care le reparăm</h2>
+    <p>Avem pagini dedicate pentru mărcile cu care lucrăm cel mai des, cu defecțiunile tipice fiecăreia și cu seriile pe care intervenim:</p>
+    <div class="grid g3" style="gap:4px 18px">
+      {LISTA_BRANDURI.map(b => <a href={u(b.slug + '/')} style="font-size:14.5px;padding:3px 0;display:block">Reparații TV {b.nume}</a>)}
+    </div>
+    <p>Reparăm și televizoare TCL, Hisense, Sharp, Toshiba, Vestel, Grundig, Allview, Star-Light și practic orice altă marcă întâlnită pe piața din România.</p>
+
+    <h2>Zonele în care ne deplasăm</h2>
+    <p>Acoperim toate cele șase sectoare ale Bucureștiului:</p>
+    <div class="grid g3" style="gap:4px 18px">
+      {[1, 2, 3, 4, 5, 6].map(n => <a href={u(SECTOARE[n].slug + '/')} style="font-size:14.5px;padding:3px 0;display:block">Reparații TV Sector {n}</a>)}
+    </div>
+    <p style="margin-top:14px">Și localitățile din Ilfov din jurul Capitalei:</p>
+    <div class="grid g3" style="gap:4px 18px">
+      {ilfov.map(x => <a href={u(x.sl + '/')} style="font-size:14px;padding:3px 0;display:block">Reparații TV {x.full}</a>)}
+    </div>
+
+    <h2>Artere principale deservite</h2>
+    <div class="grid g3" style="gap:4px 18px">
+      {artere.map(x => <a href={u(x.sl + '/')} style="font-size:14px;padding:3px 0;display:block">{x.et}</a>)}
+    </div>
+    <p style="margin-top:10px">Lista completă a străzilor se află pe pagina de <a href={u('zone-deservite-strazi-bucuresti/')}>zone deservite</a>.</p>
+
+    <h2>Întrebări frecvente</h2>
+    {faq.map(([q, a]) => (
+      <div style="margin:0 0 14px">
+        <h3 style="margin:0 0 4px;font-size:17px">{q}</h3>
+        <p style="margin:0">{a}</p>
+      </div>
+    ))}
+
+    <Cta titlu="Televizor defect? Sunați-ne acum!" />
   </div></section>
 </Base>

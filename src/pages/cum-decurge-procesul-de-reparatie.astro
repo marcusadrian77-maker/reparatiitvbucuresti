@@ -1,23 +1,102 @@
 ---
 import Base from '../layouts/Base.astro';
 import Cta from '../components/Cta.astro';
-const title = 'Cum decurge procesul de reparație • Reparatii Tv Bucuresti';
-const description = 'Cum decurge reparația televizorului: programare, deplasare gratuită, diagnosticare gratuită, deviz, reparație și garanție. Simplu și transparent.';
-const pasi = [
-  ['Ne sunați sau scrieți pe WhatsApp', 'Ne spuneți marca, modelul și ce problemă are televizorul.'],
-  ['Programare și deplasare gratuită', 'Stabilim ziua și ora; ne deplasăm gratuit în București și Ilfov.'],
-  ['Diagnosticare gratuită', 'Identificăm exact defecțiunea, fără niciun cost.'],
-  ['Deviz clar', 'Vă comunicăm prețul final înainte de a începe reparația.'],
-  ['Reparația', 'Reparăm la domiciliu sau preluăm aparatul în service dacă e nevoie.'],
-  ['Garanție', 'Primiți garanție 6–12 luni la piese și manoperă. Plătiți doar dacă funcționează.'],
+import { SITE, u } from '../data/site';
+
+const title = 'Cum Decurge Reparația Televizorului – Pas cu Pas';
+const description = 'De la primul telefon la televizorul reparat: programare, deplasare și diagnosticare gratuite, preț comunicat înainte, reparație la domiciliu, garanție 6–12 luni.';
+const canonical = new URL(Astro.url.pathname, SITE.domeniu).href;
+
+const pasi: [string, string, string][] = [
+  ['Ne sunați sau scrieți pe WhatsApp',
+   'Ne spuneți marca, diagonala și ce face televizorul. Ideal este să ne trimiteți și o poză cu eticheta din spatele aparatului — de acolo aflăm modelul exact.',
+   'Din descriere ne facem deja o idee despre piesele probabil necesare și le luăm cu noi, ca să nu fie nevoie de o a doua vizită.'],
+  ['Stabilim ziua și intervalul orar',
+   'De regulă putem veni în aceeași zi, dacă sunați până în jurul prânzului. Altfel, a doua zi.',
+   'Vă dăm un interval de două ore, nu „undeva după-amiază", și vă sunăm cu 20–30 de minute înainte să ajungem.'],
+  ['Deplasarea — gratuită, indiferent de zonă',
+   'În toate cele șase sectoare ale Bucureștiului și în localitățile din Ilfov. Nu percepem taxă de deplasare, taxă de urgență sau tarif diferit în weekend.',
+   'Distanța nu schimbă prețul intervenției.'],
+  ['Diagnosticarea — gratuită, în fața dumneavoastră',
+   'Deschidem aparatul, măsurăm tensiunile pe fiecare linie și identificăm componenta defectă. Vă arătăm concret ce s-a stricat.',
+   'Dacă defecțiunea nu poate fi remediată sau reparația nu merită economic, vă spunem asta direct și nu plătiți nimic.'],
+  ['Prețul final, înainte de orice intervenție',
+   'Vă comunicăm suma exactă, nu o estimare care crește pe parcurs. Dumneavoastră decideți dacă mergem mai departe.',
+   'Dacă refuzați, nu datorați nimic — diagnosticarea rămâne gratuită.'],
+  ['Reparația, de regulă la domiciliu',
+   'În peste 90% din cazuri lucrăm pe loc: înlocuire condensatori, barete LED, reparație sursă sau placă T-CON, rescriere firmware.',
+   'Doar lucrările care cer echipament de atelier necesită transportul aparatului, iar atunci vă spunem înainte și stabilim termenul.'],
+  ['Testarea, împreună cu dumneavoastră',
+   'Lăsăm televizorul să funcționeze și verificăm imaginea, sunetul, porturile și conexiunea la rețea înainte să plecăm.',
+   'Strângem după noi și lăsăm camera așa cum am găsit-o.'],
+  ['Plata și garanția scrisă',
+   'Plătiți doar după ce televizorul funcționează. Acceptăm numerar și card și emitem document fiscal.',
+   'Primiți garanție între 6 și 12 luni, în funcție de intervenție și de piesele montate, acoperind atât piesa, cât și manopera.'],
 ];
+
+const faq: [string, string][] = [
+  ['Cât durează o intervenție obișnuită?', 'Între o oră și două ore pentru majoritatea defecțiunilor. O reparație de sursă durează de regulă 45–90 de minute, o înlocuire de barete LED puțin mai mult, pentru că panoul trebuie deschis cu atenție.'],
+  ['Ce se întâmplă dacă piesa nu e pe stoc?', 'O comandăm și revenim, de obicei în una-două zile. Vă comunicăm termenul înainte și nu percepem nimic pentru a doua deplasare.'],
+  ['Trebuie să fiu acasă pe toată durata reparației?', 'Da, pentru că lucrăm în locuința dumneavoastră și vrem să vedeți ce facem. La final testăm televizorul împreună.'],
+  ['Pot refuza reparația după diagnosticare?', 'Da, oricând, fără niciun cost. Diagnosticarea și deplasarea rămân gratuite indiferent de decizia dumneavoastră.'],
+  ['Ce fac dacă defecțiunea reapare?', 'Ne sunați. Dacă este aceeași defecțiune și sunteți în perioada de garanție, revenim și o remediem fără costuri.'],
+];
+
+const schemaExtra = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'HowTo',
+      name: 'Cum decurge reparația unui televizor la domiciliu',
+      description,
+      totalTime: 'PT2H',
+      estimatedCost: { '@type': 'MonetaryAmount', currency: 'RON', value: '0' },
+      step: pasi.map((p, i) => ({ '@type': 'HowToStep', position: i + 1, name: p[0], text: p[1] + ' ' + p[2], url: canonical + '#pas-' + (i + 1) })),
+    },
+    { '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Acasă', item: SITE.domeniu + '/' },
+      { '@type': 'ListItem', position: 2, name: 'Cum decurge procesul', item: canonical },
+    ] },
+    { '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+  ],
+};
 ---
-<Base title={title} description={description}>
-  <section class="hero-img"><div class="wrap"><span class="badge">Simplu și transparent</span><h1>Cum decurge procesul de reparație</h1><p class="lead">De la primul telefon până la televizorul reparat, în pași clari și fără surprize.</p></div></section>
+<Base title={title} description={description} schemaExtra={schemaExtra}>
+  <section class="hero-img"><div class="wrap">
+    <span class="badge">Simplu și transparent</span>
+    <h1>Cum decurge reparația televizorului</h1>
+    <p class="lead">De la primul telefon până la televizorul reparat, în pași clari și fără surprize la plată.</p>
+  </div></section>
+
   <section class="sec"><div class="wrap">
+    <p>Procesul este același indiferent de marcă, de diagonală sau de zona din București în care locuiți. L-am gândit ca să nu existe niciun moment în care să nu știți cât costă sau ce urmează.</p>
+
     <div class="steps">
-      {pasi.map((p, idx) => <div class="step"><div class="n">{idx + 1}</div><div><strong>{p[0]}</strong><div class="tx">{p[1]}</div></div></div>)}
+      {pasi.map((p, idx) => (
+        <div class="step" id={'pas-' + (idx + 1)}>
+          <div class="n">{idx + 1}</div>
+          <div>
+            <strong>{p[0]}</strong>
+            <div class="tx">{p[1]}</div>
+            <div class="tx" style="opacity:.85">{p[2]}</div>
+          </div>
+        </div>
+      ))}
     </div>
-    <Cta />
+
+    <h2>Ce nu apare pe factură</h2>
+    <p>Deplasarea, diagnosticarea, demontarea televizorului de pe suportul de perete și remontarea lui la final. Toate sunt incluse. Nu avem taxă de urgență și nu percepem un tarif mai mare în weekend sau seara.</p>
+
+    <h2>Întrebări frecvente despre proces</h2>
+    {faq.map(([q, a]) => (
+      <div style="margin:0 0 14px">
+        <h3 style="margin:0 0 4px;font-size:17px">{q}</h3>
+        <p style="margin:0">{a}</p>
+      </div>
+    ))}
+
+    <p style="margin-top:18px">Vedeți <a href={u('preturi-reparatii-tv/')}>prețurile orientative</a>, <a href={u('zone-deservite-strazi-bucuresti/')}>zonele deservite</a> sau <a href={u('despre-noi/')}>cine suntem</a>.</p>
+
+    <Cta titlu="Gata să programăm o vizită?" />
   </div></section>
 </Base>
