@@ -22,6 +22,8 @@ const canonical = canonicalOverride || new URL(Astro.url.pathname, SITE.domeniu)
 <link rel="icon" href={u('favicon.svg')} type="image/svg+xml" />
 <script type="application/ld+json" set:html={JSON.stringify(SCHEMA_LOCALBUSINESS)} />
 {schemaExtra && <script type="application/ld+json" set:html={JSON.stringify(schemaExtra)} />}
+<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-EKE7XD72F3"></script>
+<script is:inline>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EKE7XD72F3');</script>
 </head>
 <body>
 <header class="site-header">
@@ -122,5 +124,6 @@ const canonical = canonicalOverride || new URL(Astro.url.pathname, SITE.domeniu)
   <a class="fc-wa" href={SITE.whatsapp} target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
   <a class="fc-call" href={SITE.telefonHref} aria-label="Sună acum">📞</a>
 </div>
+<script is:inline>document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e.target.closest('a'):null;if(!a)return;var h=a.getAttribute('href')||'';if(h.indexOf('tel:')===0){gtag('event','apel_telefon');}else if(h.indexOf('wa.me')>-1){gtag('event','click_whatsapp');}});</script>
 </body>
 </html>
