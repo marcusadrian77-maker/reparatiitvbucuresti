@@ -50,7 +50,7 @@ export const SCHEMA_LOCALBUSINESS = {
   url: 'https://www.reparatiitvbucuresti.ro/',
   telephone: '+40720667800',
   email: 'reparatielectronice@yahoo.com',
-  image: 'https://www.reparatiielectronice.ro/img/tv.jpg',
+  image: 'https://www.reparatiitvbucuresti.ro/img/og-default.jpg',
   priceRange: '$$',
   currenciesAccepted: 'RON',
   paymentAccepted: 'Cash, Card',

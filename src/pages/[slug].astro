@@ -45,7 +45,8 @@ const locDesc = inIlfov ? `${eticheta}, județul Ilfov` : sect ? `${eticheta}, S
 // ——— Titlu și meta ———
 const bazaTitlu = inIlfov ? `Reparații TV ${eticheta} Ilfov` : `Reparații TV ${eticheta}`;
 let titluLoc = sect ? `${bazaTitlu}, Sector ${sect} – Service la domiciliu` : `${bazaTitlu} – Service TV la domiciliu`;
-if (titluLoc.length > 68) titluLoc = sect ? `${bazaTitlu}, Sector ${sect}` : `${bazaTitlu} București`;
+if (titluLoc.length > 62) titluLoc = sect ? `${bazaTitlu}, Sector ${sect}` : `${bazaTitlu} București`;
+if (titluLoc.length > 62) titluLoc = bazaTitlu;
 
 const introTxt = isLocatie ? unul(INTRO, slug)(eticheta, info.tip || 'zona') : '';
 const detaliuTxt = isLocatie ? unul(DETALII, slug, 5)(eticheta) : '';

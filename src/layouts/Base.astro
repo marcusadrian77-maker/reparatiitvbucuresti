@@ -4,6 +4,7 @@ import { SITE, NAV_BRANDURI, NAV_SECTOARE, SCHEMA_LOCALBUSINESS, u } from '../da
 export interface Props { title: string; description: string; schemaExtra?: object | null; canonicalOverride?: string | null; }
 const { title, description, schemaExtra = null, canonicalOverride = null } = Astro.props;
 const canonical = canonicalOverride || new URL(Astro.url.pathname, SITE.domeniu).href;
+const ogImage = new URL(u('img/og-default.jpg'), SITE.domeniu).href;
 ---
 <!doctype html>
 <html lang="ro">
@@ -18,6 +19,15 @@ const canonical = canonicalOverride || new URL(Astro.url.pathname, SITE.domeniu)
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonical} />
 <meta property="og:locale" content="ro_RO" />
+<meta property="og:site_name" content="Reparatii TV Bucuresti" />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={title} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
 <meta name="theme-color" content="#14365d" />
 <link rel="icon" href={u('favicon.svg')} type="image/svg+xml" />
 <script type="application/ld+json" set:html={JSON.stringify(SCHEMA_LOCALBUSINESS)} />
