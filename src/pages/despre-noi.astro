@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import Cifre from '../components/Cifre.astro';
 import Cta from '../components/Cta.astro';
 import { SITE, u } from '../data/site';
 import { LISTA_BRANDURI } from '../data/branduri';
@@ -26,6 +27,7 @@ const schemaExtra = {
     <h1>Despre Reparații TV București</h1>
     <p class="lead">Reparăm televizoare la domiciliu, în București și Ilfov, de peste zece ani. Diagnostic gratuit, preț comunicat înainte de intervenție, garanție scrisă.</p>
   </div></section>
+  <Cifre />
 
   <section class="sec"><div class="wrap">
     <p>Suntem un service de televizoare care lucrează aproape exclusiv la domiciliul clientului. Am ales modelul acesta pentru că majoritatea defecțiunilor pe care le întâlnim — surse de alimentare, barete LED de iluminare, plăci T-CON, probleme de software — se rezolvă la fața locului, în una-două ore, cu echipamentul potrivit. Cărăm televizorul într-un atelier doar când defecțiunea chiar o cere, iar în acel caz vă spunem clar de ce.</p>
