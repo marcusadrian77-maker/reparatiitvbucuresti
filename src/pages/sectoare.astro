@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import Cifre from '../components/Cifre.astro';
 import Cta from '../components/Cta.astro';
 import { NAV_SECTOARE } from '../data/site';
 const title = 'Reparații Televizoare pe Sectoare | Service la Domiciliu';
@@ -19,6 +20,7 @@ const desc = {
     <h1>Reparații Televizoare pe Sectoare</h1>
     <p class="lead">Ne deplasăm gratuit în tot Bucureștiul. Alegeți sectorul dumneavoastră pentru detalii și străzile deservite.</p>
   </div></section>
+  <Cifre />
   <section class="sec"><div class="wrap">
     <div class="grid g3">
       {NAV_SECTOARE.map(s => (

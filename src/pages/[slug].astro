@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import Cifre from '../components/Cifre.astro';
 import Cta from '../components/Cta.astro';
 import { u, SITE } from '../data/site';
 import { LOCATII } from '../data/locatii';
@@ -149,6 +150,7 @@ const schemaExtra = { '@context': 'https://schema.org', '@graph': graph };
       ? `Service televizoare pe ${locDesc}. Diagnosticare și deplasare gratuită, reparație pe loc, garanție 6–12 luni.`
       : 'Service televizoare profesional în București și Ilfov. Diagnosticare și deplasare gratuită, garanție 6–12 luni.'}</p>
   </div></section>
+  <Cifre />
 
   {html ? (
     <section class="sec"><div class="wrap">
