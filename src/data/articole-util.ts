@@ -57,13 +57,15 @@ export function infoArticol(slug: string, titluBrut: string, descBruta: string):
   let titlu: string;
   if (eModel) {
     titlu = `Reparații TV ${marca} ${model} – Service la Domiciliu`;
-    if (titlu.length > 68) titlu = `Reparații TV ${marca} ${model} București`;
+    if (titlu.length > 62) titlu = `Reparații TV ${marca} ${model} București`;
+    if (titlu.length > 62) titlu = `Reparații TV ${marca} ${model}`;
   } else if (eLegal) {
     titlu = `${titluBrut} | Reparații TV București`;
   } else {
     titlu = `${titluBrut} – Reparații TV București`;
-    if (titlu.length > 68) titlu = titluBrut;
-    if (titlu.length > 68) titlu = titlu.slice(0, 65).replace(/\s+\S*$/, '') + '…';
+    if (titlu.length < 36) titlu = `${titluBrut} – Ghid Smart TV | Reparații TV București`;
+    if (titlu.length > 62) titlu = titluBrut;
+    if (titlu.length > 62) titlu = titlu.slice(0, 59).replace(/\s+\S*$/, '') + '…';
   }
 
   let descriere = (descBruta || '').replace(/\s*\.\.\.$/, '').trim();
