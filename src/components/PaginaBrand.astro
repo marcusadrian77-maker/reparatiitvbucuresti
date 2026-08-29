@@ -6,11 +6,14 @@ import { u, SITE } from '../data/site';
 import { BRANDURI, LISTA_BRANDURI } from '../data/branduri';
 import { PRETURI, PASI } from '../data/continut-loc';
 import { SECTOARE } from '../data/sectoare';
+import { hubModele, modeleMarca } from '../data/hub';
 
 const { cheie } = Astro.props;
 const B = BRANDURI[cheie];
 const canonical = new URL(Astro.url.pathname, SITE.domeniu).href;
 const altele = LISTA_BRANDURI.filter(x => x.slug !== B.slug);
+const hub = hubModele(B.slug);
+const modele = hub ? modeleMarca(hub.re) : [];
 
 const schemaExtra = {
   '@context': 'https://schema.org',
@@ -88,6 +91,16 @@ const schemaExtra = {
         <p style="margin:0">{a}</p>
       </div>
     ))}
+
+    {hub && modele.length > 0 && (
+      <div>
+        <h2>Modele {B.nume} cu pagină dedicată</h2>
+        <p>Pentru cele mai des întâlnite modele am scris pagini separate, cu defecțiunile tipice fiecăruia. Lista completă se află pe pagina <a href={u(hub.slug + '/')}>{hub.titlu}</a>.</p>
+        <div class="grid g3" style="gap:4px 18px">
+          {modele.slice(0, 18).map(m => <a href={u(m.s + '/')} style="font-size:14px;padding:3px 0;display:block">{m.t}</a>)}
+        </div>
+      </div>
+    )}
 
     <h2>Alte mărci pe care le reparăm</h2>
     <div class="grid g3" style="gap:4px 18px">
