@@ -90,3 +90,13 @@ export function hubModele(brandSlug: string) {
   const k = Object.keys(LISTE_MODELE).find(x => LISTE_MODELE[x].brand === brandSlug);
   return k ? { slug: k, ...LISTE_MODELE[k] } : null;
 }
+
+/** Regexul care identifică modelele fiecărei mărci, după titlul articolului. */
+export const MODELE_MARCA: Record<string, RegExp> = {
+  'reparatii-televizoare-samsung': /samsung/i,
+  'reparatii-televizoare-lg': /\blg\b/i,
+  'reparatii-televizoare-sony': /sony|bravia/i,
+  'reparatii-televizoare-philips': /philips|ambilight/i,
+  'reparatii-tv-panasonic': /panasonic|viera/i,
+  'reparatii-televizoare-horizon': /horizon/i,
+};
