@@ -37,6 +37,21 @@ export type InfoArticol = {
   descriere: string;
 };
 
+
+/** Titluri și descrieri scrise manual, acolo unde scurtarea automată ar produce duplicate. */
+const TITLU_MANUAL: Record<string, string> = {
+  'resetarea-din-fabrica-si-instrumente-de-autodiagnosticare-pe-televizorul-samsung-partea-i':
+    'Resetare din fabrică și autodiagnosticare Samsung – I',
+  'resetarea-din-fabrica-si-instrumente-de-autodiagnosticare-pe-televizorul-samsung-partea-ii':
+    'Resetare din fabrică și autodiagnosticare Samsung – II',
+};
+const DESC_MANUAL: Record<string, string> = {
+  'resetarea-din-fabrica-si-instrumente-de-autodiagnosticare-pe-televizorul-samsung-partea-i':
+    'Cum resetezi din fabrică un televizor Samsung și cum folosești testul de rețea și Smart Hub. Partea I din ghidul de autodiagnosticare.',
+  'resetarea-din-fabrica-si-instrumente-de-autodiagnosticare-pe-televizorul-samsung-partea-ii':
+    'Testul de imagine și resetarea setărilor de imagine pe televizoarele Samsung. Partea a II-a din ghidul de autodiagnosticare.',
+};
+
 const LEGAL = new Set(['gdpr-si-anpc', 'politica-de-cookies', 'termeni-si-conditii', 'politica-de-confidentialitate', 'contact']);
 
 /** Extrage marca și codul de model dintr-un titlu de tip „Reparatii Televizor LED Philips 43PFS5302/12". */
@@ -75,6 +90,9 @@ export function infoArticol(slug: string, titluBrut: string, descBruta: string):
     descriere = `${titluBrut} — service televizoare la domiciliu în București și Ilfov. Diagnosticare și deplasare gratuite, garanție 6–12 luni.`;
   }
   if (descriere.length > 158) descriere = descriere.slice(0, 155).replace(/\s+\S*$/, '') + '.';
+
+  if (TITLU_MANUAL[slug]) titlu = TITLU_MANUAL[slug];
+  if (DESC_MANUAL[slug]) descriere = DESC_MANUAL[slug];
 
   return { marca, slugMarca, model, eModel, eLegal, titlu, descriere };
 }
