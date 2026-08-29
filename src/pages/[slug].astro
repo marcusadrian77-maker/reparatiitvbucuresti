@@ -11,6 +11,7 @@ import { numeLoc, SECTOR, CARTIERE_SECTOR, CANONIC, alege, unul } from '../data/
 import { INTRO, DETALII, PROBLEME, PRETURI, PASI, FAQ, MARCI } from '../data/continut-loc';
 import { PAGINI_PROPRII, BRANDURI } from '../data/branduri';
 import { curataHtml, infoArticol } from '../data/articole-util';
+import { GLOSAR, LISTE_MODELE, modeleMarca, ZONE_ARTICOL } from '../data/hub';
 
 export function getStaticPaths() {
   const ARTICOLE = [...ARTICOLE_1, ...ARTICOLE_2, ...ARTICOLE_3];
@@ -29,12 +30,39 @@ const isLocatie = html === null;
 const art = isLocatie ? null : infoArticol(slug, nume, desc);
 const htmlCurat = isLocatie ? null : curataHtml(html);
 const brandArt = art && art.slugMarca ? Object.values(BRANDURI).find(b => b.slug === art.slugMarca) : null;
-const modeleInrudite = (!isLocatie && art && art.eModel)
+// Modelele înrudite se aleg dintr-o fereastră care se rotește după poziția paginii curente.
+// Cu `.slice(0, 12)` fix, toate paginile aceleiași mărci linkau exact aceleași 12 modele,
+// iar restul rămâneau fără niciun link intern (pagini orfane).
+const modeleMarcaCurenta = (!isLocatie && art && art.eModel && art.marca)
   ? [...ARTICOLE_1, ...ARTICOLE_2, ...ARTICOLE_3]
-      .filter(a => a.s !== slug && art.marca && new RegExp(art.marca, 'i').test(a.t) && /reparatii-televizor/i.test(a.s))
-      .slice(0, 12)
+      .filter(a => new RegExp(art.marca!, 'i').test(a.t) && /reparatii-televizor/i.test(a.s))
       .map(a => ({ s: a.s, t: a.t.replace(/^Reparatii\s+Televizor\s+/i, '').replace(/^Reparatii\s+/i, '') }))
+      .sort((a, b) => a.t.localeCompare(b.t, 'ro'))
   : [];
+const pozitie = modeleMarcaCurenta.findIndex(m => m.s === slug);
+const modeleInrudite = modeleMarcaCurenta.length > 1
+  ? Array.from({ length: Math.min(12, modeleMarcaCurenta.length - 1) },
+      (_, i) => modeleMarcaCurenta[(Math.max(pozitie, 0) + 1 + i) % modeleMarcaCurenta.length])
+      .filter(m => m.s !== slug)
+  : [];
+
+// ——— Pagini-hub (dicționar, liste de modele) și pagini scurte ———
+const listaModele = LISTE_MODELE[slug] ? modeleMarca(LISTE_MODELE[slug].re) : null;
+const eDictionar = slug === 'blog';
+const textArticol = htmlCurat ? htmlCurat.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length : 0;
+const scurt = !isLocatie && !!art && !art.eModel && !art.eLegal && !listaModele && !eDictionar && textArticol < 340;
+
+const CONTEXT_SCURT = [
+  'Detaliul de mai sus contează în practică abia atunci când televizorul începe să dea semne de oboseală: o funcție care nu mai răspunde, o imagine care se schimbă singură sau un meniu care nu se mai deschide. De cele mai multe ori nu este vorba despre o defecțiune electronică, ci despre un firmware vechi sau o setare pierdută după o pană de curent — verificăm întâi lucrurile astea, gratuit, înainte să propunem orice intervenție.',
+  'În atelier vedem des televizoare aduse pentru „defecțiuni" care se dovedesc a fi, de fapt, funcții neînțelese sau setări modificate din greșeală. De aceea diagnosticarea noastră începe întotdeauna cu partea software: meniuri, actualizări, resetări selective. Dacă problema chiar este pe placă — sursă, backlight, T-CON — vă spunem exact ce s-a defectat și cât costă reparația, înainte de a începe.',
+  'Când o funcție de acest tip nu mai merge, cauza este rareori unică: poate fi placa principală, modulul de rețea, memoria internă plină sau pur și simplu o incompatibilitate apărută după o actualizare. Le eliminăm pe rând, în ordinea costului, ca să nu plătiți pentru o piesă care nu era vinovată. Diagnosticarea la domiciliu este gratuită și nu vă obligă la nimic.',
+  'Multe dintre aceste tehnologii depind direct de starea plăcii principale și a memoriei interne. Un televizor cu memoria eMMC obosită pierde întâi funcțiile „inteligente" — aplicații, comandă vocală, conectare la rețea — și abia apoi ajunge să nu mai pornească deloc. Dacă observați astfel de simptome, merită verificat din timp: rescrierea firmware-ului costă mult mai puțin decât o placă nouă.',
+  'Diferența dintre o problemă de setare și una de hardware se vede cel mai clar la o verificare pe loc, cu televizorul pornit. Venim la domiciliu în București și Ilfov, testăm cu aparatura noastră și vă arătăm concret ce am găsit. Dacă nu este nimic de reparat, vă spunem asta și nu plătiți nimic — inclusiv deplasarea este gratuită.',
+  'Televizoarele moderne combină un panou scump cu o electronică relativ ieftină de reparat, iar asta schimbă complet calculul: aproape întotdeauna merită reparat, nu înlocuit. Excepția este panoul crăpat sau cu pete de presiune, singura piesă care poate depăși valoarea unui aparat nou. Vă spunem sincer în ce categorie se încadrează televizorul dumneavoastră, după diagnosticarea gratuită.',
+];
+const paragrafExtra = scurt ? unul(CONTEXT_SCURT, slug, 11) : '';
+const problemeExtra = scurt ? alege(PROBLEME, 4, slug, 12) : [];
+const faqExtra = scurt ? alege(FAQ, 3, slug, 13) : [];
 
 // ——— Numele normalizat și contextul geografic ———
 const info = numeLoc(slug, nume);
@@ -186,6 +214,49 @@ const schemaExtra = { '@context': 'https://schema.org', '@graph': graph };
           <div class="grid g3" style="gap:4px 18px">
             {modeleInrudite.map(m => <a href={u(m.s + '/')} style="font-size:14px;padding:3px 0;display:block">{m.t}</a>)}
           </div>
+        </div>
+      )}
+
+      {eDictionar && (
+        <div>
+          <h2>Toate explicațiile și ghidurile</h2>
+          <p>Termenii, tehnologiile și funcțiile pe care le întâlniți la televizoarele moderne, explicate pe scurt. Fiecare pagină lămurește la ce folosește funcția și ce se poate defecta la ea.</p>
+          <div class="grid g3" style="gap:4px 18px">
+            {GLOSAR.map(g => <a href={u(g.s + '/')} style="font-size:14px;padding:3px 0;display:block">{g.t}</a>)}
+          </div>
+          <h2>Zone și străzi deservite</h2>
+          <p>Pentru acoperirea pe teren, consultați lista completă de <a href={u('zone-deservite-strazi-bucuresti/')}>zone și străzi deservite</a> sau paginile pe <a href={u('sectoare/')}>sectoare</a>.</p>
+        </div>
+      )}
+
+      {listaModele && listaModele.length > 0 && (
+        <div>
+          <h2>{LISTE_MODELE[slug].titlu}</h2>
+          <p>Am scris câte o pagină pentru fiecare model pe care îl reparăm curent, cu defecțiunile tipice și prețurile orientative. Dacă modelul dumneavoastră nu apare în listă, sunați-ne — îl reparăm și pe acela.</p>
+          <div class="grid g3" style="gap:4px 18px">
+            {listaModele.map(m => <a href={u(m.s + '/')} style="font-size:14px;padding:3px 0;display:block">{m.t}</a>)}
+          </div>
+          <p style="margin-top:12px">Vedeți și pagina generală <a href={u(LISTE_MODELE[slug].brand + '/')}>Reparații TV Sony</a>, cu defecțiunile tipice mărcii.</p>
+        </div>
+      )}
+
+      {scurt && (
+        <div>
+          <h2>Ce înseamnă asta pentru televizorul dumneavoastră</h2>
+          <p>{paragrafExtra}</p>
+
+          <h2>Defecțiuni frecvente pe care le reparăm</h2>
+          <div class="grid g2">{problemeExtra.map(p => <div class="card"><h3>{p[0]}</h3><p>{p[1]}</p></div>)}</div>
+
+          <h2>Întrebări frecvente</h2>
+          {faqExtra.map(([q, a]) => (
+            <div style="margin:0 0 14px">
+              <h3 style="margin:0 0 4px;font-size:17px">{q}</h3>
+              <p style="margin:0">{a('București')}</p>
+            </div>
+          ))}
+
+          <p>Mai multe explicații despre tehnologiile televizoarelor găsiți în <a href={u('blog/')}>dicționarul TV</a>, iar tarifele orientative pe <a href={u('preturi-reparatii-tv/')}>pagina de prețuri</a>.</p>
         </div>
       )}
 

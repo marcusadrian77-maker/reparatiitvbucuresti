@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Cifre from '../components/Cifre.astro';
 import Cta from '../components/Cta.astro';
-import { NAV_SECTOARE } from '../data/site';
+import { NAV_SECTOARE, u } from '../data/site';
 const title = 'Reparații Televizoare pe Sectoare | Service la Domiciliu';
 const description = 'Service televizoare la domiciliu în toate sectoarele Bucureștiului. Alegeți sectorul dvs. — deplasare și diagnosticare gratuite, garanție 6–12 luni.';
 const desc = {
@@ -22,6 +22,8 @@ const desc = {
   </div></section>
   <Cifre />
   <section class="sec"><div class="wrap">
+    <h2>Alegeți sectorul dumneavoastră</h2>
+    <p>Fiecare sector are pagina lui, cu străzile și cartierele acoperite, defecțiunile pe care le întâlnim cel mai des în zonă și prețurile orientative. Deplasarea este gratuită în toate cele șase sectoare și în localitățile din Ilfov.</p>
     <div class="grid g3">
       {NAV_SECTOARE.map(s => (
         <a href={s.href} class="card" style="text-decoration:none;color:inherit;display:block">
@@ -31,6 +33,15 @@ const desc = {
         </a>
       ))}
     </div>
+
+    <h2>Cum lucrăm, indiferent de sector</h2>
+    <p>Tehnicianul vine la domiciliu cu trusa completă și cu piesele de schimb folosite cel mai des — surse de alimentare, barete LED, condensatoare, plăci T-CON. În jur de trei sferturi dintre reparații se termină la prima vizită, fără ca televizorul să iasă din casă. Când defecțiunea cere aparatură de atelier — rescrierea memoriei eMMC, de exemplu, sau o reparație fină pe placa principală — preluăm televizorul, îl reparăm și îl aducem înapoi, tot fără cost de transport.</p>
+    <p>Diagnosticarea este gratuită și nu vă obligă la nimic: dacă după verificare decideți că nu vreți reparația, nu plătiți nici deplasarea. Prețul exact vi-l comunicăm înainte de a începe lucrarea, iar la final primiți garanție scrisă de 6–12 luni, în funcție de tipul intervenției și de piesele montate.</p>
+
+    <h2>Zone și străzi acoperite</h2>
+    <p>Pe lângă paginile de sector, am scris pagini separate pentru sute de străzi și cartiere din București și pentru localitățile din Ilfov unde ne deplasăm curent. Lista completă se află pe pagina de <a href={u('zone-deservite-strazi-bucuresti/')}>zone deservite</a>. Dacă nu găsiți strada dumneavoastră, sunați-ne oricum — acoperim tot orașul, iar lista este doar orientativă.</p>
+    <p>Tarifele pe categorii de intervenție sunt pe pagina de <a href={u('preturi-reparatii-tv/')}>prețuri reparații TV</a>, iar pașii concreți ai unei vizite sunt descriși în <a href={u('cum-decurge-procesul-de-reparatie/')}>cum decurge procesul de reparație</a>.</p>
+
     <Cta />
   </div></section>
 </Base>

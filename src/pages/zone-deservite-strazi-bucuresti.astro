@@ -5,9 +5,20 @@ import Cta from '../components/Cta.astro';
 import { u } from '../data/site';
 import { LOCATII } from '../data/locatii';
 import { numeLoc, SECTOR } from '../data/strazi';
+import { ARTICOLE, ZONE_ARTICOL, titluScurt } from '../data/hub';
 const title = 'Zone Deservite – Străzi București • Reparatii Tv Bucuresti';
 const description = 'Zonele și străzile din București și Ilfov unde oferim service TV la domiciliu. Deplasare gratuită, diagnosticare gratuită, garanție 6–12 luni.';
-const items = LOCATII.map(([slug, nume]) => ({ slug, nume: numeLoc(slug, nume).full, sec: SECTOR[slug] ?? null })).sort((a,b)=>a.nume.localeCompare(b.nume,'ro'));
+const dinLocatii = LOCATII.map(([slug, nume]) => ({ slug, nume: numeLoc(slug, nume).full, sec: SECTOR[slug] ?? null }));
+// Pagini de stradă și de cartier migrate ca articole — fără ele, nu ajungea niciun link intern la aceste pagini.
+const cunoscute = new Set(dinLocatii.map(x => x.slug));
+const dinArticole = ZONE_ARTICOL
+  .filter(s => !cunoscute.has(s))
+  .map(s => {
+    const a = ARTICOLE.find(x => x.s === s);
+    return a ? { slug: s, nume: numeLoc(s, titluScurt(a.t)).full, sec: SECTOR[s] ?? null } : null;
+  })
+  .filter((x): x is { slug: string; nume: string; sec: number | null } => x !== null);
+const items = [...dinLocatii, ...dinArticole].sort((a,b)=>a.nume.localeCompare(b.nume,'ro'));
 ---
 <Base title={title} description={description}>
   <section class="hero-img"><div class="wrap">
