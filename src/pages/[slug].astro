@@ -12,6 +12,7 @@ import { INTRO, DETALII, PROBLEME, PRETURI, PASI, FAQ, MARCI } from '../data/con
 import { PAGINI_PROPRII, BRANDURI } from '../data/branduri';
 import { curataHtml, infoArticol } from '../data/articole-util';
 import { GLOSAR, LISTE_MODELE, modeleMarca, ZONE_ARTICOL } from '../data/hub';
+import { specModel, textVechime, textDiagonala, textPlatforma, textPanou } from '../data/model-info';
 
 export function getStaticPaths() {
   const ARTICOLE = [...ARTICOLE_1, ...ARTICOLE_2, ...ARTICOLE_3];
@@ -45,6 +46,22 @@ const modeleInrudite = modeleMarcaCurenta.length > 1
       (_, i) => modeleMarcaCurenta[(Math.max(pozitie, 0) + 1 + i) % modeleMarcaCurenta.length])
       .filter(m => m.s !== slug)
   : [];
+
+// ——— Conținut derivat din datele reale ale modelului (diagonală, an, platformă, panou) ———
+const spec = (!isLocatie && art && art.eModel) ? specModel(art.model, html || '') : null;
+const txtVechime = (spec && art) ? textVechime(spec.an, art.marca!, art.model!) : null;
+const txtDiagonala = (spec && art) ? textDiagonala(spec.diagonala, art.marca!) : null;
+const txtPlatforma = (spec && art) ? textPlatforma(spec.platforma, art.marca!, art.model!) : null;
+const txtPanou = spec ? textPanou(spec.panou) : null;
+const specRanduri: [string, string][] = spec ? ([
+  spec.diagonala ? ['Diagonală', spec.diagonala + '″' + (spec.cm ? ' (' + spec.cm + ' cm)' : '')] : null,
+  spec.rezolutie ? ['Rezoluție', spec.rezolutie] : null,
+  spec.panou ? ['Tip de panou', spec.panou] : null,
+  spec.platforma ? ['Platformă software', spec.platforma] : null,
+  spec.an ? ['Generația', String(spec.an)] : null,
+  spec.tridimensional !== null ? ['Funcție 3D', spec.tridimensional ? 'da' : 'nu'] : null,
+].filter(Boolean) as [string, string][]) : [];
+const problemeModel = (!isLocatie && art && art.eModel) ? alege(PROBLEME, 4, slug, 21) : [];
 
 // ——— Pagini-hub (dicționar, liste de modele) și pagini scurte ———
 const listaModele = LISTE_MODELE[slug] ? modeleMarca(LISTE_MODELE[slug].re) : null;
@@ -186,8 +203,29 @@ const schemaExtra = { '@context': 'https://schema.org', '@graph': graph };
 
       {art && art.eModel && (
         <div>
+          {specRanduri.length > 0 && (
+            <div>
+              <h2>Specificațiile modelului {art.model}</h2>
+              <table style="width:100%;border-collapse:collapse;margin:12px 0">
+                <tbody>
+                  {specRanduri.map(r => (
+                    <tr style="border-bottom:1px solid #e6ecf4">
+                      <td style="padding:9px 6px">{r[0]}</td>
+                      <td style="padding:9px 6px;text-align:right"><strong>{r[1]}</strong></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+
+          {txtVechime && (<div><h2>Ce se defectează la această generație</h2><p>{txtVechime}</p></div>)}
+          {txtDiagonala && (<div><h2>Ce înseamnă diagonala pentru reparație</h2><p>{txtDiagonala}</p>{txtPanou && <p>{txtPanou}</p>}</div>)}
+          {!txtDiagonala && txtPanou && (<div><h2>Ce spune tipul de panou despre defecțiunile de imagine</h2><p>{txtPanou}</p></div>)}
+          {txtPlatforma && (<div><h2>Partea de software</h2><p>{txtPlatforma}</p></div>)}
+
           <h2>Ce reparăm la un televizor {art.marca} {art.model}</h2>
-          <div class="grid g2">{PROBLEME.slice(0, 4).map(p => <div class="card"><h3>{p[0]}</h3><p>{p[1]}</p></div>)}</div>
+          <div class="grid g2">{problemeModel.map(p => <div class="card"><h3>{p[0]}</h3><p>{p[1]}</p></div>)}</div>
 
           <h2>Prețuri orientative</h2>
           <table style="width:100%;border-collapse:collapse;margin:12px 0">
