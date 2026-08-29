@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { SITE, NAV_BRANDURI, NAV_SECTOARE, SCHEMA_LOCALBUSINESS, u } from '../data/site';
+import { SERVICII_EXTRA } from '../data/hub';
 export interface Props { title: string; description: string; schemaExtra?: object | null; canonicalOverride?: string | null; }
 const { title, description, schemaExtra = null, canonicalOverride = null } = Astro.props;
 const canonical = canonicalOverride || new URL(Astro.url.pathname, SITE.domeniu).href;
@@ -93,11 +94,11 @@ const ogImage = new URL(u('img/og-default.jpg'), SITE.domeniu).href;
   <div class="wrap">
     <div class="cols">
       <div>
-        <h4>Reparatii TV Bucuresti</h4>
+        <h2>Reparatii TV Bucuresti</h2>
         <p style="margin:0;font-size:14px;">Service televizoare la domiciliu în {SITE.zonaDomiciliu}. Reparăm LED, OLED, QLED și Smart TV — orice marcă. Diagnosticare gratuită, deplasare gratuită, garanție 6–12 luni.</p>
       </div>
       <div>
-        <h4>Contact</h4>
+        <h2>Contact</h2>
         <ul>
           <li>📞 <a href={SITE.telefonHref}>{SITE.telefon}</a></li>
           <li>💬 <a href={SITE.whatsapp} rel="noopener">WhatsApp</a></li>
@@ -107,20 +108,32 @@ const ogImage = new URL(u('img/og-default.jpg'), SITE.domeniu).href;
         </ul>
       </div>
       <div>
-        <h4>Servicii populare</h4>
+        <h2>Servicii populare</h2>
         <ul>
           <li><a href={u('reparatii-televizoare-samsung/')}>Reparații TV Samsung</a></li>
           <li><a href={u('reparatii-televizoare-lg/')}>Reparații TV LG</a></li>
           <li><a href={u('preturi-reparatii-tv/')}>Prețuri reparații TV</a></li>
           <li><a href={u('sectoare/')}>Reparații TV pe sectoare</a></li>
+          {SERVICII_EXTRA.map(([s, t]) => <li><a href={u(s + '/')}>{t}</a></li>)}
         </ul>
       </div>
       <div>
-        <h4>Informații</h4>
+        <h2>Informații</h2>
         <ul>
           <li><a href={u('despre-noi/')}>Despre noi</a></li>
           <li><a href={u('cum-decurge-procesul-de-reparatie/')}>Cum decurge procesul</a></li>
+          <li><a href={u('blog/')}>Dicționar TV</a></li>
+          <li><a href={u('zone-deservite-strazi-bucuresti/')}>Zone deservite</a></li>
           <li><a href="https://www.reparatiielectronice.ro/" rel="noopener">Reparații Electronice</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Legal</h2>
+        <ul>
+          <li><a href={u('termeni-si-conditii/')}>Termeni și condiții</a></li>
+          <li><a href={u('politica-de-confidentialitate/')}>Politica de confidențialitate</a></li>
+          <li><a href={u('politica-de-cookies/')}>Politica de cookies</a></li>
+          <li><a href={u('gdpr-si-anpc/')}>GDPR și ANPC</a></li>
         </ul>
       </div>
     </div>
