@@ -1,14 +1,17 @@
 ---
 // Banda cu cifre-cheie, afișată sub hero pe toate paginile principale.
+import { RECENZII } from '../data/site';
 const CIFRE = [
   { nr: '30.000+', txt: 'piese pe stoc, gata de montaj' },
   { nr: 'ASWO', txt: 'partener oficial — cel mai mare importator de componente electronice din Europa' },
   { nr: '6–12 luni', txt: 'garanție scrisă la orice reparație' },
   { nr: '25+ ani', txt: 'de experiență în service TV' },
 ];
+const nota = String(RECENZII.nota).replace('.', ',');
 ---
 <section class="cifre" aria-label="Cifre cheie">
   <div class="wrap cifre-grid">
+    <div class="cif"><b>{nota} ★</b><span>media a <a href={RECENZII.profil} rel="noopener nofollow" target="_blank">{RECENZII.numar} de recenzii</a> pe Google</span></div>
     {CIFRE.map(c => <div class="cif"><b>{c.nr}</b><span>{c.txt}</span></div>)}
   </div>
 </section>
