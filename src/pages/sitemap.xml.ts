@@ -1,6 +1,7 @@
 import { SITE } from '../data/site';
 import { LOCATII } from '../data/locatii';
 import { CANONIC } from '../data/strazi';
+import { SECUNDARE } from '../data/secundare';
 import { ARTICOLE_1 } from '../data/articole-1';
 import { ARTICOLE_2 } from '../data/articole-2';
 import { ARTICOLE_3 } from '../data/articole-3';
@@ -38,7 +39,7 @@ export async function GET() {
 
   const vazut = new Set<string>();
   const all = [...fixed, ...locs, ...arts].filter(s => {
-    if (EXCLUSE.has(s) || CANONIC[s] || vazut.has(s)) return false;
+    if (EXCLUSE.has(s) || SECUNDARE.has(s) || CANONIC[s] || vazut.has(s)) return false;
     vazut.add(s);
     return true;
   });
