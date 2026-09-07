@@ -10,6 +10,7 @@ export type Sector = {
   cartiere: string[];
   artere: string[];
   specific: string;
+  acces: string;
   interventii: [string, string][];
   faq: [string, string][];
 };
@@ -27,6 +28,7 @@ export const SECTOARE: Record<number, Sector> = {
     cartiere: ['Aviației', 'Aviatorilor', 'Băneasa', 'Dorobanți', 'Floreasca', 'Primăverii', 'Pipera', 'Domenii', 'Bucureștii Noi', 'Dămăroaia', 'Grivița', 'Herăstrău', 'Gara de Nord'],
     artere: ['Calea Victoriei', 'Bulevardul Aviatorilor', 'Bulevardul Ion Mihalache', 'Calea Dorobanți', 'Bulevardul Lascăr Catargiu', 'Șoseaua Kiseleff', 'Bulevardul Banu Manta', 'Calea Griviței', 'Șoseaua București–Ploiești', 'Bulevardul Poligrafiei', 'Șoseaua Nordului', 'Șoseaua Pipera'],
     specific: 'Pe televizoarele OLED montate pe perete, cea mai frecventă solicitare din Sector 1 nu este o defecțiune de panou, ci o problemă de sursă sau de placă principală — se repară pe loc, fără să dăm aparatul jos, dacă spațiul din spate permite accesul la capac.',
+    acces: 'Atelierul nostru este în Militari, pe Str. Moinești, așa că spre Sectorul 1 venim fie pe Bulevardul Iuliu Maniu și Splaiul Independenței, fie pe Orhideelor către Gara de Nord și Banu Manta. Pentru Primăverii, Aviației și Băneasa socotim în jur de 30–40 de minute la ore normale și mai mult în vârfurile de trafic de pe Kiseleff, motiv pentru care propunem de obicei intervalele de dimineață.',
     interventii: [
       ['OLED și QLED de diagonală mare', 'Lucrăm curent pe modele de 65, 75 și 85 de inch. Demontarea de pe suportul de perete o facem noi, cu grijă la panou.'],
       ['Sisteme cu soundbar și home cinema', 'Multe probleme raportate ca „nu are sunet" vin de la conexiunea eARC sau de la setările de ieșire audio, nu de la televizor.'],
@@ -49,6 +51,7 @@ export const SECTOARE: Record<number, Sector> = {
     cartiere: ['Colentina', 'Tei', 'Pantelimon', 'Iancului', 'Obor', 'Vatra Luminoasă', 'Fundeni', 'Baicului', 'Ștefan cel Mare', 'Doamna Ghica', 'Floreasca-Barbu Văcărescu', 'Plumbuita'],
     artere: ['Șoseaua Colentina', 'Șoseaua Pantelimon', 'Bulevardul Lacul Tei', 'Șoseaua Ștefan cel Mare', 'Bulevardul Ferdinand I', 'Bulevardul Basarabia', 'Șoseaua Iancului', 'Șoseaua Mihai Bravu', 'Bulevardul Chișinău', 'Bulevardul Pache Protopopescu', 'Strada Barbu Văcărescu', 'Bulevardul Dimitrie Pompeiu'],
     specific: 'În blocurile vechi din Colentina și Pantelimon vedem des televizoare afectate de variații de tensiune — condensatori umflați în sursă. Este o reparație de rutină pentru noi și, dacă tot deschidem aparatul, înlocuim toți condensatorii aflați la limită, nu doar pe cel care a cedat.',
+    acces: 'Venim din Militari pe Orhideelor și pe la Gara de Nord, apoi pe Ștefan cel Mare spre Colentina, Pantelimon și Iancului, sau pe Mihai Bravu pentru zona Vatra Luminoasă și Basarabia. Este traseul pe care îl facem cel mai des după cel din propriul sector, așa că prindem frecvent și programări în aceeași zi.',
     interventii: [
       ['Surse afectate de variații de tensiune', 'Înlocuim condensatorii degradați și verificăm întreaga linie de alimentare, ca defecțiunea să nu revină peste câteva luni.'],
       ['Backlight ars pe televizoare de 5–10 ani', 'Cea mai frecventă cauză de ecran negru cu sunet prezent. Înlocuim baretele LED defecte.'],
@@ -71,6 +74,7 @@ export const SECTOARE: Record<number, Sector> = {
     cartiere: ['Titan', 'Dristor', 'Vitan', 'Centrul Vechi', 'Dudești', 'Balta Albă', 'Trapezului', 'Nicolae Grigorescu', 'Unirii', 'Theodor Pallady', 'Muncii', 'Ozana', 'Salajan'],
     artere: ['Bulevardul Unirii', 'Bulevardul Decebal', 'Bulevardul Camil Ressu', 'Bulevardul Nicolae Grigorescu', 'Calea Vitan', 'Calea Călărașilor', 'Bulevardul Theodor Pallady', 'Bulevardul 1 Decembrie 1918', 'Strada Matei Basarab', 'Bulevardul Burebista', 'Calea Dudești', 'Bulevardul Corneliu Coposu'],
     specific: 'În Titan și Balta Albă întâlnim foarte des televizoare LED de 32–43 de inch din generația 2014–2018, la care baretele de iluminare cedează după 6–8 ani de utilizare. Avem baretele uzuale pentru aceste modele pe stoc, așa că reparația se termină, de regulă, la prima vizită.',
+    acces: 'Din Militari coborâm pe Splaiul Independenței până la Unirii și de acolo intrăm în sector pe Decebal, Camil Ressu sau Calea Vitan, iar pentru Titan și Theodor Pallady continuăm pe Nicolae Grigorescu. Drumul durează de regulă 30–45 de minute, în funcție de cât e aglomerat Splaiul.',
     interventii: [
       ['Barete LED pentru modele de 32–43"', 'Piesele frecvente pentru generația 2014–2018 le avem în mașină — reparație terminată la prima vizită.'],
       ['Plăci T-CON pentru linii pe ecran', 'Refacem lipiturile sau înlocuim placa, în funcție de cauza reală a liniilor.'],
@@ -93,6 +97,7 @@ export const SECTOARE: Record<number, Sector> = {
     cartiere: ['Berceni', 'Tineretului', 'Văcărești', 'Olteniței', 'Giurgiului', 'Timpuri Noi', 'Apărătorii Patriei', 'Brâncoveanu', 'Metalurgiei', 'Progresul', 'Dimitrie Cantemir'],
     artere: ['Bulevardul Tineretului', 'Bulevardul Dimitrie Cantemir', 'Șoseaua Olteniței', 'Șoseaua Berceni', 'Bulevardul Gheorghe Șincai', 'Calea Văcărești', 'Bulevardul Constantin Brâncoveanu', 'Bulevardul Metalurgiei', 'Bulevardul Alexandru Obregia', 'Calea Șerban Vodă', 'Șoseaua Giurgiului'],
     specific: 'În ansamblurile noi din zona Metalurgiei și Berceni, cele mai multe apeluri sunt pentru televizoare care nu se mai conectează la internet sau care se blochează în aplicații. În jumătate din cazuri cauza este memoria internă plină sau un firmware vechi — se rezolvă pe loc, fără piese de schimb.',
+    acces: 'Sectorul 4 este cel mai îndepărtat de atelierul nostru din Militari: ajungem pe Splaiul Independenței și Piața Unirii către Dimitrie Cantemir și Tineretului, sau pe Ghencea și Rahova când mergem spre Berceni, Giurgiului și Metalurgiei. Tocmai de aceea grupăm intervențiile din sector pe același interval — dacă ne sunați dimineața, avem cele mai mari șanse să ajungem la dumneavoastră în aceeași zi.',
     interventii: [
       ['Smart TV care nu se conectează', 'Verificăm în ordine: modulul Wi-Fi, firmware-ul și memoria internă. Rezolvăm cauza, nu simptomul.'],
       ['Surse și condensatori pe aparate vechi', 'Intervenție clasică pentru televizoarele din blocurile din Berceni și Giurgiului.'],
@@ -115,6 +120,7 @@ export const SECTOARE: Record<number, Sector> = {
     cartiere: ['Rahova', 'Ferentari', 'Cotroceni', '13 Septembrie', 'Panduri', 'Sebastian', 'Dealul Spirii', 'Antiaeriană', 'Giurgiului', 'Salaj', 'Petre Ispirescu'],
     artere: ['Calea Rahovei', 'Calea 13 Septembrie', 'Șoseaua Panduri', 'Bulevardul Tudor Vladimirescu', 'Calea Ferentari', 'Bulevardul Eroii Sanitari', 'Strada Sebastian', 'Bulevardul Pieptănari', 'Șoseaua Alexandriei', 'Șoseaua Sălaj', 'Bulevardul Libertății'],
     specific: 'În zona Cotroceni și 13 Septembrie ne cheamă des pentru televizoare de peste 55 de inch la care problema pare gravă — ecran complet negru — dar care se dovedește a fi backlight-ul. Testul cu lanterna, pe care îl puteți face și dumneavoastră înainte să sunați, lămurește situația în zece secunde.',
+    acces: 'Sectorul 5 este vecin cu atelierul: ieșim din Militari pe Vasile Milea sau pe Ghencea și suntem în Rahova, Ferentari, 13 Septembrie sau Panduri în 15–25 de minute. Este, împreună cu Sectorul 6, zona în care ajungem cel mai repede la o urgență.',
     interventii: [
       ['Backlight pe televizoare mari', 'Dacă imaginea se vede cu lanterna, panoul e bun și reparația e accesibilă.'],
       ['Surse pe aparate din blocuri vechi', 'Rahova, Ferentari și Sebastian — intervenția cea mai frecventă din sector.'],
@@ -137,6 +143,7 @@ export const SECTOARE: Record<number, Sector> = {
     cartiere: ['Militari', 'Drumul Taberei', 'Crângași', 'Giulești', 'Ghencea', 'Grozăvești', 'Regie', 'Politehnica', 'Lujerului', 'Plaza', 'Gorjului', 'Valea Cascadelor'],
     artere: ['Bulevardul Iuliu Maniu', 'Bulevardul Timișoara', 'Drumul Taberei', 'Calea Crângași', 'Calea Giulești', 'Bulevardul Ghencea', 'Șoseaua Virtuții', 'Bulevardul Constructorilor', 'Bulevardul Preciziei', 'Bulevardul Uverturii', 'Calea Plevnei', 'Bulevardul Vasile Milea'],
     specific: 'În Drumul Taberei și Militari majoritatea apartamentelor au televizorul montat pe perete, în living. Venim cu tot ce trebuie pentru a-l demonta și remonta în siguranță, iar dacă defecțiunea este pe sursă sau pe placa principală, lucrăm direct pe perete acolo unde spațiul permite.',
+    acces: 'Aici avem atelierul, pe Str. Moinești, în Militari. Pentru Drumul Taberei, Crângași, Giulești, Lujerului sau Uverturii ajungem de obicei în 10–20 de minute, iar dacă televizorul trebuie deschis pe masă îl ducem în atelier și îl aducem înapoi în aceeași zi sau a doua zi.',
     interventii: [
       ['Reparații pe televizoare montate pe perete', 'Demontare și remontare incluse, fără cost suplimentar.'],
       ['Barete LED și panouri de iluminare', 'Cea mai frecventă cauză de ecran negru la aparatele din cartier.'],
