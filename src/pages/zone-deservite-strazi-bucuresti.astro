@@ -4,7 +4,7 @@ import Cifre from '../components/Cifre.astro';
 import Cta from '../components/Cta.astro';
 import { u } from '../data/site';
 import { LOCATII } from '../data/locatii';
-import { numeLoc, SECTOR, CARTIERE_SECTOR } from '../data/strazi';
+import { numeLoc, SECTOR, CARTIERE_SECTOR, CANONIC } from '../data/strazi';
 import { ARTICOLE, ZONE_ARTICOL, titluScurt } from '../data/hub';
 import { SECUNDARE } from '../data/secundare';
 
@@ -32,7 +32,8 @@ const dinArticole: Zona[] = ZONE_ARTICOL
 
 // Listăm doar paginile care rămân în index. Cele retrogradate (vezi src/data/secundare.ts)
 // ar consuma degeaba bugetul de accesare cu crawlere și puterea de linking a acestei pagini.
-const toate = [...dinLocatii, ...dinArticole].filter(x => !SECUNDARE.has(x.slug));
+// Excludem și variantele canonicalizate: aceleași artere, sub slug vechi — altfel apar de două ori.
+const toate = [...dinLocatii, ...dinArticole].filter(x => !SECUNDARE.has(x.slug) && !CANONIC[x.slug]);
 const alfabetic = (a: Zona, b: Zona) => a.nume.localeCompare(b.nume, 'ro');
 
 const peSector = [1, 2, 3, 4, 5, 6].map(nr => ({
