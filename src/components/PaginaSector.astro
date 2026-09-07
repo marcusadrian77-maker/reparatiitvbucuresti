@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Cifre from './Cifre.astro';
 import Cta from '../components/Cta.astro';
+import Testimoniale from './Testimoniale.astro';
 import { u, SITE } from '../data/site';
 import { LOCATII } from '../data/locatii';
 import { numeLoc, SECTOR } from '../data/strazi';
@@ -114,6 +115,8 @@ const schemaExtra = {
         <p style="margin:0">{a}</p>
       </div>
     ))}
+
+    <Testimoniale />
 
     <h2>Celelalte sectoare</h2>
     <div class="grid g3" style="gap:4px 18px">
