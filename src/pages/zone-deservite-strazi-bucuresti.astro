@@ -4,34 +4,86 @@ import Cifre from '../components/Cifre.astro';
 import Cta from '../components/Cta.astro';
 import { u } from '../data/site';
 import { LOCATII } from '../data/locatii';
-import { numeLoc, SECTOR } from '../data/strazi';
+import { numeLoc, SECTOR, CARTIERE_SECTOR } from '../data/strazi';
 import { ARTICOLE, ZONE_ARTICOL, titluScurt } from '../data/hub';
+import { SECUNDARE } from '../data/secundare';
+
 const title = 'Zone Deservite – Străzi București • Reparatii Tv Bucuresti';
-const description = 'Zonele și străzile din București și Ilfov unde oferim service TV la domiciliu. Deplasare gratuită, diagnosticare gratuită, garanție 6–12 luni.';
-const dinLocatii = LOCATII.map(([slug, nume]) => ({ slug, nume: numeLoc(slug, nume).full, sec: SECTOR[slug] ?? null }));
+const description = 'Zonele, sectoarele și arterele din București și Ilfov unde oferim service TV la domiciliu. Deplasare gratuită, diagnosticare gratuită, garanție 6–12 luni.';
+
+type Zona = { slug: string; nume: string; sec: number | null; ilfov: boolean };
+
+const dinLocatii: Zona[] = LOCATII.map(([slug, nume]) => ({
+  slug,
+  nume: numeLoc(slug, nume).full,
+  sec: SECTOR[slug] ?? null,
+  ilfov: nume.includes('Ilfov'),
+}));
+
 // Pagini de stradă și de cartier migrate ca articole — fără ele, nu ajungea niciun link intern la aceste pagini.
 const cunoscute = new Set(dinLocatii.map(x => x.slug));
-const dinArticole = ZONE_ARTICOL
+const dinArticole: Zona[] = ZONE_ARTICOL
   .filter(s => !cunoscute.has(s))
   .map(s => {
     const a = ARTICOLE.find(x => x.s === s);
-    return a ? { slug: s, nume: numeLoc(s, titluScurt(a.t)).full, sec: SECTOR[s] ?? null } : null;
+    return a ? { slug: s, nume: numeLoc(s, titluScurt(a.t)).full, sec: SECTOR[s] ?? null, ilfov: false } : null;
   })
-  .filter((x): x is { slug: string; nume: string; sec: number | null } => x !== null);
-const items = [...dinLocatii, ...dinArticole].sort((a,b)=>a.nume.localeCompare(b.nume,'ro'));
+  .filter((x): x is Zona => x !== null);
+
+// Listăm doar paginile care rămân în index. Cele retrogradate (vezi src/data/secundare.ts)
+// ar consuma degeaba bugetul de accesare cu crawlere și puterea de linking a acestei pagini.
+const toate = [...dinLocatii, ...dinArticole].filter(x => !SECUNDARE.has(x.slug));
+const alfabetic = (a: Zona, b: Zona) => a.nume.localeCompare(b.nume, 'ro');
+
+const peSector = [1, 2, 3, 4, 5, 6].map(nr => ({
+  nr,
+  zone: toate.filter(x => x.sec === nr).sort(alfabetic),
+  cartiere: CARTIERE_SECTOR[nr] ?? [],
+}));
+const ilfov = toate.filter(x => x.ilfov).sort(alfabetic);
+const altele = toate.filter(x => !x.sec && !x.ilfov).sort(alfabetic);
+const total = toate.length;
 ---
 <Base title={title} description={description}>
   <section class="hero-img"><div class="wrap">
     <span class="badge">Zone deservite</span>
     <h1>Zone Deservite – Străzi București</h1>
-    <p class="lead">Ne deplasăm gratuit în tot Bucureștiul și Ilfovul. Alegeți zona dumneavoastră din listă.</p>
+    <p class="lead">Ne deplasăm gratuit în tot Bucureștiul și în Ilfov. Alegeți sectorul sau artera dumneavoastră din listă.</p>
   </div></section>
   <Cifre />
+
   <section class="sec"><div class="wrap">
-    <p>Oferim service televizoare la domiciliu în toate sectoarele Bucureștiului și în localitățile din Ilfov. Mai jos găsiți zonele și străzile acoperite:</p>
-    <div class="grid g3" style="gap:6px 18px">
-      {items.map(x => <a href={u(x.slug + '/')} style="font-size:14.5px;padding:4px 0;display:block">{x.nume}{x.sec ? ' (S' + x.sec + ')' : ''}</a>)}
+    <p>Acoperim toate cele șase sectoare ale Bucureștiului și localitățile din jur. Pentru fiecare sector avem o pagină dedicată, cu specificul zonei și cu timpii obișnuiți de deplasare, iar mai jos găsiți arterele pe care intervenim cel mai des — {total} de zone în total.</p>
+    <p>Dacă strada dumneavoastră nu apare în listă, nu înseamnă că nu ajungem acolo: deplasarea este gratuită oriunde în București și Ilfov. Sunați și stabilim ora.</p>
+
+    {peSector.map(s => (
+      <div style="margin:26px 0">
+        <h2><a href={u('reparatii-televizoare-sector-' + s.nr + '/')}>Reparații TV Sector {s.nr}</a></h2>
+        {s.cartiere.length > 0 && <p style="margin:6px 0 10px">Cartiere acoperite: {s.cartiere.join(', ')}.</p>}
+        {s.zone.length > 0 && (
+          <div class="grid g3" style="gap:6px 18px">
+            {s.zone.map(x => <a href={u(x.slug + '/')} style="font-size:14.5px;padding:4px 0;display:block">{x.nume}</a>)}
+          </div>
+        )}
+      </div>
+    ))}
+
+    <div style="margin:26px 0">
+      <h2>Cartiere și zone din București</h2>
+      <p style="margin:6px 0 10px">Zone pe care clienții le caută după numele cartierului sau al arterei, nu după sector.</p>
+      <div class="grid g3" style="gap:6px 18px">
+        {altele.map(x => <a href={u(x.slug + '/')} style="font-size:14.5px;padding:4px 0;display:block">{x.nume}</a>)}
+      </div>
     </div>
+
+    <div style="margin:26px 0">
+      <h2>Localități din Ilfov</h2>
+      <p style="margin:6px 0 10px">Ne deplasăm și în afara Bucureștiului, în localitățile limitrofe. Deplasarea rămâne gratuită.</p>
+      <div class="grid g3" style="gap:6px 18px">
+        {ilfov.map(x => <a href={u(x.slug + '/')} style="font-size:14.5px;padding:4px 0;display:block">{x.nume}</a>)}
+      </div>
+    </div>
+
     <Cta />
   </div></section>
 </Base>
