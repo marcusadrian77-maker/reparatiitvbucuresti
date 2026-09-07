@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Cifre from '../components/Cifre.astro';
 import Cta from '../components/Cta.astro';
+import Testimoniale from '../components/Testimoniale.astro';
 import { SITE, u } from '../data/site';
 import { SECTOARE } from '../data/sectoare';
 import { LOCATII } from '../data/locatii';
@@ -75,6 +76,8 @@ const schemaExtra = {
 
     <h2>Înainte să ne sunați, verificați două lucruri</h2>
     <p>Sunt două teste simple care ne ajută pe amândoi. Primul: dacă televizorul nu pornește deloc, încercați altă priză și verificați dacă LED-ul de stare se aprinde sau clipește — numărul de clipiri este un cod de eroare. Al doilea: dacă ecranul e negru dar se aude sunetul, stingeți lumina și luminați ecranul de aproape cu lanterna telefonului. Dacă se vede imaginea în umbră, problema este iluminarea de fundal, iar reparația este una accesibilă.</p>
+
+    <Testimoniale />
 
     <Cta titlu="Televizor defect? Sunați-ne acum!" />
   </div></section>
