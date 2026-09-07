@@ -1,4 +1,13 @@
 User-agent: *
 Allow: /
 
+# Resturi din vechiul WordPress - nu mai exista si nu pot fi redirectionate.
+# Blocate ca sa nu mai consume buget de accesare cu crawlere.
+Disallow: /wp-admin/
+Disallow: /wp-content/
+Disallow: /wp-includes/
+Disallow: /wp-json/
+Disallow: /xmlrpc.php
+Disallow: /*.php$
+
 Sitemap: https://www.reparatiitvbucuresti.ro/sitemap.xml
