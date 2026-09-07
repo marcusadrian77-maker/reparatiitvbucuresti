@@ -2,8 +2,8 @@
 import '../styles/global.css';
 import { SITE, NAV_BRANDURI, NAV_SECTOARE, SCHEMA_LOCALBUSINESS, u } from '../data/site';
 import { SERVICII_EXTRA } from '../data/hub';
-export interface Props { title: string; description: string; schemaExtra?: object | null; canonicalOverride?: string | null; }
-const { title, description, schemaExtra = null, canonicalOverride = null } = Astro.props;
+export interface Props { title: string; description: string; schemaExtra?: object | null; canonicalOverride?: string | null; noindex?: boolean; }
+const { title, description, schemaExtra = null, canonicalOverride = null, noindex = false } = Astro.props;
 const canonical = canonicalOverride || new URL(Astro.url.pathname, SITE.domeniu).href;
 const ogImage = new URL(u('img/og-default.jpg'), SITE.domeniu).href;
 ---
@@ -15,6 +15,7 @@ const ogImage = new URL(u('img/og-default.jpg'), SITE.domeniu).href;
 <title>{title}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonical} />
+{noindex && <meta name="robots" content="noindex, follow" />}
 <meta property="og:type" content="website" />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
