@@ -10,8 +10,19 @@ export const SITE = {
   whatsapp: 'https://wa.me/40720667800',
   email: 'reparatielectronice@yahoo.com',
   adresaScurta: 'București și Ilfov',
+  strada: 'Str. Moinești',
+  codPostal: '061231',
   program: 'Luni–Vineri: 10:00–19:00',
   zonaDomiciliu: 'București și Ilfov',
+};
+
+// Nota și numărul de recenzii din Profilul de Companie Google (verificate pe 7 sep 2026).
+// Se actualizează manual; cifrele trebuie să rămână identice cu cele afișate pe Google,
+// altfel aggregateRating din schema devine un semnal fals.
+export const RECENZII = {
+  nota: 4.9,
+  numar: 72,
+  profil: 'https://www.google.com/maps?cid=3284667601974338277',
 };
 
 export const NAV_BRANDURI = [
@@ -56,11 +67,20 @@ export const SCHEMA_LOCALBUSINESS = {
   paymentAccepted: 'Cash, Card',
   address: {
     '@type': 'PostalAddress',
+    streetAddress: 'Str. Moinești',
+    postalCode: '061231',
     addressLocality: 'București',
     addressRegion: 'București',
     addressCountry: 'RO',
   },
-  geo: { '@type': 'GeoCoordinates', latitude: 44.4268, longitude: 26.1025 },
+  geo: { '@type': 'GeoCoordinates', latitude: 44.4318013, longitude: 26.0191044 },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.9',
+    reviewCount: '72',
+    bestRating: '5',
+    worstRating: '1',
+  },
   areaServed: [
     { '@type': 'City', name: 'București' },
     { '@type': 'AdministrativeArea', name: 'Sector 1, București' },
