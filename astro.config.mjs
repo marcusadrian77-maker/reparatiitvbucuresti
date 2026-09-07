@@ -218,6 +218,13 @@ export default defineConfig({
     '/televizorul-tau-nu-se-mai-aprinde/samsung-tv-nu-se-aprinde-1-1/': '/televizorul-tau-nu-se-mai-aprinde/',
     '/televizorul-tau-nu-se-mai-aprinde/samsung-tv-nu-se-aprinde/': '/televizorul-tau-nu-se-mai-aprinde/',
     '/timpuri-noi/feed/': '/timpuri-noi/',
+    // Erori 404 ramase din Search Console (sept 2026)
+    '/domiciliul/': '/',
+    '/sector/feed/': '/sectoare/',
+    '/resetarea-sunetului-la-un-tv-samsung/resetara-sunet-min/': '/resetarea-sunetului-la-un-tv-samsung/',
+    '/best-buget-tv/roku-tcl-4-tv-min/': '/',
+    '/cel-mai-bun-raport-calitate-pret-la-un-tv-high-end/televizor-lg-b9-oled-min/': '/',
+    '/cel-mai-bun-raport-calitate-pret-la-un-tv-high-end/televizor-lg-oled-b9-min/': '/',
     // Sector duplicat: structura veche -> structura noua (curata)
     '/reparatii-tv-sector-1/': '/reparatii-televizoare-sector-1/',
     '/reparatii-tv-sector-2/': '/reparatii-televizoare-sector-2/',
