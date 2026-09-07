@@ -21,7 +21,7 @@ export const PASTRATE: Set<string> = new Set([
   'int-sterie-radu', 'int-tudor-stefan', 'ionescu-emanoil', 'jimbolia',
   'lipscani', 'mihai-viteazul', 'moliere-jean-baptiste-dramaturg', 'mosilor',
   'muncii', 'murfatlar', 'oltenitei', 'pajura',
-  'pechea', 'petrescu-serban-lt-av', 'piata-romana', 'piata-universitatii',
+  'pechea', 'petrescu-serban-lt-av', 'piata-universitatii',
   'pipera', 'poiana-codrului', 'pta-botescu-haralambie-dr', 'putul-lui-zamfir',
   'razelor', 'reparatii-tv-bulevardul-pierre-de-coubertin', 'sacele', 'sanatescu-stefan-mr-av',
   'stefan-cel-mare', 'tarnaveni', 'timpuri-noi', 'vatra-luminoasa',
