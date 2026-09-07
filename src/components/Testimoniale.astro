@@ -1,0 +1,20 @@
+---
+// Recenzii reale de la clienți, preluate din Profilul de Companie Google.
+// Fără schema Review — vezi nota din src/data/recenzii.ts.
+import { RECENZII, SITE } from '../data/site';
+import { RECENZII_CLIENTI } from '../data/recenzii';
+const nota = String(RECENZII.nota).replace('.', ',');
+const { titlu = 'Ce spun clienții noștri' } = Astro.props;
+---
+<h2>{titlu}</h2>
+<p>Nota noastră pe Google este <strong>{nota} din 5</strong>, din <a href={RECENZII.profil} rel="noopener nofollow" target="_blank">{RECENZII.numar} de recenzii</a>. Mai jos sunt câteva, scrise de clienți după intervenție.</p>
+<div class="grid g3 recenzii">
+  {RECENZII_CLIENTI.map(r => (
+    <figure class="card rec">
+      <div class="stele" aria-label="5 stele din 5">★★★★★</div>
+      <blockquote>{r.text}</blockquote>
+      <figcaption>{r.autor} <span>· {r.cand} · recenzie Google</span></figcaption>
+    </figure>
+  ))}
+</div>
+<p style="font-size:14px;color:#5a6b80">Recenziile sunt publice și pot fi citite integral, alături de celelalte, <a href={RECENZII.profil} rel="noopener nofollow" target="_blank">în profilul nostru Google</a>. Dacă am reparat ceva pentru dumneavoastră, o recenzie ne ajută mult.</p>
