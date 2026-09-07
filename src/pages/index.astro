@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Cifre from '../components/Cifre.astro';
 import Cta from '../components/Cta.astro';
+import Testimoniale from '../components/Testimoniale.astro';
 import { SITE, u } from '../data/site';
 import { SECTOARE } from '../data/sectoare';
 import { LISTA_BRANDURI } from '../data/branduri';
@@ -107,6 +108,12 @@ const faqSchema = {
         {ilfov.map(x => <a href={u(x.sl + '/')} style="font-size:14px;padding:3px 0;display:block">Reparații TV {x.full}</a>)}
       </div>
       <p style="margin-top:10px">Lista completă a străzilor acoperite se află pe pagina de <a href={u('zone-deservite-strazi-bucuresti/')}>zone deservite</a>.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <Testimoniale />
     </div>
   </section>
 
