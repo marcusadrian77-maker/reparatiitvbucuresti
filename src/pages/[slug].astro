@@ -12,6 +12,7 @@ import { INTRO, DETALII, PROBLEME, PRETURI, PASI, FAQ, MARCI } from '../data/con
 import { PAGINI_PROPRII, BRANDURI } from '../data/branduri';
 import { curataHtml, infoArticol } from '../data/articole-util';
 import { GLOSAR, LISTE_MODELE, modeleMarca, ZONE_ARTICOL } from '../data/hub';
+import { SECUNDARE } from '../data/secundare';
 import { specModel, textVechime, textDiagonala, textPlatforma, textPanou } from '../data/model-info';
 
 export function getStaticPaths() {
@@ -187,7 +188,7 @@ if (isLocatie) {
 }
 const schemaExtra = { '@context': 'https://schema.org', '@graph': graph };
 ---
-<Base title={title} description={description} schemaExtra={schemaExtra} canonicalOverride={CANONIC[slug] ? canonical : null}>
+<Base title={title} description={description} schemaExtra={schemaExtra} canonicalOverride={CANONIC[slug] ? canonical : null} noindex={SECUNDARE.has(slug)}>
   <section class="hero-img"><div class="wrap">
     <span class="badge">La domiciliu · Garanție 6–12 luni</span>
     <h1>{isLocatie ? bazaTitlu : (art!.eModel ? `Reparații TV ${art!.marca} ${art!.model}` : nume)}</h1>
