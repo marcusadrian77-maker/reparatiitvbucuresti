@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Cifre from '../components/Cifre.astro';
 import Cta from '../components/Cta.astro';
+import Testimoniale from '../components/Testimoniale.astro';
 import { u } from '../data/site';
 const title = 'Prețuri Reparații TV & Console • Reparatii Tv Bucuresti';
 const description = 'Prețuri orientative reparații televizoare și console gaming în București. Diagnosticare gratuită, deviz gratuit, plătiți doar dacă funcționează.';
@@ -63,5 +64,6 @@ const console = [
     </div>
   </section>
 
+  <section class="sec"><div class="wrap"><Testimoniale /></div></section>
   <section class="sec"><div class="wrap"><Cta titlu="Cereți un deviz gratuit acum!" /></div></section>
 </Base>
