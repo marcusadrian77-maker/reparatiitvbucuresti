@@ -4,15 +4,15 @@ import Cifre from '../components/Cifre.astro';
 import Cta from '../components/Cta.astro';
 import { SITE, u } from '../data/site';
 
-const title = 'Cum ajungeți la atelier – Militari, Sector 6';
-const description = 'Atelierul este pe Str. Moinești, în Militari, lângă Piața Gorjului și metroul Gorjului. Cum ajungeți — și de ce televizorul nu se transportă cu mașina.';
+const title = 'Atelierul vine la dumneavoastră – unde suntem totuși';
+const description = 'Cum arată atelierul mobil cu care venim acasă, de ce cerem modelul înainte de a porni și unde este sediul din Militari, Str. Moinești.';
 const canonical = new URL(Astro.url.pathname, SITE.domeniu).href;
 
 const faq = [
-  ['Trebuie să aduc televizorul la atelier?', 'Nu. La televizoare venim noi la dumneavoastră, în București și Ilfov, cu deplasare și diagnosticare gratuite. Majoritatea defectelor se rezolvă la fața locului, pentru că piesele uzuale le avem în mașină.'],
-  ['Atunci de ce există pagina aceasta?', 'Pentru cazurile în care aparatul chiar trebuie deschis pe masă — o placă de bază reparată la microscop, o memorie rescrisă cu programator. Și atunci îl luăm noi și îl aducem înapoi, dar unii clienți preferă să treacă personal pe la noi, cu o telecomandă sau ca să discutăm înainte.'],
-  ['Unde parchez?', 'Se găsește loc pe stradă, dar uneori cu răbdare — este o zonă de blocuri de locuințe, iar dimineața devreme și seara după program strada e plină. Pentru un drum scurt, metroul Gorjului e mai comod.'],
-  ['Trebuie să sun înainte?', 'Nu e obligatoriu, dar ajută. Un telefon scurt ne lasă să vă spunem dacă defectul descris se rezolvă pe loc, dacă avem piesa pe stoc sau dacă e mai simplu să venim noi la dumneavoastră.'],
+  ['De ce mă întrebați de model înainte să veniți?', 'Ca să verificăm dacă piesa de care are nevoie televizorul dumneavoastră este pe stoc. Dacă este, venim cu ea și terminăm din prima vizită. Dacă nu este, aflați asta la telefon, nu după ce am ajuns la ușă și v-am ocupat o oră degeaba.'],
+  ['Cât costă deplasarea?', 'Nimic, indiferent de sector și indiferent dacă alegeți sau nu să reparați. Diagnosticarea la fața locului este tot gratuită.'],
+  ['Dacă televizorul trebuie dus, cine îl duce?', 'Noi. Îl luăm, îl reparăm și îl aducem înapoi montat și în funcțiune. Nu vă ocupați de transport și nu îl plătiți, nici dus, nici întors.'],
+  ['Pot veni eu la sediu?', 'Puteți, în program, dar rareori are rost pentru un televizor. Pentru o telecomandă sau o discuție înainte de intervenție, adresa este Str. Moinești, în Militari, lângă Piața Gorjului.'],
 ];
 const schemaExtra = {
   '@context': 'https://schema.org',
@@ -20,7 +20,7 @@ const schemaExtra = {
     { '@type': 'BreadcrumbList', itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Acasă', item: SITE.domeniu + '/' },
       { '@type': 'ListItem', position: 2, name: 'Contact', item: SITE.domeniu + '/contact/' },
-      { '@type': 'ListItem', position: 3, name: 'Cum ajungeți la atelier', item: canonical },
+      { '@type': 'ListItem', position: 3, name: 'Atelierul vine la dumneavoastră', item: canonical },
     ] },
     { '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
   ],
@@ -28,76 +28,45 @@ const schemaExtra = {
 ---
 <Base title={title} description={description} schemaExtra={schemaExtra}>
   <section class="hero-img"><div class="wrap">
-    <span class="badge">Atelier · Militari, Sector 6</span>
-    <h1>Cum ajungeți la atelier</h1>
-    <p class="lead">Str. Moinești, Militari, Sector 6 — lângă Piața Gorjului, la câteva străzi de Bulevardul Iuliu Maniu. Dar, înainte de orice: la televizoare venim noi la dumneavoastră.</p>
+    <span class="badge">Atelier mobil · București și Ilfov</span>
+    <h1>Atelierul vine la dumneavoastră</h1>
+    <p class="lead">Nu vă cerem să cărați televizorul nicăieri. Mașina cu care ajungem la ușa dumneavoastră este, practic, un atelier pe roți — iar pagina asta explică ce e în ea, de ce vă întrebăm de model înainte de a porni și unde este totuși sediul.</p>
     <a class="btn btn-white" href={SITE.telefonHref}>📞 {SITE.telefon}</a>
     <a class="btn btn-wa" href={SITE.whatsapp} rel="noopener">💬 WhatsApp</a>
   </div></section>
   <Cifre />
 
   <section class="sec"><div class="wrap">
-    <h2 style="margin-top:0">Televizorul nu se aduce la atelier</h2>
-    <p>Spunem asta de la început, pentru că este cel mai util lucru din toată pagina. La televizoare <strong>ne deplasăm noi</strong>, în tot Bucureștiul și în Ilfov, iar deplasarea și diagnosticarea sunt gratuite.</p>
-    <p>Motivul nu e comoditatea, ci riscul. Un ecran de 55 sau 65 de inch se fisurează mult mai ușor decât pare: nu are nevoie de o lovitură, îi ajunge o apăsare greșită pe mijlocul panoului când îl scoateți din mașină. O crăpătură apărută pe drumul spre service costă mai mult decât reparația pentru care ați pornit — de multe ori cât un televizor nou.</p>
-    <p>Peste asta, majoritatea defectelor se rezolvă oricum la fața locului. Sursele, barele LED și plăcile uzuale le avem în mașină, iar dacă ne spuneți modelul de pe eticheta din spate verificăm stocul înainte de a porni la drum.</p>
-    <p>Vedeți <a href={u('reparatii-televizoare/')}>reparații televizoare</a>, <a href={u('sectoare/')}>intervenții pe sectoare</a> și <a href={u('preturi-reparatii-tv/')}>prețurile orientative</a>.</p>
-  </div></section>
-
-  <section class="sec"><div class="wrap">
-    <h2>Când ajunge totuși aparatul în atelier</h2>
-    <p>Sunt lucrări care nu se pot face în sufragerie, oricât de bine ar fi organizat tehnicianul:</p>
-    <div class="grid g3">
-      <div class="card"><h3>Reparații pe placă</h3><p>Componente schimbate la microscop, lipituri refăcute cu aer cald. Cer banc de lucru, aparatură de măsură și lumină bună.</p></div>
-      <div class="card"><h3>Memorie rescrisă</h3><p>Televizoarele blocate pe siglă sau care repornesc în buclă au nevoie de programator și de firmware-ul exact al modelului.</p></div>
-      <div class="card"><h3>Lucrări cu test lung</h3><p>Un defect care apare abia după câteva ore de funcționare trebuie urmărit pe masă, nu constatat în zece minute.</p></div>
-    </div>
-    <p style="margin-top:14px">Și în cazurile astea <strong>noi luăm aparatul și tot noi îl aducem înapoi</strong>, îl montăm și îl lăsăm în funcțiune. Nu trebuie să vă ocupați dumneavoastră de transport. Pagina aceasta rămâne utilă pentru situațiile în care preferați să treceți personal pe la noi — cu o telecomandă, cu un aparat mic sau pur și simplu ca să stăm de vorbă înainte.</p>
-  </div></section>
-
-  <section class="sec"><div class="wrap">
-    <h2>Reperele după care ne găsiți</h2>
-    <p>Atelierul este într-o zonă de blocuri din Militari, deci nu se vede de pe bulevard. Trei repere vă aduc direct la el:</p>
-    <div class="grid g3">
-      <div class="card"><h3>Piața Gorjului</h3><p>Reperul principal. De la piață mai aveți câteva minute pe jos, iar oricine din zonă vă îndrumă dacă întrebați de Str. Moinești.</p></div>
-      <div class="card"><h3>Bd. Iuliu Maniu</h3><p>Artera pe care o știe toată lumea. Intrarea spre noi se face de pe Iuliu Maniu, către interiorul cartierului — nu rămâneți pe bulevard.</p></div>
-      <div class="card"><h3>Metrou Gorjului</h3><p>Stația de pe magistrala M3. De acolo se vine pe jos, fără să mai schimbați nimic.</p></div>
-    </div>
-  </div></section>
-
-  <section class="sec"><div class="wrap">
-    <h2>Cu metroul și cu mașina</h2>
+    <h2 style="margin-top:0">Ce este în mașină când sunăm la ușă</h2>
+    <p>Un service care vine „să vadă despre ce e vorba" și pleacă după zece minute ca să comande piesa v-a furat o dimineață. Noi încercăm să terminăm din prima vizită, iar asta înseamnă să avem la noi ce se strică cel mai des.</p>
     <div class="grid g2">
-      <div class="card"><h3>Cu metroul</h3><p>Coborâți la <strong>Gorjului</strong>, pe M3, și veniți pe jos. E varianta simplă dacă aduceți ceva mic. Dacă nu ați mai fost în zonă, sunați-ne când ajungeți în stație — vă îndrumăm în câteva cuvinte, e mai rapid decât orice descriere scrisă.</p></div>
-      <div class="card"><h3>Cu mașina</h3><p>Veniți pe <strong>Bd. Iuliu Maniu</strong> și intrați spre cartier în dreptul zonei Gorjului. Despre parcare vă spunem cinstit: loc se găsește, dar uneori cu răbdare. E zonă de blocuri, iar dimineața devreme și seara după program strada e plină.</p></div>
+      <div class="card"><h3>Piese de schimb uzuale</h3><p>Surse de alimentare, bare LED pe diagonalele comune, condensatoare, siguranțe, mufe. Sunt componentele care explică majoritatea televizoarelor stinse din București.</p></div>
+      <div class="card"><h3>Aparatură de măsură</h3><p>Ca să nu ghicim. Se măsoară tensiunile pe sursă, se verifică iluminarea și se izolează defectul înainte de a schimba ceva.</p></div>
+      <div class="card"><h3>Scule pentru demontat în siguranță</h3><p>Un televizor desfăcut greșit se alege cu clipsuri rupte și cu panoul apăsat unde nu trebuie. Demontarea are ordinea ei.</p></div>
+      <div class="card"><h3>Stoc în spate</h3><p>Ce nu e în mașină vine din depozit. Lucrăm cu ASWO, cel mai mare importator de componente electronice din Europa, așa că piesele rare există — doar că trebuie știute dinainte.</p></div>
     </div>
   </div></section>
 
   <section class="sec"><div class="wrap">
-    <h2>De unde se ajunge ușor la noi</h2>
-    <p>Suntem în vestul Bucureștiului, deci din jumătate de oraș se ajunge fără să traversați centrul. Din <strong>Sectorul 6</strong> — Militari, Drumul Taberei, Crângași, Giulești, Lujerului, Uverturii — sunteți la 10–20 de minute. Din <strong>sectoarele 2, 3 și 4</strong> vă aduce direct magistrala M3, fără schimbare de linie. Din <strong>Ilfovul de vest</strong> — Chiajna, Roșu, Dudu, Militari Residence — sunteți practic vecini cu noi.</p>
-    <p>Oricum, pentru televizoare nu contează distanța până la noi, ci distanța până la dumneavoastră — iar aceea o parcurgem noi, gratuit, în tot orașul și în Ilfov.</p>
-    <div class="grid g3" style="margin-top:12px">
-      <div class="card"><h3>Sectorul 6</h3><p>Aici este atelierul. <a href={u('reparatii-televizoare-sector-6/')}>Reparații TV Sector 6</a></p></div>
-      <div class="card"><h3>Sectoarele 1 și 5</h3><p>Se ajunge pe Iuliu Maniu sau Splaiul Independenței. <a href={u('reparatii-televizoare-sector-1/')}>Sector 1</a> · <a href={u('reparatii-televizoare-sector-5/')}>Sector 5</a></p></div>
-      <div class="card"><h3>Restul orașului</h3><p>Ne deplasăm zilnic în toate sectoarele. <a href={u('sectoare/')}>Toate sectoarele</a></p></div>
-    </div>
+    <h2>De ce insistăm pe modelul de pe eticheta din spate</h2>
+    <p>Pare o formalitate enervantă la telefon. Nu este. Codul complet de pe eticheta din spate ne spune ce panou are aparatul, ce sursă, ce placă — deci exact ce piesă i-ar trebui.</p>
+    <p>Cu codul acela verificăm stocul <strong>înainte</strong> de a urca în mașină. Dacă piesa este la noi, stabilim ora și rezolvăm la prima vizită. Dacă nu este, aflați de la telefon și hotărâți dumneavoastră dacă așteptați comanda — în loc să pierdeți o oră ca să vă spunem asta la ușă.</p>
+    <p>De aceea regula noastră este simplă: <strong>ne deplasăm la televizoarele pentru care avem deja piesa.</strong> Nu e o restricție, e motivul pentru care intervențiile se termină de obicei în aceeași zi.</p>
+    <p>O poză cu eticheta, trimisă pe WhatsApp, ne scutește pe amândoi de citit litere mici la telefon.</p>
   </div></section>
 
   <section class="sec"><div class="wrap">
-    <h2>Ce aduceți cu dumneavoastră</h2>
-    <div class="grid g2">
-      <div class="card"><h3>Aparatul, nedemontat</h3><p>Nu scoateți plăci înainte de a veni. De cele mai multe ori asta îngreunează diagnosticul, nu îl ajută, iar un conector rupt la demontare adaugă o problemă în plus.</p></div>
-      <div class="card"><h3>Modelul exact</h3><p>De pe eticheta din spate. Ne lasă să verificăm stocul de piese înainte de a începe și să vă spunem realist cât durează.</p></div>
-      <div class="card"><h3>Alimentatorul</h3><p>Dacă aparatul are unul extern. Defectul este uneori chiar în el, iar fără el nu putem reproduce problema.</p></div>
-      <div class="card"><h3>Accesoriul implicat</h3><p>Telecomanda, modulul CI, cablul care nu mai merge — ce face parte din problemă vine împreună cu aparatul.</p></div>
-    </div>
+    <h2>Ce nu se poate termina în sufragerie</h2>
+    <p>Rămân lucrările fine, cele care au nevoie de masă, microscop și timp: componente schimbate la nivel de milimetru, memorii rescrise cu programator, defecte care apar abia după câteva ore de funcționare și trebuie urmărite.</p>
+    <p>În cazurile astea <strong>luăm noi aparatul</strong>. Îl ducem la sediu, îl reparăm, îl aducem înapoi, îl montăm și verificăm împreună că merge. Transportul nu vă costă nimic și nu vă ocupați de el. Vă sunăm cu prețul și cu termenul înainte de a începe lucrarea, nu după.</p>
+    <p>Vedeți și <a href={u('cum-decurge-procesul-de-reparatie/')}>cum decurge procesul de reparație</a>, pas cu pas.</p>
   </div></section>
 
   <section class="sec"><div class="wrap">
-    <h2>Ce se întâmplă când ajungeți</h2>
-    <p>Ne spuneți ce face aparatul și de când. Verificăm pe loc ce se poate verifica pe loc. <strong>Diagnosticarea este gratuită</strong> și nu vă obligă la nimic: dacă hotărâți să nu reparați, plecați cu aparatul și nu plătiți nimic.</p>
-    <p>Dacă lucrarea cere demontare, aparatul rămâne la noi și vă sunăm cu ce am găsit, cu prețul și cu termenul — înainte de a începe. Nu facem lucrări nediscutate și nu depășim suma agreată fără să vă întrebăm. La final primiți garanție scrisă. Vedeți și <a href={u('cum-decurge-procesul-de-reparatie/')}>cum decurge procesul de reparație</a>.</p>
+    <h2>Sediul, pentru cine chiar are nevoie de el</h2>
+    <p>Este în <strong>Militari, Sectorul 6, pe Str. Moinești</strong>, într-o zonă de blocuri din spatele <strong>Pieței Gorjului</strong>. Se intră din <strong>Bd. Iuliu Maniu</strong>, iar cu metroul se coboară la <strong>Gorjului</strong>, pe M3.</p>
+    <p>Parcare există pe stradă, dar la orele de vârf se caută câteva minute. Puteți trece în program, fără programare — deși, pentru un televizor, un telefon rezolvă mai repede decât un drum.</p>
+    <p>Poziția asta explică și de ce ajungem repede în vestul orașului: <a href={u('reparatii-televizoare-sector-6/')}>Sectorul 6</a> și <a href={u('reparatii-televizoare-sector-5/')}>Sectorul 5</a> sunt la noi în curte. În rest ne deplasăm zilnic, în <a href={u('sectoare/')}>toate sectoarele</a>, fără diferență de tarif.</p>
   </div></section>
 
   <section class="sec"><div class="wrap">
@@ -105,5 +74,5 @@ const schemaExtra = {
     {faq.map(([q, a]) => <div style="margin:0 0 16px"><h3 style="margin:0 0 4px;font-size:17px">{q}</h3><p style="margin:0">{a}</p></div>)}
   </div></section>
 
-  <Cta titlu="Sunați-ne înainte să porniți la drum" text="Vă spunem dacă merită să veniți, ce să aduceți — sau, la televizoare, stabilim direct când venim noi." />
+  <Cta titlu="Spuneți-ne modelul și stabilim ora" text="Verificăm stocul cât vorbim la telefon și venim cu piesa potrivită." />
 </Base>
