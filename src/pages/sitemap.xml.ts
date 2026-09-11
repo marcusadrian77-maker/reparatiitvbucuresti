@@ -29,7 +29,7 @@ export async function GET() {
   const base = SITE.domeniu.replace(/\/$/, '');
   const fixed = [
     '', 'despre-noi', 'preturi-reparatii-tv', 'cum-decurge-procesul-de-reparatie', 'contact',
-    'sectoare', 'zone-deservite-strazi-bucuresti', 'reparatii-televizoare',
+    'sectoare', 'zone-deservite-strazi-bucuresti', 'reparatii-televizoare', 'cum-ajungeti-la-atelier',
     'reparatii-televizoare-samsung', 'reparatii-televizoare-lg',
     'reparatii-televizoare-sector-1', 'reparatii-televizoare-sector-2', 'reparatii-televizoare-sector-3',
     'reparatii-televizoare-sector-4', 'reparatii-televizoare-sector-5', 'reparatii-televizoare-sector-6',
