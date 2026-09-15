@@ -1,0 +1,84 @@
+---
+import Base from '../layouts/Base.astro';
+import Cifre from '../components/Cifre.astro';
+import Cta from '../components/Cta.astro';
+import Testimoniale from '../components/Testimoniale.astro';
+import { SITE, u } from '../data/site';
+
+const title = 'Cât Costă Reparația unui Televizor în 2026';
+const description = 'De ce costă atât reparația unui televizor: ce piesă s-a defectat, cât contează diagonala, de ce diferă devizele între service-uri și când nu merită reparat.';
+const canonical = new URL(Astro.url.pathname, SITE.domeniu).href;
+
+const faq = [
+  ['Cât costă reparația unui televizor, în medie?', 'Majoritatea reparațiilor pe care le facem se încadrează între 150 și 500 de lei, piesă și manoperă incluse. Sub 150 sunt intervențiile de software și curățarea, iar peste 500 ajunge practic doar înlocuirea panoului. Intervalul e larg pentru că prețul îl dă piesa defectă, nu diagonala sau marca.'],
+  ['De ce primesc devize atât de diferite de la service-uri diferite?', 'Pentru că nu toate repară același lucru. Un service care schimbă subansamblul întreg comandă o placă nouă și vă trece în deviz prețul ei. Noi înlocuim componenta defectă de pe placă, la microscop. Aceeași defecțiune, două costuri care pot să difere de două-trei ori.'],
+  ['Cât costă diagnosticarea?', 'Nimic. Venim, măsurăm, vă spunem ce are și cât costă. Dacă nu vă convine prețul sau alegeți să nu reparați, nu plătiți nimic — nici diagnosticarea, nici deplasarea.'],
+  ['Când nu merită reparat un televizor?', 'Când panoul e crăpat sau are pete întinse, pentru că panoul e cea mai scumpă parte din aparat. La un televizor ieftin de 40–50 de inch, un panou nou costă cât un aparat nou. Vă spunem asta la telefon sau la fața locului, înainte să demontăm ceva.'],
+  ['Se poate afla prețul înainte de a veni cineva?', 'Un interval, da. Dacă ne spuneți modelul de pe eticheta din spate și ce face aparatul, vă dăm la telefon o estimare destul de strânsă. Prețul exact îl dăm după ce măsurăm, pentru că același simptom poate veni din două piese diferite.'],
+  ['Prețul include piesa sau doar manopera?', 'Include tot: piesa, manopera, deplasarea și garanția scrisă de 6–12 luni. Nu adăugăm nimic peste devizul pe care l-ați acceptat.'],
+];
+
+const schemaExtra = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Acasă', item: SITE.domeniu + '/' },
+      { '@type': 'ListItem', position: 2, name: 'Prețuri reparații TV', item: SITE.domeniu + '/preturi-reparatii-tv/' },
+      { '@type': 'ListItem', position: 3, name: 'Cât costă reparația unui televizor', item: canonical },
+    ] },
+    { '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+  ],
+};
+---
+<Base title={title} description={description} schemaExtra={schemaExtra}>
+  <section class="hero-img"><div class="wrap">
+    <span class="badge">💰 Deviz gratuit · fără costuri ascunse</span>
+    <h1>Cât costă reparația unui televizor</h1>
+    <p class="lead">Răspunsul scurt: între 150 și 500 de lei pentru majoritatea defectelor, cu piesă, manoperă și garanție incluse. Răspunsul lung, adică de ce atât și de ce primiți devize diferite de la service-uri diferite, e mai jos.</p>
+    <a class="btn btn-white" href={SITE.telefonHref}>📞 {SITE.telefon}</a>
+    <a class="btn btn-wa" href={SITE.whatsapp} rel="noopener">💬 WhatsApp</a>
+  </div></section>
+  <Cifre />
+
+  <section class="sec"><div class="wrap">
+    <h2 style="margin-top:0">Prețul îl dă piesa defectă, nu diagonala</h2>
+    <p>Prima idee de care merită să vă despărțiți este că un televizor mare se repară scump și unul mic se repară ieftin. Nu așa funcționează. Un televizor de 75 de inch cu o sursă defectă costă la fel de mult ca unul de 43 cu aceeași problemă, pentru că se schimbă aceeași categorie de piesă și se lucrează la fel de mult. Diagonala contează abia când vorbim despre panou — adică despre ecranul propriu-zis.</p>
+    <p>Practic, cinci lucruri se defectează la un televizor, iar fiecare are alt preț:</p>
+    <ul>
+      <li><strong>Sursa de alimentare</strong> — 150–350 de lei. Cea mai frecventă defecțiune, de departe. Condensatori umflați, componente de comutație arse, uneori în urma unei supratensiuni. Se repară pe loc, în casă.</li>
+      <li><strong>Iluminarea (benzile LED, backlight)</strong> — 100–280 de lei. Televizorul are sunet, meniul se vede cu lanterna, dar ecranul e negru. Aici prețul chiar depinde de diagonală, pentru că se schimbă toate benzile.</li>
+      <li><strong>Placa principală</strong> — 200–500 de lei. Partea „inteligentă" a aparatului. Aici intră și problemele de memorie, resoftarea și partea de Smart TV.</li>
+      <li><strong>Placa T-CON</strong> — 120–300 de lei. Dungi verticale sau orizontale, jumătate de ecran întunecată, imagine dublată.</li>
+      <li><strong>Panoul (ecranul)</strong> — 500–1500 de lei. Singura piesă la care prețul depinde direct de diagonală și de tehnologie, și singura la care de multe ori răspunsul corect este „nu merită".</li>
+    </ul>
+    <p>La astea se adaugă lucrurile mărunte, care nu ajung niciodată la sute de lei: circuitul de sunet (80–200), partea de software și Wi-Fi (50–150), curățarea internă cu schimbarea pastei termice (60–120). Grila completă, cu garanțiile aferente, este pe pagina de <a href={u('preturi-reparatii-tv/')}>prețuri reparații TV</a>.</p>
+
+    <h2>De ce două service-uri vă dau două prețuri foarte diferite</h2>
+    <p>Asta e întrebarea pe care o primim cel mai des și merită un răspuns direct, pentru că diferența nu vine din lăcomie, ci din metodă.</p>
+    <p>Când o placă are o componentă arsă, există două feluri de a rezolva. Primul: comanzi o placă nouă, o montezi, gata. E rapid, nu cere aparatură și nu cere pregătire — dar plătiți o placă întreagă pentru o componentă de câțiva lei. Al doilea: găsești componenta defectă pe placă, o dezlipești și pui alta. Cere microscop, stație de aer cald, schemă electronică și timp — dar costă o fracțiune.</p>
+    <p>Noi lucrăm în al doilea fel. De aceea, la același simptom, devizul nostru poate fi de două-trei ori mai mic decât al unui service care schimbă subansamblul. Nu este o reducere și nu este o reparație „provizorie": componenta nouă e la fel de bună ca cea din placa nouă, iar garanția scrisă este aceeași de 6–12 luni.</p>
+    <p>Există și situația inversă, în care schimbarea plăcii chiar este soluția corectă — de exemplu când placa a luat apă și corodarea a mâncat traseele pe mai multe zone. Atunci vă spunem asta și vă spunem și cât costă, ca să decideți în cunoștință de cauză.</p>
+
+    <h2>Ce mai mișcă prețul, în afară de piesă</h2>
+    <p><strong>Vechimea aparatului.</strong> La un televizor de doi-trei ani piesele se găsesc ușor și repede. La unul de zece ani, o piesă originală poate să nu mai existe pe piață, iar atunci se caută o compatibilă sau se repară cea existentă — ceea ce înseamnă mai mult timp de lucru, chiar dacă piesa costă mai puțin.</p>
+    <p><strong>Cât de repede trebuie făcută.</strong> Dacă piesa e pe stoc, reparația se face din prima vizită și nu costă nimic în plus. Dacă trebuie comandată, așteptarea nu se plătește — dar de aceea vă cerem modelul exact înainte să pornim la drum, ca să vă spunem din start care dintre cele două situații e a dumneavoastră.</p>
+    <p><strong>Dacă se poate lucra acasă sau nu.</strong> Majoritatea reparațiilor se fac la domiciliu și asta nu schimbă prețul. Lucrările care cer bancul de lucru — reparații fine pe placă la microscop, memorie rescrisă, defecte care apar abia după un test lung — cer aducerea aparatului la atelier. Transportul îl facem noi, dus și întors, și nu îl plătiți.</p>
+    <p><strong>Diagnosticarea, în schimb, nu mișcă nimic:</strong> e gratuită și rămâne gratuită chiar dacă, după ce aflați prețul, hotărâți să nu reparați.</p>
+
+    <h2>Când nu merită reparat</h2>
+    <p>Un service care vă spune mereu „se repară" nu vă face un serviciu. Sunt situații în care răspunsul cinstit este altul, și preferăm să îl dăm la telefon decât după ce am demontat aparatul.</p>
+    <p>Regula pe care o aplicăm privește panoul. Panoul este cea mai scumpă parte a televizorului — undeva la jumătate din prețul unui aparat nou, uneori mai mult. Dacă panoul e crăpat, lovit sau are pete întinse care se măresc, înlocuirea lui pe un televizor de gamă medie nu are sens economic. Dacă panoul e în regulă, aproape orice altceva se repară rentabil, inclusiv pe aparate de opt-zece ani.</p>
+    <p>Semnele că panoul e problema: o crăpătură vizibilă, o pată închisă care crește, o zonă cu culori „scurse", urma unei lovituri. Semnele că panoul e bun și defectul e în altă parte: ecran complet negru dar cu sunet, aparat care nu pornește deloc, dungi care apar și dispar, imagine care se stinge după câteva minute.</p>
+    <p>Merită spus și invers: un televizor bun de acum șapte-opt ani, cu o sursă de 200 de lei, este aproape întotdeauna o reparație care se justifică. Televizoarele din generația aceea au adesea panouri mai bune decât modelele ieftine de azi.</p>
+
+    <h2>Cum aflați prețul pentru cazul dumneavoastră</h2>
+    <p>Sunați și spuneți-ne două lucruri: modelul exact, de pe eticheta din spatele televizorului, și ce face aparatul. Cu astea două vă dăm la telefon un interval realist și vă spunem dacă avem piesa pe stoc.</p>
+    <p>Apoi venim, măsurăm și vă dăm devizul exact. Dacă îl acceptați, reparăm — de regulă în aceeași vizită. Dacă nu, nu plătiți nimic și nu insistăm. Prețul din deviz este prețul final: include piesa, manopera, deplasarea și garanția scrisă.</p>
+
+    <h2>Întrebări frecvente despre costul reparației</h2>
+    {faq.map(([q, a]) => <div style="margin:0 0 16px"><h3 style="margin:0 0 4px;font-size:17px">{q}</h3><p style="margin:0">{a}</p></div>)}
+  </div></section>
+
+  <section class="sec"><div class="wrap"><Testimoniale /></div></section>
+  <section class="sec"><div class="wrap"><Cta titlu="Spuneți-ne modelul și vă dăm prețul" text="Estimare la telefon, deviz exact după diagnosticare. Ambele gratuite." /></div></section>
+</Base>
