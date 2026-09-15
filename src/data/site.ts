@@ -107,3 +107,36 @@ export const SCHEMA_LOCALBUSINESS = {
   },
   sameAs: ['https://www.google.com/maps?cid=3284667601974338277'],
 };
+
+export const OFERTE: [string, number, number, string][] = [
+  ['Diagnosticare la domiciliu', 0, 0, 'Identificarea defecțiunii, fără costuri și fără obligații'],
+  ['Înlocuire sursă de alimentare', 150, 350, 'Cea mai frecventă defecțiune. Garanție 12 luni'],
+  ['Înlocuire placă principală (main board)', 200, 500, 'Diagnoză completă și programare. Garanție 12 luni'],
+  ['Reparare backlight / benzi LED', 100, 280, 'Ecran negru cu sunet prezent. Garanție 6 luni'],
+  ['Reparare placă T-CON', 120, 300, 'Dungi pe ecran, imagine parțială. Garanție 6 luni'],
+  ['Înlocuire panou LCD/OLED', 500, 1500, 'Depinde de diagonală și model. Garanție 12 luni'],
+  ['Reparare circuit audio', 80, 200, 'Amplificator, difuzoare, cablu flex. Garanție 6 luni'],
+  ['Service software / Smart TV', 50, 150, 'Resetare, update firmware, Wi-Fi. Garanție 3 luni'],
+  ['Curățare internă și service general', 60, 120, 'Condensatori, pastă termică. Garanție 3 luni'],
+];
+
+export const SCHEMA_OFERTE = {
+  '@context': 'https://schema.org',
+  '@type': 'OfferCatalog',
+  name: 'Prețuri reparații televizoare București',
+  url: 'https://www.reparatiitvbucuresti.ro/preturi-reparatii-tv/',
+  provider: { '@id': 'https://www.reparatiitvbucuresti.ro/#business' },
+  itemListElement: OFERTE.map(([nume, min, max, desc], i) => ({
+    '@type': 'Offer',
+    position: i + 1,
+    name: nume,
+    description: desc,
+    priceCurrency: 'RON',
+    availability: 'https://schema.org/InStock',
+    areaServed: [{ '@type': 'City', name: 'București' }, { '@type': 'AdministrativeArea', name: 'Județul Ilfov' }],
+    itemOffered: { '@type': 'Service', name: nume, serviceType: 'Reparații televizoare', provider: { '@id': 'https://www.reparatiitvbucuresti.ro/#business' } },
+    ...(min === 0 && max === 0
+      ? { price: '0', priceSpecification: { '@type': 'PriceSpecification', price: '0', priceCurrency: 'RON' } }
+      : { priceSpecification: { '@type': 'PriceSpecification', minPrice: String(min), maxPrice: String(max), priceCurrency: 'RON', valueAddedTaxIncluded: true } }),
+  })),
+};
