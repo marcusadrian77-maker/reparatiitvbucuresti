@@ -1,0 +1,85 @@
+---
+import Base from '../layouts/Base.astro';
+import Cifre from '../components/Cifre.astro';
+import Cta from '../components/Cta.astro';
+import Testimoniale from '../components/Testimoniale.astro';
+import { SITE, u } from '../data/site';
+
+const title = 'Înlocuire Leduri TV București – 100–280 lei';
+const description = 'Înlocuire leduri TV la domiciliu în București și Ilfov: 100–280 lei, garanție 6 luni. Ce înseamnă concret la 32, 55 sau 75 de inch și când mergem în atelier.';
+const canonical = new URL(Astro.url.pathname, SITE.domeniu).href;
+
+const faq = [
+  ['Cât costă înlocuirea ledurilor?', '100–280 de lei, cu barete noi, manoperă și 6 luni garanție. Diferența o face diagonala: la 32 de inch se schimbă două-trei barete, la 65 pot fi zece sau mai multe.'],
+  ['Se poate face la mine acasă?', 'Până la 55 de inch, de regulă da, dacă avem o masă liberă și lumină. Peste diagonala asta preferăm atelierul din Militari, iar transportul dus-întors îl facem noi și nu îl plătiți.'],
+  ['De ce nu schimbați doar ledul ars?', 'Pentru că ledurile de pe barete au aceeași vechime și au stat la aceeași temperatură. Cel care a cedat a fost doar primul; următorul urmează la scurt timp. Ar însemna să desfacem aparatul a doua oară peste o lună, cu încă un risc pentru panou.'],
+  ['Cât ține reparația?', 'Baretele noi au aceeași durată de viață ca cele originale, adică ani de zile. Verificăm și driverul care le alimentează — dacă el le-a ars, trimițând un curent prea mare, baretele noi ar păți la fel, așa că nu are rost să îl ignorăm.'],
+  ['Găsiți piese și pentru un televizor de opt-zece ani?', 'Aproape întotdeauna. Baretele se produc în continuare pentru majoritatea modelelor vândute în România, iar noi lucrăm cu ASWO, cel mai mare importator de componente din Europa. Ne spuneți modelul și verificăm pe loc.'],
+];
+
+const schemaExtra = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'Service', name: 'Înlocuire leduri TV', serviceType: 'Înlocuire benzi LED televizor', description, url: canonical,
+      areaServed: [{ '@type': 'City', name: 'București' }, { '@type': 'AdministrativeArea', name: 'Județul Ilfov' }],
+      provider: { '@id': SITE.domeniu + '/#business' },
+      offers: { '@type': 'Offer', priceCurrency: 'RON', priceSpecification: { '@type': 'PriceSpecification', minPrice: '100', maxPrice: '280', priceCurrency: 'RON' } } },
+    { '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Acasă', item: SITE.domeniu + '/' },
+      { '@type': 'ListItem', position: 2, name: 'Prețuri reparații TV', item: SITE.domeniu + '/preturi-reparatii-tv/' },
+      { '@type': 'ListItem', position: 3, name: 'Înlocuire leduri TV', item: canonical },
+    ] },
+    { '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+  ],
+};
+---
+<Base title={title} description={description} schemaExtra={schemaExtra}>
+  <section class="hero-img"><div class="wrap">
+    <span class="badge">💡 100–280 lei · garanție 6 luni</span>
+    <h1>Înlocuire leduri TV</h1>
+    <p class="lead">Un televizor LED nu luminează prin ecran, ci prin niște barete ascunse în spatele lui. Când acelea se sting, aparatul pare mort deși merge perfect — și e cea mai frecventă intervenție pe care o facem prin București, de obicei terminată din prima vizită.</p>
+    <a class="btn btn-white" href={SITE.telefonHref}>📞 {SITE.telefon}</a>
+    <a class="btn btn-wa" href={SITE.whatsapp} rel="noopener">💬 WhatsApp</a>
+  </div></section>
+  <Cifre />
+
+  <section class="sec"><div class="wrap">
+    <h2 style="margin-top:0">Ce înseamnă concret, pe diagonale</h2>
+    <p>Prețul și felul în care decurge lucrarea depind aproape exclusiv de cât de mare e televizorul. Iată ce înseamnă în practică:</p>
+    <p><strong>32–43 de inch.</strong> Două-trei barete, un panou ușor de manevrat de o singură persoană, lucrare de aproximativ o oră. Se face la dumneavoastră acasă, pe orice masă liberă. Costul stă în partea de jos a intervalului.</p>
+    <p><strong>49–55 de inch.</strong> Cinci-opt barete, panou care cere deja două mâini atente la ridicare. Tot la domiciliu, dacă există o suprafață suficient de mare — o masă de bucătărie nu mai ajunge, e nevoie de una de living sau de masa de călcat plus o pătură.</p>
+    <p><strong>65–75 de inch și peste.</strong> Zece barete sau mai multe, iar panoul devine o foaie care se sprijină pe propria ramă. Aici recomandăm atelierul: la dimensiunile astea, o fisură apărută la manevrare înseamnă exact paguba pe care voiam să o evităm. Transportul îl asigurăm noi, dus și întors, și nu îl plătiți.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>De ce se schimbă toate baretele</h2>
+    <p>Ledurile de pe o baretă sunt legate în serie, ca beculețele vechi de brad: când unul se întrerupe, întreg șirul se stinge. Ledul ars se poate găsi și înlocui individual — dar n-ar rezolva nimic pe termen lung.</p>
+    <p>Gândiți-vă că toate au fost aprinse în aceeași zi, câte ore a stat televizorul pornit, la aceeași căldură. Cel care s-a întrerupt nu era defect din fabrică — era doar cu un pas înaintea vecinilor lui. Înlocuindu-l singur, cumpărați câteva săptămâni și un al doilea drum al nostru, cu încă o demontare a panoului.</p>
+    <p>De aceea schimbăm setul complet și verificăm, de fiecare dată, driverul care alimentează baretele. Dacă el este cel care le-a ars — trimițând un curent mai mare decât trebuie — baretele noi ar avea exact aceeași soartă.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Semnele că ledurile sunt vinovate</h2>
+    <ul>
+      <li><strong>Ecran negru cu sunet prezent</strong> — semnul clasic. Detaliat în <a href={u('televizorul-se-aude-dar-nu-se-vede/')}>televizorul se aude dar nu se vede</a>.</li>
+      <li><strong>Imaginea apare două-trei secunde și apoi ecranul se stinge</strong> — driverul intră în protecție.</li>
+      <li><strong>Un colț sau o margine rămâne în umbră</strong>, în timp ce restul ecranului arată normal — a cedat o singură baretă.</li>
+      <li><strong>Totul pare filmat pe întuneric</strong>, oricât dați luminozitatea mai sus; baretele îmbătrânite scad treptat înainte de a se stinge de tot.</li>
+      <li><strong>Zone albicioase, ca niște halouri</strong> — folia care împrăștie lumina s-a ondulat de la căldură. O îndreptăm cu aceeași ocazie.</li>
+    </ul>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Preț, garanție și ce include</h2>
+    <p>Intervalul este <strong>100–280 de lei</strong>. În el intră baretele, munca, verificarea driverului și <strong>6 luni de garanție scrisă</strong>. Nu plătiți deplasarea în București și Ilfov, nici diagnosticarea, nici dacă hotărâți să nu reparați.</p>
+    <p>Restul intervențiilor sunt pe pagina de <a href={u('preturi-reparatii-tv/')}>prețuri reparații TV</a>. Dacă vă interesează cum se formează prețul unei reparații în general, e explicat în <a href={u('cat-costa-reparatia-unui-televizor/')}>cât costă reparația unui televizor</a>.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Întrebări frecvente</h2>
+    {faq.map(([q, a]) => <div style="margin:0 0 16px"><h3 style="margin:0 0 4px;font-size:17px">{q}</h3><p style="margin:0">{a}</p></div>)}
+  </div></section>
+
+  <section class="sec"><div class="wrap"><Testimoniale /></div></section>
+  <section class="sec"><div class="wrap"><Cta titlu="Leduri arse la televizor?" text="Spuneți-ne modelul și diagonala. Verificăm stocul de barete cât vorbim la telefon." /></div></section>
+</Base>
