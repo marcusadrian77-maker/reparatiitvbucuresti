@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import Cifre from '../components/Cifre.astro';
 import Cta from '../components/Cta.astro';
 import Testimoniale from '../components/Testimoniale.astro';
-import { u } from '../data/site';
+import { u, SCHEMA_OFERTE } from '../data/site';
 const title = 'Prețuri Reparații TV & Console • Reparatii Tv Bucuresti';
 const description = 'Prețuri orientative reparații televizoare și console gaming în București. Diagnosticare gratuită, deviz gratuit, plătiți doar dacă funcționează.';
 const tv = [
@@ -26,7 +26,7 @@ const console = [
   ['Curățare & mentenanță orice consolă', '60 – 120', '3 luni', 'Pastă termică, curățare ventilator'],
 ];
 ---
-<Base title={title} description={description}>
+<Base title={title} description={description} schemaExtra={SCHEMA_OFERTE}>
   <section class="hero-img">
     <div class="wrap">
       <span class="badge">💰 Tarife transparente</span>
@@ -61,6 +61,8 @@ const console = [
         <div class="card-soft"><strong>Deplasare gratuită (TV)</strong><span>Ne deplasăm gratuit în București și Ilfov.</span></div>
         <div class="card-soft"><strong>Plătiți doar dacă funcționează</strong><span>Nu plătiți nimic dacă nu reparăm televizorul.</span></div>
       </div>
+
+      <p style="margin-top:18px">Dacă vă întrebați de ce costă atât și de ce primiți devize diferite de la service-uri diferite, am explicat pe larg în <a href={u('cat-costa-reparatia-unui-televizor/')}>cât costă reparația unui televizor</a>.</p>
     </div>
   </section>
 
