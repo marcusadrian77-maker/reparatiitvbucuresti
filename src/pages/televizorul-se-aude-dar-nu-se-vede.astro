@@ -1,0 +1,82 @@
+---
+import Base from '../layouts/Base.astro';
+import Cifre from '../components/Cifre.astro';
+import Cta from '../components/Cta.astro';
+import Testimoniale from '../components/Testimoniale.astro';
+import { SITE, u } from '../data/site';
+
+const title = 'Televizorul Se Aude Dar Nu Se Vede – Reparăm Acasă';
+const description = 'Ecran negru cu sunet prezent: ce măsurăm în prima jumătate de oră la dumneavoastră acasă, ce se repară pe loc și cât costă. Deplasare și diagnostic gratuit.';
+const canonical = new URL(Astro.url.pathname, SITE.domeniu).href;
+
+const faq = [
+  ['Se repară acasă sau trebuie dus în atelier?', 'În majoritatea cazurilor acasă. Înlocuirea benzilor de iluminare la un televizor de până la 55 de inch se face pe loc, dacă avem unde așeza aparatul. Peste diagonala asta preferăm atelierul, pentru că panoul e mare, subțire și se fisurează ușor — iar transportul îl facem noi, gratuit, dus și întors.'],
+  ['Cât durează?', 'Dacă piesa e pe stoc și lucrăm la domiciliu, între o oră și două. De aceea vă cerem modelul la telefon: verificăm stocul înainte de a porni, ca să terminăm din prima vizită.'],
+  ['Cât costă?', 'Iluminarea cu benzi LED: 100–280 de lei, garanție 6 luni. Sursa de alimentare: 150–350 de lei, garanție 12 luni. Placa principală: 200–500 de lei. Diagnosticarea și deplasarea sunt gratuite, indiferent dacă alegeți să reparați.'],
+  ['De unde știți că e iluminarea și nu panoul, fără să demontați?', 'Din trei lucruri: comportamentul la pornire, ce se vede când luminăm ecranul dintr-un unghi și, decisiv, consumul măsurat pe alimentarea benzilor. Un panou defect și o iluminare defectă arată la fel pentru ochi, dar complet diferit pe aparat.'],
+  ['Dacă panoul e spart, tot veniți?', 'Venim și vă spunem asta pe loc, gratuit. Nu vă cerem nimic pentru deplasare și nu insistăm cu o reparație care nu are sens economic — la un panou nou costul se apropie de prețul unui aparat nou.'],
+];
+
+const schemaExtra = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Acasă', item: SITE.domeniu + '/' },
+      { '@type': 'ListItem', position: 2, name: 'Reparații televizoare', item: SITE.domeniu + '/reparatii-televizoare/' },
+      { '@type': 'ListItem', position: 3, name: 'Televizorul se aude dar nu se vede', item: canonical },
+    ] },
+    { '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+  ],
+};
+---
+<Base title={title} description={description} schemaExtra={schemaExtra}>
+  <section class="hero-img"><div class="wrap">
+    <span class="badge">📺 Reparăm la dumneavoastră acasă</span>
+    <h1>Televizorul se aude dar nu se vede</h1>
+    <p class="lead">Sunetul merge, telecomanda răspunde, ecranul rămâne negru. E defectul pe care îl vedem cel mai des și, în cele mai multe cazuri, îl rezolvăm în aceeași vizită — fără să mutați televizorul de la locul lui.</p>
+    <a class="btn btn-white" href={SITE.telefonHref}>📞 {SITE.telefon}</a>
+    <a class="btn btn-wa" href={SITE.whatsapp} rel="noopener">💬 WhatsApp</a>
+  </div></section>
+  <Cifre />
+
+  <section class="sec"><div class="wrap">
+    <h2 style="margin-top:0">Ce facem în prima jumătate de oră, la dumneavoastră acasă</h2>
+    <p>Pe pagina asta nu vă cerem să diagnosticați singur. Vă spunem, în schimb, exact ce se întâmplă când ajungem — pentru că oamenii ne întreabă des dacă „se poate face acasă" sau dacă televizorul trebuie neapărat cărat undeva.</p>
+    <p><strong>Întâi ne uităm la comportamentul la pornire.</strong> Un televizor la care s-a stins iluminarea pornește normal: ledul de stare se aprinde, se aud sunetele de meniu, unele modele arată chiar imaginea două-trei secunde înainte de a se face negru. Asta ne spune că placa principală și sursa lucrează, deci partea electronică grea e sănătoasă.</p>
+    <p><strong>Apoi verificăm dacă imaginea se formează.</strong> O sursă de lumină puternică, ținută oblic pe ecran, arată conținutul ca o umbră dacă panoul e bun. Este același test pe care îl puteți face și dumneavoastră cu lanterna telefonului, iar dacă îl faceți înainte să sunați, ne scurtați amândurora drumul.</p>
+    <p><strong>La final măsurăm.</strong> Aici se termină presupunerile: verificăm tensiunea și consumul pe circuitul care alimentează benzile de iluminare. Un panou defect și o iluminare defectă arată identic pentru ochi, dar dau cifre complet diferite pe aparat. Abia după măsurătoare vă spunem ce are și cât costă.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Ce se repară pe loc și ce merge în atelier</h2>
+    <p>Regula ține de diagonală, nu de complexitatea defectului.</p>
+    <p><strong>Până la 55 de inch</strong>, lucrarea se face de regulă la dumneavoastră: televizorul se așază cu fața în jos pe o masă acoperită, se scot rama și panoul, se schimbă benzile, se testează și se remontează. Avem nevoie doar de o suprafață liberă și de lumină.</p>
+    <p><strong>Peste 55 de inch</strong>, preferăm atelierul din Militari. Panoul unui televizor mare e o foaie subțire care se sprijină pe propria ramă; manevrat pe o masă prea mică sau fără sprijin uniform, se fisurează — iar o fisură înseamnă exact paguba pe care încercam să o evităm. Îl luăm, îl reparăm și îl aducem înapoi montat, iar transportul nu îl plătiți.</p>
+    <p>Decizia o luăm împreună la telefon, după ce ne spuneți diagonala și modelul.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Prețurile pentru acest defect</h2>
+    <p>Cauza obișnuită, iluminarea, se încadrează între 100 și 280 de lei și are 6 luni de garanție. Când baretele sunt bune dar nu ajunge tensiune până la ele, vinovată e alimentarea, iar acolo vorbim de 150 până la 350 de lei, cu garanție de 12 luni. Mai rar se întâmplă ca semnalul video să nu plece deloc din placa principală, caz în care intervalul urcă la 200–500.</p>
+    <p>Rămâne panoul, singura variantă neplăcută: 500 până la 1500 de lei, în funcție de diagonală. Este exact situația în care vă spunem, de regulă, că nu are rost — și v-o spunem înainte de a demonta ceva.</p>
+    <p>Grila completă este pe pagina de <a href={u('preturi-reparatii-tv/')}>prețuri reparații TV</a>, iar explicația pe larg a felului în care se formează prețul e în <a href={u('cat-costa-reparatia-unui-televizor/')}>cât costă reparația unui televizor</a>.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Ce ne spuneți la telefon ca să venim pregătiți</h2>
+    <p>Trei informații ne lasă să verificăm stocul și să ajungem cu piesa potrivită:</p>
+    <ul>
+      <li><strong>Modelul exact</strong>, de pe eticheta din spatele televizorului — nu doar marca și diagonala.</li>
+      <li><strong>Ce face la pornire</strong>: rămâne negru din prima, sau arată imaginea câteva secunde și apoi se stinge.</li>
+      <li><strong>Dacă ați încercat testul cu lanterna</strong> și ce ați văzut.</li>
+    </ul>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Întrebări frecvente</h2>
+    {faq.map(([q, a]) => <div style="margin:0 0 16px"><h3 style="margin:0 0 4px;font-size:17px">{q}</h3><p style="margin:0">{a}</p></div>)}
+  </div></section>
+
+  <section class="sec"><div class="wrap"><Testimoniale /></div></section>
+  <section class="sec"><div class="wrap"><Cta titlu="Ecran negru dar televizorul se aude?" text="Spuneți-ne modelul și venim cu piesa. Deplasare și diagnostic gratuite." /></div></section>
+</Base>
