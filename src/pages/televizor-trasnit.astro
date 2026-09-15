@@ -1,0 +1,87 @@
+---
+import Base from '../layouts/Base.astro';
+import Cifre from '../components/Cifre.astro';
+import Cta from '../components/Cta.astro';
+import Testimoniale from '../components/Testimoniale.astro';
+import { SITE, u } from '../data/site';
+
+const title = 'Televizor Trăsnit după Furtună – Service București';
+const description = 'Televizorul nu mai pornește după furtună? Ce arde de fapt, de ce panoul rămâne de obicei intact și cât costă reparația. Deplasare gratuită în București.';
+const canonical = new URL(Astro.url.pathname, SITE.domeniu).href;
+
+const faq = [
+  ['Se mai repară un televizor trăsnit?', 'Aproape întotdeauna. Supratensiunea arde prima componentă din drum — de obicei sursa de alimentare — iar panoul, adică partea scumpă, rămâne intact. Exact de aceea reparația are sens economic în marea majoritate a cazurilor.'],
+  ['Cât costă?', 'Sursă de alimentare 150–350 de lei cu garanție 12 luni, placă principală 200–500 de lei. Dacă a intrat prin antenă și a afectat tunerul, intervenția intră tot în reparația plăcii. Diagnosticarea și deplasarea sunt gratuite.'],
+  ['Am mai multe aparate stricate din aceeași furtună. Le verificați pe toate?', 'Da, la aceeași deplasare, fără cost suplimentar. Se întâmplă des: dacă supratensiunea a venit prin rețea, în aceeași casă cedează de obicei mai multe aparate în aceeași seară.'],
+  ['Merită să încerc să-l pornesc din nou, poate își revine?', 'Nu. Dacă în sursă a rămas o componentă în scurtcircuit, fiecare încercare poate împinge defectul mai departe, către placa principală — adică de la o reparație de 200 de lei către una de 500. Scoateți-l din priză și sunați.'],
+  ['Asigurarea acoperă paguba?', 'Depinde de poliță, dar multe asigurări de locuință acoperă daunele produse de supratensiune. Vă dăm documentul de constatare cu defectul identificat, dacă aveți nevoie de el pentru dosar.'],
+];
+
+const schemaExtra = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Acasă', item: SITE.domeniu + '/' },
+      { '@type': 'ListItem', position: 2, name: 'Reparații televizoare', item: SITE.domeniu + '/reparatii-televizoare/' },
+      { '@type': 'ListItem', position: 3, name: 'Televizor trăsnit', item: canonical },
+    ] },
+    { '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+  ],
+};
+---
+<Base title={title} description={description} schemaExtra={schemaExtra}>
+  <section class="hero-img"><div class="wrap">
+    <span class="badge">⚡ După furtună · deplasare gratuită</span>
+    <h1>Televizor trăsnit după furtună</h1>
+    <p class="lead">După fiecare furtună serioasă din București primim în aceeași săptămână un val de televizoare care „nu mai pornesc deloc". Vestea bună, repetată de fiecare dată: descărcarea arde prima piesă din drum, nu tot aparatul.</p>
+    <a class="btn btn-white" href={SITE.telefonHref}>📞 {SITE.telefon}</a>
+    <a class="btn btn-wa" href={SITE.whatsapp} rel="noopener">💬 WhatsApp</a>
+  </div></section>
+  <Cifre />
+
+  <section class="sec"><div class="wrap">
+    <h2 style="margin-top:0">Ce vedem după fiecare furtună</h2>
+    <p>Tiparul se repetă an de an, iar din el se pot învăța câteva lucruri utile.</p>
+    <p><strong>Cel mai des cedează sursa de alimentare.</strong> Televizorul nu mai dă niciun semn, sau ledul de stare clipește într-un ritm neobișnuit. Este exact ce ar trebui să se întâmple: în sursă există componente al căror rol e să cedeze primele, ca o siguranță, tocmai ca supratensiunea să nu ajungă mai departe.</p>
+    <p><strong>La casele cu antenă de exterior, povestea e alta.</strong> Acolo descărcarea intră prin cablul coaxial direct în tuner. Televizorul pornește normal, dar nu mai prinde niciun canal, iar uneori mufa de antenă e vizibil înnegrită. E o pagubă mai urâtă, dar tot reparabilă.</p>
+    <p><strong>Rar, dar se întâmplă, arde și placa principală.</strong> Aparatul pornește greu, se blochează sau pierde funcții. Și aici lucrăm la nivel de componentă, nu schimbăm placa întreagă dacă nu e nevoie.</p>
+    <p>Ce rămâne aproape mereu întreg este <strong>panoul</strong>. Asta e diferența dintre „televizor trăsnit" și „televizor de aruncat": partea cea mai scumpă a aparatului nu se află pe drumul descărcării.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Semnul că mai multe aparate din casă au pățit-o</h2>
+    <p>Când supratensiunea vine prin rețeaua electrică, nu alege. Aproape de fiecare dată, clientul ne spune la telefon doar de televizor, iar când ajungem aflăm că în aceeași seară au cedat și routerul, și o sursă de calculator, și uneori un cuptor cu microunde.</p>
+    <p>Dacă vă recunoașteți în situația asta, spuneți-ne de la telefon: verificăm toate aparatele la aceeași deplasare, fără cost în plus. Nu are rost să ne chemați a doua oară peste o săptămână, când descoperiți că mai e ceva.</p>
+    <p>Este și un indiciu util pentru diagnostic: dacă doar televizorul a pățit-o, iar restul casei e în regulă, e mai probabil ca descărcarea să fi venit prin antenă, nu prin priză.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Ce faceți până ajungem</h2>
+    <ul>
+      <li><strong>Scoateți-l din priză și din cablul de antenă.</strong> Amândouă, nu doar una.</li>
+      <li><strong>Nu îl porniți repetat.</strong> Dacă o componentă a rămas în scurtcircuit, fiecare încercare duce defectul mai departe.</li>
+      <li><strong>Nu îl desfaceți.</strong> În sursă rămân condensatori încărcați și după deconectare, iar tensiunea din ei e periculoasă.</li>
+      <li><strong>Notați modelul</strong> de pe etichetă și, dacă aveți, faceți o poză spatelui aparatului, inclusiv mufa de antenă.</li>
+    </ul>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Prețuri și garanție</h2>
+    <p>O sursă refăcută vă costă între 150 și 350 de lei, iar dacă a fost atinsă și placa principală, intrăm în intervalul 200–500. Ambele vin cu garanție scrisă de 12 luni.</p>
+    <p>Lucrăm pe componentă oriunde se poate, și tocmai la aparatele lovite de supratensiune diferența e cea mai vizibilă: de foarte multe ori a cedat o singură piesă de câțiva lei, iar un service care ar înlocui placa întreagă v-ar trece în deviz un cost de câteva ori mai mare.</p>
+    <p>Grila completă e pe <a href={u('preturi-reparatii-tv/')}>prețuri reparații TV</a>, iar logica prețului e explicată în <a href={u('cat-costa-reparatia-unui-televizor/')}>cât costă reparația unui televizor</a>.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Cum evitați repetarea</h2>
+    <p>Împotriva unui trăsnet direct nu există protecție sigură, dar practic tot ce ajunge la noi vine din descărcări indirecte — iar acelea se opresc ușor. În timpul furtunilor, scoateți televizorul din priză și deconectați antena. Pentru situațiile în care nu sunteți acasă, o priză cu protecție la supratensiune costă puțin. La casele cu antenă pe acoperiș, merită montat un descărcător pe cablu, o singură dată.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Întrebări frecvente</h2>
+    {faq.map(([q, a]) => <div style="margin:0 0 16px"><h3 style="margin:0 0 4px;font-size:17px">{q}</h3><p style="margin:0">{a}</p></div>)}
+  </div></section>
+
+  <section class="sec"><div class="wrap"><Testimoniale /></div></section>
+  <section class="sec"><div class="wrap"><Cta titlu="Televizor stricat după furtună?" text="Verificăm toate aparatele afectate la aceeași deplasare. Diagnostic gratuit." /></div></section>
+</Base>
