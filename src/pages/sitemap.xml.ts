@@ -16,7 +16,7 @@ const EXCLUSE = new Set([
 
 const PRIORITATE: Record<string, string> = {
   '': '1.0',
-  'preturi-reparatii-tv': '0.9', 'cat-costa-reparatia-unui-televizor': '0.9', 'televizorul-se-aude-dar-nu-se-vede': '0.8', 'televizor-trasnit': '0.8', 'inlocuire-leduri-tv': '0.8', 'contact': '0.9', 'sectoare': '0.9',
+  'preturi-reparatii-tv': '0.9', 'cat-costa-reparatia-unui-televizor': '0.9', 'televizorul-se-aude-dar-nu-se-vede': '0.8', 'televizor-trasnit': '0.8', 'inlocuire-leduri-tv': '0.8', 'televizorul-se-vede-albastru': '0.8', 'contact': '0.9', 'sectoare': '0.9',
   'reparatii-televizoare-samsung': '0.9', 'reparatii-televizoare-lg': '0.9',
   'reparatii-televizoare-sector-1': '0.9', 'reparatii-televizoare-sector-2': '0.9',
   'reparatii-televizoare-sector-3': '0.9', 'reparatii-televizoare-sector-4': '0.9',
@@ -31,7 +31,7 @@ export async function GET() {
     '', 'despre-noi', 'preturi-reparatii-tv', 'cum-decurge-procesul-de-reparatie', 'contact',
     'sectoare', 'zone-deservite-strazi-bucuresti', 'reparatii-televizoare', 'cum-ajungeti-la-atelier',
     'cat-costa-reparatia-unui-televizor',
-    'televizorul-se-aude-dar-nu-se-vede', 'televizor-trasnit', 'inlocuire-leduri-tv',
+    'televizorul-se-aude-dar-nu-se-vede', 'televizor-trasnit', 'inlocuire-leduri-tv', 'televizorul-se-vede-albastru',
     'reparatii-televizoare-samsung', 'reparatii-televizoare-lg',
     'reparatii-televizoare-sector-1', 'reparatii-televizoare-sector-2', 'reparatii-televizoare-sector-3',
     'reparatii-televizoare-sector-4', 'reparatii-televizoare-sector-5', 'reparatii-televizoare-sector-6',
