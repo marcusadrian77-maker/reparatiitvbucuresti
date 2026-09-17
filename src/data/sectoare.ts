@@ -20,7 +20,7 @@ const comun: [string, string][] = [];
 export const SECTOARE: Record<number, Sector> = {
   1: {
     nr: 1,
-    slug: 'reparatii-televizoare-sector-1',
+    slug: 'reparatii-tv-sector-1',
     titlu: 'Reparații TV Sector 1 – Service Televizoare la Domiciliu',
     descriere: 'Service TV la domiciliu în Sectorul 1: Aviației, Dorobanți, Floreasca, Băneasa, Primăverii. Deplasare și diagnosticare gratuite, garanție 6–12 luni.',
     intro: 'Sectorul 1 este zona în care avem cele mai multe intervenții pe televizoare de generație recentă — OLED și QLED de diagonală mare, montate pe perete în apartamente și case din Primăverii, Floreasca, Aviației și Pipera. Sunt aparate scumpe, la care o reparație corectă costă o fracțiune din prețul unui înlocuitor, iar demontarea de pe suport cere două persoane și atenție la panou.',
@@ -43,7 +43,7 @@ export const SECTOARE: Record<number, Sector> = {
   },
   2: {
     nr: 2,
-    slug: 'reparatii-televizoare-sector-2',
+    slug: 'reparatii-tv-sector-2',
     titlu: 'Reparații TV Sector 2 – Service Televizoare la Domiciliu',
     descriere: 'Service TV la domiciliu în Sectorul 2: Colentina, Tei, Pantelimon, Iancului, Obor. Deplasare și diagnosticare gratuite, garanție 6–12 luni.',
     intro: 'Sectorul 2 are un fond locativ foarte amestecat — blocuri de patru etaje pe Colentina și Pantelimon, case pe Vatra Luminoasă, ansambluri noi pe Barbu Văcărescu și Dimitrie Pompeiu. Pe măsură ce vechimea aparatelor crește, cresc și defecțiunile de sursă și de backlight, care sunt exact tipul de reparație care se face rapid și ieftin la domiciliu.',
@@ -66,7 +66,7 @@ export const SECTOARE: Record<number, Sector> = {
   },
   3: {
     nr: 3,
-    slug: 'reparatii-televizoare-sector-3',
+    slug: 'reparatii-tv-sector-3',
     titlu: 'Reparații TV Sector 3 – Service Televizoare la Domiciliu',
     descriere: 'Service TV la domiciliu în Sectorul 3: Titan, Dristor, Vitan, Unirii, Centrul Vechi. Deplasare și diagnosticare gratuite, garanție 6–12 luni.',
     intro: 'Sectorul 3 este cel mai populat din București și, implicit, sectorul din care primim cele mai multe solicitări. Zona Titan–Dristor–Balta Albă este densă, cu blocuri construite în aceeași perioadă și cu televizoare de vârste apropiate — vedem defecțiuni care se repetă de la un apartament la altul, ceea ce ne permite să venim cu piesele potrivite din prima.',
@@ -89,7 +89,7 @@ export const SECTOARE: Record<number, Sector> = {
   },
   4: {
     nr: 4,
-    slug: 'reparatii-televizoare-sector-4',
+    slug: 'reparatii-tv-sector-4',
     titlu: 'Reparații TV Sector 4 – Service Televizoare la Domiciliu',
     descriere: 'Service TV la domiciliu în Sectorul 4: Berceni, Tineretului, Văcărești, Olteniței, Giurgiului. Deplasare și diagnosticare gratuite, garanție 6–12 luni.',
     intro: 'Sectorul 4 combină cartiere consolidate — Berceni, Giurgiului, Olteniței — cu ansambluri noi ridicate în ultimii ani în jurul Metalurgiei și al Șoselei Berceni. Asta înseamnă și televizoare vechi, la care intervenim pe sursă și backlight, și aparate recente, la care majoritatea problemelor sunt de software Smart TV și se rezolvă în mai puțin de o oră.',
@@ -112,7 +112,7 @@ export const SECTOARE: Record<number, Sector> = {
   },
   5: {
     nr: 5,
-    slug: 'reparatii-televizoare-sector-5',
+    slug: 'reparatii-tv-sector-5',
     titlu: 'Reparații TV Sector 5 – Service Televizoare la Domiciliu',
     descriere: 'Service TV la domiciliu în Sectorul 5: Rahova, Ferentari, Cotroceni, 13 Septembrie, Panduri. Deplasare și diagnosticare gratuite, garanție 6–12 luni.',
     intro: 'Sectorul 5 se întinde de la Cotroceni și 13 Septembrie, zone cu locuințe bine întreținute și televizoare de gamă medie și înaltă, până la Rahova și Ferentari, unde predomină aparatele mai vechi. Diferența se vede în tipul lucrărilor: în prima zonă lucrăm mai mult pe Smart TV și pe panouri mari, în a doua pe surse, condensatori și iluminare.',
@@ -135,7 +135,7 @@ export const SECTOARE: Record<number, Sector> = {
   },
   6: {
     nr: 6,
-    slug: 'reparatii-televizoare-sector-6',
+    slug: 'reparatii-tv-sector-6',
     titlu: 'Reparații TV Sector 6 – Service Televizoare la Domiciliu',
     descriere: 'Service TV la domiciliu în Sectorul 6: Militari, Drumul Taberei, Crângași, Giulești, Ghencea. Deplasare și diagnosticare gratuite, garanție 6–12 luni.',
     intro: 'Sectorul 6 înseamnă în primul rând Militari și Drumul Taberei — două cartiere mari, cu mii de apartamente și cu un parc de televizoare care acoperă practic toate generațiile din ultimii cincisprezece ani. Ne deplasăm zilnic pe Iuliu Maniu, Timișoara și Drumul Taberei, așa că, dacă sunați dimineața, sunt șanse mari să fim deja în zonă.',
