@@ -12,7 +12,7 @@ import { ARTICOLE_3 } from '../data/articole-3';
 const EXCLUSE = new Set([
   'reparatii-televizoare-sector-1', 'reparatii-televizoare-sector-2', 'reparatii-televizoare-sector-3',
   'reparatii-televizoare-sector-4', 'reparatii-televizoare-sector-5', 'reparatii-televizoare-sector-6',
-  'reparatii-tv', 'best-buget-tv', 'cel-mai-bun-raport-calitate-pret-la-un-tv-high-end', 'regele-imaginii',
+  'reparatii-tv', 'reparatii-televizoare', 'best-buget-tv', 'cel-mai-bun-raport-calitate-pret-la-un-tv-high-end', 'regele-imaginii',
 ]);
 
 const PRIORITATE: Record<string, string> = {
@@ -23,14 +23,14 @@ const PRIORITATE: Record<string, string> = {
   'reparatii-tv-sector-3': '0.9', 'reparatii-tv-sector-4': '0.9',
   'reparatii-tv-sector-5': '0.9', 'reparatii-tv-sector-6': '0.9',
   'despre-noi': '0.7', 'cum-decurge-procesul-de-reparatie': '0.7',
-  'zone-deservite-strazi-bucuresti': '0.7', 'reparatii-tv': '0.7', 'reparatii-televizoare': '0.7',
+  'zone-deservite-strazi-bucuresti': '0.7',
 };
 
 export async function GET() {
   const base = SITE.domeniu.replace(/\/$/, '');
   const fixed = [
     '', 'despre-noi', 'preturi-reparatii-tv', 'cum-decurge-procesul-de-reparatie', 'contact',
-    'sectoare', 'zone-deservite-strazi-bucuresti', 'reparatii-televizoare', 'cum-ajungeti-la-atelier',
+    'sectoare', 'zone-deservite-strazi-bucuresti', 'cum-ajungeti-la-atelier',
     'cat-costa-reparatia-unui-televizor',
     'televizorul-se-aude-dar-nu-se-vede', 'televizor-trasnit', 'inlocuire-leduri-tv', 'televizorul-se-vede-albastru',
     'reparatii-televizoare-samsung', 'reparatii-televizoare-lg',
