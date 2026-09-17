@@ -142,7 +142,7 @@ const isBrand = false;
 const crumbs: { name: string; item: string }[] = [{ name: 'Acasă', item: SITE.domeniu + '/' }];
 if (isLocatie) crumbs.push({ name: 'Zone deservite', item: SITE.domeniu + '/zone-deservite-strazi-bucuresti/' });
 if (!isLocatie && art && art.slugMarca) crumbs.push({ name: `Reparații TV ${art.marca}`, item: SITE.domeniu + '/' + art.slugMarca + '/' });
-if (sect) crumbs.push({ name: 'Sector ' + sect, item: SITE.domeniu + '/reparatii-televizoare-sector-' + sect + '/' });
+if (sect) crumbs.push({ name: 'Sector ' + sect, item: SITE.domeniu + '/reparatii-tv-sector-' + sect + '/' });
 crumbs.push({ name: isLocatie ? eticheta : (art!.eModel ? `${art!.marca} ${art!.model}` : nume), item: canonical });
 
 const graph: any[] = [{
@@ -312,7 +312,7 @@ const schemaExtra = { '@context': 'https://schema.org', '@graph': graph };
       <p>{introTxt}</p>
       <p>{detaliuTxt}</p>
       {cartiere && (
-        <p>{eticheta} se află în <a href={u('reparatii-televizoare-sector-' + sect + '/')}>Sectorul {sect}</a>, zonă pe care o acoperim integral — inclusiv {cartiere.slice(0, 5).join(', ')} și împrejurimile.</p>
+        <p>{eticheta} se află în <a href={u('reparatii-tv-sector-' + sect + '/')}>Sectorul {sect}</a>, zonă pe care o acoperim integral — inclusiv {cartiere.slice(0, 5).join(', ')} și împrejurimile.</p>
       )}
       {inIlfov && (
         <p>{eticheta} este una dintre localitățile din județul Ilfov unde ne deplasăm fără cost suplimentar. Distanța față de București nu schimbă prețul intervenției.</p>
