@@ -25,7 +25,12 @@ export default defineConfig({
     // Pagina-tampon fara continut propriu
     '/acasa/': '/',
     // Pagina duplicata: /reparatii-tv/ era identica cu /reparatii-televizoare/
-    '/reparatii-tv/': '/reparatii-televizoare/',
+    '/reparatii-tv/': '/',
+    // 17 septembrie 2026: /reparatii-televizoare/ era geamana homepage-ului (aceleasi
+    // sectiuni, titluri oglindite) si aduna 0 clicuri / 24 afisari in 6 luni, in timp ce
+    // imparteau intre ele semnalul pe "reparatii tv" / "reparatii televizoare".
+    // Continutul util a fost mutat pe homepage, care acum detine singur termenul.
+    '/reparatii-televizoare/': '/',
     // Erori 404 din Search Console (aug 2026): atasamente de imagini WordPress,
     // feed-uri si cai imbricate vechi -> pagina echivalenta sau parintele
     '/adancimea-de-culoare/2_bit/': '/adancimea-de-culoare/',
@@ -98,8 +103,8 @@ export default defineConfig({
     '/reparatii-televizoare-sector-6/reparatii-tv-sector6-min/': '/reparatii-tv-sector-6/',
     '/reparatii-televizoare-sony/sony-2-min-1/': '/reparatii-televizoare-sony/',
     '/reparatii-televizoare-sony/sony-2-min/': '/reparatii-televizoare-sony/',
-    '/reparatii-televizoare/reparatii-televizoare-bucuresti/harta-bucuresti/': '/reparatii-televizoare/',
-    '/reparatii-televizoare/smart-tv/': '/reparatii-televizoare/',
+    '/reparatii-televizoare/reparatii-televizoare-bucuresti/harta-bucuresti/': '/',
+    '/reparatii-televizoare/smart-tv/': '/',
     '/reparatii-televizor-led-lg-43lj500v/lg-43lj500v-min/': '/reparatii-televizor-led-lg-43lj500v/',
     '/reparatii-televizor-led-panasonic-tx-40gx820e/panasonic-tx-40gx820e-mic-min/': '/reparatii-televizor-led-panasonic-tx-40gx820e/',
     '/reparatii-televizor-led-panasonic-viera-tx-32es510/panasonic-32es510-mic-min/': '/reparatii-televizor-led-panasonic-viera-tx-32es510/',
@@ -203,7 +208,7 @@ export default defineConfig({
     '/reparatii-tv-sector-6/reparatii-tv-calea-plevnei/': '/reparatii-tv-calea-plevnei/',
     '/reparatii-tv-sector-6/reparatii-tv-soseaua-virtutii/': '/reparatii-tv-soseaua-virtutii/',
     '/reparatii-tv-tcl/tcl-2/': '/reparatii-tv-tcl/',
-    '/reparatii-tv/telecomanda/': '/reparatii-televizoare/',
+    '/reparatii-tv/telecomanda/': '/',
     '/resetarea-din-fabrica-a-tv-ului-samsung/resetare-din-fabrica-min/': '/resetarea-din-fabrica-a-tv-ului-samsung/',
     '/resetarea-din-fabrica-si-instrumente-de-autodiagnosticare-pe-televizorul-samsung-partea-i/qled-tv-network-status-tets/': '/resetarea-din-fabrica-si-instrumente-de-autodiagnosticare-pe-televizorul-samsung-partea-i/',
     '/resetarea-din-fabrica-si-instrumente-de-autodiagnosticare-pe-televizorul-samsung-partea-i/qled-tv-reset-smart-hub/': '/resetarea-din-fabrica-si-instrumente-de-autodiagnosticare-pe-televizorul-samsung-partea-i/',
