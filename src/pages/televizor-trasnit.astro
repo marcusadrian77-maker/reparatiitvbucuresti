@@ -22,8 +22,7 @@ const schemaExtra = {
   '@graph': [
     { '@type': 'BreadcrumbList', itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Acasă', item: SITE.domeniu + '/' },
-      { '@type': 'ListItem', position: 2, name: 'Reparații televizoare', item: SITE.domeniu + '/reparatii-televizoare/' },
-      { '@type': 'ListItem', position: 3, name: 'Televizor trăsnit', item: canonical },
+      { '@type': 'ListItem', position: 2, name: 'Televizor trăsnit', item: canonical },
     ] },
     { '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
   ],
