@@ -59,7 +59,7 @@ const total = toate.length;
 
     {peSector.map(s => (
       <div style="margin:26px 0">
-        <h2><a href={u('reparatii-televizoare-sector-' + s.nr + '/')}>Reparații TV Sector {s.nr}</a></h2>
+        <h2><a href={u('reparatii-tv-sector-' + s.nr + '/')}>Reparații TV Sector {s.nr}</a></h2>
         {s.cartiere.length > 0 && <p style="margin:6px 0 10px">Cartiere acoperite: {s.cartiere.join(', ')}.</p>}
         {s.zone.length > 0 && (
           <div class="grid g3" style="gap:6px 18px">
