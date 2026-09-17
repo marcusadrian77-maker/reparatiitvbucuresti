@@ -7,6 +7,7 @@ import { SITE, u } from '../data/site';
 import { SECTOARE } from '../data/sectoare';
 import { LISTA_BRANDURI } from '../data/branduri';
 import { LOCATII } from '../data/locatii';
+import { PRETURI } from '../data/continut-loc';
 import { numeLoc } from '../data/strazi';
 
 const ilfov = LOCATII.map(([sl, nm]) => ({ sl, ...numeLoc(sl, nm) }))
@@ -82,6 +83,33 @@ const faqSchema = {
       <h2>Cum lucrăm</h2>
       <p>Venim la dumneavoastră acasă cu trusa completă — stație de lipit, osciloscop, sursă de laborator pentru testarea baretelor LED și programator de memorie eMMC — plus un stoc de piese uzuale în mașină. Din acest motiv, în cele mai multe cazuri reparația se termină la prima vizită, fără ca televizorul să părăsească locuința.</p>
       <p>Diagnosticarea o facem în fața dumneavoastră: deschidem aparatul, măsurăm și vă arătăm componenta defectă. Abia apoi vorbim despre preț, iar suma comunicată este cea finală. Dacă nu vă convine sau dacă reparația nu merită economic, vă spunem direct și nu plătiți nimic.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <h2>Cât costă o reparație TV</h2>
+      <p>Intervalele de mai jos acoperă marea majoritate a intervențiilor pe care le facem într-o lună obișnuită. Includ manopera și piesa. Prețul exact îl aflați după diagnosticare, care este gratuită și se face în fața dumneavoastră.</p>
+      <table style="width:100%;border-collapse:collapse;margin:12px 0">
+        <tbody>
+          {PRETURI.map(x => (
+            <tr style="border-bottom:1px solid #e6ecf4">
+              <td style="padding:9px 6px">{x[0]}</td>
+              <td style="padding:9px 6px;text-align:right;white-space:nowrap"><strong>{x[1]}</strong></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p style="font-size:14px;color:#5a6b80;margin-top:-4px">Grila completă, pe tipuri de defect și diagonale, e pe pagina de <a href={u('preturi-reparatii-tv/')}>prețuri reparații TV</a>.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <h2>Când merită reparat un televizor și când nu</h2>
+      <p>Regula pe care o aplicăm de ani de zile: dacă panoul e bun, reparația aproape întotdeauna merită. Panoul — sticla propriu-zisă — este 60–70% din valoarea unui televizor. Tot ce se află în spatele lui (sursa de alimentare, placa principală, placa T-CON, baretele LED, circuitul audio) sunt piese care se repară sau se înlocuiesc cu o fracțiune din prețul unui aparat nou.</p>
+      <p>De aceea un televizor de 55 de inch care nu mai pornește merită reparat chiar dacă are șase-șapte ani: sursa costă 150–350 de lei, iar aparatul echivalent nou costă de zece ori mai mult. La fel, un ecran care s-a întunecat treptat înseamnă aproape sigur barete LED obosite, nu panou mort — o intervenție de 100–280 de lei.</p>
+      <p>Vă spunem deschis și când nu merită. Un panou crăpat sau lovit nu se repară, se înlocuiește, iar panoul nou costă mai mult decât un televizor nou de aceeași diagonală. Același lucru la aparatele mici, sub 32 de inch, unde orice reparație de placă se apropie de prețul unui model nou. În cazurile astea vă spunem la telefon, înainte să ne deplasăm, ca să nu pierdeți timpul.</p>
     </div>
   </section>
 
