@@ -35,12 +35,12 @@ export const NAV_BRANDURI = [
 ]
 
 export const NAV_SECTOARE = [
-  { href: u('reparatii-televizoare-sector-1/'), label: 'Sector 1' },
-  { href: u('reparatii-televizoare-sector-2/'), label: 'Sector 2' },
-  { href: u('reparatii-televizoare-sector-3/'), label: 'Sector 3' },
-  { href: u('reparatii-televizoare-sector-4/'), label: 'Sector 4' },
-  { href: u('reparatii-televizoare-sector-5/'), label: 'Sector 5' },
-  { href: u('reparatii-televizoare-sector-6/'), label: 'Sector 6' },
+  { href: u('reparatii-tv-sector-1/'), label: 'Sector 1' },
+  { href: u('reparatii-tv-sector-2/'), label: 'Sector 2' },
+  { href: u('reparatii-tv-sector-3/'), label: 'Sector 3' },
+  { href: u('reparatii-tv-sector-4/'), label: 'Sector 4' },
+  { href: u('reparatii-tv-sector-5/'), label: 'Sector 5' },
+  { href: u('reparatii-tv-sector-6/'), label: 'Sector 6' },
 ];
 
 export const STRAZI_PRINCIPALE: Record<string, string[]> = {
