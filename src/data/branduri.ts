@@ -176,6 +176,6 @@ export const LISTA_BRANDURI = Object.values(BRANDURI);
 export const PAGINI_PROPRII = new Set([
   'reparatii-televizoare-samsung', 'reparatii-televizoare-lg', 'reparatii-televizoare-sony',
   'reparatii-televizoare-philips', 'reparatii-tv-panasonic', 'reparatii-televizoare-horizon',
-  'reparatii-televizoare-sector-1', 'reparatii-televizoare-sector-2', 'reparatii-televizoare-sector-3',
-  'reparatii-televizoare-sector-4', 'reparatii-televizoare-sector-5', 'reparatii-televizoare-sector-6',
+  'reparatii-tv-sector-1', 'reparatii-tv-sector-2', 'reparatii-tv-sector-3',
+  'reparatii-tv-sector-4', 'reparatii-tv-sector-5', 'reparatii-tv-sector-6',
 ]);
