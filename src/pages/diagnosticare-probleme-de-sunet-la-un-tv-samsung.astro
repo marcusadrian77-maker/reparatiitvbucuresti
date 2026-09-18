@@ -1,0 +1,87 @@
+---
+import Base from '../layouts/Base.astro';
+import Cifre from '../components/Cifre.astro';
+import Cta from '../components/Cta.astro';
+import Testimoniale from '../components/Testimoniale.astro';
+import { SITE, u } from '../data/site';
+
+const title = 'De ce nu se aude sunetul la televizorul Samsung';
+const description = 'Nu se aude sunetul la televizorul Samsung? Setările de sunet care îl opresc, testul de sunet din meniu și defectele reale: amplificator, difuzoare, placă.';
+const canonical = new URL(Astro.url.pathname, SITE.domeniu).href;
+
+const faq = [
+  ['De ce nu se aude sunetul la televizorul Samsung, deși volumul e dat tare?', 'Cel mai des, ieșirea de sunet nu mai este setată pe difuzoarele televizorului: după ce ați conectat un soundbar, căști Bluetooth sau un receiver, televizorul trimite sunetul acolo. Verificați în Setări → Sunet → Ieșire sunet și alegeți Difuzor TV.'],
+  ['Cum fac testul de sunet pe un televizor Samsung?', 'Setări → Asistență → Îngrijire dispozitiv → Autodiagnosticare → Test sunet. Televizorul redă o melodie prin difuzoare. Dacă melodia se aude curat, televizorul e bun și problema e la sursă sau la setări; dacă nu se aude sau se aude distorsionat, defectul e în televizor.'],
+  ['Sunetul se aude la canale, dar nu în aplicații sau pe HDMI. De ce?', 'E o problemă de format audio, nu de defect. Unele surse trimit sunet Dolby sau DTS pe care ieșirea aleasă nu îl poate reda. Încercați în Setări → Sunet → Setări expert să schimbați formatul de ieșire audio digitală pe PCM sau Automat.'],
+  ['Sunetul pârâie sau dispare după ce televizorul se încălzește. Ce e?', 'Aproape sigur un defect de hardware: amplificatorul audio de pe placa principală, o lipitură care se desprinde la cald sau un difuzor deteriorat. Reparația circuitului audio costă între 80 și 200 de lei, cu garanție 6 luni.'],
+  ['Resetarea televizorului rezolvă problema de sunet?', 'Doar dacă problema vine din setări. Încercați întâi resetarea doar a sunetului (Setări → Sunet → Setări expert → Resetare sunet), care nu șterge canalele și aplicațiile. Dacă nici testul de sunet nu se aude, resetarea completă nu va ajuta.'],
+];
+
+const schemaExtra = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Acasă', item: SITE.domeniu + '/' },
+      { '@type': 'ListItem', position: 2, name: 'Reparații televizoare Samsung', item: SITE.domeniu + '/reparatii-televizoare-samsung/' },
+      { '@type': 'ListItem', position: 3, name: 'Nu se aude sunetul la TV Samsung', item: canonical },
+    ] },
+    { '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+  ],
+};
+---
+<Base title={title} description={description} schemaExtra={schemaExtra}>
+  <section class="hero-img"><div class="wrap">
+    <span class="badge">🔇 Samsung fără sunet · diagnoză gratuită</span>
+    <h1>De ce nu se aude sunetul la televizorul Samsung</h1>
+    <p class="lead">Imaginea e perfectă, dar sunetul lipsește, pârâie sau vine doar din când în când. În jumătate din cazurile pentru care suntem chemați, cauza este o setare. Iată cum le despărțiți pe cele două, înainte să plătiți o deplasare.</p>
+    <a class="btn btn-white" href={SITE.telefonHref}>📞 {SITE.telefon}</a>
+    <a class="btn btn-wa" href={SITE.whatsapp} rel="noopener">💬 WhatsApp</a>
+  </div></section>
+  <Cifre />
+
+  <section class="sec"><div class="wrap">
+    <h2 style="margin-top:0">Primul lucru de verificat: unde trimite televizorul sunetul</h2>
+    <p>Televizoarele Samsung țin minte ultimul dispozitiv audio conectat. Dacă ați folosit vreodată un soundbar, căști Bluetooth sau un sistem home cinema, televizorul poate trimite în continuare sunetul acolo, chiar dacă dispozitivul e oprit sau deconectat.</p>
+    <p>Mergeți în <strong>Setări → Sunet → Ieșire sunet</strong> și alegeți <strong>Difuzor TV</strong>. Pe modelele mai vechi, opțiunea se numește „Selectare difuzor" și se află tot în meniul Sunet. Este, de departe, cea mai frecventă cauză pentru care un televizor Samsung „nu mai are sonor".</p>
+    <p>Două verificări la fel de simple: butonul <strong>Mute</strong> (pe telecomenzile Samsung noi, sunetul se oprește și prin simpla apăsare a butonului de volum, ușor de făcut din greșeală) și sursa — dacă sunetul lipsește doar pe o intrare HDMI sau doar într-o aplicație, televizorul e bun.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Testul de sunet din meniul Samsung</h2>
+    <p>Samsung are un test integrat care separă clar problemele de setări de defectele de hardware:</p>
+    <ol>
+      <li>Deschideți <strong>Setări</strong> și selectați <strong>Asistență</strong>.</li>
+      <li>Selectați <strong>Îngrijire dispozitiv</strong> (pe unele modele, direct <strong>Asistență</strong>).</li>
+      <li>Alegeți <strong>Autodiagnosticare</strong>, apoi <strong>Test sunet</strong>.</li>
+    </ol>
+    <p>Televizorul redă o melodie direct prin difuzoarele proprii, ocolind orice sursă externă. <strong>Dacă melodia se aude curat</strong>, difuzoarele și amplificatorul sunt bune, iar problema e la setări, la cablu sau la dispozitivul conectat. <strong>Dacă nu se aude nimic, se aude distorsionat sau doar dintr-o parte</strong>, defectul e în televizor și nu se rezolvă din meniu.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Setările de sunet care merită știute</h2>
+    <p>Pe lângă ieșirea audio, câteva setări din <strong>Setări → Sunet</strong> explică majoritatea plângerilor de tipul „se aude ciudat":</p>
+    <ul>
+      <li><strong>Mod sunet</strong> — Standard, Optimizat sau Amplificare. Modul Amplificare scoate vocile în față, dar la volum mare poate părea distorsionat.</li>
+      <li><strong>Setări expert → Format ieșire audio digitală</strong> — dacă aveți sunet la canale, dar nu în Netflix sau pe consolă, puneți-l pe PCM sau Automat.</li>
+      <li><strong>Setări expert → Întârziere audio</strong> — dacă sunetul nu e sincronizat cu buzele, mai ales pe un soundbar.</li>
+      <li><strong>Volum automat</strong> — egalizează diferențele dintre canale; dacă sunetul „urcă și coboară" singur, încercați să-l opriți.</li>
+      <li><strong>Setări expert → Resetare sunet</strong> — readuce doar sunetul la valorile din fabrică, fără să șteargă canalele, aplicațiile sau conturile.</li>
+    </ul>
+    <p>Denumirile diferă puțin de la un an de fabricație la altul. Dacă nu găsiți o opțiune, pagina de <a href={u('resetarea-din-fabrica-si-instrumente-de-autodiagnosticare-pe-televizorul-samsung-partea-i/')}>resetare TV Samsung</a> explică unde se află meniurile pe generațiile mai vechi.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Când e un defect real</h2>
+    <p>Semnele care nu se rezolvă din setări: sunetul pârâie la orice volum; dispare după 20–30 de minute de funcționare și revine după o pauză; se aude un bâzâit constant, chiar cu volumul la zero; sunetul vine doar dintr-un difuzor; testul de sunet din meniu nu se aude deloc.</p>
+    <p>În ordinea frecvenței, găsim: <strong>amplificatorul audio</strong> de pe placa principală, care cedează mai ales după o supratensiune; <strong>lipituri fisurate</strong> care își pierd contactul la cald; <strong>difuzoarele</strong> propriu-zise, cu membrana deteriorată; și, mai rar, cablul dintre placă și difuzoare. Reparația circuitului audio costă între 80 și 200 de lei, cu garanție 6 luni, și se face de regulă pe loc, la dumneavoastră acasă.</p>
+    <p>Dacă și imaginea are probleme — tremură sau pâlpâie — citiți și <a href={u('resetarea-din-fabrica-si-instrumente-de-autodiagnosticare-pe-televizorul-samsung-partea-ii/')}>de ce tremură imaginea la televizorul Samsung</a>. Toate reparațiile pe această marcă sunt pe pagina de <a href={u('reparatii-televizoare-samsung/')}>reparații televizoare Samsung</a>.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Întrebări frecvente</h2>
+    {faq.map(([q, a]) => <div style="margin:0 0 16px"><h3 style="margin:0 0 4px;font-size:17px">{q}</h3><p style="margin:0">{a}</p></div>)}
+  </div></section>
+
+  <section class="sec"><div class="wrap"><Testimoniale /></div></section>
+  <section class="sec"><div class="wrap"><Cta titlu="Televizorul Samsung nu mai are sunet?" text="Dacă testul de sunet nu se aude, venim noi. Diagnostic și deplasare gratuite." /></div></section>
+</Base>
