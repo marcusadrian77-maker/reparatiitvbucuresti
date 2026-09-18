@@ -179,3 +179,11 @@ export const PAGINI_PROPRII = new Set([
   'reparatii-tv-sector-1', 'reparatii-tv-sector-2', 'reparatii-tv-sector-3',
   'reparatii-tv-sector-4', 'reparatii-tv-sector-5', 'reparatii-tv-sector-6',
 ]);
+
+/** Articole vechi rescrise ca pagini .astro proprii, pe aceeași adresă (slug → titlul afișat în liste). */
+export const RESCRISE = new Map<string, string>([
+  ['televizorul-tau-nu-se-mai-aprinde', 'Televizorul nu se mai aprinde'],
+  ['diagnosticare-probleme-de-sunet-la-un-tv-samsung', 'De ce nu se aude sunetul la televizorul Samsung'],
+  ['resetarea-din-fabrica-si-instrumente-de-autodiagnosticare-pe-televizorul-samsung-partea-i', 'Resetare TV Samsung: din meniu, telecomandă sau butoane'],
+  ['resetarea-din-fabrica-si-instrumente-de-autodiagnosticare-pe-televizorul-samsung-partea-ii', 'De ce tremură imaginea la televizorul Samsung'],
+]);
