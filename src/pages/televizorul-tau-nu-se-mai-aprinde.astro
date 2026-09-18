@@ -1,0 +1,92 @@
+---
+import Base from '../layouts/Base.astro';
+import Cifre from '../components/Cifre.astro';
+import Cta from '../components/Cta.astro';
+import Testimoniale from '../components/Testimoniale.astro';
+import { SITE, u } from '../data/site';
+
+const title = 'Televizorul nu se mai aprinde? Samsung, LG, Sony, Philips';
+const description = 'Televizorul nu se mai aprinde sau ecranul rămâne negru? Ce vă spune ledul de standby, ce verificați singuri și cât costă reparația. Deplasare gratuită.';
+const canonical = new URL(Astro.url.pathname, SITE.domeniu).href;
+
+const faq = [
+  ['De ce nu se mai aprinde televizorul dintr-odată, deși aseară mergea?', 'Cel mai des cedează sursa de alimentare: un condensator sau o componentă de protecție ajunge la capătul vieții și aparatul nu mai pornește de pe o zi pe alta. Nu e un semn că televizorul e „terminat" — sursa este una dintre cele mai ieftine reparații, 150–350 de lei cu garanție 12 luni.'],
+  ['Ledul roșu e aprins, dar televizorul nu pornește. Ce înseamnă?', 'Că aparatul primește curent și partea de standby a sursei funcționează. Rămân de verificat telecomanda (se testează cu camera telefonului), butonul fizic de pe televizor și, dacă nici acela nu îl pornește, partea principală a sursei sau placa de bază.'],
+  ['Ledul clipește și televizorul nu pornește. E grav?', 'Clipirea înseamnă de obicei că televizorul încearcă să pornească, detectează o problemă și se oprește singur, ca protecție. La multe mărci, numărul de clipiri este chiar un cod de eroare. Cauza poate fi sursa, benzile LED sau placa principală — se stabilește la diagnoză, care este gratuită.'],
+  ['Se aude sunetul, dar ecranul nu se aprinde. E același defect?', 'Nu. Dacă aveți sunet, televizorul pornește; cea care nu se aprinde este iluminarea din spatele ecranului, adică benzile LED sau driverul lor. Este o reparație diferită, de 100–280 de lei, explicată pe pagina despre televizorul care se aude dar nu se vede.'],
+  ['Merită reparat un televizor care nu se mai aprinde?', 'În marea majoritate a cazurilor, da: defectul e în sursă sau pe placă, iar panoul — partea scumpă — este intact. Nu merită doar când panoul este spart fizic sau când costul lui se apropie de prețul unui televizor nou. Vă spunem asta la diagnoză, înainte de orice lucrare.'],
+];
+
+const schemaExtra = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Acasă', item: SITE.domeniu + '/' },
+      { '@type': 'ListItem', position: 2, name: 'Televizorul nu se mai aprinde', item: canonical },
+    ] },
+    { '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+  ],
+};
+---
+<Base title={title} description={description} schemaExtra={schemaExtra}>
+  <section class="hero-img"><div class="wrap">
+    <span class="badge">🔌 Nu pornește · diagnoză gratuită</span>
+    <h1>Televizorul nu se mai aprinde</h1>
+    <p class="lead">Ați apăsat pe telecomandă și nu se întâmplă nimic, sau ecranul rămâne negru. Înainte să vă gândiți la un televizor nou: în majoritatea cazurilor defectul este în sursă sau pe o placă, iar ecranul în sine este bun.</p>
+    <a class="btn btn-white" href={SITE.telefonHref}>📞 {SITE.telefon}</a>
+    <a class="btn btn-wa" href={SITE.whatsapp} rel="noopener">💬 WhatsApp</a>
+  </div></section>
+  <Cifre />
+
+  <section class="sec"><div class="wrap">
+    <h2 style="margin-top:0">Primul indiciu: ce face ledul de standby</h2>
+    <p>Aproape orice televizor are un led mic, de obicei roșu, pe rama de jos. Starea lui spune mai mult decât orice altă verificare și este primul lucru pe care vi-l cerem la telefon.</p>
+    <h3>Ledul nu se aprinde deloc</h3>
+    <p>Televizorul nu primește curent sau sursa lui nu mai scoate nici măcar tensiunea de standby. Verificați întâi priza cu alt aparat și scoateți prelungitorul din schemă. Dacă priza e bună și ledul tot nu se aprinde, defectul este aproape sigur în sursa de alimentare.</p>
+    <h3>Ledul e aprins, dar televizorul nu pornește</h3>
+    <p>Partea de standby funcționează, deci televizorul „așteaptă" o comandă pe care fie nu o primește, fie nu o poate executa. Încercați butonul fizic de pe aparat — la Samsung e de obicei sub siglă, pe mijloc, la LG și Philips în spate sau sub rama de jos. Dacă pornește din buton, problema e la telecomandă. Dacă nu pornește nici așa, e o problemă a sursei principale sau a plăcii de bază.</p>
+    <h3>Ledul clipește</h3>
+    <p>Televizorul încearcă să pornească, detectează ceva în neregulă și se oprește singur, ca să se protejeze. Multe mărci folosesc numărul de clipiri ca un cod: Sony, de exemplu, repetă un număr fix de clipiri roșii, iar numărul indică zona defectă. Numărați clipirile și spuneți-ni-le la telefon — ne ajută să venim cu piesa potrivită.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>„Nu se aprinde ecranul", dar se aude sunetul</h2>
+    <p>Mulți clienți ne spun că televizorul nu se aprinde, iar la întrebarea „se aude ceva?" răspunsul e da. Atunci televizorul pornește, doar că ecranul rămâne negru — și e cu totul alt defect: nu mai funcționează iluminarea din spatele panoului.</p>
+    <p>Testul durează zece secunde: apropiați lanterna telefonului de ecran, în unghi. Dacă distingeți imaginea, foarte slab, în spatele sticlei, panoul e bun și s-au ars benzile LED sau driverul lor. Detaliile sunt pe pagina <a href={u('televizorul-se-aude-dar-nu-se-vede/')}>televizorul se aude, dar nu se vede</a>, iar despre reparația propriu-zisă, pe <a href={u('inlocuire-leduri-tv/')}>înlocuire leduri TV</a>.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Ce verificați singuri, în cinci minute</h2>
+    <ul>
+      <li><strong>Priza și prelungitorul.</strong> Conectați televizorul direct în perete, într-o priză verificată cu alt aparat. Prelungitoarele cu protecție la supratensiune se uzează și nu mai livrează curent suficient.</li>
+      <li><strong>Deconectare completă un minut.</strong> Scoateți ștecărul, așteptați 60 de secunde, apoi reconectați. Uneori televizorul rămâne blocat într-o stare de eroare, iar descărcarea completă îl readuce la normal.</li>
+      <li><strong>Telecomanda.</strong> Priviți ledul din vârful ei prin camera telefonului și apăsați un buton. Dacă nu vedeți nicio lumină pe ecranul telefonului, schimbați bateriile.</li>
+      <li><strong>Sursa de semnal.</strong> Dacă la pornire ledul se stinge și se aude un „clic", dar ecranul rămâne negru, apăsați butonul Source sau Home: uneori televizorul e pornit pe o intrare HDMI fără semnal și pare mort.</li>
+      <li><strong>Mirosul.</strong> Dacă simțiți miros de ars sau ați auzit un pocnet, nu mai încercați să-l porniți. Scoateți-l din priză și sunați.</li>
+    </ul>
+    <p>Dacă după aceste verificări televizorul tot nu se aprinde, defectul e în interior. Nu desfaceți carcasa: în sursă rămân condensatori încărcați și după deconectare.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Pe mărci: ce vedem cel mai des</h2>
+    <p><strong>Samsung.</strong> Cea mai frecventă situație este televizorul care nu se mai aprinde deloc sau care face un „clic" repetat din spate și nu pornește — sursa încearcă să pornească și se oprește. La modelele de 4–8 ani, un motiv frecvent este consumul crescut al benzilor LED îmbătrânite, care pune sursa în protecție. Detalii pe pagina de <a href={u('reparatii-televizoare-samsung/')}>reparații televizoare Samsung</a>.</p>
+    <p><strong>LG.</strong> Ledul rămâne aprins, televizorul nu reacționează la telecomandă și nici la butonul de sub ramă. De obicei e sursa sau placa principală; la modelele OLED, prudență suplimentară: dacă ecranul pornește și se stinge după câteva secunde, aparatul poate fi în protecție pentru panou. Vezi <a href={u('reparatii-televizoare-lg/')}>reparații televizoare LG</a>.</p>
+    <p><strong>Sony.</strong> Aici ledul roșu care clipește de un număr fix de ori, cu o pauză între serii, este un cod de autodiagnosticare. Numărul de clipiri ne spune de la telefon dacă e sursa, placa sau iluminarea. Vezi <a href={u('reparatii-televizoare-sony/')}>reparații televizoare Sony</a>.</p>
+    <p><strong>Philips.</strong> La modelele cu Android TV întâlnim des televizoare care rămân blocate la pornire sau se sting singure după siglă — nu e întotdeauna un defect de hardware, uneori memoria sistemului e coruptă și se rezolvă prin rescrierea software-ului. Vezi <a href={u('reparatii-televizoare-philips/')}>reparații televizoare Philips</a>.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Ce se repară și cât costă</h2>
+    <p>La un televizor care nu se mai aprinde, în ordinea frecvenței, găsim: sursa de alimentare, cu o reparație între 150 și 350 de lei și garanție 12 luni; placa principală, între 200 și 500 de lei, tot cu 12 luni garanție; iluminarea ecranului, când se aude sunetul, între 100 și 280 de lei; și, mai rar, o problemă de software, între 50 și 150 de lei.</p>
+    <p>Lucrăm pe componentă: dacă pe sursă a cedat o piesă, schimbăm piesa, nu toată placa. De aici diferențele mari de preț față de devizele care propun direct „placă nouă". Logica e explicată pe larg în <a href={u('cat-costa-reparatia-unui-televizor/')}>cât costă reparația unui televizor</a>, iar grila completă e pe <a href={u('preturi-reparatii-tv/')}>prețuri reparații TV</a>.</p>
+    <p>Diagnosticarea și deplasarea sunt gratuite în București și Ilfov. Majoritatea televizoarelor care nu se aprind se repară pe loc, la dumneavoastră acasă.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Întrebări frecvente</h2>
+    {faq.map(([q, a]) => <div style="margin:0 0 16px"><h3 style="margin:0 0 4px;font-size:17px">{q}</h3><p style="margin:0">{a}</p></div>)}
+  </div></section>
+
+  <section class="sec"><div class="wrap"><Testimoniale /></div></section>
+  <section class="sec"><div class="wrap"><Cta titlu="Televizorul nu se mai aprinde?" text="Spuneți-ne ce face ledul de standby și venim cu piesa potrivită. Diagnostic gratuit." /></div></section>
+</Base>
