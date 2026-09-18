@@ -9,7 +9,7 @@ import { ARTICOLE_2 } from '../data/articole-2';
 import { ARTICOLE_3 } from '../data/articole-3';
 import { numeLoc, SECTOR, CARTIERE_SECTOR, CANONIC, alege, unul } from '../data/strazi';
 import { INTRO, DETALII, PROBLEME, PRETURI, PASI, FAQ, MARCI } from '../data/continut-loc';
-import { PAGINI_PROPRII, BRANDURI } from '../data/branduri';
+import { PAGINI_PROPRII, BRANDURI, RESCRISE } from '../data/branduri';
 import { curataHtml, infoArticol } from '../data/articole-util';
 import { GLOSAR, LISTE_MODELE, modeleMarca, ZONE_ARTICOL } from '../data/hub';
 import { SECUNDARE } from '../data/secundare';
@@ -18,7 +18,7 @@ import { specModel, textVechime, textDiagonala, textPlatforma, textPanou } from 
 
 export function getStaticPaths() {
   const ARTICOLE = [...ARTICOLE_1, ...ARTICOLE_2, ...ARTICOLE_3];
-  const seen = new Set(PAGINI_PROPRII);
+  const seen = new Set([...PAGINI_PROPRII, ...RESCRISE.keys()]);
   const loc = LOCATII.filter(([slug]) => !PAGINI_PROPRII.has(slug)).map(([slug, nume]) => ({ params: { slug }, props: { nume, html: null, desc: '' } }));
   loc.forEach(x => seen.add(x.params.slug));
   const art = ARTICOLE.filter(a => !seen.has(a.s)).map(a => ({ params: { slug: a.s }, props: { nume: a.t, html: a.h, desc: a.d } }));
