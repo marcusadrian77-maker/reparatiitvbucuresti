@@ -17,7 +17,8 @@ const EXCLUSE = new Set([
 
 const PRIORITATE: Record<string, string> = {
   '': '1.0',
-  'preturi-reparatii-tv': '0.9', 'cat-costa-reparatia-unui-televizor': '0.9', 'televizorul-se-aude-dar-nu-se-vede': '0.8', 'televizor-trasnit': '0.8', 'inlocuire-leduri-tv': '0.8', 'televizorul-se-vede-albastru': '0.8', 'contact': '0.9', 'sectoare': '0.9',
+  'preturi-reparatii-tv': '0.9', 'cat-costa-reparatia-unui-televizor': '0.9', 'televizorul-se-aude-dar-nu-se-vede': '0.8', 'televizor-trasnit': '0.8', 'inlocuire-leduri-tv': '0.8', 'televizorul-se-vede-albastru': '0.8', 'televizorul-tau-nu-se-mai-aprinde': '0.8', 'diagnosticare-probleme-de-sunet-la-un-tv-samsung': '0.8',
+  'resetarea-din-fabrica-si-instrumente-de-autodiagnosticare-pe-televizorul-samsung-partea-i': '0.8', 'resetarea-din-fabrica-si-instrumente-de-autodiagnosticare-pe-televizorul-samsung-partea-ii': '0.8', 'contact': '0.9', 'sectoare': '0.9',
   'reparatii-televizoare-samsung': '0.9', 'reparatii-televizoare-lg': '0.9',
   'reparatii-tv-sector-1': '0.9', 'reparatii-tv-sector-2': '0.9',
   'reparatii-tv-sector-3': '0.9', 'reparatii-tv-sector-4': '0.9',
