@@ -1,0 +1,94 @@
+---
+import Base from '../layouts/Base.astro';
+import Cifre from '../components/Cifre.astro';
+import Cta from '../components/Cta.astro';
+import Testimoniale from '../components/Testimoniale.astro';
+import { SITE, u } from '../data/site';
+
+const title = 'Resetare TV Samsung: din meniu, telecomandă sau butoane';
+const description = 'Cum resetezi un televizor Samsung la setările din fabrică: din meniu, fără telecomandă, codul PIN implicit și ce șterge resetarea. Plus când nu ajută.';
+const canonical = new URL(Astro.url.pathname, SITE.domeniu).href;
+
+const faq = [
+  ['Care este codul de resetare la televizorul Samsung?', 'Codul PIN implicit este 0000. Televizorul îl cere la resetarea din fabrică, la resetarea Smart Hub și la blocarea canalelor. Dacă a fost schimbat și nu îl mai știți, resetarea PIN-ului diferă de la o generație la alta; o putem face noi, ca intervenție de software.'],
+  ['Cum resetez televizorul Samsung din telecomandă?', 'Setări → General (pe modelele recente „General și confidențialitate") → Resetare → introduceți PIN-ul 0000 → Resetare → OK. Televizorul repornește cu setările din fabrică. Dacă nu găsiți opțiunea acolo, căutați-o în Setări → Asistență → Îngrijire dispozitiv → Autodiagnosticare.'],
+  ['Cum resetez televizorul Samsung fără telecomandă?', 'Cea mai simplă cale este aplicația SmartThings de pe telefon, care funcționează ca telecomandă când telefonul și televizorul sunt în aceeași rețea Wi-Fi. Fără ea, folosiți butonul de control de pe televizor — de obicei sub siglă, pe mijlocul ramei de jos — pentru a naviga până la meniul de resetare.'],
+  ['Ce se pierde la resetarea din fabrică?', 'Toate setările de imagine și sunet, lista de canale, conturile și aplicațiile instalate. Setările de rețea se păstrează pe majoritatea modelelor. Notați-vă înainte ordinea canalelor, dacă ați aranjat-o manual, și parolele conturilor din aplicații.'],
+  ['Am resetat televizorul și problema a rămas. Ce urmează?', 'Înseamnă că problema nu e de setări, ci de hardware sau de memoria internă a televizorului. Blocarea pe siglă, repornirile singure sau Wi-Fi-ul care nu mai apare după resetare sunt defecte pe care le reparăm la domiciliu; intervențiile de software costă între 50 și 150 de lei.'],
+];
+
+const schemaExtra = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Acasă', item: SITE.domeniu + '/' },
+      { '@type': 'ListItem', position: 2, name: 'Reparații televizoare Samsung', item: SITE.domeniu + '/reparatii-televizoare-samsung/' },
+      { '@type': 'ListItem', position: 3, name: 'Resetare TV Samsung', item: canonical },
+    ] },
+    { '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+  ],
+};
+---
+<Base title={title} description={description} schemaExtra={schemaExtra}>
+  <section class="hero-img"><div class="wrap">
+    <span class="badge">🔄 Resetare Samsung · pas cu pas</span>
+    <h1>Resetare TV Samsung: din meniu, din telecomandă sau din butoane</h1>
+    <p class="lead">Resetarea readuce televizorul la starea din fabrică și rezolvă multe probleme de software: aplicații care nu pornesc, meniuri lente, setări încurcate. Nu rezolvă însă un defect de hardware — și merită să știți diferența înainte să ștergeți totul.</p>
+    <a class="btn btn-white" href={SITE.telefonHref}>📞 {SITE.telefon}</a>
+    <a class="btn btn-wa" href={SITE.whatsapp} rel="noopener">💬 WhatsApp</a>
+  </div></section>
+  <Cifre />
+
+  <section class="sec"><div class="wrap">
+    <h2 style="margin-top:0">Întâi: o repornire completă, nu o resetare</h2>
+    <p>Înainte de resetarea din fabrică, încercați o repornire reală. Butonul Power de pe telecomandă nu oprește de fapt televizorul, ci îl pune în standby, iar o eroare de software poate rămâne în memorie zile întregi.</p>
+    <p>Țineți apăsat butonul Power de pe telecomandă până când televizorul se stinge și reapare sigla Samsung — durează câteva secunde. Varianta sigură, fără telecomandă: scoateți ștecărul din priză, așteptați un minut și reconectați. Surprinzător de des, asta e tot ce trebuia.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Resetarea din fabrică din meniu (cu telecomanda)</h2>
+    <ol>
+      <li>Apăsați <strong>Home</strong> și deschideți <strong>Setări</strong>.</li>
+      <li>Selectați <strong>General</strong> — pe modelele din ultimii ani, <strong>General și confidențialitate</strong>.</li>
+      <li>Alegeți <strong>Resetare</strong> și introduceți codul PIN. <strong>Codul implicit este 0000.</strong></li>
+      <li>Confirmați cu <strong>Resetare</strong>, apoi <strong>OK</strong>. Televizorul repornește și vă cere configurarea de la zero: limba, rețeaua, căutarea canalelor.</li>
+    </ol>
+    <p>Dacă opțiunea nu se află în General, pe multe modele Samsung ea este în <strong>Setări → Asistență → Îngrijire dispozitiv → Autodiagnosticare → Resetare</strong>. Resetarea nu este disponibilă cât timp rulează o aplicație — ieșiți întâi pe ecranul principal.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Resetare fără telecomandă sau din butoane</h2>
+    <p><strong>Cu telefonul.</strong> Aplicația SmartThings a Samsung funcționează ca o telecomandă completă, cu condiția ca telefonul și televizorul să fie conectate la aceeași rețea Wi-Fi. De acolo parcurgeți exact pașii de mai sus.</p>
+    <p><strong>Din butonul televizorului.</strong> Televizoarele Samsung au un singur buton de control, de obicei sub siglă, pe mijlocul ramei de jos, sau în spate, în colțul din dreapta. O apăsare scurtă aduce pe ecran un meniu mic de control; apăsările scurte trec de la o opțiune la alta, iar o apăsare lungă confirmă. Din acest meniu ajungeți la Setări și apoi la Resetare. E lent, dar funcționează.</p>
+    <p><strong>O telecomandă nouă</strong> este cea mai bună soluție pe termen lung. Dacă telecomanda veche nu mai răspunde, verificați-o întâi cu camera telefonului: priviți ledul din vârf prin cameră și apăsați un buton. Dacă nu vedeți lumină, problema e la baterii sau la telecomandă, nu la televizor.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Resetarea Smart Hub — când probleme au doar aplicațiile</h2>
+    <p>Dacă televizorul merge normal, dar aplicațiile nu se încarcă, nu se actualizează sau Smart Hub-ul dă erori, nu e nevoie să resetați tot. Resetarea Smart Hub șterge doar aplicațiile, conturile Samsung și acordurile de servicii, păstrând canalele și setările de imagine:</p>
+    <ol>
+      <li><strong>Setări → Asistență → Îngrijire dispozitiv</strong> (pe unele modele, direct <strong>Asistență</strong>).</li>
+      <li><strong>Autodiagnosticare → Resetare Smart Hub</strong>, apoi codul PIN, implicit 0000.</li>
+    </ol>
+    <p>În același meniu de Autodiagnosticare găsiți și <strong>testul de conexiune Smart Hub</strong>, care verifică pe rând internetul, furnizorul și serverele Samsung. Dacă problema e de rețea, testul arată unde se oprește legătura: între televizor și router, sau între router și internet.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Meniul de service: nu îl recomandăm</h2>
+    <p>Pe internet circulă combinații de taste care deschid meniul de service al televizoarelor Samsung. Acolo se află parametrii de fabricație ai panoului și ai plăcii: o valoare schimbată greșit poate lăsa televizorul cu imagine greșită, fără Smart TV sau chiar fără să mai pornească. Resetarea din fabrică, făcută din meniul obișnuit, este suficientă pentru orice problemă de setări.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Când resetarea nu ajută</h2>
+    <p>Resetarea nu repară: televizorul care <a href={u('televizorul-tau-nu-se-mai-aprinde/')}>nu se mai aprinde</a>, blocarea la siglă la fiecare pornire, repornirile singure, lipsa sunetului chiar și la testul din meniu (vezi <a href={u('diagnosticare-probleme-de-sunet-la-un-tv-samsung/')}>de ce nu se aude sunetul la televizorul Samsung</a>), dungile sau pâlpâirea imaginii (vezi <a href={u('resetarea-din-fabrica-si-instrumente-de-autodiagnosticare-pe-televizorul-samsung-partea-ii/')}>de ce tremură imaginea la televizorul Samsung</a>) sau Wi-Fi-ul care dispare complet din meniu.</p>
+    <p>Acestea sunt defecte de hardware sau de memorie internă și le reparăm la domiciliu, în București și Ilfov. Vedeți toate intervențiile pe pagina de <a href={u('reparatii-televizoare-samsung/')}>reparații televizoare Samsung</a> și prețurile pe <a href={u('preturi-reparatii-tv/')}>prețuri reparații TV</a>.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Întrebări frecvente</h2>
+    {faq.map(([q, a]) => <div style="margin:0 0 16px"><h3 style="margin:0 0 4px;font-size:17px">{q}</h3><p style="margin:0">{a}</p></div>)}
+  </div></section>
+
+  <section class="sec"><div class="wrap"><Testimoniale /></div></section>
+  <section class="sec"><div class="wrap"><Cta titlu="Resetarea n-a rezolvat problema?" text="Atunci e un defect real. Venim la domiciliu, diagnosticul e gratuit." /></div></section>
+</Base>
