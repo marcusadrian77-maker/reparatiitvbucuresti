@@ -1,0 +1,84 @@
+---
+import Base from '../layouts/Base.astro';
+import Cifre from '../components/Cifre.astro';
+import Cta from '../components/Cta.astro';
+import Testimoniale from '../components/Testimoniale.astro';
+import { SITE, u } from '../data/site';
+
+const title = 'De ce tremură imaginea la televizorul Samsung';
+const description = 'Imaginea tremură sau pâlpâie la televizorul Samsung? Testul de imagine din meniu, setările care o provoacă și defectele reale: benzi LED, T-CON, cablu.';
+const canonical = new URL(Astro.url.pathname, SITE.domeniu).href;
+
+const faq = [
+  ['De ce tremură imaginea la televizorul Samsung?', 'Trei cauze principale: o setare de procesare a mișcării (Claritate imagine / Auto Motion Plus), o sursă de semnal instabilă — cablu HDMI, antenă, decodor — sau un defect de hardware, cel mai des la iluminarea ecranului ori la placa T-CON. Testul de imagine din meniu le desparte în două minute.'],
+  ['Cum fac testul de imagine pe televizorul Samsung?', 'Setări → Asistență → Îngrijire dispozitiv → Autodiagnosticare → Test imagine. Televizorul afișează o imagine proprie, fără nicio sursă externă. Dacă aceasta tremură sau are defecte, problema e în televizor; dacă arată perfect, cauza e la sursă sau la setări.'],
+  ['Imaginea pâlpâie, iar luminozitatea crește și scade singură. E defect?', 'Nu neapărat. Funcțiile de economisire a energiei și senzorul de lumină ambientală modifică luminozitatea după lumina din cameră. Opriți-le din Setări → General → Soluție Eco (sau Economisire energie). Dacă pâlpâirea rămâne, e aproape sigur iluminarea ecranului.'],
+  ['Cât costă reparația dacă imaginea tremură din cauza unui defect?', 'Depinde de piesă: benzile LED și driverul lor între 100 și 280 de lei, placa T-CON între 120 și 300 de lei, ambele cu garanție 6 luni. Panoul se schimbă foarte rar pentru acest simptom. Diagnosticul și deplasarea sunt gratuite.'],
+  ['Resetarea imaginii poate strica ceva?', 'Nu. Setări → Imagine → Setări expert → Resetare imagine readuce doar parametrii de imagine la valorile din fabrică. Canalele, aplicațiile și conturile rămân neatinse. Este primul lucru de încercat după testul de imagine.'],
+];
+
+const schemaExtra = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Acasă', item: SITE.domeniu + '/' },
+      { '@type': 'ListItem', position: 2, name: 'Reparații televizoare Samsung', item: SITE.domeniu + '/reparatii-televizoare-samsung/' },
+      { '@type': 'ListItem', position: 3, name: 'Imaginea tremură la TV Samsung', item: canonical },
+    ] },
+    { '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+  ],
+};
+---
+<Base title={title} description={description} schemaExtra={schemaExtra}>
+  <section class="hero-img"><div class="wrap">
+    <span class="badge">📺 Imagine instabilă · diagnoză gratuită</span>
+    <h1>De ce tremură imaginea la televizorul Samsung</h1>
+    <p class="lead">Imaginea care tremură, pâlpâie sau „sacadează" poate veni din trei locuri foarte diferite: o setare, sursa de semnal sau o piesă din televizor. Doar ultima necesită o reparație — iar Samsung vă dă un test care arată singur unde e problema.</p>
+    <a class="btn btn-white" href={SITE.telefonHref}>📞 {SITE.telefon}</a>
+    <a class="btn btn-wa" href={SITE.whatsapp} rel="noopener">💬 WhatsApp</a>
+  </div></section>
+  <Cifre />
+
+  <section class="sec"><div class="wrap">
+    <h2 style="margin-top:0">Primul pas: testul de imagine din meniu</h2>
+    <ol>
+      <li>Deschideți <strong>Setări</strong> și selectați <strong>Asistență</strong>.</li>
+      <li>Selectați <strong>Îngrijire dispozitiv</strong> (pe unele modele, direct <strong>Asistență</strong>), apoi <strong>Autodiagnosticare</strong>.</li>
+      <li>Alegeți <strong>Test imagine</strong> și urmăriți instrucțiunile de pe ecran.</li>
+    </ol>
+    <p>Televizorul afișează o fotografie de înaltă rezoluție generată intern, fără nicio legătură cu antena, cu decodorul sau cu HDMI-ul. <strong>Dacă aceasta arată perfect</strong>, televizorul e bun, iar tremuratul vine din sursă sau din setări. <strong>Dacă tremură, pâlpâie sau are dungi și în test</strong>, defectul e în televizor.</p>
+    <p>Un indiciu la fel de bun: tremură și meniul televizorului? Meniul e desenat tot de televizor, deci, dacă și el tremură, sursa externă e nevinovată.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Setările care fac imaginea să tremure</h2>
+    <p><strong>Claritate imagine (Picture Clarity) / Auto Motion Plus.</strong> Televizorul inventează cadre intermediare ca să netezească mișcarea. La filme și la sport, rezultatul poate arăta ca o imagine care „tremură" sau lasă urme în jurul obiectelor în mișcare. Setați opțiunea pe Oprit sau Personalizat, cu valori mici, din <strong>Setări → Imagine → Setări expert</strong>.</p>
+    <p><strong>Economisirea energiei și senzorul de lumină.</strong> Pe modelele Samsung, Soluția Eco ajustează luminozitatea după lumina din cameră. Când lumina se schimbă, ecranul se întunecă și se luminează, iar mulți clienți descriu asta ca pâlpâire. Opriți funcțiile din <strong>Setări → General → Soluție Eco</strong>.</p>
+    <p><strong>Contrastul dinamic</strong> produce un efect asemănător pe scene cu mult întuneric. Dacă ați schimbat multe setări și nu mai știți de unde să începeți, folosiți <strong>Setări → Imagine → Setări expert → Resetare imagine</strong>: readuce doar imaginea la valorile din fabrică, fără să atingă canalele sau aplicațiile.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Când vine din sursa de semnal</h2>
+    <p>Dacă testul de imagine arată bine, verificați ce se întâmplă pe fiecare sursă în parte. Tremuratul doar pe o intrare HDMI indică de obicei un cablu uzat sau prea lung — încercați un cablu scurt, certificat. Pe console și calculatoare, o frecvență de 120 Hz sau VRR pe un port care nu le suportă face imaginea să sară; schimbați portul sau coborâți frecvența.</p>
+    <p>Imaginea care se „rupe" în pătrățele și îngheață doar la anumite canale e un semnal slab de la antenă sau de la operator, nu un defect al televizorului. În <strong>Asistență → Autodiagnosticare</strong>, pe multe modele există și o informație despre puterea semnalului.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Când e un defect al televizorului</h2>
+    <p>Dacă tremuratul apare și în testul de imagine, cauzele reale sunt câteva, fiecare cu semnul ei:</p>
+    <ul>
+      <li><strong>Luminozitatea pâlpâie pe tot ecranul</strong>, uneori cu ecranul stingându-se pentru o clipă — iluminarea ecranului: benzile LED sau driverul lor. Reparația costă între 100 și 280 de lei. Vezi <a href={u('inlocuire-leduri-tv/')}>înlocuire leduri TV</a>.</li>
+      <li><strong>Imaginea tremură împreună cu dungi, culori greșite sau o jumătate de ecran defectă</strong> — placa T-CON sau cablurile flat dintre ea și panou, între 120 și 300 de lei.</li>
+      <li><strong>Tremură doar după ce televizorul se încălzește</strong> sau se oprește dacă atingeți rama — o lipitură fisurată sau un conector slăbit. De obicei, o reparație rapidă.</li>
+    </ul>
+    <p>Toate au garanție scrisă de 6 luni și se rezolvă de regulă la dumneavoastră acasă. Panoul se schimbă foarte rar pentru acest simptom. Dacă imaginea lipsește complet dar se aude sunetul, citiți <a href={u('televizorul-se-aude-dar-nu-se-vede/')}>televizorul se aude, dar nu se vede</a>; pentru probleme de sunet, <a href={u('diagnosticare-probleme-de-sunet-la-un-tv-samsung/')}>de ce nu se aude sunetul la televizorul Samsung</a>; iar pentru resetarea completă, <a href={u('resetarea-din-fabrica-si-instrumente-de-autodiagnosticare-pe-televizorul-samsung-partea-i/')}>resetare TV Samsung</a>.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Întrebări frecvente</h2>
+    {faq.map(([q, a]) => <div style="margin:0 0 16px"><h3 style="margin:0 0 4px;font-size:17px">{q}</h3><p style="margin:0">{a}</p></div>)}
+  </div></section>
+
+  <section class="sec"><div class="wrap"><Testimoniale /></div></section>
+  <section class="sec"><div class="wrap"><Cta titlu="Imaginea tremură și în testul Samsung?" text="Atunci e o piesă, nu o setare. Venim la domiciliu, diagnosticul e gratuit." /></div></section>
+</Base>
