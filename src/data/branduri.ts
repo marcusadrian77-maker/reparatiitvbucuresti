@@ -84,6 +84,24 @@ export const BRANDURI: Record<string, Brand> = {
       ['Reparați televizoare LG cu burn-in?', 'Putem rula rutinele de compensare, care ajută în cazurile ușoare. Burn-in-ul avansat este permanent și nu are soluție de reparație.'],
       ['Ajungeți în aceeași zi?', 'De regulă da, dacă sunați în prima parte a zilei. Deplasarea în București și Ilfov este gratuită.'],
     ],
+    sectiuni: [
+      ['Service LG în București: cu ce venim la dumneavoastră', [
+        'Un service LG bun se vede cel mai bine la OLED, pentru că acolo greșelile costă. Un televizor OLED care nu mai pornește este dus uneori direct în zona „panou defect", ceea ce înseamnă un deviz cât un aparat nou. În realitate, la majoritatea OLED-urilor aduse la noi problema era în afara panoului: sursa principală, modulul care alimentează panoul sau placa de comandă. Toate trei se repară, iar aparatul rămâne al dumneavoastră.',
+        'Cât timp televizorul este în garanție, drumul corect este service-ul autorizat LG — orice desfacere din exterior vă anulează garanția, iar noi vă oprim din start dacă vedem că e cazul. După garanție, diferența ține de metodă: înlocuirea plăcii întregi este rapidă, dar plătiți o placă; reparația pe componentă cere măsurători și o stație de lipit bună, dar schimbă doar piesa care a cedat.',
+        'Lucrăm pe toată gama, nu doar pe OLED: NanoCell, QNED, seriile UHD și modelele mai vechi LJ, UJ, UK și UM. Venim cu trusa completă în toate sectoarele Bucureștiului și în Ilfov, iar deplasarea și verificarea nu se plătesc, indiferent de ce iese la diagnostic.',
+      ]],
+      ['Ce se defectează, pe generații de televizoare LG', [
+        '<strong>Seriile LJ, UJ, UK și SM (2017–2019).</strong> Aparate ajunse la vârsta la care cedează alimentarea. Vedem des condensatori obosiți pe sursă și benzi de iluminare cu diode arse pe diagonalele de 43 și 49 de inch. Tot la generația asta webOS-ul începe să se miște greu, pentru că memoria internă rămâne fără spațiu.',
+        '<strong>NanoCell și UHD, seriile UM, UN, UP și UQ (2019–2022).</strong> Aici predomină iluminarea de fundal și placa T-CON. Simptomul tipic pentru T-CON este imaginea cu dungi verticale sau cu jumătate de ecran diferită, nu ecranul negru. Se schimbă placa, nu panoul, iar costul nu are legătură cu diagonala.',
+        '<strong>OLED, seriile B, C, G și A (2018 încoace).</strong> Panoul în sine rezistă bine. Ce cedează este electronica din jur: modulul de alimentare al panoului, sursa principală și, mai rar, placa de comandă. Remanența de imagine este altceva — pe cazurile ușoare rulăm rutina de compensare a pixelilor din meniul de service, iar dacă urma a rămas permanentă vă spunem direct că nu are reparație.',
+        '<strong>QNED și Mini-LED (2021 încoace).</strong> Prea noi pentru uzură. Ce apare sunt defecte de alimentare, porturi arse după o supratensiune și probleme de software. O parte sunt încă în garanție, iar atunci vă îndrumăm către service-ul autorizat.',
+      ]],
+      ['webOS, Magic Remote și ce se rezolvă fără piese', [
+        'O parte dintre apelurile pentru televizoare LG nu sunt defecte de hardware. Un webOS care pornește greu, aplicații care se închid singure sau un aparat care nu mai intră pe internet se rezolvă de obicei prin eliberarea memoriei interne și actualizarea software-ului — fără nicio piesă schimbată și, de regulă, într-o singură vizită.',
+        'La fel stau lucrurile cu Magic Remote, telecomanda cu cursor. Când nu mai răspunde, cauza este fie pierderea asocierii — se reface ținând apăsat butonul rotiței câteva secunde, îndreptată spre televizor —, fie modulul Bluetooth de pe placa principală. Verificăm întâi varianta gratuită. Am scris separat și <a href="/magic-remote-lg/">cum funcționează Magic Remote</a>, dacă vreți să încercați singur înainte.',
+        'Ce nu se rezolvă din software: ecranul negru cu sunet prezent, dungile fixe pe imagine, aparatul care nu dă niciun semn la priză. Acolo e nevoie de măsurători, iar o resetare repetată nu face decât să vă consume timpul.',
+      ]],
+    ],
   },
   sony: {
     slug: 'reparatii-televizoare-sony',
@@ -109,6 +127,24 @@ export const BRANDURI: Record<string, Brand> = {
       ['Android TV-ul meu Sony e foarte lent. Se rezolvă?', 'De cele mai multe ori, da — prin curățarea memoriei și actualizarea sau reinstalarea firmware-ului. Este o intervenție care nu necesită piese.'],
       ['Cât durează o reparație Sony la domiciliu?', 'Între o oră și două ore, în funcție de defecțiune. Rareori este nevoie să luăm aparatul în atelier.'],
       ['Veniți în tot Bucureștiul?', 'În toate cele șase sectoare și în localitățile din Ilfov, fără taxă de deplasare.'],
+    ],
+    sectiuni: [
+      ['Service Sony Bravia în București: ce ne cereți cel mai des', [
+        'Sony are, în intervențiile noastre, un profil aparte. Aparatele ajung târziu la service, dar când ajung sunt de obicei aparate scumpe, pe care proprietarul chiar vrea să le păstreze. De aceea primele întrebări sunt aceleași: merită reparat și cât costă. Răspunsul îl dăm după verificare, gratuit, și îl dăm în termeni de piesă, nu de estimare vagă.',
+        'Piesele originale Sony sunt printre cele mai scumpe de pe piață, iar asta face ca înlocuirea unui subansamblu întreg să urce repede la sume care nu mai au sens pentru un televizor de șapte-opt ani. Aici reparația pe componentă schimbă complet calculul: pe o sursă Bravia, de multe ori vorbim despre câteva componente, nu despre o placă nouă. Când totuși singura soluție este piesa completă, v-o spunem și vă lăsăm să decideți înainte să începem.',
+        'Cât timp televizorul este în garanție, mergeți la service-ul autorizat Sony — o intervenție din afară o anulează. În rest, venim noi, în toate sectoarele și în Ilfov, cu deplasarea și diagnosticarea gratuite. Atelierul este în Militari, dar aparatul ajunge acolo doar dacă defectul chiar cere banc de lucru.',
+      ]],
+      ['Ce se defectează, pe generații de televizoare Sony', [
+        '<strong>Seriile KDL și W, Full HD (până în 2015).</strong> Aparate trecute de zece ani, la care cedează alimentarea și iluminarea. Se repară cât timp componentele se mai găsesc, iar pentru diagonale mici merită doar dacă aparatul e într-o stare bună în rest — vă spunem sincer când nu e cazul.',
+        '<strong>Seriile XE, XF și XG cu Android TV (2016–2019).</strong> Generația cu cele mai multe probleme de software din toată gama Sony. Televizorul pornește greu, aplicațiile se închid, meniul se mișcă cu întârzieri de câteva secunde. Cauza este memoria internă rămasă fără spațiu, nu o defecțiune electronică, iar rezolvarea nu cere piese.',
+        '<strong>Seriile XH, X80, X85 și X90 (2020–2022).</strong> Aici apar baretele de iluminare și driverul de backlight, plus codurile de eroare prin clipirea LED-ului de stare. Sony este una dintre puținele mărci care comunică defectul prin numărul de clipiri — le numărăm și știm de la ușă în ce zonă căutăm.',
+        '<strong>Bravia XR, OLED A80–A95 și Google TV (2021 încoace).</strong> Prea noi ca să aibă uzură reală. Ce vedem sunt porturi HDMI arse după descărcări electrice, probleme de conectare la rețea și, ocazional, module de alimentare ale panoului. Multe sunt încă în garanție.',
+      ]],
+      ['Android TV și Google TV: ce se rezolvă din software', [
+        'Dacă televizorul dumneavoastră Sony merge din ce în ce mai încet, se blochează la pornire sau pierde aplicațiile, în cele mai multe cazuri nu este stricat. Sistemul Android TV de pe generațiile 2016–2019 a fost livrat cu o memorie internă mică, iar actualizările succesive au umplut-o. Rezultatul arată ca o defecțiune, dar este o problemă de spațiu.',
+        'Ce facem concret: eliberăm memoria internă, dezinstalăm ce s-a acumulat inutil, aducem firmware-ul la ultima versiune stabilă pentru modelul dumneavoastră și, dacă tot nu se comportă normal, reinstalăm complet software-ul cu fișierul oficial pentru acel model. Intervenția nu cere nicio piesă și se face acasă la dumneavoastră.',
+        'Merită încercat și singuri, înainte să sunați: ștergeți aplicațiile pe care nu le folosiți, goliți memoria cache din meniul de stocare și lăsați televizorul să își termine actualizările. Dacă după asta tot pornește în două minute, sunați-ne — de acolo încolo e treaba noastră.',
+      ]],
     ],
   },
   philips: {
