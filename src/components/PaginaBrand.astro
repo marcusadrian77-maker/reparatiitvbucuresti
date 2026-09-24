@@ -62,6 +62,13 @@ const schemaExtra = {
     <h2>{B.serii}</h2>
     <ul class="checks">{B.serii_lista.map(s => <li>{s}</li>)}</ul>
 
+    {B.sectiuni && B.sectiuni.map(([titlu, paragrafe]) => (
+      <div>
+        <h2>{titlu}</h2>
+        {paragrafe.map(p => <p set:html={p} />)}
+      </div>
+    ))}
+
     <h2>Cum decurge intervenția</h2>
     <ol>{PASI.map(p => <li><strong>{p[0]}.</strong> {p[1]}</li>)}</ol>
 
