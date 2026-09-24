@@ -1,0 +1,91 @@
+---
+import Base from '../layouts/Base.astro';
+import Cifre from '../components/Cifre.astro';
+import Cta from '../components/Cta.astro';
+import Testimoniale from '../components/Testimoniale.astro';
+import { SITE, u } from '../data/site';
+
+const title = 'Televizorul Samsung nu se aprinde – cauze și reparație';
+const description = 'Televizorul Samsung nu se mai aprinde? Ce înseamnă clicul repetat din spate, blocarea la siglă și One Connect mort. Diagnostic gratuit în București și Ilfov.';
+const canonical = new URL(Astro.url.pathname, SITE.domeniu).href;
+
+const faq = [
+  ['Televizorul Samsung face „clic" de mai multe ori și nu pornește. Ce este?', 'Sunetul vine de la releul din sursa de alimentare. Sursa încearcă să pornească, detectează un consum anormal și se oprește, apoi reia — de aici clicurile repetate. La modelele de 5–8 ani, cauza cea mai frecventă nu este sursa în sine, ci benzile LED îmbătrânite, care trag mai mult curent decât ar trebui și o pun în protecție.'],
+  ['Samsung-ul meu nu are niciun led aprins. Ce verific?', 'Pe multe modele Samsung ledul de stare este sub siglă, pe mijlocul ramei de jos, și este alb sau roșu în funcție de serie; pe unele generații noi nu există led vizibil deloc. Verificați întâi priza direct în perete, fără prelungitor. Dacă nici așa nu apare nimic și nu se aude niciun sunet la apăsarea butonului fizic, partea de standby a sursei nu mai livrează tensiune.'],
+  ['Rămâne blocat pe sigla Samsung. Se repară?', 'Da, dar nu este același defect. Dacă sigla apare, televizorul pornește și are alimentare — problema este la memoria internă eMMC, care are sectoare corupte. Se rezolvă prin rescrierea firmware-ului original cu programator, nu prin resetare din meniu.'],
+  ['Am un QLED și nu pornește, deși nu aud nimic din televizor. Poate fi One Connect?', 'Da, și este o situație pe care o vedem des. La QLED, The Frame și The Serif, alimentarea și electronica stau în cutia One Connect, nu în televizor. Dacă acea cutie a cedat, aparatul pare complet mort. Se repară sau se înlocuiește separat, fără să atingem panoul.'],
+  ['Cât costă reparația la un Samsung care nu se aprinde?', 'Sursa de alimentare 150–350 de lei, placa principală 200–500 de lei, iar dacă se aude sunetul și doar ecranul rămâne negru, iluminarea 100–280 de lei. Toate cu manoperă inclusă și garanție. Prețul exact îl aflați după diagnosticarea gratuită, înainte să începem.'],
+];
+
+const schemaExtra = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Acasă', item: SITE.domeniu + '/' },
+      { '@type': 'ListItem', position: 2, name: 'Reparații TV Samsung', item: SITE.domeniu + '/reparatii-televizoare-samsung/' },
+      { '@type': 'ListItem', position: 3, name: 'Televizorul Samsung nu se aprinde', item: canonical },
+    ] },
+    { '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+  ],
+};
+---
+<Base title={title} description={description} schemaExtra={schemaExtra}>
+  <section class="hero-img"><div class="wrap">
+    <span class="badge">Samsung · diagnoză gratuită la domiciliu</span>
+    <h1>Televizorul Samsung nu se aprinde</h1>
+    <p class="lead">Apăsați pe telecomandă și nu se întâmplă nimic. Vestea bună este că la Samsung acest defect are câteva cauze bine cunoscute, iar panoul — partea scumpă a televizorului — este aproape întotdeauna intact.</p>
+    <a class="btn btn-white" href={SITE.telefonHref}>{SITE.telefon}</a>
+    <a class="btn btn-wa" href={SITE.whatsapp} rel="noopener">WhatsApp</a>
+  </div></section>
+  <Cifre />
+
+  <section class="sec"><div class="wrap">
+    <h2 style="margin-top:0">Clicul repetat din spate: cel mai frecvent caz</h2>
+    <p>Dacă apropiați urechea de spatele televizorului și auziți un clic la fiecare câteva secunde, ați găsit deja jumătate din diagnostic. Clicul este releul din sursa de alimentare: sursa pornește, măsoară consumul, constată că ceva trage prea mult curent și se oprește imediat ca să se protejeze. Apoi încearcă din nou. De aici ritmul acela regulat.</p>
+    <p>Partea contraintuitivă este că, la televizoarele Samsung de cinci-opt ani, vinovatul nu este de obicei sursa. Sunt benzile de iluminare din spatele ecranului: diodele îmbătrânesc, rezistența lor crește, consumul iese din limitele pe care sursa le acceptă, iar sursa refuză să mai pornească. Se schimbă benzile, iar sursa își revine singură. Am scris separat despre <a href={u('inlocuire-leduri-tv/')}>înlocuirea baretelor LED</a>, cu prețurile pe diagonale.</p>
+    <p>Dacă schimbăm doar sursa fără să verificăm consumul, televizorul merge câteva săptămâni și apoi revine cu același simptom. De aceea măsurăm întotdeauna ambele părți înainte să comandăm o piesă.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Trei simptome care par identice, dar sunt defecte diferite</h2>
+    <h3>Nu se aprinde nimic, nici led, nici sunet</h3>
+    <p>Televizorul nu primește tensiune sau partea de standby a sursei nu mai funcționează. Pe Samsung, ledul de stare este pe mijlocul ramei de jos, sub siglă; pe generațiile mai noi poate lipsi complet, așa că absența lui nu înseamnă automat un defect. Verificați priza direct în perete, fără prelungitor, și încercați butonul fizic — la Samsung este un mic joystick sub siglă sau în colțul din dreapta jos, în spate.</p>
+    <h3>Ledul e aprins, dar ecranul rămâne negru și se aude sunetul</h3>
+    <p>Acesta nu este un televizor care nu se aprinde. Televizorul a pornit, doar că iluminarea din spatele panoului nu mai funcționează. Verificarea durează zece secunde: stingeți lumina din cameră și plimbați lanterna telefonului aproape de sticlă, într-un unghi ascuțit. Dacă întrezăriți conturul imaginii, panoul este bun și problema stă în iluminare. Am scris pe larg despre situația asta pe pagina <a href={u('televizorul-se-aude-dar-nu-se-vede/')}>televizorul se aude dar nu se vede</a>.</p>
+    <h3>Apare sigla Samsung și se oprește acolo</h3>
+    <p>Alimentarea este în regulă — televizorul pornește, altfel nu ați vedea sigla. Problema este memoria internă eMMC, care a acumulat sectoare defecte. Rescriem firmware-ul original cu programator dedicat, pe placă. Nu se rezolvă cu resetare din meniu și nu are legătură cu sursa, deși simptomul pare înrudit.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>QLED, The Frame și The Serif: verificați întâi cutia</h2>
+    <p>Pe aceste serii, Samsung a scos alimentarea și aproape toată electronica din televizor și le-a mutat în cutia One Connect, legată de ecran printr-un singur cablu subțire. Consecința practică este că un One Connect defect face televizorul să pară complet mort, deși ecranul și panoul sunt perfect funcționale.</p>
+    <p>Înainte de orice, uitați-vă la cutie: are propriul led și propriul cablu de alimentare. Verificați dacă acel cablu e bine fixat și dacă ledul cutiei reacționează. Un cablu One Connect îndoit sau strivit la montarea pe perete produce exact același simptom. Reparăm sau înlocuim cutia separat, fără să demontăm ecranul.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Ce verificați singur, în cinci minute</h2>
+    <ul>
+      <li><strong>Priza, direct în perete.</strong> Fără prelungitor și fără priză cu protecție la supratensiune — acestea se uzează și nu mai livrează curent constant.</li>
+      <li><strong>Un minut scos din priză.</strong> Scoateți ștecărul, așteptați șaizeci de secunde, apoi reconectați. Descarcă electronica și scoate aparatul dintr-o eventuală stare de eroare.</li>
+      <li><strong>Butonul fizic.</strong> Dacă pornește din buton dar nu din telecomandă, televizorul e în regulă și problema e la telecomandă sau la receptorul ei.</li>
+      <li><strong>Telecomanda, prin camera telefonului.</strong> Îndreptați-o spre cameră și apăsați un buton: dacă ledul din vârf nu luminează pe ecranul telefonului, schimbați bateriile.</li>
+      <li><strong>Sursa de semnal.</strong> Apăsați Home sau Source. Uneori aparatul este pornit pe o intrare HDMI fără semnal și pare stins.</li>
+    </ul>
+    <p>Dacă simțiți miros de ars sau ați auzit un pocnet, opriți-vă aici și scoateți televizorul din priză. Și nu desfaceți carcasa: în sursă rămân condensatori încărcați mult timp după deconectare.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Cât costă și cât durează</h2>
+    <p>La un Samsung care nu se aprinde, în ordinea frecvenței: benzi de iluminare 100–280 de lei, sursă de alimentare 150–350 de lei, placă principală 200–500 de lei, rescriere de firmware 50–150 de lei. Toate cu manoperă inclusă și cu garanție scrisă. Cele mai multe intervenții se termină într-o oră și jumătate, acasă la dumneavoastră, fără să ducem televizorul nicăieri.</p>
+    <p>Reparăm pe componentă, nu prin schimbarea plăcii întregi — diferența de preț dintre cele două abordări este explicată pe larg în <a href={u('cat-costa-reparatia-unui-televizor/')}>cât costă reparația unui televizor</a>. Grila completă este pe <a href={u('preturi-reparatii-tv/')}>prețuri reparații TV</a>, iar restul defecțiunilor pe această marcă, pe pagina de <a href={u('reparatii-televizoare-samsung/')}>service Samsung București</a>.</p>
+    <p>Diagnosticarea și deplasarea sunt gratuite în toate sectoarele Bucureștiului și în Ilfov. Dacă televizorul dumneavoastră este încă în garanție, vă spunem din prima să mergeți la service-ul autorizat — o intervenție din afară v-ar anula garanția.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Întrebări frecvente</h2>
+    {faq.map(([q, a]) => <div style="margin:0 0 16px"><h3 style="margin:0 0 4px;font-size:17px">{q}</h3><p style="margin:0">{a}</p></div>)}
+  </div></section>
+
+  <section class="sec"><div class="wrap"><Testimoniale /></div></section>
+  <section class="sec"><div class="wrap"><Cta titlu="Televizorul Samsung nu se aprinde?" text="Spuneți-ne dacă se aude clicul din spate și venim cu piesa potrivită. Diagnostic gratuit." /></div></section>
+</Base>
