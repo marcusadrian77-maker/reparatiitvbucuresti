@@ -173,6 +173,24 @@ export const BRANDURI: Record<string, Brand> = {
       ['Reparați și televizoare Philips OLED?', 'Da, atât electronica, cât și problemele de software. Panoul OLED în sine nu se repară.'],
       ['Diagnosticarea costă ceva?', 'Nu. Diagnosticarea și deplasarea sunt gratuite, în tot Bucureștiul și Ilfovul.'],
     ],
+    sectiuni: [
+      ['Service Philips în București: ce trebuie știut despre marcă', [
+        'Philips este un caz aparte în electronicele de consum. Televizoarele vândute în Europa sub acest nume sunt produse pe bază de licență, nu de compania olandeză care a inventat marca, iar asta se simte concret: platformele hardware se schimbă de la o generație la alta mai des decât la alți producători, iar piesele originale pentru un model anume nu circulă la fel de bine ca la mărcile coreene.',
+        'Pentru dumneavoastră, ca proprietar, consecința e simplă: cu cât reparația se face mai devreme și mai aproape de componentă, cu atât mai bine. O sursă de alimentare se repară cu piese generice de calitate, disponibile oricând; o placă principală completă pentru un model Philips din 2017 poate fi greu de găsit și scumpă. De aceea, la Philips, măsurăm și reparăm la nivel de componentă ori de câte ori se poate, nu propunem din start schimbarea plăcii.',
+        'Dacă televizorul este în garanție, mergeți la service-ul autorizat — orice desfacere din exterior o anulează, și vă spunem asta înainte să atingem aparatul. În rest, venim noi acasă la dumneavoastră, în toate sectoarele și în Ilfov, cu deplasarea și verificarea gratuite.',
+      ]],
+      ['Ce se defectează, pe generații de televizoare Philips', [
+        '<strong>Seriile PFT și PFS, Full HD (2015–2018).</strong> Aparate de diagonale mici și medii, la care cedează sursa de alimentare. Condensatorii de pe linia de standby sunt primii care obosesc, iar simptomul e televizorul care nu mai pornește sau pornește abia după câteva încercări. Piesele sunt uzuale și reparația este dintre cele ieftine.',
+        '<strong>Seriile PUS, LED 4K (2018–2021).</strong> Aici predomină iluminarea de fundal pe diagonalele de 50 și 55 de inch, plus placa T-CON la modelele mai mari. Tot la generația asta apare și partea de software: Android TV instalat pe o memorie internă modestă, care se umple și face televizorul să pornească în două minute.',
+        '<strong>OLED 705, 754, 805, 806 și 856 (2019 încoace).</strong> Panoul OLED rezistă bine; ce cedează este alimentarea panoului și, ocazional, modulele Ambilight, care la aceste serii au mai multe laturi și deci mai multe puncte de defect. Nu confundați o latură Ambilight stinsă cu un defect de panou — sunt circuite complet separate.',
+        '<strong>Modelele cu Google TV (2022 încoace).</strong> Prea noi pentru uzură reală. Ce vedem sunt blocaje la pornire, aplicații care nu mai pornesc după o actualizare și porturi HDMI arse după furtuni. Multe se rezolvă din software, fără nicio piesă.',
+      ]],
+      ['Ambilight: ce cedează și de ce se repară separat', [
+        'Ambilight este sistemul de LED-uri montat pe spatele carcasei, care proiectează pe perete culorile din imagine. Are propriul driver și propriul cablaj, legate de placa principală doar printr-un conector de comandă. Din punct de vedere al reparației, este practic un aparat în aparat.',
+        'Ce vedem cel mai des: o latură care nu mai luminează deloc, culori care nu corespund cu imaginea de pe ecran, sau un efect care pâlpâie și se stinge după câteva minute. În ordinea frecvenței, cauzele sunt driverul de LED, un segment de bandă ars și, mai rar, conectorul de comandă slăbit. Toate trei se rezolvă fără să demontăm panoul.',
+        'Vestea bună este că un Ambilight defect nu afectează cu nimic funcționarea televizorului — puteți folosi aparatul mai departe și programa reparația când vă convine. Vestea mai puțin bună este că, dacă pâlpâirea e însoțită de repornirea televizorului, nu mai vorbim despre Ambilight, ci despre sursa de alimentare care intră în protecție. Le separăm la diagnostic, care este gratuit.',
+      ]],
+    ],
   },
   panasonic: {
     slug: 'reparatii-tv-panasonic',
@@ -224,6 +242,24 @@ export const BRANDURI: Record<string, Brand> = {
       ['Găsiți piese pentru Horizon?', 'Da, componentele uzuale sunt disponibile. Horizon folosește platforme comune, ceea ce ne ușurează munca.'],
       ['Ce garanție primesc?', 'Între 6 și 12 luni, în funcție de intervenție și de piesele montate, cu document scris.'],
       ['Veniți și în Ilfov?', 'Da, în toate localitățile din jurul Bucureștiului, fără cost suplimentar de deplasare.'],
+    ],
+    sectiuni: [
+      ['Merită reparat un televizor Horizon? Calculul, pe cifre', [
+        'Este prima întrebare pe care ne-o pune aproape oricine sună pentru această marcă, și e o întrebare corectă: un televizor Horizon nou nu costă cât unul de marcă premium, așa că pragul la care reparația nu mai are sens vine mai devreme. Răspunsul nu ține însă de preț, ci de ce anume s-a stricat.',
+        'Defecțiunile obișnuite la Horizon sunt sursa de alimentare și baretele de iluminare. La grila noastră, asta înseamnă 150–350 de lei pentru sursă și 100–280 de lei pentru iluminare, cu manoperă și garanție incluse. Pentru un aparat de 43 sau 50 de inch cumpărat acum câțiva ani, rămâne semnificativ sub costul unuia nou de aceeași diagonală — și primiți înapoi exact televizorul cu care erați obișnuit, nu unul pe care trebuie să îl reconfigurați.',
+        'Când nu merită: dacă panoul este crăpat, lovit sau are pete mari de lichid, reparația înseamnă schimbarea panoului, iar la mărcile de buget prețul panoului se apropie de al aparatului întreg. Vă spunem asta la fața locului, în primele minute, și nu plătiți nimic pentru verificare. Aceeași logică, aplicată tuturor mărcilor, este explicată pe larg în pagina despre <a href="/cat-costa-reparatia-unui-televizor/">cât costă reparația unui televizor</a>.',
+      ]],
+      ['Ce se defectează la televizoarele Horizon', [
+        '<strong>Sursa de alimentare, de departe pe primul loc.</strong> Televizorul nu mai pornește deloc sau pornește și se stinge după câteva secunde. Cauza uzuală sunt condensatorii care și-au pierdut capacitatea. Nu schimbăm placa: identificăm componentele obosite și le înlocuim, ceea ce ține costul jos exact acolo unde contează cel mai mult.',
+        '<strong>Baretele de iluminare, pe locul doi.</strong> Se aude sunetul, ecranul pare stins. Verificarea o puteți face și dumneavoastră, cu lanterna telefonului îndreptată oblic spre ecran, într-o cameră întunecată: dacă imaginea se ghicește în spatele sticlei, panoul este intact.',
+        '<strong>Partea de Smart TV.</strong> Pe modelele cu Android, memoria internă este generoasă doar la început. După câțiva ani de actualizări, aparatul pornește greu și aplicațiile se închid singure. Se rezolvă prin curățare și actualizare de firmware, fără piese.',
+        '<strong>Tuner și conectivitate.</strong> Televizorul nu mai găsește canale sau nu se mai conectează la rețea. În destul de multe cazuri nu este un defect, ci o setare pierdută după o pană de curent — verificăm întâi varianta care nu costă nimic.',
+      ]],
+      ['Piese pentru o marcă de buget: cum stăm, sincer', [
+        'La mărcile de buget, disponibilitatea pieselor este întrebarea reală, nu priceperea tehnicianului. Aici Horizon are un avantaj care nu se vede din afară: aparatele sunt construite pe platforme hardware comune, folosite de mai mulți producători. Practic, sursa dintr-un Horizon seamănă cu sursa din alte televizoare de aceeași generație și diagonală, iar componentele de pe ea sunt piese electronice obișnuite, nu piese exclusive.',
+        'Consecința: pentru surse, barete LED, condensatori și componente de placă avem ce ne trebuie, de regulă chiar în mașină. Pentru piese specifice unui singur model — o placă principală anume, un panou — situația e alta și v-o spunem din prima, fără să vă ținem în așteptare cu comenzi care nu ajung.',
+        'Din experiența noastră, majoritatea televizoarelor Horizon care ajung la noi pleacă reparate în aceeași vizită. Cele care nu pleacă reparate sunt, aproape fără excepție, cele cu panoul lovit — și acolo problema nu e marca, e fizica.',
+      ]],
     ],
   },
 };
