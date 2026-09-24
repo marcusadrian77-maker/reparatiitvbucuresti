@@ -9,6 +9,9 @@ export type Brand = {
   defecte: [string, string][];
   serii_lista: string[];
   faq: [string, string][];
+  // Secțiuni suplimentare, proprii unei singure mărci. [titlu H2, paragrafe HTML].
+  // Opțional: mărcile fără secțiuni proprii se randează exact ca înainte.
+  sectiuni?: [string, string[]][];
 };
 
 export const BRANDURI: Record<string, Brand> = {
@@ -36,6 +39,24 @@ export const BRANDURI: Record<string, Brand> = {
       ['Cât costă înlocuirea baretelor LED la un Samsung de 55"?', 'Între 100 și 280 de lei, manoperă inclusă, în funcție de câte barete sunt afectate și de model. Prețul exact îl aflați după diagnosticarea gratuită.'],
       ['Aveți piese pentru modele Samsung mai vechi?', 'Pentru surse, barete LED și componente de placă, da. Panourile pentru modele scoase din producție sunt greu de găsit și, de obicei, nu merită economic.'],
       ['Reparați The Frame montat pe perete?', 'Da. Îl demontăm și îl remontăm noi, fără cost suplimentar.'],
+    ],
+    sectiuni: [
+      ['Service Samsung autorizat sau service independent', [
+        'Este prima întrebare pe care o pun oamenii care caută un service Samsung în București, așa că merită un răspuns limpede. Dacă televizorul este încă în garanție, mergeți la service-ul autorizat. Orice intervenție din afară anulează garanția producătorului, iar noi vă spunem asta din prima, înainte să deschidem aparatul. La fel, dacă defectul este chiar panoul — pete mari, zone moarte, ecran spart — centrul autorizat are acces la panouri originale pe care piața liberă nu le are.',
+        'În rest, diferența reală nu este între „autorizat" și „neautorizat", ci între două moduri de a repara. Procedura standard într-un centru de service este înlocuirea subansamblului: se identifică placa vinovată și se schimbă întreagă, pentru că așa e mai rapid și așa cere producătorul. Noi lucrăm pe componentă — găsim condensatorul, tranzistorul sau bareta LED care a cedat și schimbăm exact piesa aceea. De aici vine diferența de preț, care la o sursă de alimentare poate fi de câteva ori mai mare într-un sens sau în altul.',
+        'Pentru un televizor Samsung ieșit din garanție, cu o defecțiune obișnuită — sursă, iluminare de fundal, placă T-CON, memorie blocată la siglă — reparația pe componentă este aproape întotdeauna varianta rezonabilă. Atelierul nostru este pe Str. Moinești, în Militari, sectorul 6, dar în cele mai multe cazuri nici nu ajungeți până aici: venim noi, iar deplasarea și diagnosticarea sunt gratuite în tot Bucureștiul și în Ilfov.',
+      ]],
+      ['Ce se defectează, pe generații de televizoare Samsung', [
+        '<strong>Seriile J, K, M și N (2015–2018).</strong> Aparate care au trecut de opt ani și la care se vede vârsta componentelor. Aici vedem cel mai des condensatori uscați pe sursă — televizorul nu mai pornește sau pornește după mai multe încercări — și barete LED cu diode arse, la diagonale de 40–48 de inch. Ambele se repară, iar piesele se găsesc.',
+        '<strong>Seriile NU, RU și TU (2018–2020).</strong> Generația la care iluminarea de fundal cedează cel mai frecvent, mai ales pe 50, 55 și 65 de inch. Simptomul este clasic: sunetul se aude normal, ecranul pare negru, dar dacă îl luminați cu o lanternă se vede imaginea. Tot aici apare și blocarea la sigla Samsung, din memoria eMMC — se rezolvă prin rescrierea firmware-ului, nu prin resetare din meniu.',
+        '<strong>Seriile AU, BU, CU și QLED Q6–Q9 (2021–2023).</strong> Televizoare încă tinere, la care defectele sunt mai degrabă pe alimentare și pe partea de conectivitate decât pe uzura panoului. La modelele QLED și The Frame se adaugă One Connect Box, cutia externă care poate ceda separat de televizor și pe care o reparăm fără să atingem panoul.',
+        '<strong>Seriile DU și Neo QLED QN85–QN95 (2024 încoace).</strong> Prea noi ca să aibă uzură. Ce vedem la ele ține de software, de porturi HDMI arse după o supratensiune și, ocazional, de accidente casnice. Multe sunt încă în garanție, caz în care vă trimitem la service-ul autorizat.',
+      ]],
+      ['Ce puteți verifica singur înainte să ne sunați', [
+        'Câteva verificări simple vă pot economisi o deplasare, iar pe noi ne ajută să venim cu piesa potrivită în mașină. Dacă televizorul are sunet dar nu are imagine, luminați ecranul din lateral cu lanterna telefonului, în întuneric: dacă se distinge imaginea, problema este iluminarea de fundal, nu panoul — adică o reparație accesibilă.',
+        'Pentru problemele care pot fi doar de setări sau de software am scris pagini separate, cu pașii exacți din meniul Samsung: <a href="/resetarea-din-fabrica-si-instrumente-de-autodiagnosticare-pe-televizorul-samsung-partea-i/">cum resetați un televizor Samsung la setările din fabrică</a>, <a href="/diagnosticare-probleme-de-sunet-la-un-tv-samsung/">ce faceți când nu se aude sunetul</a> și <a href="/resetarea-din-fabrica-si-instrumente-de-autodiagnosticare-pe-televizorul-samsung-partea-ii/">de ce tremură sau pâlpâie imaginea</a>. Televizoarele Samsung au și un test de imagine și unul de sunet în meniul de asistență, care separă destul de bine o problemă de semnal de una de aparat.',
+        'Nu insistați însă dacă simțiți miros de ars, dacă auziți pârâituri din carcasă sau dacă televizorul pornește și se oprește în buclă. Scoateți-l din priză și sunați-ne — sunt situații care se agravează repede.',
+      ]],
     ],
   },
   lg: {
