@@ -62,6 +62,19 @@ const schemaExtra = {
     <h2>{B.serii}</h2>
     <ul class="checks">{B.serii_lista.map(s => <li>{s}</li>)}</ul>
 
+    {cheie === 'sony' && (
+      <div>
+        <h2>Din atelier: Sony KD-55XE8096 cu memoria internă defectă</h2>
+        <p>Un caz recent, tipic pentru Bravia cu Android TV trecute de câțiva ani: un KD-55XE8096 fabricat în 2018, cu memoria internă (eMMC) cedată. La modelele Sony din această generație e defectul pe care îl întâlnim cel mai des și se vede de obicei ca blocare la siglă sau reporniri în buclă. Nu se rezolvă prin resetare, pentru că memoria însăși e uzată.</p>
+        <p>Pentru o astfel de lucrare aparatul vine în atelier: desfacem capacul din spate, scoatem placa de bază, înlocuim cipul de memorie și scriem din nou sistemul de operare. Apoi televizorul stă câteva ore în test pe banc, cu imagine, sunet și aplicații, înainte să îl aducem înapoi. Transportul îl facem noi, fără cost.</p>
+        <div class="grid g3" style="gap:14px;margin:14px 0 6px">
+        <figure style="margin:0"><img src="/img/sony-kd-55xe8096-desfacut.webp" alt="Televizor Sony KD-55XE8096 desfăcut pe bancul de lucru, cu sursa și placa de bază la vedere" width="1400" height="1050" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:10px;display:block" /><figcaption style="font-size:13.5px;color:#5a6b80;margin-top:6px">Aparatul desfăcut: sursa în stânga, placa de bază în dreapta.</figcaption></figure>
+        <figure style="margin:0"><img src="/img/sony-kd-55xe8096-placa-de-baza.webp" alt="Placa de bază a televizorului Sony KD-55XE8096, pe care se află memoria eMMC" width="1400" height="1050" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:10px;display:block" /><figcaption style="font-size:13.5px;color:#5a6b80;margin-top:6px">Placa de bază, unde se află memoria eMMC înlocuită.</figcaption></figure>
+        <figure style="margin:0"><img src="/img/televizor-sony-in-test-atelier.webp" alt="Televizor Sony Bravia în test pe banc după înlocuirea memoriei eMMC" width="1400" height="1050" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:10px;display:block" /><figcaption style="font-size:13.5px;color:#5a6b80;margin-top:6px">După reparație, în test pe banc înainte de predare.</figcaption></figure>
+        </div>
+      </div>
+    )}
+
     {B.sectiuni && B.sectiuni.map(([titlu, paragrafe]) => (
       <div>
         <h2>{titlu}</h2>
