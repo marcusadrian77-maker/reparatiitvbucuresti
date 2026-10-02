@@ -237,5 +237,15 @@ export default defineConfig({
     '/reparatii-televizoare-sector-4/': '/reparatii-tv-sector-4/',
     '/reparatii-televizoare-sector-5/': '/reparatii-tv-sector-5/',
     '/reparatii-televizoare-sector-6/': '/reparatii-tv-sector-6/',
+    // Adrese vechi WordPress pe care Google le mai cere (404 in Statistici accesare, sept. 2026)
+    '/feed/': '/',
+    '/comments/feed/': '/',
+    '/author/admin/': '/',
+    '/durau/feed/': '/durau/',
+    '/fagaras/feed/': '/fagaras/',
+    '/cal-victoriei/feed/': '/cal-victoriei/',
+    '/reparatii-tv-sector-5/reparatii-tv-bulevardul-timisoara-s5/': '/reparatii-tv-bulevardul-timisoara-s5/',
+    '/reparatii-tv-sector-6/reparatii-tv-bulevardul-preciziei/': '/reparatii-tv-bulevardul-preciziei/',
+    '/reparatii-tv-sector-3/reparatii-tv-calea-dudesti/': '/reparatii-tv-calea-dudesti/',
   },
 });
