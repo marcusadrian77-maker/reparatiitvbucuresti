@@ -261,6 +261,7 @@ const schemaExtra = { '@context': 'https://schema.org', '@graph': graph };
         <div>
           <h2>Toate explicațiile și ghidurile</h2>
           <p>Termenii, tehnologiile și funcțiile pe care le întâlniți la televizoarele moderne, explicate pe scurt. Fiecare pagină lămurește la ce folosește funcția și ce se poate defecta la ea.</p>
+          <p>Lista e gândită pentru două momente. Primul e cumpărarea: când comparați două televizoare și fișa tehnică e plină de sigle — HDR10+, Dolby Vision, Local Dimming — găsiți aici ce înseamnă fiecare și cât contează în imaginea pe care o vedeți. Al doilea e defecțiunea: când o funcție încetează să meargă, fie că e comanda vocală, Chromecast sau o aplicație, pagina termenului vă ajută să vă dați seama dacă e vorba de o setare, de o actualizare sau de o piesă. Dacă explicațiile nu vă lămuresc, sunați-ne: diagnosticarea este gratuită.</p>
           <div class="grid g3" style="gap:4px 18px">
             {GLOSAR.map(g => <a href={u(g.s + '/')} style="font-size:14px;padding:3px 0;display:block">{g.t}</a>)}
           </div>
@@ -273,6 +274,7 @@ const schemaExtra = { '@context': 'https://schema.org', '@graph': graph };
         <div>
           <h2>{LISTE_MODELE[slug].titlu}</h2>
           <p>Am scris câte o pagină pentru fiecare model pe care îl reparăm curent, cu defecțiunile tipice și prețurile orientative. Dacă modelul dumneavoastră nu apare în listă, sunați-ne — îl reparăm și pe acela.</p>
+          <p>Codul modelului se află pe eticheta din spatele televizorului și în meniul de setări, la informațiile despre aparat. {slug === 'lista-tv-sony' && 'La Sony începe de regulă cu KD-, KDL- sau XR-, urmat de diagonala în inch și de serie. '}Spuneți-ni-l când sunați: după el știm din start ce panou, ce sursă și ce placă are aparatul și venim cu piesele potrivite, astfel încât reparația să se încheie, de cele mai multe ori, la prima vizită.</p>
           <div class="grid g3" style="gap:4px 18px">
             {listaModele.map(m => <a href={u(m.s + '/')} style="font-size:14px;padding:3px 0;display:block">{m.t}</a>)}
           </div>
@@ -295,6 +297,13 @@ const schemaExtra = { '@context': 'https://schema.org', '@graph': graph };
               <p style="margin:0">{a('București')}</p>
             </div>
           ))}
+
+          {ZONE_ARTICOL.includes(slug) && (
+            <div>
+              <h2>Cum decurge o intervenție la domiciliu</h2>
+              <ol>{PASI.map(p => <li><strong>{p[0]}.</strong> {p[1]}</li>)}</ol>
+            </div>
+          )}
 
           <p>Mai multe explicații despre tehnologiile televizoarelor găsiți în <a href={u('blog/')}>dicționarul TV</a>, iar tarifele orientative pe <a href={u('preturi-reparatii-tv/')}>pagina de prețuri</a>.</p>
         </div>
