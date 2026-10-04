@@ -180,6 +180,7 @@ export default defineConfig({
     '/reparatii-tv-sector-3/reparatii-tv-sector-3-2/': '/reparatii-tv-sector-3/',
     '/reparatii-tv-sector-3/reparatii-tv-strada-matei-basarab/': '/reparatii-tv-strada-matei-basarab/',
     '/reparatii-tv-sector-4/mosilor/': '/mosilor/',
+    '/reparatii-tv-sector-4/reparatii-televizoare-bd-hristo-botev/': '/reparatii-televizoare-bd-hristo-botev/',
     '/reparatii-tv-sector-4/reparatii-televizoare-bd-regina-elisabeta/': '/reparatii-televizoare-bd-regina-elisabeta/',
     '/reparatii-tv-sector-4/reparatii-tv-bd-mircea-voda/': '/reparatii-tv-bd-mircea-voda/',
     '/reparatii-tv-sector-4/reparatii-tv-bd-ramnicu-sarat/': '/reparatii-tv-bd-ramnicu-sarat/',
