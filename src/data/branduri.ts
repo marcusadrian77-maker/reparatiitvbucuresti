@@ -36,7 +36,7 @@ export const BRANDURI: Record<string, Brand> = {
     ],
     faq: [
       ['Reparați și televizoare Samsung aflate în garanție?', 'Vă recomandăm să apelați mai întâi la service-ul autorizat, pentru că o intervenție externă anulează garanția producătorului. Vă spunem asta din prima, înainte să atingem aparatul.'],
-      ['Cât costă înlocuirea baretelor LED la un Samsung de 55"?', 'Între 100 și 280 de lei, manoperă inclusă, în funcție de câte barete sunt afectate și de model. Prețul exact îl aflați după diagnosticarea gratuită.'],
+      ['Cât costă înlocuirea baretelor LED la un Samsung de 55"?', 'Între 150 și 420 de lei, manoperă inclusă, în funcție de câte barete sunt afectate și de model. Prețul exact îl aflați după diagnosticarea gratuită.'],
       ['Aveți piese pentru modele Samsung mai vechi?', 'Pentru surse, barete LED și componente de placă, da. Panourile pentru modele scoase din producție sunt greu de găsit și, de obicei, nu merită economic.'],
       ['Reparați The Frame montat pe perete?', 'Da. Îl demontăm și îl remontăm noi, fără cost suplimentar.'],
     ],
@@ -81,7 +81,7 @@ export const BRANDURI: Record<string, Brand> = {
     ],
     faq: [
       ['Se poate repara un panou OLED zgâriat sau spart?', 'Nu. Panoul OLED nu se repară, iar înlocuirea lui costă, de obicei, mai mult decât un televizor nou. Vă spunem asta imediat, ca să nu pierdeți timp.'],
-      ['Cât costă o reparație de sursă la un LG OLED?', 'Între 150 și 350 de lei pentru sursă, manoperă inclusă. Prețul final se stabilește după diagnosticarea gratuită.'],
+      ['Cât costă o reparație de sursă la un LG OLED?', 'Între 230 și 530 de lei pentru sursă, manoperă inclusă. Prețul final se stabilește după diagnosticarea gratuită.'],
       ['Reparați televizoare LG cu burn-in?', 'Putem rula rutinele de compensare, care ajută în cazurile ușoare. Burn-in-ul avansat este permanent și nu are soluție de reparație.'],
       ['Ajungeți în aceeași zi?', 'De regulă da, dacă sunați în prima parte a zilei. Deplasarea în București și Ilfov este gratuită.'],
     ],
@@ -246,7 +246,7 @@ export const BRANDURI: Record<string, Brand> = {
     sectiuni: [
       ['Merită reparat un televizor Horizon? Calculul, pe cifre', [
         'Este prima întrebare pe care ne-o pune aproape oricine sună pentru această marcă, și e o întrebare corectă: un televizor Horizon nou nu costă cât unul de marcă premium, așa că pragul la care reparația nu mai are sens vine mai devreme. Răspunsul nu ține însă de preț, ci de ce anume s-a stricat.',
-        'Defecțiunile obișnuite la Horizon sunt sursa de alimentare și baretele de iluminare. La grila noastră, asta înseamnă 150–350 de lei pentru sursă și 100–280 de lei pentru iluminare, cu manoperă și garanție incluse. Pentru un aparat de 43 sau 50 de inch cumpărat acum câțiva ani, rămâne semnificativ sub costul unuia nou de aceeași diagonală — și primiți înapoi exact televizorul cu care erați obișnuit, nu unul pe care trebuie să îl reconfigurați.',
+        'Defecțiunile obișnuite la Horizon sunt sursa de alimentare și baretele de iluminare. La grila noastră, asta înseamnă 230–530 de lei pentru sursă și 150–420 de lei pentru iluminare, cu manoperă și garanție incluse. Pentru un aparat de 43 sau 50 de inch cumpărat acum câțiva ani, rămâne semnificativ sub costul unuia nou de aceeași diagonală — și primiți înapoi exact televizorul cu care erați obișnuit, nu unul pe care trebuie să îl reconfigurați.',
         'Când nu merită: dacă panoul este crăpat, lovit sau are pete mari de lichid, reparația înseamnă schimbarea panoului, iar la mărcile de buget prețul panoului se apropie de al aparatului întreg. Vă spunem asta la fața locului, în primele minute, și nu plătiți nimic pentru verificare. Aceeași logică, aplicată tuturor mărcilor, este explicată pe larg în pagina despre <a href="/cat-costa-reparatia-unui-televizor/">cât costă reparația unui televizor</a>.',
       ]],
       ['Ce se defectează la televizoarele Horizon', [

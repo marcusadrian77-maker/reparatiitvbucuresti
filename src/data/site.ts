@@ -110,14 +110,14 @@ export const SCHEMA_LOCALBUSINESS = {
 
 export const OFERTE: [string, number, number, string][] = [
   ['Diagnosticare la domiciliu', 0, 0, 'Identificarea defecțiunii, fără costuri și fără obligații'],
-  ['Înlocuire sursă de alimentare', 150, 350, 'Cea mai frecventă defecțiune. Garanție 12 luni'],
-  ['Înlocuire placă principală (main board)', 200, 500, 'Diagnoză completă și programare. Garanție 12 luni'],
-  ['Reparare backlight / benzi LED', 100, 280, 'Ecran negru cu sunet prezent. Garanție 6 luni'],
-  ['Reparare placă T-CON', 120, 300, 'Dungi pe ecran, imagine parțială. Garanție 6 luni'],
-  ['Înlocuire panou LCD/OLED', 500, 1500, 'Depinde de diagonală și model. Garanție 12 luni'],
-  ['Reparare circuit audio', 80, 200, 'Amplificator, difuzoare, cablu flex. Garanție 6 luni'],
-  ['Service software / Smart TV', 50, 150, 'Resetare, update firmware, Wi-Fi. Garanție 3 luni'],
-  ['Curățare internă și service general', 60, 120, 'Condensatori, pastă termică. Garanție 3 luni'],
+  ['Înlocuire sursă de alimentare', 230, 530, 'Cea mai frecventă defecțiune. Garanție 12 luni'],
+  ['Înlocuire placă principală (main board)', 300, 750, 'Diagnoză completă și programare. Garanție 12 luni'],
+  ['Reparare backlight / benzi LED', 150, 420, 'Ecran negru cu sunet prezent. Garanție 6 luni'],
+  ['Reparare placă T-CON', 180, 450, 'Dungi pe ecran, imagine parțială. Garanție 6 luni'],
+  ['Înlocuire panou LCD/OLED', 750, 2250, 'Depinde de diagonală și model. Garanție 12 luni'],
+  ['Reparare circuit audio', 120, 300, 'Amplificator, difuzoare, cablu flex. Garanție 6 luni'],
+  ['Service software / Smart TV', 80, 230, 'Resetare, update firmware, Wi-Fi. Garanție 3 luni'],
+  ['Curățare internă și service general', 90, 180, 'Condensatori, pastă termică. Garanție 3 luni'],
 ];
 
 export const SCHEMA_OFERTE = {

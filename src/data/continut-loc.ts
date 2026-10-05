@@ -34,13 +34,13 @@ export const PROBLEME: [string, string][] = [
 export const PRETURI: [string, string][] = [
   ['Diagnosticare la domiciliu', 'gratuită'],
   ['Deplasare în București și Ilfov', 'gratuită'],
-  ['Reparație sau înlocuire sursă de alimentare', '150 – 350 lei'],
-  ['Reparare / înlocuire backlight LED', '100 – 280 lei'],
-  ['Reparație placă T-CON', '120 – 300 lei'],
-  ['Reparație sau înlocuire placă principală', '200 – 500 lei'],
-  ['Service software Smart TV / rescriere firmware', '50 – 150 lei'],
-  ['Reparație circuit audio sau difuzoare', '80 – 200 lei'],
-  ['Curățare internă și service general', '60 – 120 lei'],
+  ['Reparație sau înlocuire sursă de alimentare', '230 – 530 lei'],
+  ['Reparare / înlocuire backlight LED', '150 – 420 lei'],
+  ['Reparație placă T-CON', '180 – 450 lei'],
+  ['Reparație sau înlocuire placă principală', '300 – 750 lei'],
+  ['Service software Smart TV / rescriere firmware', '80 – 230 lei'],
+  ['Reparație circuit audio sau difuzoare', '120 – 300 lei'],
+  ['Curățare internă și service general', '90 – 180 lei'],
 ];
 
 export const PASI: [string, string][] = [
