@@ -5,12 +5,12 @@ import Cta from '../components/Cta.astro';
 import Testimoniale from '../components/Testimoniale.astro';
 import { SITE, u } from '../data/site';
 
-const title = 'Înlocuire Leduri TV București – 100–280 lei';
-const description = 'Înlocuire leduri TV la domiciliu în București și Ilfov: 100–280 lei, garanție 6 luni. Ce înseamnă concret la 32, 55 sau 75 de inch și când mergem în atelier.';
+const title = 'Înlocuire Leduri TV București – 150–420 lei';
+const description = 'Înlocuire leduri TV la domiciliu în București și Ilfov: 150–420 lei, garanție 6 luni. Ce înseamnă concret la 32, 55 sau 75 de inch și când mergem în atelier.';
 const canonical = new URL(Astro.url.pathname, SITE.domeniu).href;
 
 const faq = [
-  ['Cât costă înlocuirea ledurilor?', '100–280 de lei, cu barete noi, manoperă și 6 luni garanție. Diferența o face diagonala: la 32 de inch se schimbă două-trei barete, la 65 pot fi zece sau mai multe.'],
+  ['Cât costă înlocuirea ledurilor?', '150–420 de lei, cu barete noi, manoperă și 6 luni garanție. Diferența o face diagonala: la 32 de inch se schimbă două-trei barete, la 65 pot fi zece sau mai multe.'],
   ['Se poate face la mine acasă?', 'Până la 55 de inch, de regulă da, dacă avem o masă liberă și lumină. Peste diagonala asta preferăm atelierul din Militari, iar transportul dus-întors îl facem noi și nu îl plătiți.'],
   ['De ce nu schimbați doar ledul ars?', 'Pentru că ledurile de pe barete au aceeași vechime și au stat la aceeași temperatură. Cel care a cedat a fost doar primul; următorul urmează la scurt timp. Ar însemna să desfacem aparatul a doua oară peste o lună, cu încă un risc pentru panou.'],
   ['Cât ține reparația?', 'Baretele noi au aceeași durată de viață ca cele originale, adică ani de zile. Verificăm și driverul care le alimentează — dacă el le-a ars, trimițând un curent prea mare, baretele noi ar păți la fel, așa că nu are rost să îl ignorăm.'],
@@ -23,7 +23,7 @@ const schemaExtra = {
     { '@type': 'Service', name: 'Înlocuire leduri TV', serviceType: 'Înlocuire benzi LED televizor', description, url: canonical,
       areaServed: [{ '@type': 'City', name: 'București' }, { '@type': 'AdministrativeArea', name: 'Județul Ilfov' }],
       provider: { '@id': SITE.domeniu + '/#business' },
-      offers: { '@type': 'Offer', priceCurrency: 'RON', priceSpecification: { '@type': 'PriceSpecification', minPrice: '100', maxPrice: '280', priceCurrency: 'RON' } } },
+      offers: { '@type': 'Offer', priceCurrency: 'RON', priceSpecification: { '@type': 'PriceSpecification', minPrice: '150', maxPrice: '420', priceCurrency: 'RON' } } },
     { '@type': 'BreadcrumbList', itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Acasă', item: SITE.domeniu + '/' },
       { '@type': 'ListItem', position: 2, name: 'Prețuri reparații TV', item: SITE.domeniu + '/preturi-reparatii-tv/' },
@@ -35,7 +35,7 @@ const schemaExtra = {
 ---
 <Base title={title} description={description} schemaExtra={schemaExtra}>
   <section class="hero-img"><div class="wrap">
-    <span class="badge">💡 100–280 lei · garanție 6 luni</span>
+    <span class="badge">💡 150–420 lei · garanție 6 luni</span>
     <h1>Înlocuire leduri TV</h1>
     <p class="lead">Un televizor LED nu luminează prin ecran, ci prin niște barete ascunse în spatele lui. Când acelea se sting, aparatul pare mort deși merge perfect — și e cea mai frecventă intervenție pe care o facem prin București, de obicei terminată din prima vizită.</p>
     <a class="btn btn-white" href={SITE.telefonHref}>📞 {SITE.telefon}</a>
@@ -71,7 +71,7 @@ const schemaExtra = {
 
   <section class="sec"><div class="wrap">
     <h2>Preț, garanție și ce include</h2>
-    <p>Intervalul este <strong>100–280 de lei</strong>. În el intră baretele, munca, verificarea driverului și <strong>6 luni de garanție scrisă</strong>. Nu plătiți deplasarea în București și Ilfov, nici diagnosticarea, nici dacă hotărâți să nu reparați.</p>
+    <p>Intervalul este <strong>150–420 de lei</strong>. În el intră baretele, munca, verificarea driverului și <strong>6 luni de garanție scrisă</strong>. Nu plătiți deplasarea în București și Ilfov, nici diagnosticarea, nici dacă hotărâți să nu reparați.</p>
     <p>Restul intervențiilor sunt pe pagina de <a href={u('preturi-reparatii-tv/')}>prețuri reparații TV</a>. Dacă vă interesează cum se formează prețul unei reparații în general, e explicat în <a href={u('cat-costa-reparatia-unui-televizor/')}>cât costă reparația unui televizor</a>.</p>
   </div></section>
 
