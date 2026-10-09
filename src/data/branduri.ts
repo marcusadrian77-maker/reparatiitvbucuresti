@@ -18,7 +18,7 @@ export const BRANDURI: Record<string, Brand> = {
   samsung: {
     slug: 'reparatii-televizoare-samsung',
     nume: 'Samsung',
-    titlu: 'Reparații TV Samsung București – Service la Domiciliu',
+    titlu: 'Reparații TV Samsung București – Service Samsung la Domiciliu',
     descriere: 'Service televizoare Samsung la domiciliu în București și Ilfov: QLED, Neo QLED, Crystal UHD, The Frame. Diagnosticare și deplasare gratuite, garanție 6–12 luni.',
     intro: 'Samsung este marca pe care o vedem cel mai des în casele din București, iar asta ne-a dat timp să învățăm foarte bine cum se strică. Cele mai multe apeluri sunt pentru televizoare care nu mai pornesc, pentru ecrane negre cu sunet prezent și pentru aparate blocate la sigla de pornire — trei defecțiuni pe care le rezolvăm, de regulă, la prima vizită și fără să scoatem televizorul din casă.',
     context: 'Lucrăm pe toată gama Samsung din ultimii cincisprezece ani: seriile Crystal UHD (AU, BU, CU, DU), QLED (Q6, Q7, Q8, Q9), Neo QLED (QN85, QN90, QN95), The Frame, The Serif și modelele Full HD mai vechi din seriile J, K, M și N.',
