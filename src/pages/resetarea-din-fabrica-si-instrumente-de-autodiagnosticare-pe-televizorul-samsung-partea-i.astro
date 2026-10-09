@@ -5,8 +5,8 @@ import Cta from '../components/Cta.astro';
 import Testimoniale from '../components/Testimoniale.astro';
 import { SITE, u } from '../data/site';
 
-const title = 'Resetare TV Samsung: din meniu, telecomandă sau butoane';
-const description = 'Cum resetezi un televizor Samsung la setările din fabrică: din meniu, fără telecomandă, codul PIN implicit și ce șterge resetarea. Plus când nu ajută.';
+const title = 'Resetare TV Samsung: cod PIN 0000, din meniu sau fără telecomandă';
+const description = 'Resetare televizor Samsung la setările din fabrică: Setări → General → Resetare, cod PIN implicit 0000. Cum o faceți fără telecomandă, ce se șterge și când nu ajută.';
 const canonical = new URL(Astro.url.pathname, SITE.domeniu).href;
 
 const faq = [
@@ -40,6 +40,7 @@ const schemaExtra = {
   <Cifre />
 
   <section class="sec"><div class="wrap">
+    <div class="note-green" style="margin:0 0 22px"><strong>Pe scurt:</strong> Setări → General (pe modelele noi, „General și confidențialitate") → Resetare → codul PIN <strong>0000</strong> → Resetare → OK. Fără telecomandă, folosiți aplicația SmartThings de pe telefon sau butonul de sub sigla televizorului. Resetarea șterge canalele, aplicațiile și conturile și nu repară defecte de hardware — dacă problema rămâne, vedeți <a href={u('reparatii-televizoare-samsung/')}>reparații TV Samsung la domiciliu</a>.</div>
     <h2 style="margin-top:0">Întâi: o repornire completă, nu o resetare</h2>
     <p>Înainte de resetarea din fabrică, încercați o repornire reală. Butonul Power de pe telecomandă nu oprește de fapt televizorul, ci îl pune în standby, iar o eroare de software poate rămâne în memorie zile întregi.</p>
     <p>Țineți apăsat butonul Power de pe telecomandă până când televizorul se stinge și reapare sigla Samsung — durează câteva secunde. Varianta sigură, fără telecomandă: scoateți ștecărul din priză, așteptați un minut și reconectați. Surprinzător de des, asta e tot ce trebuia.</p>

@@ -13,8 +13,8 @@ import { numeLoc } from '../data/strazi';
 const ilfov = LOCATII.map(([sl, nm]) => ({ sl, ...numeLoc(sl, nm) }))
   .filter(x => x.kind === 'ilfov' && x.sl !== 'ilfov')
   .sort((a, b) => a.full.localeCompare(b.full, 'ro'));
-const title = 'Reparații TV București – Service Televizoare la Domiciliu';
-const description = 'Reparații TV București la domiciliu: LED, OLED, QLED, Smart TV, orice marcă. Diagnosticare și deplasare gratuite, intervenție în aceeași zi, garanție 6–12 luni.';
+const title = 'Reparații Televizoare București – Service TV la Domiciliu';
+const description = 'Reparații televizoare la domiciliu în București și Ilfov: LED, OLED, QLED, Smart TV, orice marcă. Deplasare și diagnosticare gratuite, garanție 6–12 luni.';
 const servicii = [
   { i: '⚡', t: 'TV nu pornește', d: 'Reparăm sursa de alimentare, placa principală și rescriem memoria eMMC cu programator special.' },
   { i: '💡', t: 'Backlight / ecran întunecat', d: 'Înlocuim baretele LED, driverele și invertoarele pentru imagine clară.' },
@@ -52,8 +52,8 @@ const faqSchema = {
   <section class="hero-img">
     <div class="wrap">
       <span class="badge">Service TV profesional · Garanție 6–12 luni</span>
-      <h1>Reparații TV București — Service Televizoare la Domiciliu</h1>
-      <p class="lead">Reparăm televizoare LED, OLED, QLED și Smart TV, orice marcă. Diagnosticare și deplasare gratuită în toate sectoarele. Intervenție rapidă, de regulă în aceeași zi.</p>
+      <h1>Reparații Televizoare București — Service TV la Domiciliu</h1>
+      <p class="lead">Reparații TV la domiciliu pentru televizoare LED, OLED, QLED și Smart TV, orice marcă. Diagnosticare și deplasare gratuită în toate sectoarele. Intervenție rapidă, de regulă în aceeași zi.</p>
       <div class="pills">
         <span>LED · OLED · QLED</span><span>Samsung · LG · Sony · Philips</span><span>La domiciliu</span>
       </div>

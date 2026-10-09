@@ -6,7 +6,7 @@ import Testimoniale from '../components/Testimoniale.astro';
 import { SITE, u } from '../data/site';
 
 const title = 'De ce nu se aude sunetul la televizorul Samsung';
-const description = 'Nu se aude sunetul la televizorul Samsung? Setările de sunet care îl opresc, testul de sunet din meniu și defectele reale: amplificator, difuzoare, placă.';
+const description = 'De cele mai multe ori televizorul Samsung trimite sunetul în altă parte: Setări → Sunet → Ieșire sunet → Difuzor TV. Apoi testul de sunet din meniu și defectele reale.';
 const canonical = new URL(Astro.url.pathname, SITE.domeniu).href;
 
 const faq = [
@@ -40,6 +40,7 @@ const schemaExtra = {
   <Cifre />
 
   <section class="sec"><div class="wrap">
+    <div class="note-green" style="margin:0 0 22px"><strong>Pe scurt:</strong> 1) Setări → Sunet → Ieșire sunet → alegeți <strong>Difuzor TV</strong>. 2) Verificați Mute și sursa — dacă sunetul lipsește doar pe un HDMI sau într-o aplicație, televizorul e bun. 3) Setări → Asistență → Autodiagnosticare → <strong>Test sunet</strong>: dacă nici melodia de test nu se aude curat, defectul e în televizor (amplificator sau difuzoare) și îl rezolvăm la domiciliu — vedeți <a href={u('reparatii-televizoare-samsung/')}>reparații TV Samsung</a>.</div>
     <h2 style="margin-top:0">Primul lucru de verificat: unde trimite televizorul sunetul</h2>
     <p>Televizoarele Samsung țin minte ultimul dispozitiv audio conectat. Dacă ați folosit vreodată un soundbar, căști Bluetooth sau un sistem home cinema, televizorul poate trimite în continuare sunetul acolo, chiar dacă dispozitivul e oprit sau deconectat.</p>
     <p>Mergeți în <strong>Setări → Sunet → Ieșire sunet</strong> și alegeți <strong>Difuzor TV</strong>. Pe modelele mai vechi, opțiunea se numește „Selectare difuzor" și se află tot în meniul Sunet. Este, de departe, cea mai frecventă cauză pentru care un televizor Samsung „nu mai are sonor".</p>

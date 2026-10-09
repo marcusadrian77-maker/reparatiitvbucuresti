@@ -188,6 +188,7 @@ if (isLocatie) {
   });
 }
 const schemaExtra = { '@context': 'https://schema.org', '@graph': graph };
+const ANCORE_HOME = ['reparații televizoare în București', 'reparații TV la domiciliu în București', 'service TV București'];
 ---
 <Base title={title} description={description} schemaExtra={schemaExtra} canonicalOverride={CANONIC[slug] ? canonical : null} noindex={SECUNDARE.has(slug) || MODELE_SECUNDARE.has(slug)}>
   <section class="hero-img"><div class="wrap">
@@ -196,6 +197,7 @@ const schemaExtra = { '@context': 'https://schema.org', '@graph': graph };
     <p class="lead">{isLocatie
       ? `Service televizoare pe ${locDesc}. Diagnosticare și deplasare gratuită, reparație pe loc, garanție 6–12 luni.`
       : 'Service televizoare profesional în București și Ilfov. Diagnosticare și deplasare gratuită, garanție 6–12 luni.'}</p>
+    <p style="font-size:14.5px;opacity:.85;margin-top:6px">{isLocatie ? 'Lucrăm în toate sectoarele și în Ilfov — vedeți ' : 'Toate serviciile noastre sunt pe pagina '}<a href={u('')} style="text-decoration:underline">{ANCORE_HOME[[...slug].reduce((a, c) => a + c.charCodeAt(0), 0) % ANCORE_HOME.length]}</a>.</p>
   </div></section>
   <Cifre />
 

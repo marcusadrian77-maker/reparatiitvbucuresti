@@ -5,8 +5,8 @@ import Cta from '../components/Cta.astro';
 import Testimoniale from '../components/Testimoniale.astro';
 import { SITE, u } from '../data/site';
 
-const title = 'Televizorul nu se mai aprinde? Samsung, LG, Sony, Philips';
-const description = 'Televizorul nu se mai aprinde sau ecranul rămâne negru? Ce vă spune ledul de standby, ce verificați singuri și cât costă reparația. Deplasare gratuită.';
+const title = 'Nu se mai aprinde televizorul? Ce arată ledul (Samsung, LG)';
+const description = 'Nu se mai aprinde televizorul? Ledul de standby arată unde e defectul: stins – sursa, aprins – telecomanda sau placa, clipește – protecție. Ce verificați singuri.';
 const canonical = new URL(Astro.url.pathname, SITE.domeniu).href;
 
 const faq = [
@@ -39,6 +39,7 @@ const schemaExtra = {
   <Cifre />
 
   <section class="sec"><div class="wrap">
+    <div class="note-green" style="margin:0 0 22px"><strong>Pe scurt:</strong> uitați-vă la ledul de standby. <strong>Nu se aprinde deloc</strong> — verificați priza; dacă e bună, defectul e în sursa de alimentare. <strong>E aprins, dar televizorul nu pornește</strong> — încercați butonul de pe aparat; dacă pornește așa, e telecomanda, altfel sursa principală sau placa de bază. <strong>Clipește</strong> — televizorul s-a oprit singur ca să se protejeze de un defect. Dacă se aude sunetul și ecranul rămâne negru, s-a stricat iluminarea. Pentru Samsung, vedeți și <a href={u('televizorul-samsung-nu-se-aprinde/')}>televizorul Samsung nu se aprinde</a>.</div>
     <h2 style="margin-top:0">Primul indiciu: ce face ledul de standby</h2>
     <p>Aproape orice televizor are un led mic, de obicei roșu, pe rama de jos. Starea lui spune mai mult decât orice altă verificare și este primul lucru pe care vi-l cerem la telefon.</p>
     <h3>Ledul nu se aprinde deloc</h3>
