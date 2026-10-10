@@ -15,6 +15,7 @@ import { GLOSAR, LISTE_MODELE, modeleMarca, ZONE_ARTICOL } from '../data/hub';
 import { SECUNDARE } from '../data/secundare';
 import { MODELE_SECUNDARE } from '../data/modele';
 import { specModel, textVechime, textDiagonala, textPlatforma, textPanou } from '../data/model-info';
+import { ZONE_UNICE } from '../data/zone-unice';
 
 export function getStaticPaths() {
   const ARTICOLE = [...ARTICOLE_1, ...ARTICOLE_2, ...ARTICOLE_3];
@@ -85,7 +86,8 @@ const faqExtra = scurt ? alege(FAQ, 3, slug, 13) : [];
 
 // ——— Numele normalizat și contextul geografic ———
 const info = numeLoc(slug, nume);
-const eticheta = info.full;                       // ex. „Bulevardul Iuliu Maniu"
+const unic = isLocatie ? (ZONE_UNICE[slug] || null) : null;
+const eticheta = (unic && unic.eticheta) || info.full; // ex. „Bulevardul Iuliu Maniu"
 const sect = SECTOR[slug] ?? null;
 const inIlfov = info.kind === 'ilfov';
 const locDesc = inIlfov ? `${eticheta}, județul Ilfov` : sect ? `${eticheta}, Sector ${sect}` : eticheta;
@@ -109,8 +111,8 @@ let descLoc = `Service televizoare la domiciliu pe ${locDesc}. ${unul(cozi, slug
 if (descLoc.length > 158) descLoc = `Service TV la domiciliu pe ${locDesc}. ${unul(cozi, slug, 9)}`;
 if (descLoc.length > 158) descLoc = descLoc.slice(0, 155).replace(/\s+\S*$/, '') + '.';
 
-const title = isLocatie ? titluLoc : art!.titlu;
-const description = isLocatie ? descLoc : art!.descriere;
+const title = isLocatie ? ((unic && unic.titlu) || titluLoc) : art!.titlu;
+const description = isLocatie ? ((unic && unic.descriere) || descLoc) : art!.descriere;
 
 // ——— Blocuri de conținut, variate deterministic pe slug ———
 const probleme = alege(PROBLEME, 6, slug, 1);
@@ -322,6 +324,12 @@ const ANCORE_HOME = ['reparații televizoare în București', 'reparații TV la 
       
       <p>{introTxt}</p>
       <p>{detaliuTxt}</p>
+      {unic && unic.sectiuni.map(([t, ps]) => (
+        <div>
+          <h2>{t}</h2>
+          {ps.map(p => <p set:html={p} />)}
+        </div>
+      ))}
       {cartiere && (
         <p>{eticheta} se află în <a href={u('reparatii-tv-sector-' + sect + '/')}>Sectorul {sect}</a>, zonă pe care o acoperim integral — inclusiv {cartiere.slice(0, 5).join(', ')} și împrejurimile.</p>
       )}
