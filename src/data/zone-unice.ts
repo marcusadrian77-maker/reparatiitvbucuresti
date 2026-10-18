@@ -19,7 +19,7 @@ export const ZONE_UNICE: Record<string, ZonaUnica> = {
       ]],
       ['Apartamente în regim hotelier și localuri', [
         'O bună parte din apartamentele de deasupra magazinelor de pe Lipscani se închiriază pe zile. Pentru proprietari contează să nu piardă o rezervare din cauza unui televizor care nu pornește, așa că stabilim ora împreună, de obicei între două sejururi, și vă spunem din prima dacă reparația se poate face pe loc.',
-        'La baruri și restaurante televizorul stă de multe ori pornit ore întregi și se strică mai des sursa sau iluminarea din spatele ecranului. Putem veni înainte de program, ca intervenția să nu deranjeze clienții. Pentru zona din jur vedeți și pagina despre <a href="/centrul-istoric/">reparații TV în Centrul Istoric</a>.',
+        'La baruri și restaurante televizorul stă de multe ori pornit ore întregi și se strică mai des sursa sau iluminarea din spatele ecranului. Putem veni înainte de program, ca intervenția să nu deranjeze clienții. Pentru localuri avem și condiții de firmă, cu factură și contract de mentenanță: <a href="https://www.servicetvbucuresti.com/service-tv-restaurante-baruri/" rel="noopener">service TV pentru restaurante și baruri</a>. Pentru zona din jur vedeți și pagina despre <a href="/centrul-istoric/">reparații TV în Centrul Istoric</a>.',
       ]],
     ],
   },
@@ -105,7 +105,7 @@ export const ZONE_UNICE: Record<string, ZonaUnica> = {
         'Mulți dintre clienții de aici au moștenit apartamentul, uneori cu tot cu un televizor vechi de 10–12 ani. Prima întrebare e mereu dacă merită reparat. Vă spunem sincer după diagnosticare: dacă reparația se apropie de prețul unui televizor nou, vă recomandăm să nu o faceți.',
       ]],
       ['Birouri, săli de ședințe, cabinete', [
-        'Zona e plină de birouri, cabinete medicale și săli de ședințe în care televizorul sau monitorul mare e folosit pentru prezentări. Acolo contează mai ales ora: putem veni dimineața devreme sau după program, iar factura o emitem pe firmă.',
+        'Zona e plină de birouri, cabinete medicale și săli de ședințe în care televizorul sau monitorul mare e folosit pentru prezentări. Acolo contează mai ales ora: putem veni dimineața devreme sau după program, iar factura o emitem pe firmă. Detalii pe pagina de <a href="https://www.servicetvbucuresti.com/service-tv-birouri/" rel="noopener">service TV pentru birouri</a>.',
         'Pentru apartamentele din partea veche a orașului, spre Lipscani, citiți și pagina <a href="/centrul-istoric/">reparații TV în Centrul Istoric</a>; pentru condițiile pe sector, <a href="/reparatii-tv-sector-1/">reparații TV Sector 1</a>.',
       ]],
     ],
@@ -194,7 +194,7 @@ export const ZONE_UNICE: Record<string, ZonaUnica> = {
         'Clădirile sunt vechi și au de multe ori instalații electrice refăcute pe bucăți. O priză care încălzește sau o prelungitoare supraîncărcată poate strica o sursă de televizor la fel de sigur ca o furtună. Când găsim așa ceva, vă spunem, ca să nu se repete defectul după reparație.',
       ]],
       ['Pentru proprietari, administratori și localuri', [
-        'Multe apartamente din Centrul Istoric sunt închiriate pe zile, iar un administrator are adesea mai multe deodată. Putem verifica mai multe televizoare la aceeași vizită și vă dăm devizul pentru fiecare înainte de orice intervenție.',
+        'Multe apartamente din Centrul Istoric sunt închiriate pe zile, iar un administrator are adesea mai multe deodată. Putem verifica mai multe televizoare la aceeași vizită și vă dăm devizul pentru fiecare înainte de orice intervenție. Condițiile pentru unități de cazare sunt pe pagina de <a href="https://www.servicetvbucuresti.com/service-tv-hoteluri/" rel="noopener">service TV pentru hoteluri și pensiuni</a>.',
         'Pentru baruri, cafenele și hoteluri mici stabilim ora înainte de program sau în intervalul cel mai liniștit. Detalii despre o singură stradă găsiți pe pagina <a href="/lipscani/">reparații TV pe Strada Lipscani</a>, iar condițiile generale pe <a href="/reparatii-tv-sector-3/">reparații TV Sector 3</a>.',
       ]],
     ],
