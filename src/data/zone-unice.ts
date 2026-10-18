@@ -110,6 +110,80 @@ export const ZONE_UNICE: Record<string, ZonaUnica> = {
       ]],
     ],
   },
+  'damaroaia': {
+    eticheta: 'Dămăroaia',
+    titlu: 'Reparații TV Dămăroaia, Sector 1 – service la domiciliu',
+    descriere: 'Reparații televizoare în Dămăroaia: case cu curte și blocuri mici între Bucureștii Noi și calea ferată. Venim acasă, deplasare și diagnosticare gratuite.',
+    sectiuni: [
+      ['Dămăroaia, cartier de case', [
+        'Dămăroaia e una dintre puținele zone din Sectorul 1 în care predomină încă locuințele cu curte, pe străzi înguste, între Bucureștii Noi, Calea Griviței și linia de cale ferată. Multe străzi sunt cu sens unic, așa că vă rugăm să ne spuneți la telefon pe unde se intră cel mai ușor.',
+        'De la atelierul din Militari ajungem pe Calea Giulești și Calea Griviței în aproximativ 20 de minute. Pentru că zona e compactă, putem combina deseori două intervenții pe străzi apropiate, iar asta ne permite să venim în aceeași zi.',
+      ]],
+      ['Antene, cabluri și supratensiuni', [
+        'În casele din zonă televizorul primește semnal prin cablu tras pe stâlpi sau prin antenă pe acoperiș. După o furtună, defectul poate fi în televizor, dar la fel de bine în cablul de semnal sau în priza fără împământare. Verificăm întâi traseul, ca să nu schimbăm o placă degeaba.',
+        'Dacă televizorul nu mai pornește după o cădere de tensiune, nu-l porniți de mai multe ori „să vedeți dacă își revine". Scoateți-l din priză și sunați-ne. Zona vecină, de-a lungul bulevardului, are pagina ei: <a href="/bucurestii-noi/">reparații TV în Bucureștii Noi</a>.',
+      ]],
+    ],
+  },
+  'domenii': {
+    titlu: 'Reparații TV Domenii, Sector 1 – service la domiciliu',
+    descriere: 'Reparații televizoare în Domenii: blocuri interbelice, vile și apartamente în jurul Pieței Domenii și Parcului Herăstrău. Deplasare și diagnosticare gratuite.',
+    sectiuni: [
+      ['În jurul Pieței Domenii', [
+        'Domenii e un cartier liniștit din nordul Sectorului 1, cu vile vechi, blocuri interbelice și câteva ansambluri noi, între Piața Domenii, Bulevardul Ion Mihalache și Parcul Herăstrău. Parcarea e greu de găsit pe străzile mici, așa că ne ajută dacă ne spuneți dinainte unde putem opri.',
+        'Venim din Militari pe Calea Giulești și Bulevardul Ion Mihalache, de regulă în 20–25 de minute în afara orelor de vârf. Pentru o programare la oră fixă, vă propunem un interval de dimineață sau de după prânz, când traficul spre nord e mai lejer.',
+      ]],
+      ['Televizoare vechi și televizoare noi', [
+        'În apartamentele mai vechi din Domenii găsim des televizoare de 8–12 ani, de la mărci care nu mai produc de mult modelul respectiv. Piesele pentru ele se mai găsesc, dar nu întotdeauna. Vă spunem după diagnosticare dacă piesa există și cât durează să ajungă.',
+        'La televizoarele noi, OLED sau QLED, cele mai multe probleme sunt de software sau de iluminare. Multe se rezolvă pe loc. Pentru zona din jurul parcului vedeți și <a href="/herastrau/">reparații TV Herăstrău</a>, iar condițiile pe sector le găsiți la <a href="/reparatii-tv-sector-1/">reparații TV Sector 1</a>.',
+      ]],
+    ],
+  },
+  'dudesti': {
+    eticheta: 'Dudești',
+    titlu: 'Reparații TV Dudești, Sector 3 – service la domiciliu',
+    descriere: 'Reparații televizoare în Dudești: blocurile de pe Calea Dudești, Bulevardul Corneliu Coposu și străzile spre Vitan. Venim acasă, diagnosticare gratuită.',
+    sectiuni: [
+      ['De pe Calea Dudești până spre Vitan', [
+        'Zona Dudești se întinde de-a lungul Căii Dudești, de la Piața Unirii și Bulevardul Corneliu Coposu spre Vitan și Mihai Bravu. E o zonă de blocuri ridicate în anii 70–80, cu câteva străzi de case vechi rămase între ele.',
+        'Din Militari ajungem pe Splaiul Independenței în 20–30 de minute, în funcție de trafic. Pentru Dudești programăm de obicei vizitele pe un interval de o oră, iar dacă întârziem vă anunțăm la telefon.',
+      ]],
+      ['Ce reparăm cel mai des aici', [
+        'Cele mai multe televizoare din zonă au 5–10 ani și cedează la iluminarea din spatele ecranului: apare sunetul, dar imaginea rămâne neagră. E o reparație care se face de cele mai multe ori acasă, în aceeași vizită, fără să luăm televizorul.',
+        'Dacă televizorul e mai vechi și reparația iese aproape cât unul nou, vă spunem asta înainte să începem. Pentru zona vecină vedeți <a href="/vitan/">reparații TV Vitan</a>, iar pentru tot sectorul <a href="/reparatii-tv-sector-3/">reparații TV Sector 3</a>.',
+      ]],
+    ],
+  },
+  'giulesti': {
+    eticheta: 'Giulești',
+    titlu: 'Reparații TV Giulești, Sector 6 – lângă atelier, în aceeași zi',
+    descriere: 'Reparații televizoare în Giulești, Sector 6: cartierul vecin cu atelierul din Militari. Venim acasă de obicei în aceeași zi, deplasare și diagnosticare gratuite.',
+    sectiuni: [
+      ['Giulești, vecin cu atelierul', [
+        'Giuleștiul e la câteva minute de atelierul nostru de pe Strada Moinești: trecem Calea Giulești și suntem în cartier. De aceea aici putem veni de obicei în aceeași zi și chiar pentru o verificare scurtă, fără să așteptați o programare pe a doua zi.',
+        'Pentru televizoarele mici și medii aveți și varianta să le aduceți direct la atelier, pentru că drumul e scurt. Pe cele mari le reparăm acasă, iar dacă e nevoie de bancul de lucru, le luăm noi și le aducem înapoi montate.',
+      ]],
+      ['Blocuri, case și stadion', [
+        'Giuleștiul amestecă blocurile de pe Calea Giulești cu străzile de case dinspre Crângași și dinspre gara Giulești. În case, televizorul e de multe ori legat de un receiver de satelit sau de un cablu vechi, așa că verificăm și semnalul, nu doar televizorul.',
+        'În serile cu meci pe stadionul din cartier, accesul pe Calea Giulești e greu, așa că evităm programările atunci. Zona vecină are pagina ei: <a href="/crangasi/">reparații TV Crângași</a>; pentru tot sectorul, <a href="/reparatii-tv-sector-6/">reparații TV Sector 6</a>.',
+      ]],
+    ],
+  },
+  'herastrau': {
+    eticheta: 'Herăstrău',
+    titlu: 'Reparații TV Herăstrău, Sector 1 – apartamente și vile',
+    descriere: 'Reparații televizoare în zona Herăstrău: vile, apartamente mari și ansambluri de lângă parc. Televizoare mari reparate la domiciliu, diagnosticare gratuită.',
+    sectiuni: [
+      ['Lângă Parcul Herăstrău', [
+        'În jurul Parcului Herăstrău, de la Aviatorilor și Primăverii până la Floreasca, sunt multe apartamente mari și vile cu televizoare de 65–85 de inch. Un ecran de mărimea asta nu se transportă ușor, așa că aproape toate intervențiile le facem la domiciliu.',
+        'Când e nevoie să coborâm un televizor mare de pe perete, îl punem pe o masă sau pe o pătură pe care o aducem noi și lucrăm cu grijă la colțurile ecranului, unde panoul e cel mai fragil.',
+      ]],
+      ['Televizoare scumpe, reparații atente', [
+        'La un OLED sau un QLED mare, prima întrebare e dacă panoul e afectat. Dacă e spart, înlocuirea costă de obicei aproape cât un televizor nou și vă spunem asta din prima. Dacă panoul e întreg, defectul e de regulă la sursă, la placa principală sau la iluminare, și se repară.',
+        'În clădirile cu recepție sau cu acces pe bază de cod, vă rugăm să ne lăsați numele pe listă. Pentru zonele vecine vedeți <a href="/domenii/">reparații TV Domenii</a> și <a href="/aviatiei/">reparații TV Aviației</a>.',
+      ]],
+    ],
+  },
   'centrul-istoric': {
     eticheta: 'Centrul Istoric',
     titlu: 'Reparații TV Centrul Istoric (Centrul Vechi), Sector 3',
