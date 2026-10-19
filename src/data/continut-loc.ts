@@ -2,9 +2,9 @@
 // (pe baza slug-ului) astfel încât fiecare pagină să aibă text propriu.
 
 export const INTRO: ((n: string, t: string) => string)[] = [
-  (n, t) => `Dacă televizorul dumneavoastră de pe ${n} s-a defectat, nu trebuie să îl cărați nicăieri. Venim noi, cu trusa completă și cu piesele de schimb uzuale în mașină: dacă piesa de care e nevoie e pe stoc, rezolvăm problema pe loc, în fața dumneavoastră.`,
+  (n, t) => `Dacă televizorul dumneavoastră de pe ${n} s-a defectat, nu trebuie să îl cărați nicăieri. Venim noi, cu trusa completă și cu piesele de schimb uzuale în mașină, așa că în cele mai multe cazuri rezolvăm problema pe loc, în fața dumneavoastră.`,
   (n, t) => `Reparăm televizoare la domiciliu pe ${n} de peste zece ani. Diagnosticarea și deplasarea sunt gratuite, iar dacă televizorul nu poate fi reparat sau nu merită reparat, vă spunem asta din prima și nu plătiți nimic.`,
-  (n, t) => `Service TV la domiciliu pe ${n}: sunați dimineața, ajungem de regulă în aceeași zi. Lucrăm pe loc, la dumneavoastră acasă, cu stație de lipit și osciloscop, când avem piesa pe stoc; plăcile de bază și piesele care trebuie comandate le rezolvăm în atelier.`,
+  (n, t) => `Service TV la domiciliu pe ${n}: sunați dimineața, ajungem de regulă în aceeași zi. Lucrăm pe loc, la dumneavoastră acasă, cu stație de lipit, osciloscop și piese din stoc; doar plăcile de bază și piesele care trebuie comandate le rezolvăm în atelier.`,
   (n, t) => `Pe ${n} intervenim rapid, fără costuri de transport și fără avans. Verificăm televizorul, vă comunicăm defecțiunea și prețul exact înainte să începem, iar plata se face doar după ce aparatul funcționează.`,
   (n, t) => `Televizor stricat pe ${n}? Ne deplasăm gratuit, diagnosticăm gratuit și reparăm la fața locului: surse de alimentare, baretele LED de iluminare, plăci T-CON, plăci principale și probleme de software Smart TV.`,
   (n, t) => `Oferim reparații de televizoare la domiciliu pentru locuitorii de pe ${n}. Reparăm orice diagonală și orice tehnologie — LED, OLED, QLED, Mini-LED — indiferent de marcă, cu garanție scrisă între 6 și 12 luni.`,
@@ -55,7 +55,7 @@ export const PASI: [string, string][] = [
 export const FAQ: [string, (n: string) => string][] = [
   ['Cât costă deplasarea?', n => `Nimic. Deplasarea pe ${n} și în restul Bucureștiului și Ilfovului este gratuită, la fel și diagnosticarea. Plătiți doar reparația, dacă alegeți să o facem.`],
   ['În cât timp ajungeți?', n => `De obicei în aceeași zi, dacă sunați până în jurul prânzului. Pentru ${n} ne încadrăm în intervalul orar pe care îl stabilim la telefon.`],
-  ['Reparați televizorul acasă la mine?', n => `Da, pe ${n} reparăm pe loc dacă piesa e în stocul nostru. Când piesa trebuie comandată sau defectul e pe placa de bază, ducem televizorul la atelier și vi-l aducem înapoi reparat, fără cost de transport.`],
+  ['Reparați televizorul acasă la mine?', n => `Da, în peste 90% din cazuri reparația se face pe loc, pe ${n}, cu piesele din stocul nostru. Doar când piesa trebuie comandată sau defectul e pe placa de bază, ducem televizorul la atelier și vi-l aducem înapoi reparat, fără cost de transport.`],
   ['Ce garanție ofer­iți?', n => `Între 6 și 12 luni, în funcție de intervenție și de piesele montate. Garanția este scrisă și acoperă atât piesa, cât și manopera.`],
   ['Ce mărci reparați?', n => `Samsung, LG, Sony, Philips, Panasonic, Horizon, TCL, Hisense, Sharp, Toshiba, Vestel, Grundig și practic orice altă marcă întâlnită pe piața din România.`],
   ['Merită reparat un televizor mai vechi?', n => `Depinde de costul piesei raportat la valoarea aparatului. Vă spunem sincer când reparația nu merită — nu insistăm pentru o lucrare care nu are sens economic.`],
