@@ -13,8 +13,8 @@ import { numeLoc } from '../data/strazi';
 const ilfov = LOCATII.map(([sl, nm]) => ({ sl, ...numeLoc(sl, nm) }))
   .filter(x => x.kind === 'ilfov' && x.sl !== 'ilfov')
   .sort((a, b) => a.full.localeCompare(b.full, 'ro'));
-const title = 'Reparații Televizoare București – Service TV la Domiciliu';
-const description = 'Reparații televizoare la domiciliu în București și Ilfov: LED, OLED, QLED, Smart TV, orice marcă. Deplasare și diagnosticare gratuite, garanție 6–12 luni.';
+const title = 'Reparații TV la Domiciliu București – Diagnostic Gratuit, în Aceeași Zi';
+const description = 'Tehnicianul vine la dumneavoastră, de regulă în aceeași zi: reparații televizoare Samsung, LG, Sony, Philips în București și Ilfov. Plătiți doar dacă merge. ☎ 0765.461.357';
 const servicii = [
   { i: '⚡', t: 'TV nu pornește', d: 'Reparăm sursa de alimentare, placa principală și rescriem memoria eMMC cu programator special.' },
   { i: '💡', t: 'Backlight / ecran întunecat', d: 'Înlocuim baretele LED, driverele și invertoarele pentru imagine clară.' },
