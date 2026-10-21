@@ -35,7 +35,7 @@ export const PRETURI: [string, string][] = [
   ['Diagnosticare la domiciliu', 'gratuită'],
   ['Deplasare în București și Ilfov', 'gratuită'],
   ['Reparație sau înlocuire sursă de alimentare', '230 – 530 lei'],
-  ['Reparare / înlocuire backlight LED', '150 – 1.000 lei'],
+  ['Reparare / înlocuire backlight LED', '250 – 1.000 lei'],
   ['Reparație placă T-CON', '180 – 450 lei'],
   ['Reparație sau înlocuire placă principală', '300 – 750 lei'],
   ['Service software Smart TV / rescriere firmware', '80 – 230 lei'],
