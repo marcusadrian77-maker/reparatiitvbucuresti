@@ -15,7 +15,7 @@ export const ZONE_UNICE: Record<string, ZonaUnica> = {
     sectiuni: [
       ['Ce înseamnă o intervenție pe Lipscani', [
         'Strada Lipscani e pietonală, iar mașina nu ajunge până la ușă. Parcăm la marginea Centrului Vechi și venim pe jos cu trusa: stație de lipit, multimetru, programator de memorie și piesele probabile pentru defectul descris la telefon. De aceea vă rugăm să ne spuneți dinainte modelul televizorului — ne ajută să nu facem drumul de două ori.',
-        'Clădirile de pe Lipscani sunt vechi, cu scări înguste și de cele mai multe ori fără lift. Un televizor de 55 sau 65 de inch se coboară greu pe asemenea scări, așa că încercăm aproape întotdeauna să reparăm pe loc. Doar când defectul cere bancul din atelierul din Militari îl luăm cu noi, ambalat, și îl aducem înapoi montat.',
+        'Clădirile de pe Lipscani sunt vechi, cu scări înguste și de cele mai multe ori fără lift. Un televizor de 50 sau 55 de inch se coboară greu pe asemenea scări, așa că încercăm aproape întotdeauna să reparăm pe loc; cele mai mari de 55 de inch merg însă la atelier. Doar când defectul cere bancul din atelierul din Militari îl luăm cu noi, ambalat, și îl aducem înapoi montat.',
       ]],
       ['Apartamente în regim hotelier și localuri', [
         'O bună parte din apartamentele de deasupra magazinelor de pe Lipscani se închiriază pe zile. Pentru proprietari contează să nu piardă o rezervare din cauza unui televizor care nu pornește, așa că stabilim ora împreună, de obicei între două sejururi, și vă spunem din prima dacă reparația se poate face pe loc.',
@@ -175,7 +175,7 @@ export const ZONE_UNICE: Record<string, ZonaUnica> = {
     descriere: 'Reparații televizoare în zona Herăstrău: vile, apartamente mari și ansambluri de lângă parc. Televizoare mari reparate la domiciliu, diagnosticare gratuită.',
     sectiuni: [
       ['Lângă Parcul Herăstrău', [
-        'În jurul Parcului Herăstrău, de la Aviatorilor și Primăverii până la Floreasca, sunt multe apartamente mari și vile cu televizoare de 65–85 de inch. Un ecran de mărimea asta nu se transportă ușor, așa că aproape toate intervențiile le facem la domiciliu.',
+        'În jurul Parcului Herăstrău, de la Aviatorilor și Primăverii până la Floreasca, sunt multe apartamente mari și vile cu televizoare de 65–85 de inch. Peste 55 de inch nu reparăm la domiciliu, pentru că acasă nu există condițiile tehnice pentru un panou atât de mare: le luăm noi la atelier și le aducem înapoi reparate.',
         'Când e nevoie să coborâm un televizor mare de pe perete, îl punem pe o masă sau pe o pătură pe care o aducem noi și lucrăm cu grijă la colțurile ecranului, unde panoul e cel mai fragil.',
       ]],
       ['Televizoare scumpe, reparații atente', [

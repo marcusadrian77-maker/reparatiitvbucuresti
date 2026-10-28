@@ -30,7 +30,7 @@ export const SECTOARE: Record<number, Sector> = {
     specific: 'Pe televizoarele OLED montate pe perete, cea mai frecventă solicitare din Sector 1 nu este o defecțiune de panou, ci o problemă de sursă — se repară pe loc, fără să dăm aparatul jos, dacă avem piesa pe stoc și spațiul din spate permite accesul la capac. Placa principală, în schimb, se lucrează în atelier.',
     acces: 'Atelierul nostru este în Militari, pe Str. Moinești, așa că spre Sectorul 1 venim fie pe Bulevardul Iuliu Maniu și Splaiul Independenței, fie pe Orhideelor către Gara de Nord și Banu Manta. Pentru Primăverii, Aviației și Băneasa socotim în jur de 30–40 de minute la ore normale și mai mult în vârfurile de trafic de pe Kiseleff, motiv pentru care propunem de obicei intervalele de dimineață.',
     interventii: [
-      ['OLED și QLED de diagonală mare', 'Lucrăm curent pe modele de 65, 75 și 85 de inch. Demontarea de pe suportul de perete o facem noi, cu grijă la panou.'],
+      ['OLED și QLED de diagonală mare', 'Lucrăm curent pe modele de 65, 75 și 85 de inch, în atelier: peste 55 de inch nu reparăm la domiciliu. Demontarea de pe suportul de perete și transportul le facem noi, cu grijă la panou.'],
       ['Sisteme cu soundbar și home cinema', 'Multe probleme raportate ca „nu are sunet" vin de la conexiunea eARC sau de la setările de ieșire audio, nu de la televizor.'],
       ['Televizoare din case și vile', 'Intervenim și la aparate montate în living-uri înalte sau în zone greu accesibile — venim pregătiți cu scară.'],
       ['Instalări și reconfigurări', 'Montaj pe perete, calibrare imagine, reconectare la rețea și aplicații după o reparație sau o mutare.'],

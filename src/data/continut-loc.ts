@@ -7,7 +7,7 @@ export const INTRO: ((n: string, t: string) => string)[] = [
   (n, t) => `Service TV la domiciliu pe ${n}: sunați dimineața, ajungem de regulă în aceeași zi. Lucrăm pe loc, la dumneavoastră acasă, cu stație de lipit, osciloscop și piese din stoc; doar plăcile de bază și piesele care trebuie comandate le rezolvăm în atelier.`,
   (n, t) => `Pe ${n} intervenim rapid, fără costuri de transport și fără avans. Verificăm televizorul, vă comunicăm defecțiunea și prețul exact înainte să începem, iar plata se face doar după ce aparatul funcționează.`,
   (n, t) => `Televizor stricat pe ${n}? Ne deplasăm gratuit, diagnosticăm gratuit și reparăm la fața locului: surse de alimentare, baretele LED de iluminare, plăci T-CON, plăci principale și probleme de software Smart TV.`,
-  (n, t) => `Oferim reparații de televizoare la domiciliu pentru locuitorii de pe ${n}. Reparăm orice diagonală și orice tehnologie — LED, OLED, QLED, Mini-LED — indiferent de marcă, cu garanție scrisă între 6 și 12 luni.`,
+  (n, t) => `Oferim reparații de televizoare la domiciliu pentru locuitorii de pe ${n}. Reparăm orice tehnologie — LED, OLED, QLED, Mini-LED — indiferent de marcă, cu garanție scrisă între 6 și 12 luni; televizoarele mai mari de 55 de inch le reparăm în atelier.`,
   (n, t) => `Un televizor care nu mai pornește sau care are ecranul negru se repară, în majoritatea cazurilor, mult mai ieftin decât costă unul nou. Pe ${n} venim să îl verificăm gratuit și vă spunem sincer dacă merită.`,
   (n, t) => `Serviciul nostru acoperă integral ${n} și zonele învecinate. Programul obișnuit de intervenții este între 10:00 și 19:00, de luni până vineri, iar pentru urgențe ne putem organiza și în afara acestui interval.`,
 ];
@@ -62,7 +62,7 @@ export const FAQ: [string, (n: string) => string][] = [
   ['Ce se întâmplă dacă nu poate fi reparat?', n => `Nu plătiți nimic. Diagnosticarea rămâne gratuită chiar dacă defecțiunea este una care nu se poate remedia rentabil.`],
   ['Aveți piese pe stoc?', n => `Pentru defecțiunile frecvente — surse, barete LED, condensatori, mufe — da, le avem în mașină. Piesele specifice unui model anume se comandă și ajung, de regulă, în una-două zile.`],
   ['Pot plăti cu cardul?', n => `Da, acceptăm și numerar, și card. Emitem document fiscal pentru fiecare intervenție.`],
-  ['Reparați și televizoare OLED sau QLED?', n => `Da. Lucrăm curent pe OLED, QLED, Mini-LED și Smart TV de toate generațiile, inclusiv modele de 75 și 85 de inch.`],
+  ['Reparați și televizoare OLED sau QLED?', n => `Da. Lucrăm curent pe OLED, QLED, Mini-LED și Smart TV de toate generațiile, inclusiv modele de 75 și 85 de inch. Televizoarele mai mari de 55 de inch le reparăm în atelier, cu transport asigurat de noi.`],
 ];
 
 export const MARCI = [
