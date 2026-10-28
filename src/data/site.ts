@@ -7,6 +7,8 @@ export const SITE = {
   domeniu: 'https://www.reparatiitvbucuresti.ro',
   telefon: '0765.461.357',
   telefonHref: 'tel:+40765461357',
+  telefon2: '0720.667.800',
+  telefon2Href: 'tel:+40720667800',
   whatsapp: 'https://wa.me/40765461357',
   email: 'reparatielectronice@yahoo.com',
   adresaScurta: 'București și Ilfov',
