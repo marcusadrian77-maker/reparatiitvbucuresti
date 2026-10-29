@@ -1,0 +1,81 @@
+---
+import Base from '../layouts/Base.astro';
+import Cifre from '../components/Cifre.astro';
+import Cta from '../components/Cta.astro';
+import { SITE, u } from '../data/site';
+
+const title = 'Lucrări din Atelier – Reparații TV Reale, cu Poze';
+const description = 'Reparații reale din atelierul din Militari, pas cu pas și cu poze: TCL 85C755 care nu pornea (placă de bază) și Sony KD-55XE8096 cu memoria eMMC uzată.';
+const canonical = new URL(Astro.url.pathname, SITE.domeniu).href;
+
+const faq = [
+  ['De ce publicați lucrările din atelier?', 'Ca să vedeți cum lucrăm înainte să ne sunați: ce verificăm întâi, ce reparăm și cum testăm televizorul înainte să plece înapoi. Fiecare lucrare de pe pagină este un aparat real, cu modelul lui și cu poze făcute pe bancul nostru.'],
+  ['Televizorul meu are același simptom. Înseamnă că are același defect?', 'Nu neapărat. Ledul de standby aprins fără imagine, de exemplu, poate veni de la sursă, de la placa de bază sau de la memoria internă. Cauza exactă o aflăm la diagnostic, care este gratuit.'],
+  ['Care televizoare ajung în atelier?', 'Cele mai mari de 55 de inch, reparațiile pe placa de bază și lucrările pentru care piesa trebuie comandată. Restul, peste 90% din cazuri, le reparăm la dumneavoastră acasă, cu piese din stoc. Transportul la atelier și înapoi îl facem noi, fără cost.'],
+  ['Cât a costat fiecare lucrare?', 'Prețul depinde de model și de piesa defectă, așa că nu îl afișăm per lucrare. Intervalele orientative sunt pe pagina de prețuri, iar prețul exact vi-l spunem după diagnostic, înainte de reparație.'],
+];
+
+const schemaExtra = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Acasă', item: SITE.domeniu + '/' },
+      { '@type': 'ListItem', position: 2, name: 'Lucrări din atelier', item: canonical },
+    ] },
+    { '@type': 'FAQPage', mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+  ],
+};
+
+const img = 'width:100%;height:auto;border-radius:10px;display:block';
+const cap = 'font-size:13.5px;color:#5a6b80;margin-top:6px';
+---
+<Base title={title} description={description} schemaExtra={schemaExtra}>
+  <section class="hero-img"><div class="wrap">
+    <span class="badge">🔧 Aparate reale · poze de pe bancul nostru</span>
+    <h1>Lucrări din atelier</h1>
+    <p class="lead">Aici publicăm reparații pe care le-am făcut efectiv în atelierul din Militari: ce avea televizorul, ce am verificat, ce am reparat și cum l-am testat înainte să-l predăm. Fără povești generale, doar aparatul, modelul și pașii.</p>
+    <a class="btn btn-white" href={SITE.telefonHref}>📞 {SITE.telefon}</a>
+    <a class="btn btn-wa" href={SITE.whatsapp} rel="noopener">💬 WhatsApp</a>
+  </div></section>
+  <Cifre />
+
+  <section class="sec"><div class="wrap">
+    <h2 style="margin-top:0">TCL 85C755, 85 de inch: nu pornea, cu ledul de standby aprins</h2>
+    <p><strong>Ce avea.</strong> Televizorul primea curent, ledul de standby stătea aprins, dar nu pornea nici din telecomandă, nici din butonul de pe carcasă. Ecranul rămânea negru, fără logo și fără sunet.</p>
+    <p><strong>Ce am verificat întâi.</strong> Un led aprins ne spune doar că sursa scoate tensiunea de standby, nu și că restul alimentării e în regulă. De aceea am început cu sursa și cu iluminarea ecranului, ca să nu reparăm o piesă bună. Amândouă erau în regulă, iar defectul s-a dovedit a fi pe placa de bază.</p>
+    <p><strong>Ce am reparat.</strong> Am scos placa de bază din aparat și am reparat-o pe banc, la nivel de componentă. Placa originală a rămas în televizor, cu softul potrivit exact acestui model, fără să comandăm o placă nouă.</p>
+    <p><strong>Cum l-am testat.</strong> După montare am rulat o căutare completă de canale digitale, de la zero până la capăt, apoi am lăsat televizorul să funcționeze cu imagine pe tot ecranul. În poze aparatul stă întors pe banc, de aceea meniul și imaginea apar cu susul în jos.</p>
+    <p><strong>De ce în atelier.</strong> Televizoarele mai mari de 55 de inch nu le reparăm la domiciliu: un panou de 85 de inch trebuie așezat pe o suprafață mare și stabilă ca să poată fi deschis în siguranță, iar lucrul pe placă cere microscop și stație de aer cald. L-am luat noi de la client și l-am dus înapoi reparat.</p>
+    <div class="grid g2" style="gap:14px;margin:16px 0 6px">
+      <figure style="margin:0"><img src="/img/tcl-85c755-atelier-banc-test.webp" alt="Televizor TCL 85C755 de 85 de inch pe bancul de lucru din atelierul din Militari, în timpul testului" width="1050" height="1400" loading="lazy" decoding="async" style={img} /><figcaption style={cap}>Pe bancul din atelier, în timpul testului de după reparație.</figcaption></figure>
+      <figure style="margin:0"><img src="/img/tcl-85c755-scanare-canale.webp" alt="TCL 85C755 la începutul căutării de canale digitale după reparația plăcii de bază" width="788" height="1400" loading="lazy" decoding="async" style={img} /><figcaption style={cap}>Căutarea de canale digitale pornește după reparație.</figcaption></figure>
+      <figure style="margin:0"><img src="/img/tcl-85c755-imagine-test-1.webp" alt="TCL 85C755 reparat, cu imagine pe tot ecranul în timpul testului final" width="1400" height="1050" loading="lazy" decoding="async" style={img} /><figcaption style={cap}>Imagine pe tot ecranul de 85 de inch.</figcaption></figure>
+      <figure style="margin:0"><img src="/img/tcl-85c755-imagine-test-2.webp" alt="Ecranul televizorului TCL 85C755 afișând imagine în testul de după reparație" width="1400" height="1050" loading="lazy" decoding="async" style={img} /><figcaption style={cap}>Televizorul rulează stabil înainte de predare.</figcaption></figure>
+    </div>
+    <p>Mai multe despre această marcă găsiți pe pagina <a href={u('reparatii-tv-tcl/')}>reparații TV TCL</a>.</p>
+
+    <h2>Sony KD-55XE8096: memoria internă (eMMC) uzată</h2>
+    <p><strong>Ce avea.</strong> Un Sony Bravia de 55 de inch cu Android TV, fabricat în ianuarie 2018, care nu mai funcționa din cauza memoriei interne uzate. La televizoarele Smart de câțiva ani, memoria eMMC este piesa care cedează cel mai des, pentru că sistemul scrie pe ea zi de zi.</p>
+    <p><strong>Ce am verificat întâi.</strong> Tot sursa de alimentare, din același motiv ca la TCL: nu înlocuim memoria până nu știm sigur că alimentarea e bună. Defectul era la memoria de pe placa de bază.</p>
+    <p><strong>Ce am reparat.</strong> Am desfăcut aparatul, am scos placa de bază, am înlocuit memoria și am scris din nou sistemul de operare potrivit modelului.</p>
+    <p><strong>Cum l-am testat.</strong> Pe lângă imagine și sunet, am verificat aplicațiile cu licență, Netflix și YouTube, pentru că după o intervenție pe memorie sunt primele care pot da probleme. Televizorul a stat în test pe banc înainte să plece înapoi la client.</p>
+    <div class="grid g3" style="gap:14px;margin:16px 0 6px">
+      <figure style="margin:0"><img src="/img/sony-kd-55xe8096-desfacut.webp" alt="Sony KD-55XE8096 desfăcut pe bancul de lucru, cu sursa și placa de bază la vedere" width="1400" height="1050" loading="lazy" decoding="async" style={img} /><figcaption style={cap}>Aparatul desfăcut: sursa și placa de bază.</figcaption></figure>
+      <figure style="margin:0"><img src="/img/sony-kd-55xe8096-placa-de-baza.webp" alt="Placa de bază a televizorului Sony KD-55XE8096, pe care se află memoria eMMC" width="1400" height="1050" loading="lazy" decoding="async" style={img} /><figcaption style={cap}>Placa de bază, unde se află memoria.</figcaption></figure>
+      <figure style="margin:0"><img src="/img/televizor-sony-in-test-atelier.webp" alt="Televizor Sony Bravia în test pe banc după înlocuirea memoriei eMMC" width="1400" height="1050" loading="lazy" decoding="async" style={img} /><figcaption style={cap}>În test pe banc, înainte de predare.</figcaption></figure>
+    </div>
+    <p>Defectele tipice ale televizoarelor Sony sunt explicate pe pagina <a href={u('reparatii-televizoare-sony/')}>reparații televizoare Sony</a>.</p>
+
+    <h2>Ce au în comun cele două lucrări</h2>
+    <p>Amândouă porneau de la un simptom care sperie: un televizor scump care nu mai pornește. Și în ambele cazuri, soluția a fost repararea plăcii existente, nu cumpărarea uneia noi. Asta e diferența pe care o explicăm și pe pagina <a href={u('cat-costa-reparatia-unui-televizor/')}>cât costă reparația unui televizor</a>: un service care înlocuiește subansamblul întreg vă trece în deviz prețul plăcii noi, pe când reparația la nivel de componentă costă de regulă mult mai puțin.</p>
+    <p>Al doilea lucru comun este ordinea verificărilor. Începem mereu cu sursa de alimentare, chiar dacă simptomul pare să indice altceva, pentru că e cea mai frecventă defecțiune și pentru că o sursă instabilă poate strica din nou o placă abia reparată.</p>
+    <p>Intervalele de preț pentru fiecare tip de reparație sunt pe pagina de <a href={u('preturi-reparatii-tv/')}>prețuri</a>, iar dacă vreți să aduceți singur un aparat, adresa și reperele sunt pe pagina <a href={u('cum-ajungeti-la-atelier/')}>cum ajungeți la atelier</a>.</p>
+
+    <h2>Întrebări frecvente</h2>
+    {faq.map(([q, a]) => <div style="margin:0 0 16px"><h3 style="margin:0 0 4px;font-size:17px">{q}</h3><p style="margin:0">{a}</p></div>)}
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <Cta />
+  </div></section>
+</Base>
