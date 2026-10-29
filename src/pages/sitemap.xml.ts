@@ -12,7 +12,7 @@ import { ARTICOLE_3 } from '../data/articole-3';
 const EXCLUSE = new Set([
   'reparatii-televizoare-sector-1', 'reparatii-televizoare-sector-2', 'reparatii-televizoare-sector-3',
   'reparatii-televizoare-sector-4', 'reparatii-televizoare-sector-5', 'reparatii-televizoare-sector-6',
-  'reparatii-tv', 'reparatii-televizoare', 'best-buget-tv', 'cel-mai-bun-raport-calitate-pret-la-un-tv-high-end', 'regele-imaginii',
+  'reparatii-tv', 'reparatii-televizoare', 'reparatii-tv-sony', 'best-buget-tv', 'cel-mai-bun-raport-calitate-pret-la-un-tv-high-end', 'regele-imaginii',
 ]);
 
 const PRIORITATE: Record<string, string> = {
