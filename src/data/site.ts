@@ -23,7 +23,7 @@ export const SITE = {
 // altfel aggregateRating din schema devine un semnal fals.
 export const RECENZII = {
   nota: 4.9,
-  numar: 72,
+  numar: 76,
   profil: 'https://www.google.com/maps?cid=3284667601974338277',
 };
 
@@ -59,6 +59,12 @@ export const SCHEMA_LOCALBUSINESS = {
   '@type': 'ElectronicsStore',
   '@id': 'https://www.reparatiitvbucuresti.ro/#business',
   name: 'Reparatii TV Bucuresti — Service Televizoare',
+  legalName: 'MARCUS ELECTRONICS SRL',
+  alternateName: ['Marcus Electronics', 'Reparatii TV Bucuresti'],
+  taxID: '18426506',
+  vatID: 'RO18426506',
+  foundingDate: '2006-02-27',
+  identifier: { '@type': 'PropertyValue', propertyID: 'Nr. Registrul Comerțului', value: 'J40/3220/2006' },
   description: 'Service televizoare la domiciliu în București și Ilfov. Reparăm LED, OLED, QLED și Smart TV, orice marcă. Diagnosticare și deplasare gratuită, garanție 6–12 luni.',
   url: 'https://www.reparatiitvbucuresti.ro/',
   telephone: '+40765461357',
@@ -69,7 +75,7 @@ export const SCHEMA_LOCALBUSINESS = {
   paymentAccepted: 'Cash, Card',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Str. Moinești',
+    streetAddress: 'Str. Moinești 7',
     postalCode: '061231',
     addressLocality: 'București',
     addressRegion: 'București',
@@ -79,7 +85,7 @@ export const SCHEMA_LOCALBUSINESS = {
   aggregateRating: {
     '@type': 'AggregateRating',
     ratingValue: '4.9',
-    reviewCount: '72',
+    reviewCount: '76',
     bestRating: '5',
     worstRating: '1',
   },
@@ -107,14 +113,29 @@ export const SCHEMA_LOCALBUSINESS = {
     opens: '10:00',
     closes: '19:00',
   },
-  sameAs: ['https://www.google.com/maps?cid=3284667601974338277'],
+  contactPoint: [
+    { '@type': 'ContactPoint', telephone: '+40765461357', contactType: 'customer service', areaServed: 'RO', availableLanguage: 'ro' },
+    { '@type': 'ContactPoint', telephone: '+40720667800', contactType: 'customer service', areaServed: 'RO', availableLanguage: 'ro' },
+  ],
+  sameAs: [
+    'https://www.google.com/maps?cid=3284667601974338277',
+    'https://www.google.com/maps?cid=8478287421888488271',
+    'https://www.reparatiielectronice.ro/',
+  ],
+  subjectOf: {
+    '@type': 'NewsArticle',
+    headline: 'Doctor de gadgeturi: cât te costă să-ți repari electronicele',
+    url: 'https://evz.ro/doctor-de-gadgeturi-cat-te-costa-sa-ti-repari-electronicele-925023.html',
+    datePublished: '2011-03-28',
+    publisher: { '@type': 'Organization', name: 'Evenimentul Zilei' },
+  },
 };
 
 export const OFERTE: [string, number, number, string][] = [
   ['Diagnosticare la domiciliu', 0, 0, 'Identificarea defecțiunii, fără costuri și fără obligații'],
   ['Înlocuire sursă de alimentare', 230, 530, 'Cea mai frecventă defecțiune. Garanție 12 luni'],
   ['Înlocuire placă principală (main board)', 300, 750, 'Diagnoză completă și programare. Garanție 12 luni'],
-  ['Reparare backlight / benzi LED', 150, 420, 'Ecran negru cu sunet prezent. Garanție 6 luni'],
+  ['Reparare backlight / benzi LED', 250, 1000, 'Ecran negru cu sunet prezent. Garanție 6 luni'],
   ['Reparare placă T-CON', 180, 450, 'Dungi pe ecran, imagine parțială. Garanție 6 luni'],
   ['Înlocuire panou LCD/OLED', 750, 2250, 'Depinde de diagonală și model. Garanție 12 luni'],
   ['Reparare circuit audio', 120, 300, 'Amplificator, difuzoare, cablu flex. Garanție 6 luni'],
