@@ -274,6 +274,9 @@ export const PAGINI_PROPRII = new Set([
   'reparatii-tv-sector-4', 'reparatii-tv-sector-5', 'reparatii-tv-sector-6',
 ]);
 
+/** Articole vechi duplicate, redirecționate în astro.config.mjs către pagina de marcă: nu se mai generează și nu apar în liste. */
+export const REDIRECTIONATE = new Set(['reparatii-tv-sony']);
+
 /** Articole vechi rescrise ca pagini .astro proprii, pe aceeași adresă (slug → titlul afișat în liste). */
 export const RESCRISE = new Map<string, string>([
   ['televizorul-tau-nu-se-mai-aprinde', 'Televizorul nu se mai aprinde'],

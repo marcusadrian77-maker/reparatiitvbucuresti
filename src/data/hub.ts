@@ -4,7 +4,7 @@ import { ARTICOLE_1 } from './articole-1';
 import { ARTICOLE_2 } from './articole-2';
 import { ARTICOLE_3 } from './articole-3';
 import { LOCATII } from './locatii';
-import { PAGINI_PROPRII, RESCRISE } from './branduri';
+import { PAGINI_PROPRII, RESCRISE, REDIRECTIONATE } from './branduri';
 
 export type Articol = { s: string; t: string; d: string; h: string };
 
@@ -68,7 +68,7 @@ export const titluScurt = (t: string) =>
 /** Dicționarul TV: toate ghidurile și explicațiile migrate, fără modele, zone, legale sau servicii. */
 export const GLOSAR = ARTICOLE
   .filter(a => !LOC.has(a.s) && !ZONE.has(a.s) && !LEGAL.has(a.s) && !SERV.has(a.s)
-    && !PAGINI_PROPRII.has(a.s) && !HUBURI.has(a.s) && !eModelSlug(a.s))
+    && !PAGINI_PROPRII.has(a.s) && !REDIRECTIONATE.has(a.s) && !HUBURI.has(a.s) && !eModelSlug(a.s))
   .map(a => ({ s: a.s, t: RESCRISE.get(a.s) ?? titluScurt(a.t) }))
   .sort((a, b) => a.t.localeCompare(b.t, 'ro'));
 
