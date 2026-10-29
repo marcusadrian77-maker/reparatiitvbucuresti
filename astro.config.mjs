@@ -231,6 +231,8 @@ export default defineConfig({
     '/best-buget-tv/roku-tcl-4-tv-min/': '/',
     '/cel-mai-bun-raport-calitate-pret-la-un-tv-high-end/televizor-lg-b9-oled-min/': '/',
     '/cel-mai-bun-raport-calitate-pret-la-un-tv-high-end/televizor-lg-oled-b9-min/': '/',
+    // 29 octombrie 2026: articol vechi WordPress, dublura paginii de marca Sony
+    '/reparatii-tv-sony/': '/reparatii-televizoare-sony/',
     // Sector duplicat: structura veche -> structura noua (curata)
     '/reparatii-televizoare-sector-1/': '/reparatii-tv-sector-1/',
     '/reparatii-televizoare-sector-2/': '/reparatii-tv-sector-2/',
