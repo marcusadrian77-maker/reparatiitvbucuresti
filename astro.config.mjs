@@ -1,9 +1,34 @@
 import { defineConfig } from 'astro/config';
+import { writeFileSync } from 'node:fs';
+
+// Cloudflare Pages: redirecturile din `redirects` devin 301 reale prin dist/_redirects
+// (pe GitHub Pages erau doar pagini cu meta-refresh + noindex).
+function cloudflareRedirects() {
+  let map = {};
+  return {
+    name: 'cloudflare-redirects',
+    hooks: {
+      'astro:config:done': ({ config }) => { map = config.redirects || {}; },
+      'astro:build:done': ({ dir }) => {
+        const lines = Object.entries(map).map(([from, to]) => {
+          const dest = typeof to === 'string' ? to : to.destination;
+          const rule = `${from} ${dest} 301`;
+          // si varianta fara slash final, ca sa nu treaca prin 308 + 301
+          return from.length > 1 && from.endsWith('/') ? `${rule}\n${from.slice(0, -1)} ${dest} 301` : rule;
+        });
+        writeFileSync(new URL('_redirects', dir), lines.join('\n') + '\n');
+        console.log(`[cloudflare-redirects] ${lines.length} reguli scrise in _redirects`);
+      },
+    },
+  };
+}
+
 // GO-LIVE pe domeniul oficial
 export default defineConfig({
   site: 'https://www.reparatiitvbucuresti.ro',
   trailingSlash: 'always',
   build: { format: 'directory' },
+  integrations: [cloudflareRedirects()],
   redirects: {
     // URL-uri vechi WordPress cu prefix /ilfov/ -> structura noua (plat)
     '/ilfov/reparatii-tv-cernica/': '/reparatii-tv-cernica/',
