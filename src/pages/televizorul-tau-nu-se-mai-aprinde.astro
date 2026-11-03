@@ -5,8 +5,8 @@ import Cta from '../components/Cta.astro';
 import Testimoniale from '../components/Testimoniale.astro';
 import { SITE, u } from '../data/site';
 
-const title = 'Nu se mai aprinde televizorul? Ce arată ledul (Samsung, LG)';
-const description = 'Nu se mai aprinde televizorul? Ledul de standby arată unde e defectul: stins – sursa, aprins – telecomanda sau placa, clipește – protecție. Ce verificați singuri.';
+const title = 'Televizorul nu se aprinde? Ce vă arată ledul de standby';
+const description = 'Televizorul nu se aprinde sau nu se mai aprinde nici ledul? Ledul de standby arată defectul: stins – sursa, aprins – telecomanda sau placa, clipește – protecție.';
 const canonical = new URL(Astro.url.pathname, SITE.domeniu).href;
 
 const faq = [
@@ -14,6 +14,8 @@ const faq = [
   ['Ledul roșu e aprins, dar televizorul nu pornește. Ce înseamnă?', 'Că aparatul primește curent și partea de standby a sursei funcționează. Rămân de verificat telecomanda (se testează cu camera telefonului), butonul fizic de pe televizor și, dacă nici acela nu îl pornește, partea principală a sursei sau placa de bază.'],
   ['Ledul clipește și televizorul nu pornește. E grav?', 'Clipirea înseamnă de obicei că televizorul încearcă să pornească, detectează o problemă și se oprește singur, ca protecție. La multe mărci, numărul de clipiri este chiar un cod de eroare. Cauza poate fi sursa, benzile LED sau placa principală — se stabilește la diagnoză, care este gratuită.'],
   ['Se aude sunetul, dar ecranul nu se aprinde. E același defect?', 'Nu. Dacă aveți sunet, televizorul pornește; cea care nu se aprinde este iluminarea din spatele ecranului, adică benzile LED sau driverul lor. Este o reparație diferită, de 250–1.000 de lei, explicată pe pagina despre televizorul care se aude dar nu se vede.'],
+  ['Televizorul se aprinde doar după mai multe încercări. De ce?', 'Este semnul clasic al unei surse obosite: condensatorii și-au pierdut din capacitate, iar sursa pornește doar după ce se încălzește puțin. Defectul se agravează în timp, până când televizorul nu mai pornește deloc. Reparat acum, costă cât o reparație de sursă obișnuită, 230–530 de lei.'],
+  ['Nu se mai aprinde după o pană de curent sau o furtună. Ce fac?', 'Scoateți-l din priză zece minute, apoi încercați direct în priza de perete. Dacă ledul rămâne stins, tensiunea de la revenirea curentului sau descărcarea din furtună a ars de obicei siguranța sau o componentă de pe sursă. Nu încercați să-l porniți de mai multe ori la rând: puteți duce defectul de pe sursă pe placa principală.'],
   ['Merită reparat un televizor care nu se mai aprinde?', 'În marea majoritate a cazurilor, da: defectul e în sursă sau pe placă, iar panoul — partea scumpă — este intact. Nu merită doar când panoul este spart fizic sau când costul lui se apropie de prețul unui televizor nou. Vă spunem asta la diagnoză, înainte de orice lucrare.'],
 ];
 
@@ -31,7 +33,7 @@ const schemaExtra = {
 <Base title={title} description={description} schemaExtra={schemaExtra}>
   <section class="hero-img"><div class="wrap">
     <span class="badge">🔌 Nu pornește · diagnoză gratuită</span>
-    <h1>Televizorul nu se mai aprinde</h1>
+    <h1>Televizorul nu se aprinde: ce vă spune ledul de standby</h1>
     <p class="lead">Ați apăsat pe telecomandă și nu se întâmplă nimic, sau ecranul rămâne negru. Înainte să vă gândiți la un televizor nou: în majoritatea cazurilor defectul este în sursă sau pe o placă, iar ecranul în sine este bun.</p>
     <a class="btn btn-white" href={SITE.telefonHref}>📞 {SITE.telefon}</a>
     <a class="btn btn-wa" href={SITE.whatsapp} rel="noopener">💬 WhatsApp</a>
@@ -42,7 +44,7 @@ const schemaExtra = {
     <div class="note-green" style="margin:0 0 22px"><strong>Pe scurt:</strong> uitați-vă la ledul de standby. <strong>Nu se aprinde deloc</strong> — verificați priza; dacă e bună, defectul e în sursa de alimentare. <strong>E aprins, dar televizorul nu pornește</strong> — încercați butonul de pe aparat; dacă pornește așa, e telecomanda, altfel sursa principală sau placa de bază. <strong>Clipește</strong> — televizorul s-a oprit singur ca să se protejeze de un defect. Dacă se aude sunetul și ecranul rămâne negru, s-a stricat iluminarea. Pentru Samsung, vedeți și <a href={u('televizorul-samsung-nu-se-aprinde/')}>televizorul Samsung nu se aprinde</a>.</div>
     <h2 style="margin-top:0">Primul indiciu: ce face ledul de standby</h2>
     <p>Aproape orice televizor are un led mic, de obicei roșu, pe rama de jos. Starea lui spune mai mult decât orice altă verificare și este primul lucru pe care vi-l cerem la telefon.</p>
-    <h3>Ledul nu se aprinde deloc</h3>
+    <h3>Nu se mai aprinde ledul la televizor</h3>
     <p>Televizorul nu primește curent sau sursa lui nu mai scoate nici măcar tensiunea de standby. Verificați întâi priza cu alt aparat și scoateți prelungitorul din schemă. Dacă priza e bună și ledul tot nu se aprinde, defectul este aproape sigur în sursa de alimentare.</p>
     <h3>Ledul e aprins, dar televizorul nu pornește</h3>
     <p>Partea de standby funcționează, deci televizorul „așteaptă" o comandă pe care fie nu o primește, fie nu o poate executa. Încercați butonul fizic de pe aparat — la Samsung e de obicei sub siglă, pe mijloc, la LG și Philips în spate sau sub rama de jos. Dacă pornește din buton, problema e la telecomandă. Dacă nu pornește nici așa, e o problemă a sursei principale sau a plăcii de bază.</p>
@@ -51,7 +53,7 @@ const schemaExtra = {
   </div></section>
 
   <section class="sec"><div class="wrap">
-    <h2>„Nu se aprinde ecranul", dar se aude sunetul</h2>
+    <h2>Nu se aprinde ecranul la televizor, dar se aude sunetul</h2>
     <p>Mulți clienți ne spun că televizorul nu se aprinde, iar la întrebarea „se aude ceva?" răspunsul e da. Atunci televizorul pornește, doar că ecranul rămâne negru — și e cu totul alt defect: nu mai funcționează iluminarea din spatele panoului.</p>
     <p>Testul durează zece secunde: apropiați lanterna telefonului de ecran, în unghi. Dacă distingeți imaginea, foarte slab, în spatele sticlei, panoul e bun și s-au ars benzile LED sau driverul lor. Detaliile sunt pe pagina <a href={u('televizorul-se-aude-dar-nu-se-vede/')}>televizorul se aude, dar nu se vede</a>, iar despre reparația propriu-zisă, pe <a href={u('inlocuire-leduri-tv/')}>înlocuire leduri TV</a>.</p>
   </div></section>
@@ -66,6 +68,14 @@ const schemaExtra = {
       <li><strong>Mirosul.</strong> Dacă simțiți miros de ars sau ați auzit un pocnet, nu mai încercați să-l porniți. Scoateți-l din priză și sunați.</li>
     </ul>
     <p>Dacă după aceste verificări televizorul tot nu se aprinde, defectul e în interior. Nu desfaceți carcasa: în sursă rămân condensatori încărcați și după deconectare.</p>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <h2>Două situații care par la fel, dar nu sunt</h2>
+    <h3>Se aprinde doar după câteva încercări</h3>
+    <p>Apăsați o dată, de două ori, de cinci ori, și la un moment dat pornește. Sau pornește doar dacă îl lăsați în priză câteva minute. Mulți se obișnuiesc așa luni întregi, dar este un defect în desfășurare: condensatorii din sursă și-au pierdut capacitatea și sursa pornește tot mai greu. Într-o zi nu mai pornește deloc, iar uneori cedează odată cu ea și o componentă mai scumpă. Prinsă la timp, e o reparație de sursă obișnuită.</p>
+    <h3>Nu se mai aprinde după o pană de curent sau după furtună</h3>
+    <p>Când curentul revine brusc, sau când o descărcare intră prin priză ori prin cablul de antenă, prima care cedează este de obicei sursa: siguranța, varistorul de protecție sau tranzistorul de comutație. Scoateți televizorul din priză zece minute și încercați o singură dată, direct în perete. Dacă ledul rămâne stins, nu mai insistați: pornirile repetate pe o sursă avariată pot duce defectul mai departe, pe placa principală. Mai multe detalii pe pagina despre <a href={u('televizor-trasnit/')}>televizorul trăsnit</a>.</p>
   </div></section>
 
   <section class="sec"><div class="wrap">
