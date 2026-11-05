@@ -136,8 +136,8 @@ export const SECTOARE: Record<number, Sector> = {
   6: {
     nr: 6,
     slug: 'reparatii-tv-sector-6',
-    titlu: 'Reparații Televizoare Sector 6 – Service TV la Domiciliu',
-    descriere: 'Reparații televizoare la domiciliu în Sectorul 6: Militari, Drumul Taberei, Crângași, Giulești, Ghencea. Deplasare și diagnosticare gratuite, garanție 6–12 luni.',
+    titlu: 'Reparații Televizoare Sector 6 – Atelier în Militari',
+    descriere: 'Reparații televizoare în Sectorul 6, cu atelierul pe Str. Moinești, în Militari. Venim acasă în Drumul Taberei, Crângași, Giulești, Ghencea. Diagnostic gratuit.',
     intro: 'Sectorul 6 înseamnă în primul rând Militari și Drumul Taberei — două cartiere mari, cu mii de apartamente și cu un parc de televizoare care acoperă practic toate generațiile din ultimii cincisprezece ani. Ne deplasăm zilnic pe Iuliu Maniu, Timișoara și Drumul Taberei, așa că, dacă sunați dimineața, sunt șanse mari să fim deja în zonă.',
     context: 'Acoperim Militari, Drumul Taberei, Crângași, Giulești, Ghencea, Grozăvești, Regie, Politehnica și Lujerului, până la limita cu Chiajna.',
     cartiere: ['Militari', 'Drumul Taberei', 'Crângași', 'Giulești', 'Ghencea', 'Grozăvești', 'Regie', 'Politehnica', 'Lujerului', 'Plaza', 'Gorjului', 'Valea Cascadelor'],
@@ -154,6 +154,7 @@ export const SECTOARE: Record<number, Sector> = {
       ['Cât de repede ajungeți în Drumul Taberei?', 'De obicei în aceeași zi, adesea în câteva ore, pentru că avem intervenții zilnice în zonă.'],
       ['Demontați televizorul de pe perete?', 'Da, fără cost suplimentar, și îl remontăm după reparație.'],
       ['Deserviți și Chiajna sau Militari Residence?', 'Da, ambele intră în aria de deplasare gratuită.'],
+      ['Unde este atelierul vostru?', 'Pe Str. Moinești 7, în Militari, lângă Piața Gorjului și metroul Gorjului. Televizorul nu trebuie să îl aduceți: venim noi acasă, iar dacă e nevoie de atelier îl transportăm noi, gratuit.'],
     ],
   },
 };
