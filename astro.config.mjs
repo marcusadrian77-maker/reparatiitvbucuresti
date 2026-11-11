@@ -252,6 +252,7 @@ export default defineConfig({
     // Erori 404 ramase din Search Console (sept 2026)
     '/domiciliul/': '/',
     '/sector/feed/': '/sectoare/',
+    '/sector/': '/sectoare/',
     '/resetarea-sunetului-la-un-tv-samsung/resetara-sunet-min/': '/resetarea-sunetului-la-un-tv-samsung/',
     '/best-buget-tv/roku-tcl-4-tv-min/': '/',
     '/cel-mai-bun-raport-calitate-pret-la-un-tv-high-end/televizor-lg-b9-oled-min/': '/',
