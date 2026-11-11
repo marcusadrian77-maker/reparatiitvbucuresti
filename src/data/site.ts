@@ -75,7 +75,7 @@ export const SCHEMA_LOCALBUSINESS = {
   paymentAccepted: 'Cash, Card',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Str. Moinești 7',
+    streetAddress: 'Str. Moinești nr. 7, bl. 134A, ap. 1',
     postalCode: '061231',
     addressLocality: 'București',
     addressRegion: 'București',

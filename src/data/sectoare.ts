@@ -154,7 +154,7 @@ export const SECTOARE: Record<number, Sector> = {
       ['Cât de repede ajungeți în Drumul Taberei?', 'De obicei în aceeași zi, adesea în câteva ore, pentru că avem intervenții zilnice în zonă.'],
       ['Demontați televizorul de pe perete?', 'Da, fără cost suplimentar, și îl remontăm după reparație.'],
       ['Deserviți și Chiajna sau Militari Residence?', 'Da, ambele intră în aria de deplasare gratuită.'],
-      ['Unde este atelierul vostru?', 'Pe Str. Moinești 7, în Militari, lângă Piața Gorjului și metroul Gorjului. Televizorul nu trebuie să îl aduceți: venim noi acasă, iar dacă e nevoie de atelier îl transportăm noi, gratuit.'],
+      ['Unde este atelierul vostru?', 'Pe Str. Moinești nr. 7, bl. 134A, ap. 1, în Militari, lângă Piața Gorjului și metroul Gorjului. Televizorul nu trebuie să îl aduceți: venim noi acasă, iar dacă e nevoie de atelier îl transportăm noi, gratuit.'],
     ],
   },
 };
