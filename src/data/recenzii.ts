@@ -9,6 +9,16 @@ export type Recenzie = { autor: string; cand: string; text: string };
 
 export const RECENZII_CLIENTI: Recenzie[] = [
   {
+    autor: 'Golanex 89',
+    cand: 'octombrie 2026',
+    text: 'Recomand cu toată încrederea! Un băiat de nota 10, foarte serios, punctual și profesionist. A venit la domiciliu pentru înlocuirea benzilor LED la televizor și a făcut o treabă excelentă. A lucrat cu foarte multă grijă, atenție la detalii și respect față de client. Se vede că știe ceea ce face și că pune suflet în munca lui. Preț corect, servicii de calitate și o atitudine de nota 10. Foarte rar mai găsești oameni atât de serioși și implicați. Cu siguranță voi mai apela la serviciile lor pe viitor și îi voi recomanda cu drag tuturor! 👏',
+  },
+  {
+    autor: 'Daniel Ciurez',
+    cand: 'octombrie 2026',
+    text: 'Am fost cu mai multe chestii la reparat și am fost mulțumit. Indiferent cât de complicat pare, ei se străduiesc să le facă.',
+  },
+  {
     autor: 'Cristian Lăcătușiu',
     cand: 'februarie 2026',
     text: 'Dacă vreți o reparație despre care alții au spus că este imposibilă, apelați cu încredere. Ei readuc la viață orice TV, laptop etc.',

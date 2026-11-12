@@ -23,7 +23,7 @@ export const SITE = {
 // altfel aggregateRating din schema devine un semnal fals.
 export const RECENZII = {
   nota: 4.9,
-  numar: 76,
+  numar: 78,
   profil: 'https://www.google.com/maps?cid=3284667601974338277',
 };
 
