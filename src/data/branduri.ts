@@ -18,8 +18,8 @@ export const BRANDURI: Record<string, Brand> = {
   samsung: {
     slug: 'reparatii-televizoare-samsung',
     nume: 'Samsung',
-    titlu: 'Reparații TV Samsung București – Service Samsung la Domiciliu',
-    descriere: 'Service televizoare Samsung la domiciliu în București și Ilfov: QLED, Neo QLED, Crystal UHD, The Frame. Diagnosticare și deplasare gratuite, garanție 6–12 luni.',
+    titlu: 'Reparații TV Samsung București | Diagnostic Gratuit, Azi',
+    descriere: 'Televizor Samsung care nu pornește, ecran negru sau blocat la siglă? Venim acasă în București și Ilfov, de regulă azi. Diagnostic gratuit, garanție scrisă.',
     intro: 'Samsung este marca pe care o vedem cel mai des în casele din București, iar asta ne-a dat timp să învățăm foarte bine cum se strică. Cele mai multe apeluri sunt pentru televizoare care nu mai pornesc, pentru ecrane negre cu sunet prezent și pentru aparate blocate la sigla de pornire — trei defecțiuni pe care le rezolvăm, de regulă, la prima vizită și fără să scoatem televizorul din casă.',
     context: 'Lucrăm pe toată gama Samsung din ultimii cincisprezece ani: seriile Crystal UHD (AU, BU, CU, DU), QLED (Q6, Q7, Q8, Q9), Neo QLED (QN85, QN90, QN95), The Frame, The Serif și modelele Full HD mai vechi din seriile J, K, M și N.',
     serii: 'Seriile Samsung pe care intervenim curent',
@@ -52,6 +52,11 @@ export const BRANDURI: Record<string, Brand> = {
         '<strong>Seriile AU, BU, CU și QLED Q6–Q9 (2021–2023).</strong> Televizoare încă tinere, la care defectele sunt mai degrabă pe alimentare și pe partea de conectivitate decât pe uzura panoului. La modelele QLED și The Frame se adaugă One Connect Box, cutia externă care poate ceda separat de televizor și pe care o reparăm fără să atingem panoul.',
         '<strong>Seriile DU și Neo QLED QN85–QN95 (2024 încoace).</strong> Prea noi ca să aibă uzură. Ce vedem la ele ține de software, de porturi HDMI arse după o supratensiune și, ocazional, de accidente casnice. Multe sunt încă în garanție, caz în care vă trimitem la service-ul autorizat.',
       ]],
+      ['Cât costă reparația unui televizor Samsung', [
+        'Prețurile de mai jos sunt cele pe care le plătesc de obicei clienții noștri cu televizoare Samsung, cu piesă și manoperă incluse. Pot varia în funcție de model și diagonală, iar suma exactă o aflați după diagnosticarea gratuită, înainte să înceapă lucrul — dacă nu sunteți de acord, nu plătiți nimic.',
+        '<strong>Sursă de alimentare</strong> (nu pornește, LED-ul clipește): 230–530 lei. <strong>Barete LED</strong> (sunet fără imagine): 250–600 lei la 32–43 inch, 600–1.000 lei la 50–55 inch, de la 1.000 lei la 65–75 inch. <strong>Placă T-CON</strong> (dungi, imagine parțială): 180–450 lei. <strong>Software, Smart Hub, aplicații</strong>: 80–230 lei. <strong>Placă principală</strong>: 300–750 lei.',
+        'Peste 90% dintre televizoarele Samsung le reparăm direct la dumneavoastră acasă, cu piese pe care le avem pe stoc. Excepția sunt reparațiile pe placa principală și cele pentru care piesa trebuie comandată: atunci luăm noi televizorul la atelier și vi-l aducem înapoi reparat.',
+      ]],
       ['Ce puteți verifica singur înainte să ne sunați', [
         'Câteva verificări simple vă pot economisi o deplasare, iar pe noi ne ajută să venim cu piesa potrivită în mașină. Dacă televizorul are sunet dar nu are imagine, luminați ecranul din lateral cu lanterna telefonului, în întuneric: dacă se distinge imaginea, problema este iluminarea de fundal, nu panoul — adică o reparație accesibilă.',
         'Pentru problemele care pot fi doar de setări sau de software am scris pagini separate, cu pașii exacți din meniul Samsung: <a href="/resetarea-din-fabrica-si-instrumente-de-autodiagnosticare-pe-televizorul-samsung-partea-i/">cum resetați un televizor Samsung la setările din fabrică</a>, <a href="/diagnosticare-probleme-de-sunet-la-un-tv-samsung/">ce faceți când nu se aude sunetul</a> și <a href="/resetarea-din-fabrica-si-instrumente-de-autodiagnosticare-pe-televizorul-samsung-partea-ii/">de ce tremură sau pâlpâie imaginea</a>. Televizoarele Samsung au și un test de imagine și unul de sunet în meniul de asistență, care separă destul de bine o problemă de semnal de una de aparat.',
@@ -63,8 +68,8 @@ export const BRANDURI: Record<string, Brand> = {
   lg: {
     slug: 'reparatii-televizoare-lg',
     nume: 'LG',
-    titlu: 'Reparații TV LG București – Service OLED la Domiciliu',
-    descriere: 'Service televizoare LG la domiciliu în București și Ilfov: OLED, NanoCell, QNED, UHD. Diagnosticare și deplasare gratuite, reparație pe loc, garanție 6–12 luni.',
+    titlu: 'Reparații TV LG București | OLED, NanoCell – Diagnostic Gratuit',
+    descriere: 'Service LG la domiciliu în București și Ilfov: OLED, NanoCell, QNED. Deplasare și diagnostic gratuite, reparații de la 180 lei, garanție scrisă. ☎ 0765.461.357',
     intro: 'LG este a doua marcă ca frecvență în intervențiile noastre și prima când vine vorba de OLED. Panourile OLED sunt excelente, dar electronica din jurul lor — sursa, placa principală, modulul de alimentare al panoului — se defectează la fel ca la orice alt televizor. Vestea bună este că majoritatea acestor defecțiuni se repară, iar costul este o fracțiune din prețul unui OLED nou.',
     context: 'Intervenim pe toate seriile LG din ultimii ani: OLED (B, C, G, A, Z), QNED, NanoCell (NANO75–NANO99), UHD (UP, UQ, UR) și modelele mai vechi din seriile LJ, UJ, UK și UM.',
     serii: 'Seriile LG pe care intervenim curent',
